@@ -1,0 +1,33 @@
+---
+layout: post
+title: git-utils - Various git related utilities
+tags: [git]
+---
+
+[Git Utils](http://github.com/bmeurer/git-utils) is a collection of simple utilities that made
+my [Git](http://git-scm.com) life easier in some way or another. I tried to clean them up as
+much as necessary prior to putting here, so it should be easy to use for others as well.
+
+
+## Installation
+
+You don't need anything special, just a working installation of Git and a UNIX system (tested
+with Mac OS X and Linux). To install the git-utils into <code>/usr/local</code> run
+
+{% highlight console %}
+$ sudo make install
+{% endhighlight %}
+
+or just pick the scripts that you need and place them wherever you want.
+
+
+## Description
+
+### git-copy
+
+Copy file from source path to target path and add the target path to the Git index.
+
+### git-push-all
+
+Invoke git-push for all configured remote repositories.
+
