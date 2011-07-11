@@ -1,0 +1,12 @@
+--- 
+layout: post
+title: NetBSD 1.6RC3
+tags: [netbsd]
+---
+
+[NetBSD 1.6 Release Candidate 3](http://www.netbsd.org/Releases/formal-1.6/)
+available. Interesting article at [BSDnewsletter.com](http://www.bsdnewsletter.com):
+[Taking MicroBSD for a test run](http://www.bsdnewsletter.com/2002/09/Features39.html)
+([MicroBSD](http://www.microbsd.org) aims to be a hardened OpenBSD derivate). And finally
+agc [explaining](http://www.bsdforums.org/forums/showthread.php?threadid=2899) changes to
+[pkgsrc](http://www.pkgsrc.org) in August 2002.

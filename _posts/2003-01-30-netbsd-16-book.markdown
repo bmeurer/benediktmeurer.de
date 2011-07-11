@@ -1,0 +1,13 @@
+--- 
+layout: post
+title: NetBSD 1.6 book
+tags: [netbsd]
+---
+
+As mentioned on [www.netbsd.org](http://www.netbsd.org) the german publisher C&L
+has made available a [book on NetBSD 1.6](http://www.cul.de/netbsd.html). The book
+covers NetBSD installation (i386, macppc and others), user administration, updating
+the system, kernel tuning, configuring the <code>rc.d</code> startup system, package
+management using `pkg_install` and the `pkgsrc` tree, configuring the X window system
+and using NetBSD in a networked environment (IPv4/6, DNS, NFS/NIS, FTP, Samba and the like).
+

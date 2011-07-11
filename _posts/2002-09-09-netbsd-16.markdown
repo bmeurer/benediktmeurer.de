@@ -1,0 +1,8 @@
+--- 
+layout: post
+title: NetBSD 1.6
+tags: [netbsd]
+---
+
+[NetBSD](http://www.netbsd.org) 1.6 is finally at RELEASE.
+
