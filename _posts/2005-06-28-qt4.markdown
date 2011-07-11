@@ -1,0 +1,7 @@
+---
+layout: post
+title: Qt4
+tags: [qt]
+---
+
+So Trolltech finally released Qt4 today, and their servers are nearly unreachable all day. We'll most probably stay with Qt3 for a long time tho, as it would be too costly to upgrade to Qt4. Even trivial programs take a lot of time to migrate, and we have way too much non-trivial, partly plattform-dependent code. Nevertheless we checked the new Qt4 today. What makes me wonder is that in all the announcements and relnotes, there's not much mention of the new accessibility support of Qt4, which is IMHO the most important addition to Qt (besides the model/view separation).

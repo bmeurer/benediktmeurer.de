@@ -1,0 +1,16 @@
+---
+layout: post
+title: Signals
+tags: [xfce, thunar]
+---
+
+One thing missing from GObject and esp. the signal system is that there's no way to control the order in which signal handlers will be fired except the <code>after</code> flag, which isn't very powerful either. Sure, 99.99% of all applications will never need to be able to have fine-grained control about the signal invocation order, but then there's always atleast one application, that needs this feature in order to avoid other weird work-arounds.
+
+Thunar is such an application and the use-case is pretty simple: We have a <code>ThunarIconFactory</code> class in Thunar, which is used to load icons and perform some kind of caching on the icons, so you don't need to grab them from the disk everytime. Now if the currently selected icon theme changes, the icon cache must be cleared <b>before</b> other modules get informed about the icon theme, as they'll immediatly perform an icon lookup. So, the order in which the signal handlers are invoked matters. Unfortunately you have don't necessarily have control about the modules, it can be code in Gtk+ or other libraries. Sure you could say, the icon factory is the first object I create and so it's signal handler will always be fired first, but that's really messy, as - according to murphy's law - somebody will forget about this condition at some time (no matter how much comments you add to that code) and you'll have a very, very hard to find bug, because you simply don't think about that condition in the first place.
+
+As a work-around, and that's what we're now used with Thunar, you can connect a signal emission hook to the <code>"changed"</code> signal of the <code>GtkIconTheme</code> class. Emission hooks are garantied to be run before any signal handler is fired (the default handler may run first, depending on the signal flags, but that's no problem for us). Ok, this sounds cool so far. Unfortunately emission hooks aren't bound to instances, but to types. And so whenever the <code>"changed"</code> signal is run on <b>any</b> instance of <code>GtkIconTheme</code>, the emission hook will be fired. While in theory this looks like a bad thing, in practice with the icon theme class, this is not a big deal, as you only have one icon theme per screen (or maybe even only the global icon theme) and so the worst thing that can happen here is that you loose the icon cache for all screens if you change the icon theme (which is not really a common action).
+
+So, problem solved. But the solution is pretty hacky, tho no real need to break GObject. Just wondering...
+
+And just right now Gtk+ 2.7.0 was announced with lots of breakage - have fun fixing your custom widgets if you used to use Xlib directly. ;-)
+
