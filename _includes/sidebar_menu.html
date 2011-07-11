@@ -1,0 +1,6 @@
+<ul>
+	<li><a href="/"{%unless page.tab%} class="selected"{%endunless%}><img src="/images/archive.png"> Home</a></li>
+	<li><a href="/archive/"{%if page.tab == "archive"%} class="selected"{%endif%}><img src="/images/archive.png"> Archive</a></li>
+	<li><a href="/about/"{%if page.tab == "about"%} class="selected"{%endif%}><img src="/images/archive.png"> About</a></li>
+	<li><a href="{{ site.atom }}"><img src="/images/rss.png"> RSS</a></li>
+</ul>

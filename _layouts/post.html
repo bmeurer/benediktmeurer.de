@@ -1,0 +1,10 @@
+---
+layout: default
+type: post
+---
+{% if page.homepage 					%}
+{% assign post = site.posts.first 	%}
+{% else 								%}
+{% assign post = page 				%}
+{% endif 							%}
+{% include post.html		 			%}
