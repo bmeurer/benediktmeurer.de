@@ -1,0 +1,31 @@
+Index: settings/splash/module.c
+===================================================================
+RCS file: /var/cvs/xfce/xfce4/xfce4-session/settings/splash/module.c,v
+retrieving revision 1.5
+diff -u -r1.5 module.c
+--- settings/splash/module.c	24 Feb 2005 21:00:34 -0000	1.5
++++ settings/splash/module.c	16 Mar 2005 23:47:39 -0000
+@@ -23,6 +23,13 @@
+ #include <config.h>
+ #endif
+ 
++#ifdef HAVE_MEMORY_H
++#include <memory.h>
++#endif
++#ifdef HAVE_STRING_H
++#include <string.h>
++#endif
++
+ #include <gmodule.h>
+ 
+ #include <libxfcegui4/libxfcegui4.h>
+@@ -186,6 +193,9 @@
+   int               monitor;
+   int               step;
+ 
++  /* properly initialize the engine struct with zeros! */
++  bzero (&engine, sizeof (engine));
++
+   /* locate monitor with pointer */
+   screen = xfce_gdk_display_locate_monitor_with_pointer (display, &monitor);
+   if (G_UNLIKELY (screen == NULL))

@@ -1,0 +1,63 @@
+--- xfce4-panel-4.2.1.orig/panel/settings.c
++++ xfce4-panel-4.2.1/panel/settings.c
+@@ -25,6 +25,7 @@
+ #include <sys/stat.h>
+ #endif
+ 
++#include <errno.h>
+ #include <stdio.h>
+ #ifdef HAVE_STDLIB_H
+ #include <stdlib.h>
+@@ -271,6 +272,8 @@
+ write_final_panel_config (void)
+ {
+     char *xfcerc, *tmprc;
++    xmlNodePtr root;
++    char value[3];
+     
+     if (disable_user_config)
+ 	return;
+@@ -285,6 +288,25 @@
+     
+     tmprc = g_strconcat (xfcerc, ".active", NULL);
+ 
++    xmlconfig = xmlNewDoc ("1.0");
++    xmlconfig->children = xmlNewDocRawNode (xmlconfig, NULL, ROOT, NULL);
++
++    root = (xmlNodePtr) xmlconfig->children;
++    xmlDocSetRootElement (xmlconfig, root);
++
++    snprintf (value, 2, "%d", XML_FORMAT_VERSION);
++    xmlSetProp (root, "xmlversion", value);
++
++    panel_write_xml (root);
++
++    groups_write_xml (root);
++
++    if (-1 == xmlSaveFormatFile (tmprc, xmlconfig, 1))
++    {
++	g_critical ("Could not save xml file");
++	goto out;
++    }
++
+     if (!g_file_test (xfcerc, G_FILE_TEST_EXISTS))
+     {
+         g_critical ("No current config file available");
+@@ -303,7 +325,7 @@
+ 
+     if (link (tmprc, xfcerc))
+     {
+-	g_critical ("Could not link new contents.xml");
++	g_critical ("Could not link new contents.xml: %s", g_strerror (errno));
+ 	goto out;
+     }
+ 
+@@ -315,5 +337,7 @@
+   out:
+     g_free (tmprc);
+     g_free (xfcerc);
++    xmlFreeDoc (xmlconfig);
++    xmlconfig = NULL;
+ }
+ 
+
