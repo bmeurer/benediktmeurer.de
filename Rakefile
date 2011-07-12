@@ -7,9 +7,9 @@ namespace :jekyll do
 
   desc 'Clean temporary files and compile the site'
   task :compile => [:clean] do
+    system "git rm -rf tag"
     system "jekyll --no-server"
     system "cp _site/gh404/index.html 404.html"
-    system "git rm -rf tag"
     system "cp -rp _site/tag ."
     system "git add tag"
   end
