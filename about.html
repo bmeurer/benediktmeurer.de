@@ -5,8 +5,6 @@ tab: about
 ---
 
 
-<h2>Me</h2>
-
 <p>
   I am Benedikt Meurer, a 
   <a href="http://en.wikipedia.org/wiki/Software_developer" target="_blank">software
@@ -58,6 +56,29 @@ tab: about
 <p>
   If you want to get in touch with me, feel free to shoot me an <a href="{{ site.email }}">email</a>.
 </p>
+
+
+<h3>My GnuPG key</h3> 
+
+<p> 
+  Encrypted mail preferred. I sign most of my private emails with the <a
+  href="http://www.gnupg.org/">GNU Privacy Guard</a>, an open source implementation of <a
+  href="http://www.openpgp.org/">OpenPGP</a>. If you want to contact me by email, you can
+  download my public key <a href="/files/bmeurer.asc">here</a> or from the PGP keyservers.
+  To retrieve my public key from a PGP keyserver and import it into your public key ring, open
+  a shell and type the following command:
+</p> 
+
+{% highlight console %}
+$ gpg --keyserver wwwkeys.pgp.net --recv-key FD5E0F0F
+{% endhighlight %}
+
+<p> 
+  For additional information, you should consult the manual shipped with your GnuPG distribution
+  and visit the <a href="http://www.gnupg.org/docs.html">The GNU Privacy Guard Documentation</a>,
+  where you can find the GNU Privacy Guard Handbook, which should be the first book to read,
+  in order to get started with GnuPG.
+</p> 
 
 
 <h2>Copyleft &amp; Copyright</h2>
