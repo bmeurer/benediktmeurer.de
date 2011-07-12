@@ -11,12 +11,14 @@
 	<footer>
 		<img src="/images/posted.png" alt="posted" title="posted" />
 		<a href="/archive/#{{ post.date | date:'%B-%Y' }}" title="{{ post.date | date_to_string }}">{{ post.date | date_to_string }}</a>
+    {% if post.tags != empty %}
  		<span class="tags">
  			<img src="/images/tag.png" alt="tagged" title="tagged" />
 			{% for tag in post.tags %}
 				<a href="/tag/{{ tag }}" title="{{ tag | capitalize }}">{{ tag }}</a>
 			{% endfor %}
 		</span>
+    {% endif %}
     {% if page.homepage == true %}
     <img src="/images/comment.png" alt="commented" title="commented" />
     <a href="{{ post.id }}#disqus_thread" title="Comments">Comments</a>
