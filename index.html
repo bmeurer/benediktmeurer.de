@@ -1,5 +1,27 @@
 ---
-layout: post
+layout: default
+title: Home
 homepage: true
+type: post
 ---
-{{ site.posts.first.content }}
+
+{% for post in paginator.posts %}
+  {% assign content = post.content %}
+  {% include post.html %}
+{% endfor %}
+
+<nav id="pageNav">
+  <ul class="clearfix">
+    {% if paginator.previous_page %}
+      {% if paginator.previous_page == 1 %}
+      <li><a href="/" id="pageNavNewer">Newer Posts</a></li>
+      {% else %}
+      <li><a href="/page{{paginator.previous_page}}" id="pageNavNewer">Newer Posts</a></li>
+      {% endif %}
+    {% endif %}
+    {% if paginator.next_page %}
+    <li><a href="/page{{paginator.next_page}}" id="pageNavOlder">Older Posts</a></li>
+    {% endif %}
+  </ul>
+</nav>
+
