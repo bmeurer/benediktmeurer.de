@@ -1,0 +1,34 @@
+Index: terminal/terminal-app.c
+===================================================================
+--- terminal/terminal-app.c	(revision 20337)
++++ terminal/terminal-app.c	(working copy)
+@@ -345,6 +345,7 @@
+ static GdkScreen*
+ terminal_app_find_screen (const gchar *display_name)
+ {
++  GdkColormap *colormap;
+   const gchar *other_name;
+   GdkDisplay  *display = NULL;
+   GdkScreen   *screen = NULL;
+@@ -406,6 +407,21 @@
+       g_object_ref (G_OBJECT (screen));
+     }
+ 
++  /* check if we already checked this screen */
++  if (g_object_get_data (G_OBJECT (screen), "terminal-checked-screen") == NULL)
++    {
++      /* check if we can use ARGB visual for this screen */
++      colormap = gdk_screen_get_rgba_colormap (screen);
++      if (G_LIKELY (colormap != NULL))
++        {
++          /* use ARGB visual for all windows on this screen */
++          gdk_screen_set_default_colormap (screen, colormap);
++        }
++
++      /* mark this screen as handled */
++      g_object_set_data (G_OBJECT (screen), "terminal-checked-screen", GINT_TO_POINTER (1));
++    }
++
+   return screen;
+ }
+ 

@@ -1,0 +1,10 @@
+---
+layout: post
+title: Icon view
+tags: [xfce, thunar, exo]
+---
+
+Committed the new icon view code to libexo today, and updated Thunar to use it.
+
+<center><a href="/images/2005/thunar-icon-view.png"><img src="/images/2005/thunar-icon-view.png" width="90%" /></a></center>
+

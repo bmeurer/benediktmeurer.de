@@ -1,0 +1,11 @@
+--- src/vtexft.c.orig	Mon Mar 27 01:08:51 2006
++++ src/vtexft.c	Mon Mar 27 01:09:10 2006
+@@ -498,7 +498,7 @@
+ 		rcolor.red = data->color.red;
+ 		rcolor.green = data->color.green;
+ 		rcolor.blue = data->color.blue;
+-		rcolor.alpha = 0xffff;
++		rcolor.alpha = 0xaaaa;
+ 		if (XftColorAllocValue(data->display, data->visual,
+ 				       data->colormap, &rcolor, &ftcolor)) {
+ 			XftDrawRect(data->draw, &ftcolor,
