@@ -9,9 +9,7 @@ License
 
 The following files and directories are Copyright (c) Benedikt Meurer. You may not reuse anything therein without my permission:
 
-* _posts
-* files
-* images
+* [_posts](http://github.com/bmeurer/bmeurer.github.com/tree/master/_posts)
 
-The remaining files are based on [Mihail Szabolcs](http://github.com/icebreaker)' [blog](http://szabster.net), and are MIT licensed. Feel free to reuse the HTML and CSS as you please.
+The remaining files are [MIT licensed](http://en.wikipedia.org/wiki/Mit_license) unless stated otherwise. Feel free to reuse the HTML and CSS (based on files taken from [Mihail Szabolcs](http://www.linkedin.com/in/mihailszabolcs)' [blog](http://szabster.net)) as you please. If you do use them, a link back to this [website](http://benediktmeurer.de) would be appreciated, but is not required.
 
