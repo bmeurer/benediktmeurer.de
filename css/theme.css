@@ -178,7 +178,7 @@ article .type:hover, article .type a:active
 }
 article img 
 {
-	border: 10px solid #d2d9df;
+	border: none;
 }
 article .media 
 {
