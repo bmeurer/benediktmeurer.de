@@ -218,6 +218,10 @@ article footer .tags a:hover, article footer .tags a:active
 	background: #cb1e16;
 	color: #e6edf3;
 }
+article footer .plusone
+{
+	float: right;
+}
 article .notes
 {
 	list-style: none;
