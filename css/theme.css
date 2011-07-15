@@ -151,6 +151,10 @@ article h2
 	line-height: 42px;
 	color: #5c6f7d;
 }
+article p
+{
+	text-align: justify;
+}
 article .type 
 {
 	position: absolute;
