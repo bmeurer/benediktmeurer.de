@@ -1,0 +1,170 @@
+ul {
+  list-style: disc;
+}
+a {
+	color: #106080;
+}
+
+a:active {
+  outline: none;
+}
+
+a:focus {
+  -moz-outline-style: none;
+}
+
+body {
+  background-color: #fff;
+  font-family: 'Helvetica Neue', Helvetica, sans-serif;
+  color: #333;
+  -webkit-text-size-adjust:none;
+}
+
+img {
+  border: 0;
+  padding: 0;
+  border: 0 none;
+  text-decoration: none;
+}
+
+h1 {
+	font-size: 30px;
+	line-height: 38px;
+	margin-top: 30px;
+	margin-bottom: 15px;
+}
+
+h2 {
+	font-size: 19px;
+	font-weight: 600;
+	line-height: 34px;
+	margin-top: 30px;
+	margin-bottom: 5px;
+}
+
+h2 a {
+	color: #333;
+}
+
+p {
+	font-family: Georgia, Times, Serif;
+	font-size: 15px;
+	line-height: 25px;
+	margin-bottom: 10px;
+}
+
+p i {
+	font-style: italic;
+}
+
+
+li {
+	font-family: Georgia, Times, Serif;
+	font-size: 15px;
+	line-height: 20px;
+	margin-top: 15px;
+	margin-bottom: 5px;
+}
+
+#page {
+	background-image: url("/images/iphoneapp-background-header.png");
+	background-repeat: repeat-x;
+	width: 100%;
+}
+
+#center {
+	width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#phone {
+	background-image: url("/images/iphoneapp-background-iphone4.png");
+	background-repeat: no-repeat;
+	width: 320px;
+	height: 596px;
+	float: left;
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+
+#iphone-overlay {
+  position: relative;
+  top: 104px;
+  left: 41px;
+  width: 240px;
+  overflow: hidden;
+}
+
+#header {
+	background-repeat: no-repeat;
+	background-position: 8px 56px;
+	width: 400px;
+	height: 176px;
+	float: left;
+}
+
+#menu {
+	height: 30px;
+	color: #fff;
+	margin-left: 18px;
+	width: 400px;
+	float: left;
+}
+
+#menu a {
+	color: #555;
+	font-size: 12px;
+	line-height: 20px;
+	text-decoration: none;
+	margin-right: 20px;
+}
+
+#menu a.underlined {
+	text-decoration: underline;
+}
+
+article {
+	width: 400px;
+	margin-top: 20px;
+	margin-bottom: 40px;
+	margin-left: 40px;
+	float: left;
+}
+
+article.wide_content {
+  width: 700px;
+  margin-top: 10px;
+  margin-bottom: 40px;
+  float: left;
+}
+
+#appstore {
+	margin-top: 40px;
+	margin-bottom: 70px;
+	width: 140px;
+	height: 47px;
+	display: block;
+}
+
+footer {
+	text-align: center;
+	width: 700px;
+	height: 40px;
+	clear: both;
+	float: none;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 40px;
+	margin-bottom: 40px;
+	display: block;
+}
+
+footer p {
+  font-family: 'Helvetica Neue', Helvetica, sans-serif;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 0;
+  margin: 0;
+}
+

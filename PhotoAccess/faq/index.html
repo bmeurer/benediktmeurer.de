@@ -1,0 +1,60 @@
+---
+layout: iphoneapp
+folder: PhotoAccess
+title: PhotoAccess FAQ
+description: Quick access to photos on your iPhone
+---
+
+<div id="phone">
+  <div id="iphone-overlay" style="background-image: url(); background-repeat: no-repeat no-repeat; "><img id="iphone-top" src="" alt="Demo Animation" style="opacity: 0;" /></div>
+</div>
+<div id="header" style="background-image: url(/{{ page.folder }}/header-logo.png);"></div>
+
+<nav id="menu">
+  <a href="/{{ page.folder }}/">HOME</a>
+  <a class="underlined" href="/{{ page.folder }}/faq/">FAQ</a>
+  <a href="/{{ page.folder }}/contact/">CONTACT</a>
+</nav>
+  
+<article>
+  <h1>PhotoAccess FAQ</h1>
+
+  <p>
+    These are the answers to some of the most frequently asked questions about PhotoAccess.
+    Should you have other questions, please <a href="/{{ page.folder }}/contact/">contact me</a>.
+  </p>
+
+  <ul>
+    <li><a href="#unable-to-load">My web browser won't load the download URL, what can I do?</a></li>
+    <li><a href="#ios3">Any chance to have PhotoAccess running on iOS 3?</a></li>
+    <li><a href="#ipad">Will you create a native iPad / iPad HD version?</a></li>
+  </ul>
+</article>
+
+<article class="wide_content">
+  <h2 id="unable-to-load">My web browser won't load the download URL, what can I do?</h2>
+  <p>
+    Make sure that PhotoAccess is actually running in the foreground. You cannot
+    access the web interface while PhotoAccess is in the background.
+  </p>
+  <p>
+    Make sure that you entered the correct URL, especially make sure that you
+    did not forget the colon and the port (i.e. <code>:8080</code>). Also make
+    sure that the computer from which you are trying to access the photos is on
+    the same (WiFi) network as the iOS device running PhotoAccess.
+  </p>
+  <p>
+    If all fails, try to reinstall PhotoAccess by removing it from your device
+    and downloading it again from the App Store.
+  </p>
+
+  <h2 id="ios3">Any chance to have PhotoAccess running on iOS 3?</h2>
+  <p>
+    I don't have plans to backport PhotoAccess to iOS 3.
+  </p>
+
+  <h2 id="ipad">Will you create a native iPad / iPad HD version?</h2>
+  <p>
+    Yes.
+  </p>
+</article>
