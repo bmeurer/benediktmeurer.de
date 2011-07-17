@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>{{ page.title }}</title>
+
+  <!-- Site Author -->
+  <meta name="author" content="{{ site.author }}" />
+
+  <!-- Site Description -->
+  <meta name="description" content="{{ page.description }}" />
+
+  <!-- Google Site Verification -->
+  <meta name="google-site-verification" content="1gkRIROhZsIi5eq-oNYG1R73thPYUmsb7IIQpDpBiB0" />
+
+  <!-- CSS -->
+  <link href="/css/reset.css" rel="stylesheet" type="text/css" media="screen, projection" />
+  <link href="/css/iphoneapp.css" rel="stylesheet" type="text/css" media="screen, projection" />
+
+  <!-- Fav Icon -->
+  <link href="/{{ page.folder }}/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+  <!-- jQuery -->
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+
+  <!--[if IE]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+  <div id="page">
+    <div id="center">
+      {{ content }}
+      <footer>
+        <p>
+          Copyright &copy; 2011 {{ site.author }}
+          &nbsp;|&nbsp;
+          <a href="{{ site.url }}">{{ site.url }}</a>
+          &nbsp;|&nbsp;
+          <a href="http://www.twitter.com/bmeurer">@bmeurer</a>
+        </p>
+      </footer>
+    </div>
+  </div>
+  {% include ga.html %}
+</body>
+
+</html>
