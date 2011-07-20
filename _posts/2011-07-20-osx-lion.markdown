@@ -1,0 +1,16 @@
+---
+layout: post
+title: OS X Lion
+tags: [osx, mac, lion]
+---
+
+Just like almost every other geek on this planet, I'm downloading
+[OS X Lion](http://www.apple.com/macosx/) from the App Store right
+now. Rather slow... but that way I can do a full backup first while
+the update is downloading. [#lion](https://twitter.com/search/%23lion)
+on [Twitter](http://twitter.com) is already busy discussing the new
+release.
+
+In related news: The new [MacBook Air](http://www.apple.com/macbookair/)
+looks really great - especially starting at $999. Finally a real alternative
+to the [MacBook Pro](http://www.apple.com/macbookpro/).
