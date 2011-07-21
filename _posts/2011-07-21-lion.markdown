@@ -17,9 +17,12 @@ One really nice feature in Lion is that new tabs in
 [Terminal.app](http://en.wikipedia.org/wiki/Apple_Terminal) now inherit the
 current working directory from the tab from which they were opened - something
 I implemented in [Xfce's Terminal](http://www.xfce.org/projects/terminal)
-seven years ago, BTW. In addition the title bar of Terminal windows now
-provides the same handles as the title bar in Finder windows, which is pretty
-handy.
+seven years ago, BTW. Looks like this is implemented by parsing the path
+displayed in the title bar, which can have unexpected results when combined
+with <code>ssh</code> sessions, since the path in the title is actually set
+via the (remote) shell. In addition the title bar of Terminal windows
+now provides the same handles as the title bar in Finder windows, which is
+pretty handy.
 
 Unfortunately Apple decided to kick Spaces and replace it with [Mission
 Control](http://www.apple.com/macosx/whats-new/mission-control.html). This
