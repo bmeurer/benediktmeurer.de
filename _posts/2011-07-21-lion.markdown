@@ -1,0 +1,31 @@
+---
+layout: post
+title: Lion
+tags: [osx, mac, lion]
+---
+
+So I'm trying to get used to [OS X Lion](http://www.apple.com/macosx/)
+now. One of the first things I noticed was that the <code>Library</code>
+folder does no longer show up in Finder by default. Of course that was
+rather trivial to fix using the following command:
+
+{% highlight console %}
+$ chflags nohidden ~/Library
+{% endhighlight %}
+
+One really nice feature in Lion is that new tabs in
+[Terminal.app](http://en.wikipedia.org/wiki/Apple_Terminal) now inherit the
+current working directory from the tab from which they were opened - something
+I implemented in [Xfce's Terminal](http://www.xfce.org/projects/terminal)
+seven years ago, BTW. In addition the title bar of Terminal windows now
+provides the same handles as the title bar in Finder windows, which is pretty
+handy.
+
+Unfortunately Apple decided to kick Spaces and replace it with [Mission
+Control](http://www.apple.com/macosx/whats-new/mission-control.html). This
+by itself is not necessarily bad, but now there's no way to get that two
+dimensional workspace layout back, at least until Apple decides
+to fix that shortcoming. I've also noticed that the order of the workspaces
+seems to change under some (obscure) conditions, which is even worse. Maybe
+I'm just getting old, but until now I was unable to figure out what triggers
+this rearrangement - not what I'd call intuitive.
