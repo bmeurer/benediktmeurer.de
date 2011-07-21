@@ -29,3 +29,12 @@ to fix that shortcoming. I've also noticed that the order of the workspaces
 seems to change under some (obscure) conditions, which is even worse. Maybe
 I'm just getting old, but until now I was unable to figure out what triggers
 this rearrangement - not what I'd call intuitive.
+
+**Update 1:** Lion also says *bye bye* to Microsoft Office for Mac 2004, since
+<a href="http://en.wikipedia.org/wiki/Rosetta_(software)">Rosetta</a> is not
+available for Mac OS X 10.7.
+
+**Update 2:** Make sure you don't miss the [Mac OS X 10.7 Lion
+review](http://arstechnica.com/apple/reviews/2011/07/mac-os-x-10-7.ars/)
+by [ars technica](http://arstechnica.com)'s [John
+Siracusa](http://arstechnica.com/author/john-siracusa/).
