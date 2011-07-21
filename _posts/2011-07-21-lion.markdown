@@ -41,3 +41,10 @@ available for Mac OS X 10.7.
 review](http://arstechnica.com/apple/reviews/2011/07/mac-os-x-10-7.ars/)
 by [ars technica](http://arstechnica.com)'s [John
 Siracusa](http://arstechnica.com/author/john-siracusa/).
+
+**Update 3:** Well, I am old... the fix for that *Mission Control feature* that
+drove me nuts is obvious. In the **Mission Control** preference pane, disable
+the **Automatically rearrange spaces based on most recent use** option. Even
+if I was too blind to discover this earlier, it's nevertheless a really bad
+default. Out of 100 Mac users, how many would their workspaces to rearrange
+*magically*?
