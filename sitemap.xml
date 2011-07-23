@@ -54,7 +54,15 @@ layout: nil
     <loc>{{ site.url }}{{ post.url }}</loc>
     <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  {% for tag in post.tags %}
+  <url>
+    <loc>{{ site.url }}/tag/{{ tag }}</loc>
+    <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
+  {% endfor %}
   {% endfor %}
 </urlset>

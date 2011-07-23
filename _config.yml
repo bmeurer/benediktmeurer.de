@@ -11,7 +11,6 @@ atom: http://feeds.feedburner.com/benediktmeurer
 paginate: 5
 
 exclude:
-  - CNAME
   - Rakefile
   - README.markdown
 
