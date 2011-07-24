@@ -8,7 +8,7 @@
   <!-- Site Author -->
   <meta name="author" content="{{ site.author }}" />
 
-  <!-- Site Description -->
+  <!-- Page Description -->
   <meta name="description" content="{{ page.description }}" />
 
   <!-- Google Site Verification -->
@@ -38,11 +38,11 @@
       {{ content }}
       <footer>
         <p>
-          Copyright &copy; 2011 {{ site.author }}
+          Copyright &copy; {{ site.time | date: "%Y" }} {{ site.author }}
           &nbsp;|&nbsp;
           <a href="{{ site.url }}">{{ site.url }}</a>
           &nbsp;|&nbsp;
-          <a href="http://www.twitter.com/bmeurer">@bmeurer</a>
+          <a href="http://www.twitter.com/{{ site.twitter }}">@{{ site.twitter }}</a>
         </p>
       </footer>
     </div>
