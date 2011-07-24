@@ -46,17 +46,12 @@ strong {
   font-weight: bold;
 }
 
-pre {
-  display: block;
-  padding: 5px; 
-  margin: 1em 0;
+pre, code {
   font-family: consolas, monospace;
-  font-size: 1em;
-  color: #fff;
-  background: #222;
-  white-space: pre;
-  white-space: pre-wrap;
-  word-wrap: break-word;
+  font-size: 0.8125em;
+  margin: 0;
+  padding: 0;
+  border: 0;
 }
 
 ul {
