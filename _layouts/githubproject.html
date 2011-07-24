@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>{{ page.title }}</title>
+
+  <!-- Site Author -->
+  <meta name="author" content="{{ site.author }}" />
+
+  <!-- Page Description -->
+  <meta name="description" content="{{ page.description }}" />
+
+  <!-- Google Site Verification -->
+  <meta name="google-site-verification" content="1gkRIROhZsIi5eq-oNYG1R73thPYUmsb7IIQpDpBiB0" />
+
+  <!-- CSS -->
+  <link href="/css/githubproject.css" rel="stylesheet" type="text/css" media="screen, projection" />
+
+  <!--[if IE]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+  <a class="fork" href="http://github.com/{{ site.github }}/{{ page.github }}"><img src="http://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub" /></a>
+
+  <div id="container">
+    <div class="download">
+      <a href="http://github.com/{{ site.github }}/{{ page.github }}/zipball/master"><img src="http://github.com/images/modules/download/zip.png" width="90" /></a>
+      <a href="http://github.com/{{ site.github }}/{{ page.github }}/tarball/master"><img src="http://github.com/images/modules/download/tar.png" width="90" /></a>
+    </div>
+
+    <h1><a href="http://github.com/{{ site.github }}/{{ page.github }}">{{ page.title }}</a></h1>
+
+    {{ content }}
+      
+    <h2>Source code</h2>
+
+    <p>
+      Available on GitHub:
+      <a href="http://github.com/{{ site.github }}/{{ page.github }}">http://github.com/{{ site.github }}/{{ page.github }}</a>
+    </p>
+
+    <p>
+      Download it in either <a href="http://github.com/{{ site.github }}/{{ page.github }}/zipball/master">zip</a>
+      or <a href="http://github.com/{{ site.github }}/{{ page.github }}/tarball/master">tar</a> formats.
+    </p>
+
+    <p>
+      Clone the project with <a href="http://git-scm.com">Git</a> by running:
+    </p>
+
+    <pre>$ git clone git://github.com/{{ site.github }}/{{ page.github }}.git</pre>
+
+    <h2>Bug Reports</h2>
+
+    <p>
+      If you come across any problems, please <a
+      href="http://github.com/{{ site.github }}/{{ page.github }}/issues">create a ticket</a>
+      and we will try to get it fixed as soon as possible.
+    </p>
+
+    <h2>Contributing</h2>
+
+    <p>
+      Once you have made your commits:
+    </p>
+
+    <ol>
+      <li><a href="http://help.github.com/fork-a-repo/">Fork</a> {{ page.github }}.</li>
+      <li>Create a topic branch - <tt>git checkout -b my_branch</tt></li>
+      <li>Push to your topic branch - <tt>git push origin my_branch</tt></li>
+      <li>Create a <a href="http://help.github.com/pull-requests/">Pull Request</a> from your topic branch.</li>
+      <li>That's it!</li>
+    </ol>
+
+    <h2>Copyright</h2>
+
+    <p>
+      Copyright &copy; {{ page.copyright }} {{ site.author }}. See the
+      <a href="http://github.com/{{ site.github }}/{{ page.github }}/raw/master/LICENSE">LICENSE</a>
+      file for details.
+    </p>
+      
+    <div class="footer">
+      <p>
+        Copyright &copy; {{ site.time | date: "%Y" }} {{ site.author }}
+        &nbsp;|&nbsp;
+        <a href="{{ site.url }}">{{ site.url }}</a>
+        &nbsp;|&nbsp;
+        <a href="http://www.twitter.com/{{ site.twitter }}">@{{ site.twitter }}</a>
+      </p>
+    </div>
+  </div>
+  {% include ga.html %}
+</body>
+
+</html>

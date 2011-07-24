@@ -3,6 +3,7 @@ layout: nil
 ---
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Home -->
   <url>
     <loc>{{ site.url }}</loc>
     <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
@@ -10,6 +11,7 @@ layout: nil
     <priority>1.0</priority>
   </url>
 
+  <!-- About -->
   <url>
     <loc>{{ site.url }}/about</loc>
     <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
@@ -23,6 +25,7 @@ layout: nil
     <priority>0.2</priority>
   </url>
 
+  <!-- Archive -->
   <url>
     <loc>{{ site.url }}/archive</loc>
     <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
@@ -30,6 +33,15 @@ layout: nil
     <priority>0.8</priority>
   </url>
 
+  <!-- BMKit -->
+  <url>
+    <loc>{{ site.url }}/BMKit</loc>
+    <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- PhotoAccess -->
   <url>
     <loc>{{ site.url }}/PhotoAccess</loc>
     <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
@@ -49,6 +61,7 @@ layout: nil
     <priority>0.5</priority>
   </url>
 
+  <!-- Posts & Tags -->
   {% for post in site.posts %}
   <url>
     <loc>{{ site.url }}{{ post.url }}</loc>
