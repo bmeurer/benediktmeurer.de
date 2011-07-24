@@ -18,7 +18,7 @@ Right now, BMKit is a static library for iOS 4.0 and beyond.
 
 Documentation is done using [AppleDoc](http://github.com/tomaz/appledoc).
 
-<a class="button" href="http://bmeurer.github.com/BMKit">Read Online Documentation</a>
+<a class="button" href="http://bmeurer.github.com/BMKit">Read the Documentation online</a>
 
 
 ## License
