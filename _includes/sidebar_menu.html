@@ -1,6 +1,7 @@
 <ul>
-	<li><a href="/"{%unless page.tab%} class="selected"{%endunless%}><img alt="Home" src="/images/archive.png"> Home</a></li>
-	<li><a href="/archive/"{%if page.tab == "archive"%} class="selected"{%endif%}><img alt="Archive" src="/images/archive.png"> Archive</a></li>
-	<li><a href="/about/"{%if page.tab == "about"%} class="selected"{%endif%}><img alt="About" src="/images/archive.png"> About</a></li>
-	<li><a href="{{ site.atom }}"><img alt="RSS" src="/images/rss.png"> RSS</a></li>
+	<li><a href="/"{%unless page.tab%} class="selected"{%endunless%}><img alt="Home" src="/images/archive.png" /> Home</a></li>
+	<li><a href="/archive/"{%if page.tab == "archive"%} class="selected"{%endif%}><img alt="Archive" src="/images/archive.png" /> Archive</a></li>
+	<li><a href="/projects/"{%if page.tab == "projects"%} class="selected"{%endif%}><img alt="Projects" src="/images/random.png" /> Projects</a></li>
+	<li><a href="/about/"{%if page.tab == "about"%} class="selected"{%endif%}><img alt="About" src="/images/archive.png" /> About</a></li>
+	<li><a href="{{ site.atom }}"><img alt="RSS" src="/images/rss.png" /> RSS</a></li>
 </ul>
