@@ -10,14 +10,8 @@ end
 
 desc 'Compress CSS & HTML'
 task :compress => [:compile] do
-	puts '* Compressing CSS files'
-	system "find _site -name '*.css' -print0 | xargs -0 java -jar _lib/yuicompressor-2.4.6.jar --charset UTF-8 --type css -o '.css$:.css'"
-	puts '* Compressing HTML files'
-	system 'find _site -name "*.html" -exec java -jar _lib/htmlcompressor-1.4.jar --charset UTF-8 --type html --compress-css --compress-js "{}" -o "{}" ";"'
-	puts '* Compressing JavaScript files'
-	system "find _site -name '*.js' -print0 | xargs -0 java -jar _lib/yuicompressor-2.4.6.jar --charset UTF-8 --type js -o '.js$:.js'"
-	puts '* Compressing XML files'
-	system 'find _site -name "*.xml" -exec java -jar _lib/htmlcompressor-1.4.jar --charset UTF-8 --type xml "{}" -o "{}" ";"'
+	puts '* Compressing files'
+	system "java -jar _lib/websitecompressor-0.1.jar --compress-css --compress-js _site"
 end
 
 desc 'Run the jekyll dev server'
