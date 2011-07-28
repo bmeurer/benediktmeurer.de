@@ -4,7 +4,7 @@ title: WebsiteCompressor
 description: Small, fast and very easy to use Java utility that minifies a whole website.
 github: websitecompressor
 copyright: 2010-2011
-version: 0.1
+version: 0.2
 ---
 
 
@@ -17,7 +17,8 @@ Under the hood it utilizes the famous [HtmlCompressor](http://code.google.com/p/
 
 ## Download
 
-- [websitecompressor-{{ page.version }}.zip](websitecompressor-{{ page.version }}.zip)
+- 2011/07/28: [websitecompressor-0.2.zip](websitecompressor-0.2.zip)
+- 2011/07/27: [websitecompressor-0.1.zip](websitecompressor-0.1.zip)
 
 Note that you need to have [Java SE](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 1.5 or better (Java SE 1.6 recommended) installed in order to use the WebsiteCompressor.
 
@@ -44,6 +45,7 @@ Usage: `java -jar websitecompressor.jar [options] [files]`
      --preserve-intertag-spaces Preserve intertag spaces
      --preserve-line-breaks     Preserve line breaks
      --preserve-multi-spaces    Preserve multiple spaces
+     --preserve-quotes          Preserve unneeded quotes
 
     JavaScript Compression Options:
      --disable-optimizations    Disable all micro optimizations
