@@ -61,6 +61,14 @@ layout: nil
     <priority>0.5</priority>
   </url>
 
+  <!-- WebsiteCompressor -->
+  <url>
+    <loc>{{ site.url }}/websitecompressor</loc>
+    <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
   <!-- Posts & Tags -->
   {% for post in site.posts %}
   <url>
