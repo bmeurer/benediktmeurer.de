@@ -41,6 +41,20 @@ layout: nil
     <priority>0.6</priority>
   </url>
 
+  <!-- iFlashLightPlus -->
+  <url>
+    <loc>{{ site.url }}/iFlashLightPlus</loc>
+    <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>{{ site.url }}/iFlashLightPlus/contact</loc>
+    <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
   <!-- PhotoAccess -->
   <url>
     <loc>{{ site.url }}/PhotoAccess</loc>
