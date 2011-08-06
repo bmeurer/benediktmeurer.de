@@ -1,6 +1,6 @@
 ---
 layout: githubproject
-title: Git Hooks
+title: git-hooks
 description: Generic Git hooks
 github: git-hooks
 copyright: 2009-2011
@@ -9,7 +9,7 @@ copyright: 2009-2011
 
 ## About
 
-Git Hooks provides a simple mechanism to manage hooks for several [Git](http://git-scm.com) repositories in a unified and simple way. It allows you to install hook scripts in a central location and use them for your Git repositories.
+git-hooks provides a simple mechanism to manage hooks for several [Git](http://git-scm.com) repositories in a unified and simple way. It allows you to install hook scripts in a central location and use them for your Git repositories.
 
 
 ## Installation
