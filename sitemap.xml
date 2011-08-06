@@ -83,6 +83,14 @@ layout: nil
     <priority>0.4</priority>
   </url>
 
+  <!-- git-utils -->
+  <url>
+    <loc>{{ site.url }}/git-utils</loc>
+    <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
   <!-- WebsiteCompressor -->
   <url>
     <loc>{{ site.url }}/websitecompressor</loc>
