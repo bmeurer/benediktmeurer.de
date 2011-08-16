@@ -4,6 +4,7 @@ title: git-hooks
 description: Generic Git hooks
 github: git-hooks
 copyright: 2009-2011
+priority: 0.9
 ---
 
 

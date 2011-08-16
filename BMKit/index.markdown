@@ -4,6 +4,7 @@ title: BMKit
 description: Collection of various useful Objective-C classes and categories
 github: BMKit
 copyright: 2004-2011
+priority: 0.9
 ---
 
 
