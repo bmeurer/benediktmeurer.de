@@ -4,7 +4,7 @@ title: WebsiteCompressor
 description: Small, fast and very easy to use Java utility that minifies a whole website.
 github: websitecompressor
 copyright: 2010-2011
-version: 0.2
+version: 0.4
 priority: 0.9
 ---
 
@@ -18,6 +18,7 @@ Under the hood it utilizes the famous [HtmlCompressor](http://code.google.com/p/
 
 ## Download
 
+- 2011/08/21: [websitecompressor-0.4.zip](https://github.com/downloads/bmeurer/websitecompressor/websitecompressor-0.4.zip)
 - 2011/07/28: [websitecompressor-0.2.zip](https://github.com/downloads/bmeurer/websitecompressor/websitecompressor-0.2.zip)
 - 2011/07/27: [websitecompressor-0.1.zip](https://github.com/downloads/bmeurer/websitecompressor/websitecompressor-0.1.zip)
 
