@@ -11,7 +11,7 @@ end
 desc 'Compress CSS & HTML'
 task :compress => [:compile] do
 	puts '* Compressing files'
-	system "java -jar _lib/websitecompressor-0.2.jar --compress-css --compress-js _site"
+	system "java -jar _lib/websitecompressor-0.4.jar --compress-css --compress-js _site"
 end
 
 desc 'Run the jekyll dev server'
