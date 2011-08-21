@@ -29,7 +29,7 @@ Note that you need to have [Java SE](http://www.oracle.com/technetwork/java/java
 
 Download the [latest release](https://github.com/downloads/bmeurer/websitecompressor/websitecompressor-{{ page.version }}.zip), extract the archive, and copy all JAR files from the archive to your website project.
 
-Usage: `java -jar websitecompressor.jar [options] [files]`
+Usage: `java -jar websitecompressor-{{ page.version }}.jar [options] [files]`
 
     <files or folders>          The files are compressed in-place
 
