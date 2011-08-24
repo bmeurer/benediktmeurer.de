@@ -5,7 +5,6 @@ description: Small, fast and very easy to use Java utility that minifies a whole
 github: websitecompressor
 copyright: 2010-2011
 version: 0.4
-priority: 0.9
 ---
 
 

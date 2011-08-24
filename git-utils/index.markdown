@@ -4,7 +4,6 @@ title: git-utils
 description: Various git related utilities
 github: git-utils
 copyright: 2008-2011
-priority: 0.9
 ---
 
 
