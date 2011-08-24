@@ -8,7 +8,7 @@ layout: nil
     <loc>{{ site.url }}</loc>
     <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
     <changefreq>daily</changefreq>
-    <priority>1.0</priority>
+    <priority>0.9</priority>
   </url>
 
   <!-- About -->
@@ -16,13 +16,11 @@ layout: nil
     <loc>{{ site.url }}/about</loc>
     <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
   </url>
   <url>
     <loc>{{ site.url }}/about/my-public-gpg-key</loc>
     <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.2</priority>
   </url>
 
   <!-- Archive -->
@@ -46,13 +44,12 @@ layout: nil
     <loc>{{ site.url }}/iFlashLightPlus</loc>
     <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>{{ site.url }}/iFlashLightPlus/contact</loc>
     <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
   </url>
 
   <!-- PhotoAccess -->
@@ -60,19 +57,17 @@ layout: nil
     <loc>{{ site.url }}/PhotoAccess</loc>
     <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>{{ site.url }}/PhotoAccess/faq</loc>
     <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
   </url>
   <url>
     <loc>{{ site.url }}/PhotoAccess/contact</loc>
     <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
   </url>
 
   <!-- git-hooks -->
@@ -80,7 +75,7 @@ layout: nil
     <loc>{{ site.url }}/git-hooks</loc>
     <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.4</priority>
+    <priority>0.8</priority>
   </url>
 
   <!-- git-utils -->
@@ -88,7 +83,7 @@ layout: nil
     <loc>{{ site.url }}/git-utils</loc>
     <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.4</priority>
+    <priority>0.8</priority>
   </url>
 
   <!-- WebsiteCompressor -->
@@ -96,7 +91,7 @@ layout: nil
     <loc>{{ site.url }}/websitecompressor</loc>
     <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
   </url>
 
   <!-- Posts & Tags -->
@@ -105,14 +100,14 @@ layout: nil
     <loc>{{ site.url }}{{ post.url }}</loc>
     <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
+    <priority>1.0</priority>
   </url>
   {% for tag in post.tags %}
   <url>
     <loc>{{ site.url }}/tag/{{ tag }}</loc>
     <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
+    <priority>0.3</priority>
   </url>
   {% endfor %}
   {% endfor %}
