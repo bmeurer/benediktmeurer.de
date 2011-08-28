@@ -38,6 +38,14 @@ layout: nil
     <changefreq>weekly</changefreq>
   </url>
 
+  <!-- Publications -->
+  <url>
+    <loc>{{ site.url }}/publications</loc>
+    <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
   <!-- BMKit -->
   <url>
     <loc>{{ site.url }}/BMKit</loc>
