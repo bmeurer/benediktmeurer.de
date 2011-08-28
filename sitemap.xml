@@ -31,6 +31,13 @@ layout: nil
     <priority>0.8</priority>
   </url>
 
+  <!-- Projects -->
+  <url>
+    <loc>{{ site.url }}/projects</loc>
+    <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+
   <!-- BMKit -->
   <url>
     <loc>{{ site.url }}/BMKit</loc>
