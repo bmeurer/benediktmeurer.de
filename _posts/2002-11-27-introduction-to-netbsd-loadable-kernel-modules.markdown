@@ -389,9 +389,13 @@ or kill the program. To unload the kernel module, you need to run the following 
 modunload -n fibo
 {% endhighlight %}
 
-A <code>tar</code> archive which contains the complete sources from the example above with a <code>Makefile</code>
-can be found <a href="/files/source/fibo_drv.tgz">here</a>. I hope you like this small introduction to the
-NetBSD lkm system. If you have any questions or if you would like to give me some feedback feel free to contact
-<a href="/about">me</a>.
+The complete sources for the example above, including a <code>Makefile</code>, are available online at:
+
+- <a href="https://github.com/bmeurer/fibo_drv">https://github.com/bmeurer/fibo_drv</a>
+
+A <code>tar</code> archive with the sources can be found
+<a href="https://github.com/bmeurer/fibo_drv/tarball/master">here</a>.
+I hope you like this small introduction to the NetBSD lkm system. If you have any questions or if you
+would like to give me some feedback, feel free to contact <a href="/about">me</a>.
 
 
