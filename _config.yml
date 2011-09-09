@@ -3,9 +3,9 @@ pygments: true
 permalink: pretty
 url: http://benediktmeurer.de
 title: Benedikt Meurer
-slug: Software Developer, Research Associate
+description: Personal website of Benedikt Meurer.
 author: Benedikt Meurer
-email: http://www.google.com/recaptcha/mailhide/d?k=01MJgavN3AFGU2lZgtX4GZQg==&c=EmtLZgyvbIomD3RRoocY2vZjay4Q1-2j5VGLE5fp_rI=
+email: &#109;&#97;&#105;&#108;&#116;&#111;:&#98;&#101;&#110;&#101;&#100;&#105;&#107;&#116;&#46;&#109;&#101;&#117;&#114;&#101;&#114;&#64;&#103;&#111;&#111;&#103;&#108;&#101;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;
 github: bmeurer
 twitter: bmeurer
 atom: http://feeds.feedburner.com/benediktmeurer

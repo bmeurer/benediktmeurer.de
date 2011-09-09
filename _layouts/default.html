@@ -2,30 +2,19 @@
 <html>
 
 <head>
-    <!-- 
-  ========================================================================================================================
-  Name: Modern1 v1
-  Description: This theme is developed as a result of experimenting with HTML5 and CSS3 elements. 
-  Credits: Inspiration http://www.shetanimedia.com/
-       Icons Wireframe mono [http://www.iconfinder.com/search/?q=iconset%3Acc_mono_icon_set]
-       Yanone Kaffeesatz from Google Font Directory - http://code.google.com/webfonts/family?family=Yanone+Kaffeesatz
-  Design by: Jiew Meng [http://jiewmeng.tumblr.com]
-
-  Changelog:
-    Mihail Szabolcs - ported to Jekyll
-    Benedikt Meurer - various improvements
-  ========================================================================================================================
-  -->
   <meta charset="UTF-8" />
   <title>
-    {{ site.title }}{%if page.title%} &raquo; {{ page.title }} {%endif%}
+    {{ site.title }}{%if page.title%} &raquo; {{ page.title }}{%endif%}
   </title>
   
   <!-- Site Author -->
   <meta name="author" content="{{ site.author }}" />
   
   <!-- Site Description -->
-  <meta name="description" content="{{ site.slug }}"/>
+  <meta name="description" content="{{ site.description }}" />
+
+  <!-- Site Viewport -->
+  <meta name="viewport" content="user-scalable=no,width=device-width" />
 
   <!-- Google Site Verification -->
   <meta name="google-site-verification" content="1gkRIROhZsIi5eq-oNYG1R73thPYUmsb7IIQpDpBiB0" />
@@ -33,53 +22,61 @@
   <!-- Atom RSS Feed -->
   <link href="{{ site.atom }}" rel="alternate" title="{{ site.title }}" type="application/atom+xml" />
 
+  <!-- Blog CSS -->
+  <link type="text/css" rel="stylesheet" media="projection,screen" href="/css/screen.css" /> 
+  <link type="text/css" rel="stylesheet" media="all" href="/css/custom.css" />
+
   <!-- Syntax Highlighting CSS -->
   <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
-
-  <!-- Blog CSS -->
-  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Droid+Sans+Mono|Yanone+Kaffeesatz:extralight,light,regular,bold" type="text/css" media="screen, projection" />
-  <link rel="stylesheet" href="/css/reset-modified.css" type="text/css" media="screen, projection" />
-  <link rel="stylesheet" href="/css/text.css" type="text/css" media="screen, projection" />
-  <link rel="stylesheet" href="/css/960.css" type="text/css" media="screen, projection" />
-  <link rel="stylesheet" href="/css/theme.css" type="text/css" media="screen, projection" />
 
   <!-- Fav Icon -->
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /> 
 
   <!-- jQuery -->
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js" type="text/javascript"></script>
 
-  <!-- Google +1 -->
-  <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+  <!-- Webfont -->
+  <script src="http://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js" type="text/javascript"></script>
 
-  <!-- Coderwall -->
-  <script type="text/javascript" src="/js/coderwall.js"></script>
-  
-  <!-- GitHub -->
-  <script type="text/javascript" src="/js/github.js"></script>
-
-  <!--[if IE]>
-  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <!--[if lt IE 8]>
+    <link type="text/css" rel="stylesheet" media="projection,screen" href="/css/ie.css" />
+  <![endif]--> 
+  <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
+  <script type="text/javascript">
+    WebFontConfig = {
+      custom: {
+        families: ['DroidSansRegular', 'YanoneKaffeesatzRegular'],
+        urls: [ document.location.protocol + '//' + document.location.hostname + ':' + document.location.port + '/css/screen.css' ]
+      }
+    };
+    (function() {
+      document.getElementsByTagName("html")[0].className += " wf-loading";
+      var wf = document.createElement('script');
+      wf.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+      wf.type = 'text/javascript';
+      wf.async = 'true';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(wf, s);
+    })();
+  </script>
 </head>
 
 <body>
-  <a href="http://github.com/bmeurer" target="_blank"><img style="position:absolute; top:0; left:0; border:0;" src="https://assets1.github.com/img/5d21241b64dc708fcbb701f68f72f41e9f1fadd6?repo=&amp;url=http%3A%2F%2Fs3.amazonaws.com%2Fgithub%2Fribbons%2Fforkme_left_red_aa0000.png&amp;path=" alt="Fork me on GitHub" /></a>
-  <header id="masthead" class="container_12 clearfix">
-    {% include header.html %}
-  </header>
-  <div id="wrapper" class="container_12 clearfix">
-    <aside id="sidebar" class="grid_4">
-      {% include sidebar.html %}
-    </aside>
-    <section id="main">
+  <div class="container">
+    <header class="span-21 last" id="header">
+      <h1><a href="/" rel="home bookmark">{{ site.title }}</a></h1>
+    </header>
+
+    <div class="span-16" id="content">
       {{ content }}
-    </section>
-    <div class="clear"></div>
-  </div>
-  <footer id="sitemeta" class="container_12 clearfix">
+    </div>
+
+    {% include sidebar.html %}
     {% include footer.html %}
-  </footer>
+  </div>
+  {% include disqus.html %}
   {% include ga.html %}
 </body>
 

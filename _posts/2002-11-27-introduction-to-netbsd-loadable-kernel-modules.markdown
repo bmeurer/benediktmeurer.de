@@ -348,8 +348,10 @@ modload -e fibo_lkmentry -p fibo_post.sh fibo.o
 If everything went well, the [modstat(8)](http://netbsd.gw.com/cgi-bin/man-cgi?modstat+8+NetBSD-1.6) program
 should present you output similar to this:
           
-    Type    Id  Off Loadaddr Size Info     Rev Module Name
-    DEV       0  29 dca4f000 0004 dca4f260   1 fibo
+{% highlight text %}
+Type    Id  Off Loadaddr Size Info     Rev Module Name
+DEV      0   29 dca4f000 0004 dca4f260   1 fibo
+{% endhighlight %}
 
             
 Testing the module

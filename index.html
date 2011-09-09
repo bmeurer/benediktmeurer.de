@@ -6,22 +6,35 @@ type: post
 ---
 
 {% for post in paginator.posts %}
-  {% assign content = post.content %}
-  {% include post.html %}
+  <article class="post">
+    <h3><a href="{{ post.url }}" rel="bookmark permalink" title="Permanent link to this post">{{ post.title }}</a></h3>
+
+    {{ post.content }}
+
+    <div class="meta">
+      <div class="published">
+        Published: {{ post.date | date:'%Y-%m-%d' }}
+        &mdash;
+        <a href="{{ post.url }}#disqus_thread" title="Comments">Comments</a>
+      </div>
+    </div>
+
+    <div class="clear"></div>
+  </article>
 {% endfor %}
 
-<nav id="pageNav">
-  <ul class="clearfix">
-    {% if paginator.previous_page %}
-      {% if paginator.previous_page == 1 %}
-      <li><a href="/" id="pageNavNewer">Newer Posts</a></li>
-      {% else %}
-      <li><a href="/page{{paginator.previous_page}}" id="pageNavNewer">Newer Posts</a></li>
-      {% endif %}
+<div class="paging">
+  {% if paginator.previous_page %}
+    {% if paginator.previous_page == 1 %}
+    <a href="/" class="newer"><h1>Newer Posts</h1></a>
+    {% else %}
+    <a href="/page{{paginator.previous_page}}" class="newer"><h1>Newer Posts</h1></a>
     {% endif %}
-    {% if paginator.next_page %}
-    <li><a href="/page{{paginator.next_page}}" id="pageNavOlder">Older Posts</a></li>
-    {% endif %}
-  </ul>
-</nav>
+  {% endif %}
+  {% if paginator.next_page %}
+  <a href="/page{{paginator.next_page}}" class="older"><h1>Older Posts</h1></a></li>
+  {% endif %}
+
+  <div class="clear"></div>
+</div>
 

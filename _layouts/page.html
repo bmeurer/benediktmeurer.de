@@ -1,6 +1,11 @@
 ---
 layout: default
-type: page
 ---
-{% assign post = page %}
-{% include post.html  %}
+
+<article class="post">
+  <h2>{{ page.title }}</h2>
+
+  {{ content }}
+</article>
+
+
