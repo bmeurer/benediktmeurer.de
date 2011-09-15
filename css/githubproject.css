@@ -14,13 +14,13 @@ html {
 }
 
 body {
-  max-width: 480px;
+  max-width: 600px;
   padding: 0 10px;
   margin: 0 auto;
   font: 1em/1.4 Calibri, sans-serif;
   color: #222;
   background: #fff;
-  _width: 480px;
+  _width: 600px;
 }
 
 img {
@@ -83,6 +83,7 @@ h2 {
 
 p {
   margin: 0 0 1em;
+  text-align: justify;
 }
 
 .highlight pre code {
