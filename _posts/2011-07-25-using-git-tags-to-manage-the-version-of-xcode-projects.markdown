@@ -13,7 +13,7 @@ file and once in the [Git](http://git-scm.com) tag that is created after release
 is not only inconvenient, but can also lead to mistakes, i.e. forgetting to bump the
 <code>CFBundleShortVersionString</code> prior to tagging the new release.
 
-So instead of maintaing the <code>CFBundleShortVersionString</code> we will now automatically
+So instead of maintaining the <code>CFBundleShortVersionString</code> we will now automatically
 inject the version number from the most recent Git tag into the generated app bundle. This is
 actually pretty easy and requires just the following two lines of shell code in a custom
 *Build Phase*:
