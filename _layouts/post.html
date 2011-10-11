@@ -7,14 +7,15 @@ layout: default
 
   {{ content }}
 
-  {% include follow-box.html %}
+  <div id="socialshareprivacy"></div>
 
   <div class="meta">
     <div class="published">
       Published: {{ page.date | date:'%Y-%m-%d' }}
     </div>
-    <div class="tweet"><a href="http://twitter.com/?status=Reading '{{ page.title }}' from {{ site.url }}{{ page.url }} by @{{ site.twitter }}" title="Tweet {{ page.title }}">Tweet</a> &amp; <a class="permalink" href="{{ site.url }}{{ page.url }}" rel="bookmark permalink" title="Permalink for {{ page.title }}">Permalink</a>
-  </div>
+    <div class="permalink">
+      <a class="permalink" href="{{ site.url }}{{ page.url }}" rel="bookmark permalink" title="Permalink for {{ page.title }}">Permalink</a>
+    </div>
 </article>
 
 <div id="disqus_thread"></div>
