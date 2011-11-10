@@ -16,9 +16,9 @@ The [{{ page.github }} repository](https://github.com/{{ site.github }}/{{ page.
 
 ### Native code toplevel
 
-We have developed a new native code OCaml toplevel `ocamlnat`, which is up to **100 times faster** than the byte code toplevel `ocaml`. It is based on the optimizing native code compiler, the native runtime and an earlier prototype by [Alain Frisch](http://alain.frisch.fr). It is build upon Just-In-Time techniques and currently supports Unix-like systems (i.e. Linux, BSD or Mac OS X) running on x86 or x86-64 processors. Support for additional architectures and operating systems is planned, but not yet available.
+We have developed a new [native code OCaml toplevel](/ocamlnat) `ocamlnat`, which is up to **100 times faster** than the byte code toplevel `ocaml`. It is based on the optimizing native code compiler, the native runtime and an earlier prototype by [Alain Frisch](http://alain.frisch.fr). It is build upon Just-In-Time techniques and currently supports Unix-like systems (i.e. Linux, BSD or Mac OS X) running on x86 or x86-64 processors. Support for additional architectures and operating systems is planned, but not yet available.
 
-See below for download links and installation instructions. The development takes place in the [ocamlnat-jit](https://github.com/{{ site.github }}/{{ page.github }}/tree/ocamlnat-jit), [ocamlnat-jit-amd64](https://github.com/{{ site.github }}/{{ page.github }}/tree/ocamlnat-jit-amd64) and [ocamlnat-jit-i386](https://github.com/{{ site.github }}/{{ page.github }}/tree/ocamlnat-jit-i386) of the [{{ page.github }} repository](https://github.com/{{ site.github }}/{{ page.github }}).
+The native code toplevel was moved to a new project [ocamlnat](/ocamlnat).
 
 
 ## Download
