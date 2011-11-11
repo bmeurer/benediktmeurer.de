@@ -4,7 +4,7 @@ title: ocamlnat
 description: Native toplevel for the OCaml language
 github: ocamlnat
 copyright: 2010-2011
-version: 0.1.0
+version: 0.1.1
 ---
 
 
@@ -23,6 +23,7 @@ See below for download links and installation instructions.
 
 ## Download
 
+- 2011/11/11: [ocamlnat-0.1.1.tar.bz2](/files/source/ocamlnat-0.1.1.tar.bz2)
 - 2011/11/10: [ocamlnat-0.1.0.tar.bz2](/files/source/ocamlnat-0.1.0.tar.bz2)
 
 
