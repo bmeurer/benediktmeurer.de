@@ -24,7 +24,7 @@ task :deploy => [:compress] do
 	require 'net/http'
 	require 'uri'
 	puts '* Deploying website'
-	system 'rsync -rtzh --delete --exclude .ssh _site/ strato:'
+	system 'rsync -rtzh --delete --exclude .ssh _site/ benediktmeurer.de:/srv/benediktmeurer.de/'
 	puts '* Pinging Google about the sitemap'
 	Net::HTTP.get('www.google.com', '/webmasters/tools/ping?sitemap=' + URI.escape('http://benediktmeurer.de/sitemap.xml'))
 end
