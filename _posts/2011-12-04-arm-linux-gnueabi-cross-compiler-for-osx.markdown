@@ -16,7 +16,7 @@ $ sudo port upgrade outdated
 Continue by cloning my MacPorts repository and editing the MacPorts `sources.conf` file (as superuser):
 
 {% highlight console %}
-$ git clone git@github.com:bmeurer/MacPorts.git
+$ git clone git://github.com/bmeurer/MacPorts.git
 $ cd MacPorts/ports
 $ sudo vim /opt/local/etc/macports/sources.conf
 {% endhighlight %}
