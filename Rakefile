@@ -5,7 +5,7 @@ end
 
 desc 'Clean temporary files and compile the site'
 task :compile => [:clean] do
-	system "jekyll --no-server"
+	system "jekyll build"
 end
 
 desc 'Compress CSS & HTML'
@@ -16,7 +16,7 @@ end
 
 desc 'Run the jekyll dev server'
 task :server => [:clean] do
-	system "jekyll --server --auto"
+	system "jekyll serve --watch"
 end
 
 desc 'Build & Deploy'
