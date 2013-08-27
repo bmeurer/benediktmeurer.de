@@ -9,7 +9,7 @@ The [Raspberry Pi](http://www.raspberrypi.org) is probably the most popular Linu
 To do this for [Raspbian](http://www.raspbian.org), you'll need to install the [cross-compile toolchain](https://github.com/raspberrypi/tools) first (see [this guide](http://hertaville.com/2012/09/28/development-environment-raspberry-pi-cross-compiler) for detailed instructions). Assuming that you installed the tools to `$HOME/Applications/rpi/tools`, run the following command from your V8 checkout:
 
 {% highlight console %}
-$ make CXX="$HOME/Applications/rpi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian/bin/arm-linux-gnueabihf-g++" LINK="$HOME/Applications/rpi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian/bin/arm-linux-gnueabihf-g++" armv7=false armfloatabi=hard arm
+$ make AR="$HOME/Applications/rpi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian/bin/arm-linux-gnueabihf-ar" CXX="$HOME/Applications/rpi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian/bin/arm-linux-gnueabihf-g++" LINK="$HOME/Applications/rpi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian/bin/arm-linux-gnueabihf-g++" armv7=false armfloatabi=hard arm
 {% endhighlight %}
 
 This will build a debug version of the V8 shell in `out/arm.debug/d8` and a release version in `out/arm.release/d8`.
