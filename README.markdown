@@ -4,6 +4,14 @@ This is the data for my website
 The [website](http://benediktmeurer.de) is automatically transformed by [Jekyll](http://github.com/mojombo/jekyll) into a static site.
 
 
+Dependencies
+------------
+
+* [rake](http://rake.rubyforge.org)
+* [Pygments](http://pygments.org) for syntax highlighting.
+* [Jekyll](http://jekyllrb.com)
+
+
 License
 -------
 
