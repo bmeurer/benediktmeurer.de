@@ -1,5 +1,5 @@
 markdown: rdiscount
-pygments: true
+highlighter: pygments
 permalink: pretty
 url: http://benediktmeurer.de
 title: Benedikt Meurer
