@@ -5,6 +5,7 @@ description: Native toplevel for the OCaml language
 github: ocamlnat
 copyright: 2010-2011
 version: 0.1.1
+hide: true
 ---
 
 

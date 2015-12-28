@@ -1,68 +1,11 @@
 <!DOCTYPE html>
-<html>
-
-<head>
-  <meta charset="UTF-8" />
-  <title>
-    {{ site.title }}{%if page.title%} &raquo; {{ page.title }}{%endif%}
-  </title>
-  
-  <!-- Site Author -->
-  <meta name="author" content="{{ site.author }}" />
-  
-  <!-- Site Description -->
-  <meta name="description" content="{{ site.description }}" />
-
-  <!-- Site Viewport -->
-  <meta name="viewport" content="user-scalable=no,width=device-width" />
-
-  <!-- Google Site Verification -->
-  <meta name="google-site-verification" content="1gkRIROhZsIi5eq-oNYG1R73thPYUmsb7IIQpDpBiB0" />
-
-  <!-- Atom RSS Feed -->
-  <link href="{{ site.atom }}" rel="alternate" title="{{ site.title }}" type="application/atom+xml" />
-
-  <!-- Blog CSS -->
-  <link href="http://fonts.googleapis.com/css?family=Droid+Sans|Yanone+Kaffeesatz" media="projection, screen" rel="stylesheet" type="text/css" />
-  <link href="/css/reset.css" media="projection,screen" rel="stylesheet" type="text/css" /> 
-  <link href="/css/screen.css" media="projection,screen" rel="stylesheet" type="text/css" /> 
-  <link href="/css/custom.css" media="all" rel="stylesheet" type="text/css" />
-
-  <!-- Syntax Highlighting CSS -->
-  <link href="/css/syntax.css" rel="stylesheet" type="text/css" />
-
-  <!-- Fav Icon -->
-  <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" /> 
-
-  <!-- jQuery -->
-  <script src="/js/jquery.min.js" type="text/javascript"></script>
-
-  <!-- socialshareprivacy jQuery Plugin -->
-  {% include socialshareprivacy.html %}
-
-  <!--[if lt IE 8]>
-    <link type="text/css" rel="stylesheet" media="projection,screen" href="/css/ie.css" />
-  <![endif]--> 
-  <!--[if lt IE 9]>
-    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
-</head>
-
-<body>
-  <div class="container">
-    <header class="span-21 last" id="header">
-      <h1><a href="/" rel="home bookmark">{{ site.title }}</a></h1>
-    </header>
-
-    <div class="span-16" id="content">
+<html class="no-js">
+  {% include head.html %}
+  <body>
+    {% include header.html %}
+    <div class="content">
       {{ content }}
     </div>
-
-    {% include sidebar.html %}
     {% include footer.html %}
-  </div>
-  {% include disqus.html %}
-  {% include ga.html %}
-</body>
-
+  </body>
 </html>

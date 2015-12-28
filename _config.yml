@@ -1,18 +1,83 @@
-markdown: rdiscount
-highlighter: pygments
 permalink: pretty
-url: http://benediktmeurer.de
 title: Benedikt Meurer
-description: Personal website of Benedikt Meurer.
 author: Benedikt Meurer
 email: benedikt.meurer@gmail.com
-github: bmeurer
 twitter: bmeurer
-atom: http://feeds.feedburner.com/benediktmeurer
-paginate: 5
 
 exclude:
   - README.markdown
 
+# SITE CONFIGURATION
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "http://benediktmeurer.de"
+
+# THEME-SPECIFIC CONFIGURATION
+theme:
+  # Meta
+  title: Benedikt Meurer
+  avatar: avatar.png
+  gravatar: "22f25c7b3f0f15a6854fae62bbd3482f"
+  description: "Personal website of Benedikt Meurer."
+
+  # Header and footer text
+  header_text: >
+     <p>The personal blog of JavaScript Engine Hacker and Programming Language Enthusiast Benedikt Meurer.</p>
+  header_text_feature_image: images/header-text-feature-image.jpg
+  footer_text: >
+     <p>All content copyright © <a href="/about">Benedikt Meurer</a>. Written in mostly valid <a href="http://validator.w3.org/check?uri=http%3A%2F%2Fbenediktmeurer.de%2F">HTML5</a> and <a href="http://jigsaw.w3.org/css-validator/validator?uri=http%3A%2F%2Fbenediktmeurer.de&profile=css3&usermedium=all&warning=1">CSS3</a>.</p>
+     <p>Powered by <a href="http://jekyllrb.com">Jekyll</a> with <a href="https://rohanchandra.github.io/project/type">Type Theme</a>.</p>
+
+  # Icons
+  rss: true
+  email_address: "benedikt.meurer@googlemail.com"
+  behance:
+  bitbucket:
+  dribbble:
+  facebook: "benedikt.meurer"
+  flickr:
+  github: "bmeurer"
+  google_plus:
+  instagram:
+  linkedin: "http://linkedin.com/in/benediktmeurer"
+  pinterest:
+  reddit:
+  soundcloud:
+  stack_exchange: "http://stackoverflow.com/users/839749/bmeurer"
+  steam:
+  tumblr:
+  twitter: "bmeurer"
+  wordpress:
+  youtube:
+
+  # Scripts
+  google_analytics: "UA-24476004-1"
+  disqus_shortname: "benediktmeurer"
+  katex: true # Enable if using math markup
+
+  # Localization strings
+  str_follow_on: "Follow on"
+  str_rss_follow: "Follow RSS feed"
+  str_email: "Email"
+  str_next: "Next"
+  str_prev: "Prev"
+  str_continue_reading: "Continue reading"
+
+  # Colours, typography and padding
+  # Open the "_sass > base" folder, and open "_variables.scss"
+  google_fonts: "Source+Sans+Pro:400,700,700italic,400italic"
+
+  # Post navigation
+  post_navigation: true
+
+# PAGINATION
+paginate: 10
+paginate_path: "page:num"
+
+# BUILD SETTINGS
+markdown: kramdown
 gems:
   - jekyll-paginate
+highlighter: pygments
+sass:
+  sass_dir: _sass
+  style: :compressed
