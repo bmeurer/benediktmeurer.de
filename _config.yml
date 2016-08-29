@@ -14,7 +14,7 @@ baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://benediktmeurer.de"
 
 # THEME-SPECIFIC CONFIGURATION
-theme:
+mytheme:
   # Meta
   title: Benedikt Meurer
   avatar: avatar.png
