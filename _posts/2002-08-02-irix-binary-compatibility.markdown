@@ -1,7 +1,6 @@
 --- 
 layout: post
 title: IRIX Binary Compatibility
-tags: [netbsd]
 ---
 
 Emmanuel Dreyfus published the second part of [IRIX Binary

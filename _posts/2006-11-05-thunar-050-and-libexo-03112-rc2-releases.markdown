@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Thunar 0.5.0 and libexo 0.3.1.12 rc2 releases
-tags: [xfce, thunar, exo]
 ---
 
 I just released Thunar-0.5.0rc2 and libexo-0.3.1.12rc2 as part of Xfce 4.4RC2, which will be released in a few hours. The separate tarballs are provided for users of Xfce 4.2.x that don't want to upgrade yet, and users of other desktop environments. It is planned to be the last release candidate before the final release, so please help with testing so we can locate and elimate the leftover bugs for the final release.

@@ -1,7 +1,6 @@
 --- 
 layout: post
 title: Enigmail works
-tags: [netbsd, enigmail, mozilla, gnupg]
 ---
 
 I finally got [EnigMail](http://enigmail.mozdev.org) working with native Mozilla on

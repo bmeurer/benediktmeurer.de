@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Xfce splash screen crash course
-tags: [xfce]
 ---
 
 Here's a very brief introduction to the way splash screens work in Xfce 4.2.0 and above:

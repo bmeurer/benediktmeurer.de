@@ -1,7 +1,6 @@
 ---
 layout: post
 title: OCamlJIT2 vs. OCamlJIT
-tags: [ocaml, jit, research]
 ---
 
 I did some final work on [OCamlJIT2](/2010/11/16/ocamljit-20), and compared the result to OCamlJIT. The performance measures are presented in the following tech report (skip straight to section 4 for the performance results):

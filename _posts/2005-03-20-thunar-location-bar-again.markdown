@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Thunar location bar again
-tags: [xfce, thunar]
 ---
 
 I have tried to adjust the prototype to make both parties happy, the path bar guys and the location bar addicts:

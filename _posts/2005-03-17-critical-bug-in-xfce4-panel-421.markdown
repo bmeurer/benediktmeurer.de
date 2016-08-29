@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Critical bug in xfce4-panel 4.2.1
-tags: [xfce]
 ---
 
 The xfce4-panel in the latest Xfce 4.2.1 release contains a bug: It does not save its configuration on session logout. The <a href="http://os-works.com/view/debian/">Xfce Debian package</a> already contains a fix for this bug, so you don't need to worry about it. If you have installed from the graphical installer or plan to install from the <a href="http://xfce-installer.os-cillation.com/">graphical installer</a>, follow these steps to fix the bug:

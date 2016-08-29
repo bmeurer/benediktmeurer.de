@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Linux for losers
-tags: [linux, openbsd]
 ---
 
 A friend of mine pointed me to an interesting <a href="http://www.forbes.com/intelligentinfrastructure/2005/06/16/linux-bsd-unix-cz_dl_0616theo.html">article</a> today, which on first sight looked like just another useless Linux vs. BSD article, esp. since it quotes Theo De Raadt, who was never known for being very objective.  But De Raadt points out some real problems with the Linux development model (everybody that has ever worked on the kernel or a non-trivial driver will be aware of these problems). Unfortunately, De Raadt's diction is very bad, as usual, and so it's unlikely that any of the Linux guys will pay much attention.

@@ -1,7 +1,6 @@
 ---
 layout: post
 title: thunar-archive-plugin 0.2.2
-tags: [xfce, thunar]
 ---
 
 This is a minor release, which adds support for the new Drag'n'Drop menu in Thunar 0.5.0 and tangoified icons, as well as several new and updated translations.

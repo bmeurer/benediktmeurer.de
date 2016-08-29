@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Icon view
-tags: [xfce, thunar, exo]
 ---
 
 Committed the new icon view code to libexo today, and updated Thunar to use it.

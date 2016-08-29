@@ -1,7 +1,6 @@
 --- 
 layout: post
 title: NetBSD 1.6RC3
-tags: [netbsd]
 ---
 
 [NetBSD 1.6 Release Candidate 3](http://www.netbsd.org/Releases/formal-1.6/)

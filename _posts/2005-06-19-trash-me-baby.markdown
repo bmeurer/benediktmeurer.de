@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Trash me, baby
-tags: [xfce, thunar]
 ---
 
 Postponed all work on the icon view for now, and been working on the volume manager and the trash implementation for the last 2 days. As initially planned, the <code>ThunarFile</code> class is now an abstract base class and the <code>ThunarFolder</code> class will be turned into an interface or an abstract base class as well. In addition, the <code>ThunarFile</code> class won't export the associated <code>ThunarVfsInfo</code> (which is now only associated with <code>ThunarLocalFile</code> instances). This way we don't limit ourselves to file implementations, which are more or less based on <code>stat(2)</code> directly. For example, there will be virtual files, like the trash can itself, and <i>forward</i> files like the trashed files. You could even imagine another class that handles locations other than <code>file://</code> and <code>trash://</code> using GnomeVFS, to provide support for network file systems and such. But that is an optional gimmick and not important right now.

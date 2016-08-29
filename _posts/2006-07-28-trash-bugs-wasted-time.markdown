@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Trash, Bugs, Wasted Time
-tags: [xfce, thunar, gtk]
 ---
 
 So, the trash framework finally made its way into Xfce SVN. Still a bit rough around the edges, but that's mostly cosmetic fixes.

@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Introduction to NetBSD loadable kernel modules
-tags: [netbsd]
 ---
 
 

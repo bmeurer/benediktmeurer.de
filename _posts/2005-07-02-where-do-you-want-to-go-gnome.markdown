@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Where do you want to go, Gnome?
-tags: [gnome, thunar, nautilus]
 ---
 
 Just discovered on the nautilus mailinglist:

@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Caching MIME information
-tags: [xfce, thunar]
 ---
 
 RedHat's Matthias Clasen came up with the idea of caching the MIME information provided by the Shared MIME database (the list of MIME type aliases, subclass information, the glob patterns, the magic patterns and the XML namespaces) in a mmapable file <a href="http://lists.freedesktop.org/archives/xdg/2005-March/006386.html">today</a>. With his attempt, there'll be one cache file (<code>mime.cache</code>) per <code>mime</code> directory, e.g. on most Linux systems, this will be

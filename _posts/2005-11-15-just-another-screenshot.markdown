@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Just another screenshot
-tags: [xfce, thunar]
 ---
 
 Not much to say here, just more options available from the user interface:

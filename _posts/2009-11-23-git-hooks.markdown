@@ -1,7 +1,6 @@
 ---
 layout: post
 title: git-hooks - Generic Git hooks
-tags: [git]
 ---
 
 

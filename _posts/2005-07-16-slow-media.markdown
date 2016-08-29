@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Slow media
-tags: [xfce, thunar]
 ---
 
 While testing some volume manager related stuff, I tried to load a large folder from a CD-ROM (the i386 folder from one of my more or less unused Windows 2000 install CDs, which contains about 4000 files) into the tree view and it took forever, even after the folder content was visible (I suspect this is GtkTreeView loading icon data for the invisible items, tho haven't checked yet). And of course, since currently everything runs in the main thread, the GUI was blocked.

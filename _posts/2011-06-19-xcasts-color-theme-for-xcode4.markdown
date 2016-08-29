@@ -1,7 +1,6 @@
 --- 
 layout: post
 title: XCasts color theme for Xcode 4
-tags: [xcode]
 ---
 
 Check out [my Xcode 4 version](http://github.com/bmeurer/XCasts-color-theme-for-Xcode-4)

@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Patent Evil
-tags: [software patents, patent war]
 ---
 
 How the Patent War is Stifling Innovation in Silicon Valley.

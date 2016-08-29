@@ -1,7 +1,6 @@
 ---
 layout: post
 title: A new approach to Function.prototype.bind
-tags: [v8, chrome, javascript]
 ---
 
 The performance and compatibility of [Function.prototype.bind](http://tc39.github.io/ecma262/#sec-function.prototype.bind) and the resulting bound

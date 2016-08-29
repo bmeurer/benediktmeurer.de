@@ -1,7 +1,6 @@
 ---
 layout: post
 title: CocoaHeads Siegen September Meeting
-tags: [cocoaheads, cocoa, ios, mac, osx]
 ---
 
 Next monthly meeting of the [CocoaHeads Siegen](http://cocoaheads.informatik.uni-siegen.de) scheduled for September, 13th 2011 at 19:00, feat: "iOS 5 - New and Noteworthy" (Benjamin Mies). Third meeting already and this time we also have a nice flyer!

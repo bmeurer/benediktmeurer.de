@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Thunar Designing the architecture
-tags: [xfce, thunar]
 ---
 
 As the overall feedback on the Thunar suggestion was very positive, I think we are mostly settled with the user interface now. Only minor changes will happen on the user interface, no more major changes on the UI concept.

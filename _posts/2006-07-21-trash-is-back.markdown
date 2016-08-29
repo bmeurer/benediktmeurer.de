@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Trash is back
-tags: [xfce, thunar]
 ---
 
 Because this feature was requested quite often, and it somewhat makes sense for a file manager, I'll add trash support (based on the <a href="http://freedesktop.org/wiki/Standards_2ftrash_2dspec">trash specification</a>) for the next release (most probably RC1).

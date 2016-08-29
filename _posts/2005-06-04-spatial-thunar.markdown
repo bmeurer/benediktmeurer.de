@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Spatial Thunar
-tags: [xfce, thunar]
 ---
 
 I took the time and implemented parts of the core functionality for Thunar, as thunar-dev is pretty quiet when it comes to code-independent development. Below is a screenshot of the very first test application showing the some of the core classes in action - it's really spatial and it'll never be that spatial again. :-)

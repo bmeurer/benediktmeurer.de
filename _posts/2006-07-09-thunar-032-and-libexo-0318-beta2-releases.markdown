@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Thunar 0.3.2 and libexo 0.3.1.8 beta2 releases
-tags: [xfce, thunar, exo]
 ---
 
 I just released Thunar-0.3.2beta2 and libexo-0.3.1.2beta2 as part of <a href="http://www.xfce.org/">Xfce</a> 4.4BETA2, which will be released tomorrow. Separate tarballs are provided for users of Xfce 4.2.x that don't want to upgrade yet, and users of other desktop environments. As suggested by the name, it is still a beta release and it is thereby considered to be more or less stable in what it does, but it is not yet a final version.

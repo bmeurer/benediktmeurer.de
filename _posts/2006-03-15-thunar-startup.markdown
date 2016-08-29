@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Thunar startup
-tags: [xfce, thunar]
 ---
 
 I decided to do some profiling on Thunar startup to find out why it takes 2-3 seconds to popup here using the Gtk+ 2.8 port (while it starts up faster with the full debug build of Gtk+ 2.9). Using <a href="http://primates.ximian.com/~federico/news-2006-03.html#09">Federicos simple access() trick</a>, I found out that the majority of time was spent in `gtk_window_size_request()` and `gtk_window_realize()`.

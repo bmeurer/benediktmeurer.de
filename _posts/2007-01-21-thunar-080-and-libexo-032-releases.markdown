@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Thunar 0.8.0 and libexo 0.3.2 releases
-tags: [xfce, thunar, exo]
 ---
 
 I just released Thunar 0.8.0 and exo 0.3.2 as part of the long awaited <a href="http://www.xfce.org/">Xfce 4.4.0</a>, which will be released in a few hours. The separate tarballs are provided for users of Xfce 4.2.x refusing to upgrade to Xfce 4.4.x, and users of other desktop environments. This is the final release of Thunar, but since not all items from the roadmap were completed, it is not yet the 1.0.0 version.

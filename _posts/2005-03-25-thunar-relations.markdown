@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Thunar Relations
-tags: [xfce, thunar]
 ---
 
 Some more thoughts on the Thunar architecture:

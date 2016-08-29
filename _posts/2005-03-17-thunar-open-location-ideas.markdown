@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Thunar Open Location Ideas
-tags: [xfce, thunar]
 ---
 
 Brian Schott came up with a new - actually borrowed from ROX - idea for an Open Location control in the GtkFileChooser-like UI:

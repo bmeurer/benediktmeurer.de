@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Signals
-tags: [xfce, thunar]
 ---
 
 One thing missing from GObject and esp. the signal system is that there's no way to control the order in which signal handlers will be fired except the <code>after</code> flag, which isn't very powerful either. Sure, 99.99% of all applications will never need to be able to have fine-grained control about the signal invocation order, but then there's always atleast one application, that needs this feature in order to avoid other weird work-arounds.

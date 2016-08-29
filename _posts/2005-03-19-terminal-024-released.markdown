@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Terminal 0.2.4 released
-tags: [xfce, terminal]
 ---
 
 So I finally released the next version of <a href="http://terminal.os-cillation.com/">Terminal</a> after nearly 3 months since 0.2.2. And since everybody likes cute new features - as long as they don't blow up things too much - this new version finally includes support for helper applications (yes, that means clicking on URLs/email addresses is possible now):

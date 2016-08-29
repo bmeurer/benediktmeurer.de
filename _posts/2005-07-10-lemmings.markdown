@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Lemmings
-tags: [fun]
 ---
 
 <a href="http://193.151.73.87/games/lemmings/">Lemmings</a> is always fun to play.

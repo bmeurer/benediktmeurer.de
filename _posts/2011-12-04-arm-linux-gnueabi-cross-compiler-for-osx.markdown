@@ -1,7 +1,6 @@
 ---
 layout: post
 title: arm-linux-gnueabi cross compiler for OS X
-tags: [ocaml, cross, compiler, gcc, binutils, macports, osx]
 ---
 
 I spent some time getting a decent cross compiler toolchain for `arm-linux-gnueabi` running on Mac OS X, including GNU binutils 2.22, gcc 4.6.2 and OCaml 3.12.1. The cross compiler toolchain targets ARM boards running Debian/armel squeeze or later.

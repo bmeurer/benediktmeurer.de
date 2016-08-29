@@ -1,7 +1,6 @@
 ---
 layout: post
 title: New Xfce Installer
-tags: [xfce]
 ---
 
 <a href="http://dev.sten-net.de/">Jannis</a> just uploaded new screenshots demonstrating the <a href="http://dev.sten-net.de/2006/05/05/installit-new-screenshots/">next generation of the Xfce Installer</a>, which will hopefully be available for BETA2.

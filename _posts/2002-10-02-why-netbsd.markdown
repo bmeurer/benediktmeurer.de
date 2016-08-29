@@ -1,7 +1,6 @@
 --- 
 layout: post
 title: Why NetBSD?
-tags: [netbsd]
 ---
 
 During the last years, I used to install a lot of different operating systems, looking for the

@@ -1,7 +1,6 @@
 ---
 layout: post
 title: How to fix the hostname of your Strato V-Server
-tags: [debian, hostname, strato, vserver]
 ---
 
 The [Strato](http://www.strato.de) Linux V-Servers always reset their hostnames to `hXXXXXX.stratoserver.net` on boot, no matter what you put in `/etc/hostname` and there's no way to fix this (it's actually intended behavior). If you happen to have a Strato V-Server running Debian, here's a simple failsafe way to fix the hostname early during boot and have all daemons use your desired hostname.

@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Thunar 0.2.0 and libexo 0.3.1.2 alpha releases
-tags: [xfce, thunar, exo]
 ---
 
 I just released Thunar-0.2.0alpha and libexo-0.3.1.2alpha. As the name suggests, it's an alpha release and it is thereby considered to be more or less stable in what it does, but it's by no means a final version.

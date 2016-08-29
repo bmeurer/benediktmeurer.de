@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Time
-tags: [xfce, thunar]
 ---
 
 It's wednesday already. Managed to finish my last math exam successfully this week and now I'm planning for my birthday party next saturday.

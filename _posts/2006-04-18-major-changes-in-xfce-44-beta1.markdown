@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Major changes in Xfce 4.4 BETA1
-tags: [xfce, thunar, exo, terminal]
 ---
 
 As you might already know, Xfce 4.4BETA1 was released today, and it contains a lot of changes, that have been worked since the last major release. I'm going to present an (incomplete!) list of the most important changes in BETA1. I will not include Thunar here, read the <a href="http://thunar.xfce.org/news.html#2006-04-16">Thunar 0.3.0 release notes</a> for details about Thunar

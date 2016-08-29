@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Thumbnails
-tags: [xfce, thunar]
 ---
 
 It took quite some time and it wasn't very enjoyable, but now Thunar finally supports thumbnails (atleast loading):

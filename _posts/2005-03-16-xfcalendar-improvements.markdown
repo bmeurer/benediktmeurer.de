@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Xfcalendar improvements
-tags: [xfce]
 ---
 
 Mickael and Juha are doing a great job at improving xfcalendar recently. I'm pretty sure that Xfce 4.4.0 will ship with a very nice and very useful calendar application. Xfcalendar can already schedule appointments (tho it's still very rough on the edges), it currently looks like this:

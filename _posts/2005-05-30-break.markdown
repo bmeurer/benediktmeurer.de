@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Break
-tags: [xfce, thunar]
 ---
 
 Now that were two really busy months - april and may - for me (up to 300 hours each), and it was a necessary break from Xfce for me. Somehow I lost not only my interest in Xfce, but more important, it was no longer fun for me. To me it looked (and still looks) like Xfce development is going into the wrong direction. I'm not yet sure if and how I will continue my contribution to Xfce. I started to do some long standing stuff for libexo/thunar yesterday. But reading the last suggestions on thunar-dev made me think that there's no need for a simple file manager in Xfce. Maybe Xfce people should extend <a href="http://xffm.sourceforge.net/">Xffm</a> even more, rather than developing a second not-simple file manager.

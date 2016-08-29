@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Thunar - Name of the Beast?
-tags: [xfce, thunar]
 ---
 
 The name discussion started once again. Most popular seems to be:

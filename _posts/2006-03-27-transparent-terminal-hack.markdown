@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Transparent Terminal Hack
-tags: [xfce, terminal]
 ---
 
 This one was requested quite often lately, so here's a quick&dirty hack to make the Terminal transparent. The Terminal-side changes are pretty easy, just use ARGB visuals if possible. The VTE patch is really just a hack for the Xft backend with a hardcoded alpha value of <code>0xaaaa</code>. You need to run a composition manager for this to work (i.e. <code>xfwm4</code> with <code>--compositor=on</code>), and select solid background color in Terminal (as said, the VTE patch is just a really quick hack). The result is:

@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Location buttons
-tags: [xfce, thunar]
 ---
 
 People tend to prefer pictures, so screenshot first:

@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Desktop notification (in reply to Chris)
-tags: [gnome]
 ---
 
 In reply to <a href="http://www.chipx86.com/">Christian</a>'s comment on my last blog entry:

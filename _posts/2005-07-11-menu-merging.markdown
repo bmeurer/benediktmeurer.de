@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Menu merging
-tags: [gtk, xfce, thunar]
 ---
 
 I just added support for <i>menu-merging</i> based on GtkUIManager to the ThunarView. This was the last step in the reordering of the view stuff. Now there are only a few other issues to address before Thunar can be imported into Xfce's SVN repository. Maybe we'll also release an early pre-alpha version as suggested by Botsie.

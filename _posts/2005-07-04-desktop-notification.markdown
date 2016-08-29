@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Desktop notification
-tags: [gnome]
 ---
 
 Really, I don't get this. The <a href="http://blogs.gnome.org/view/rodrigo/2005/07/04/0">GNOME guys</a> started the <a href="http://svn.galago.info/trunk/libnotify/">libnotify</a> integration (once again?), which lead to controversial discussion.

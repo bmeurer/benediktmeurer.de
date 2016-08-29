@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Lion
-tags: [osx, mac, lion]
 ---
 
 So I'm trying to get used to [OS X Lion](http://www.apple.com/macosx/)

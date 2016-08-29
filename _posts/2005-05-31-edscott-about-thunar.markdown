@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Edscott about Thunar
-tags: [xfce, thunar]
 ---
 
 Edscott <a href="http://foo-projects.org/pipermail/thunar-dev/2005-May/000593.html">sent</a> some comments about Thunar development to thunar-dev today, with similar contents like a mail he sent me previously some time ago. It's seldomly the case in conversation with Edscott, but with these mails there's really nothing I could say against or in addition. He'll most probably be either flamed or ignored for his mail, tho.

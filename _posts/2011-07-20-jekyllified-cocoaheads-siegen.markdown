@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Jekyllified CocoaHeads Siegen website
-tags: [cocoaheads, jekyll, github]
 ---
 
 I just migrated the [CocoaHeads Siegen](http://cocoaheads.informatik.uni-siegen.de) website

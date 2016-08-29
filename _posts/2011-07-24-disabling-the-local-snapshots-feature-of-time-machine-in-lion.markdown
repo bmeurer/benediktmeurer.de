@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Disabling the local snapshots feature of Time Machine in Lion
-tags: [osx, mac, lion, time machine]
 ---
 
 [Local snapshots for Time Machine](http://www.apple.com/macosx/whats-new/features.html#timemachine) is one of the new features in OS X Lion that looks really good on paper. But once you have used your new Lion installation for a few days, you will notice that you are running out of disk space. After some digging around I noticed that the <code>/.MobileBackups</code> folder that is used by Time Machine for local snapshots was at nearly 50GiB, even though the external Time Machine backup disk was connected most of the time. I guess this is done to speedup Time Machine in the common case, and make backups available when not connected to the external Time Machine disk.

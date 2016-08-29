@@ -1,7 +1,6 @@
 --- 
 layout: post
 title: BSD multimedia
-tags: [netbsd, freebsd]
 ---
 
 Today I read a very interesting article on how to [turn your BSD box into a powerful multimedia

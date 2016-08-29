@@ -1,7 +1,6 @@
 ---
 layout: post
 title: git-utils - Various git related utilities
-tags: [git]
 ---
 
 [Git Utils](http://github.com/bmeurer/git-utils) is a collection of simple utilities that made

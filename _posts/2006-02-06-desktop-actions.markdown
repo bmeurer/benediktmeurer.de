@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Desktop actions
-tags: [xfce, thunar]
 ---
 
 I finally came around to fix some long standing issues with the internals of the file launching stuff in Thunar (to sum it up: it was a mess). Now it's cleaned up, and with the new classes it was actually too easy to add support for desktop actions (see the desktop file spec for details) to Thunar (Brian already added support to Xfmedia some time ago).

@@ -1,7 +1,6 @@
 ---
 layout: post
 title: OS X Lion
-tags: [osx, mac, lion]
 ---
 
 Just like almost every other geek on this planet, I'm downloading
