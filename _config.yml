@@ -80,7 +80,7 @@ paginate_path: "page:num"
 markdown: kramdown
 gems:
   - jekyll-paginate
-highlighter: pygments
+highlighter: rouge
 sass:
   sass_dir: _sass
   style: :compressed
