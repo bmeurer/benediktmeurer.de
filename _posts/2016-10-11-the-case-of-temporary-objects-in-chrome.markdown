@@ -533,7 +533,8 @@ Oops, so after we did this 11 times, there's no way to have the ``distance`` fun
 stuck with unoptimized baseline code. For heavy framework based websites / webapps it usually doesn't take long to
 trigger 11 major GCs, so it's likely that you run in unoptimized code after some time. Ironically this is not even a
 bad thing per-se, as you do at least no longer waste time optimizing and deoptimizing the hot functions all the time
-(yet you still pay for the fundamental transition tree re-creation plus IC re-learning problem).
+(yet you still pay for the fundamental transition tree re-creation plus IC re-learning problem). But often it is [pretty
+bad](https://github.com/nodejs/node/issues/8670) if we give up on optimizing hot functions.
 
 Now what causes the terrible jank that we observed with various Ember.js based web applications is when this happens
 inside some hot, recursive functions, i.e. when this affects the core rendering functionality. Because what happens in
