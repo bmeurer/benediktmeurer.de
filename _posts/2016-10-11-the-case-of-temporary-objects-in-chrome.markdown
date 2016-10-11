@@ -257,6 +257,7 @@ $ out/Debug/d8 ex3.js --expose-gc --trace-gc --trace-maps
 48.373546489791295
 [6069:0x7effd4328120]       34 ms: Mark-sweep 1.1 (6.0) -> 1.1 (7.0) MB, 16.2 / 0.0 ms  testing GC in old space requested
 2.8284271247461903
+$
 {% endhighlight %}
 
 To summarize, the performance issue here is that we constantly need to re-learn all the hidden classes for short-living,
