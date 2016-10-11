@@ -55,7 +55,7 @@ $ out/Debug/d8 ex1.js
 --- Before warmup ---
 --- After warmup ---
 48.373546489791295
-$
+$ 
 {% endhighlight %}
 
 That shouldn't come as a surpise. So let's see what's going on under the hood, and trace the maps (aka hidden classes) that we create. We can do this using
@@ -73,7 +73,7 @@ $ out/Debug/d8 ex1.js --trace-maps
 [TraceMaps: SlowToFast from= 0x26e52588a189 to= 0x26e52588a291 reason= OptimizeAsPrototype ]
 --- After warmup ---
 48.373546489791295
-$
+$ 
 {% endhighlight %}
 
 So what happens here is that create a so called *initial map* for the ``Point`` constructor, which is located at address ``0x26e52588a0d9`` in this case,
@@ -104,7 +104,7 @@ $ out/Debug/d8 ex1.js --trace-maps
 --- After warmup ---
 48.373546489791295
 2.8284271247461903
-$
+$ 
 {% endhighlight %}
 
 As you can see we don't need to create new maps for the second iteration again, but reuse the existing transition tree that was created during
@@ -116,7 +116,7 @@ $ out/Debug/d8 ex1.js --trace-gc
 --- After warmup ---
 48.373546489791295
 2.8284271247461903
-$
+$ 
 {% endhighlight %}
 
 Let's see what happens if we add the GC to the mix, which can be done explicitly in the ``d8`` shell by passing the ``--expose-gc`` command
@@ -166,7 +166,7 @@ $ out/Debug/d8 ex2.js --expose-gc --trace-gc
 48.373546489791295
 [3701:0x7f33fb799120]       32 ms: Mark-sweep 1.1 (6.0) -> 1.1 (7.0) MB, 16.3 / 0.0 ms  testing GC in old space requested
 2.8284271247461903
-$
+$ 
 {% endhighlight %}
 
 So let's run this with ``--trace-maps`` to observe the difference we get when the GC is involved:
@@ -186,7 +186,7 @@ $ out/Debug/d8 ex2.js --expose-gc --trace-gc --trace-maps
 [TraceMaps: Transition from= 0x8e7a5d0a1e1 to= 0x8e7a5d0a239 name= x ]
 [TraceMaps: Transition from= 0x8e7a5d0a239 to= 0x8e7a5d0a291 name= y ]
 2.8284271247461903
-$
+$ 
 {% endhighlight %}
 
 This seems weird on first sight: We re-create the transition tree for the final ``Point`` map after the full GC. Don't get confused
@@ -257,7 +257,7 @@ $ out/Debug/d8 ex3.js --expose-gc --trace-gc --trace-maps
 48.373546489791295
 [6069:0x7effd4328120]       34 ms: Mark-sweep 1.1 (6.0) -> 1.1 (7.0) MB, 16.2 / 0.0 ms  testing GC in old space requested
 2.8284271247461903
-$
+$ 
 {% endhighlight %}
 
 To summarize, the performance issue here is that we constantly need to re-learn all the hidden classes for short-living,
@@ -314,7 +314,7 @@ $ out/Debug/d8 ex2.js --expose-gc --trace-gc --trace-ic
 [LoadIC in ~distance+207 at ex2.js:8 (1->1) map=0x1dce36c0a291 0xf2c2440e189 <String[1]: y>]
 [CallIC in ~+699 at ex2.js:32 (0->1) map=(nil) 0x1a5946502231 <String[5]: print>]
 2.8284271247461903
-$
+$ 
 {% endhighlight %}
 
 Let's only look at the ``LoadIC``s in ``distance``, i.e. the inline caches for the property accesses
@@ -348,7 +348,7 @@ $ out/Debug/d8 ex2.js --expose-gc --trace-gc --trace-ic
 [LoadIC in ~distance+207 at ex2.js:8 (1->1) map=0x1dce36c0a291 0xf2c2440e189 <String[1]: y>]
 ...SNIP...
 2.8284271247461903
-$
+$ 
 {% endhighlight %}
 
 What we observe is that during warmup (which includes two calls to ``distance``) the ``LoadIC``s
@@ -426,7 +426,7 @@ $ out/Debug/d8 ex4.js --allow-natives-syntax --expose-gc --trace-gc --trace-opt 
 [evicting entry from optimizing code map (deoptimized code) for 0x3577c29ac679 <SharedFunctionInfo distance>]
 [8274:0x7fef1862c180]       33 ms: Mark-sweep 1.1 (6.0) -> 1.1 (7.0) MB, 15.8 / 0.0 ms  testing GC in old space requested
 2.8284271247461903
-$
+$ 
 {% endhighlight %}
 
 As expected we optimize the function ``distance`` during warmup and can use the optimized code afterwards. However during
@@ -526,7 +526,7 @@ $ out/Debug/d8 ex5.js --allow-natives-syntax --expose-gc --trace-opt
 [evicting entry from optimizing code map (deoptimized code) for 0x51ae02c6b9 <SharedFunctionInfo distance>]
 [disabled optimization for 0x51ae02c6b9 <SharedFunctionInfo distance>, reason: Optimized too many times]
 --- After optimized 12 ---
-$
+$ 
 {% endhighlight %}
 
 Oops, so after we did this 11 times, there's no way to have the ``distance`` function optimized again, and you will be
