@@ -568,8 +568,7 @@ those links have to be weak because ``Map``s in V8 point back to arbitrary JavaS
 
 The first problem is not really a problem, because most of the time the prototype is strongly referenced from the
 initial map (which in turn is strongly referenced from the constructor function) already, and thus we don't create
-a memory leak here. It's only an issue when a new prototype set for an existing object, and for the internal
-[``Object.create``](https://tc39.github.io/ecma262/#sec-object.create) handling. So for these cases we will introduce
+a memory leak here. It's only an issue when a new prototype set for an existing object. So for these cases we will introduce
 special links in the transition trees to ensure that maps for prototype transitions aren't strongly linked from their
 initial maps.
 
