@@ -157,7 +157,11 @@ other new language features, that might not be so obvious on first sight. One pa
 to fully optimize every feature from the beginning, and we had to make sure that we don't regress existing workloads and benchmarks just because
 of new ES2015 language features (which was still not possible 100% of the time, but nevertheless we managed to ship almost all of ES2015 by the
 end of last year without any major performance regressions). But especially the newly added well-known symbols caused some trouble there, as they
-are not local in the sense of *pay for what you use*, but are sort of global. For example, for `instanceof`, you now need to always check whether
+are not local in the sense of *pay for what you use*, but are sort of global.
+
+<center><img src="/images/2016/instanceof-20161125.png" alt="InstanceofOperator EcmaScript specification" /></center>
+
+For example, for `instanceof`, you now need to always check whether
 the right-hand side has a method `@@hasInstance`, and use that instead of the old ES5 algorithm - now known as
 [OrdinaryHasInstance](https://tc39.github.io/ecma262/#sec-ordinaryhasinstance) - when present, even though in 99.99% of the cases this will be
 [Function.prototype[@@hasInstance]](https://tc39.github.io/ecma262/#sec-function.prototype-@@hasinstance), which itself just calls to OrdinaryHasInstance.
