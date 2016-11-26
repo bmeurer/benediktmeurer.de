@@ -258,4 +258,10 @@ Here are the people currently working on features related to ES2015 and beyond f
 - [Peter Marshall](petermarshall@chromium.org)
 - [Sathya Gunasekaran](https://twitter.com/_gsathya)
 
+And obviously there are the people who contributed a lot to ES6 itself and the initial V8 implementation:
+
+- [Andreas Rossberg](mailto:rossberg@chromium.org)
+- [Dmitry Lomov](https://twitter.com/mulambda)
+- [Erik Arvidsson](https://twitter.com/ErikArvidsson)
+
 So if you ever happen to meet one of them, and you like what they're doing, consider inviting them for a beer or two.
