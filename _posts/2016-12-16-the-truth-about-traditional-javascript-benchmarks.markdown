@@ -456,7 +456,7 @@ So this trick is pretty damn cool, but as with many benchmark focused tricks, it
 side ever changes, all optimized code will have to be deoptimized (as the assumption that the right hande is always a certain power
 of two no longer holds) and any further optimization attempts will have to use `idiv` again, as the `BinaryOpIC` will most likely
 report feedback in the form `Smi*Smi->Smi` then. For example, let's assume we instantiate another `Oscillator`, set a different
-`waveTableLength` on it, and call `generate` for the oscillator, then we'd loose 20% performance even though the actually interesting
+`waveTableLength` on it, and call `generate` for the oscillator, then we'd lose 20% performance even though the actually interesting
 `Oscillator`s are not affected (i.e. the engine does non-local penalization here).
 
 {% highlight patch %}
