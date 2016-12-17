@@ -13,7 +13,7 @@ becoming the dominant technology on the server-/cloud-side (via [Node.js](https:
 
 That raises the question, why is JavaScript so popular/successful? There is no one great answer to this I'd be aware of. There are many good
 reasons to use JavaScript today, probably most importantly the great ecosystem that was built around it, and the huge amount of resources
-available today. But all of this is actually a consequence to some extend. Why did JavaScript became popular in the first place? Well, it
+available today. But all of this is actually a consequence to some extent. Why did JavaScript became popular in the first place? Well, it
 was the lingua franca of the web for ages, you might say. But that was the case for a long time, and people hated JavaScript with passion.
 Looking back in time, it seems the first JavaScript popularity boosts happened in the second half of the last decade. Unsuprisingly this
 was the time when JavaScript engines accomplished huge speed-ups on various different workloads, which probably changed the way that many
@@ -533,7 +533,7 @@ engines use benchmarks as a way to guard against performance regressions, but ru
 the general approach that we have in TurboFan, i.e. we could *degrade* the modulus optimization in TurboFan to the over-specialized
 version of Crankshaft and the benchmark wouldn't tell us that we regressed, because from the point of view of the benchmark
 it's fine! Now you could extend the benchmark, maybe in the same way that I did above, and try to cover everything with
-benchmarks, which is what engine implementors do to a certain extend, but that approach doesn't scale arbitrarily. Even
+benchmarks, which is what engine implementors do to a certain extent, but that approach doesn't scale arbitrarily. Even
 though benchmarks are convenient and easy to use for communication and competition, you'll also need to leave space for
 common sense, otherwise over-specialization will dominate everything and you'll have a really, really fine line of acceptable
 performance and big performance cliffs.
@@ -553,7 +553,7 @@ engine, etc. See the [description](https://developers.google.com/octane/benchmar
 line items. All these line items were carefully chosen to reflect a certain aspect of JavaScript performance that we considered
 important in 2012 or expected to become important in the near future.
 
-To a large extend Octane was super successful in achieving its goals of taking JavaScript performance to the next level, it
+To a large extent Octane was super successful in achieving its goals of taking JavaScript performance to the next level, it
 resulted in a healthy competition in 2012 and 2013 where great performance achievements were driven by Octane. But it's almost
 2017 now, and the world looks fairly different than in 2012, really, really different actually. Besides the usual and often
 cited criticism that most items in Octane are essentially outdated (i.e. ancient versions of TypeScript, zlib being compiled
@@ -948,7 +948,7 @@ instead, which resulted in an effort called [Orinoco](http://v8project.blogspot.
 goal to incrementally improve the garbage collector; part of that effort is a project called *unified heap*, which will try to avoid
 copying objects if almost everything in a page survives. I.e. on a high level: If new space is full of live objects, just mark all new
 space pages as belonging to old space now, and create a fresh new space from empty pages. This might not yield the same score on the
-SplayLatency benchmark, but it's a lot better for real world use cases and it automatically adopts to the concrete use case. We are
+SplayLatency benchmark, but it's a lot better for real world use cases and it automatically adapts to the concrete use case. We are
 also considering *concurrent marking* to offload the marking work to a separate thread and thus further reducing the negative impact of
 incremental marking on both latency and throughput.
 
