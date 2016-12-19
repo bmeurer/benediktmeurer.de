@@ -15,14 +15,14 @@ That raises the question, why is JavaScript so popular/successful? There is no o
 reasons to use JavaScript today, probably most importantly the great ecosystem that was built around it, and the huge amount of resources
 available today. But all of this is actually a consequence to some extent. Why did JavaScript became popular in the first place? Well, it
 was the lingua franca of the web for ages, you might say. But that was the case for a long time, and people hated JavaScript with passion.
-Looking back in time, it seems the first JavaScript popularity boosts happened in the second half of the last decade. Unsuprisingly this
+Looking back in time, it seems the first JavaScript popularity boosts happened in the second half of the last decade. Unsurprisingly this
 was the time when JavaScript engines accomplished huge speed-ups on various different workloads, which probably changed the way that many
 people looked at JavaScript.
 
 Back in the days, these speed-ups were measured with what is now called *traditional JavaScript benchmarks*, starting with Apple's
 [SunSpider benchmark](https://webkit.org/perf/sunspider/sunspider.html), the mother of all JavaScript micro-benchmarks, followed by
 Mozilla's [Kraken benchmark](http://krakenbenchmark.mozilla.org) and Google's V8 benchmark. Later the V8 benchmark was superseded by the
-[Octane benchmark](https://developers.google.com/octane) and Apple released it's new [JetStream benchmark](http://browserbench.org/JetStream).
+[Octane benchmark](https://developers.google.com/octane) and Apple released its new [JetStream benchmark](http://browserbench.org/JetStream).
 These traditional JavaScript benchmarks drove amazing efforts to bring a level of performance to JavaScript that noone would have expected at
 the beginning of the century. Speed-ups up to a factor of 1000 were reported, and all of a sudden using `<script>` within a website was
 no longer a dance with the devil, and doing work client-side was not only possible, but even encouraged.
@@ -398,7 +398,7 @@ the `Oscillator` instances always contains the same value 2048, as it's only ass
 
 If we know that the right hand side of an integer modulus operation is a power of two, we can generate [way better
 code](https://graphics.stanford.edu/~seander/bithacks.html#ModulusDivisionEasy) obviously and completely avoid the `idiv`
-instruction on Intel. So we what we needed was a way to get the information that `this.waveTableLength` is always 2048 from
+instruction on Intel. So what we needed was a way to get the information that `this.waveTableLength` is always 2048 from
 the `Oscillator` constructor to the modulus operation in `Oscillator.prototype.generate`. One obvious way would be to try
 to rely on inlining of everything into the `calcOsc` function and let load/store elimination do the constant propagation
 for us, but this would not work for the `sine` oscillator, which is allocated outside the `calcOsc` function.
@@ -453,7 +453,7 @@ So you see we load the value of `this.waveTableLength` (`rbx` holds the `this` r
 ### The over-specialization issue
 
 So this trick is pretty damn cool, but as with many benchmark focused tricks, it has one major drawback: It's over-specialized! As soon as the right hand
-side ever changes, all optimized code will have to be deoptimized (as the assumption that the right hande is always a certain power
+side ever changes, all optimized code will have to be deoptimized (as the assumption that the right hand is always a certain power
 of two no longer holds) and any further optimization attempts will have to use `idiv` again, as the `BinaryOpIC` will most likely
 report feedback in the form `Smi*Smi->Smi` then. For example, let's assume we instantiate another `Oscillator`, set a different
 `waveTableLength` on it, and call `generate` for the oscillator, then we'd lose 20% performance even though the actually interesting
@@ -544,7 +544,7 @@ of the last five years... the Octane benchmark.
 ## A closer look at Octane
 
 The [Octane benchmark](https://developers.google.com/octane) is the successor of the V8 benchmark and was initially [announced
-by Goolge in mid 2012](https://blog.chromium.org/2012/08/octane-javascript-benchmark-suite-for.html) and the current version
+by Google in mid 2012](https://blog.chromium.org/2012/08/octane-javascript-benchmark-suite-for.html) and the current version
 Octane 2.0 was [announced in late 2013](https://blog.chromium.org/2013/11/announcing-octane-20.html). This version contains
 15 individual tests, where for two of them - Splay and Mandreel - we measure both the throughput and the latency. These tests
 range from [Microsofts TypeScript compiler](http://www.typescriptlang.org) compiling itself, to raw [asm.js](http://asmjs.org)
