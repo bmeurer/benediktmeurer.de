@@ -292,8 +292,9 @@ from my colleagues [Toon Verwaest](https://twitter.com/tverwaes) and [Camillo Br
 
 ### Update
 
-Apparently there's a [slide deck]() from my colleagues [Camillo Bruni](https://twitter.com/camillobruni) from the V8 runtime team and
-[Michael Lippautz]() from the V8 GC team that describes how to get to the *Runtime Call Stats* and the *Heap Stats* in
+Apparently there's a [slide deck](https://docs.google.com/presentation/d/1Lq2DD28CGa7bxawVH_2OcmyiTiBn74dvC6vn2essroY)
+from my colleagues [Camillo Bruni](https://twitter.com/camillobruni) from the V8 runtime team and [Michael
+Lippautz](https://twitter.com/mlippautz) from the V8 GC team that describes how to get to the *Runtime Call Stats* and the *Heap Stats* in
 [chrome://tracing](chrome://tracing).
 
 <p><center>
