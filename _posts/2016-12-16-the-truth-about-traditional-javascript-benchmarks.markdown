@@ -734,7 +734,7 @@ And in the end there was a rather huge performance boost on this particular benc
 </center></p>
 
 To my defense, back then I was not convinced that this particular behavior would always point to a bug in the original code, so I was
-even expecting that code in the wild might hit this case fairly often, also because I was assuming that JavaScript people wouldn't
+even expecting that code in the wild might hit this case fairly often, also because I was assuming that JavaScript developers wouldn't
 always care about these kinds of potential bugs. However, I was so wrong, and here I stand corrected! I have to admit that this particular
 optimization is purely a benchmark thing, and will not help any real code (unless the code is written to benefit from this optimization,
 but then you could as well write `true` or `false` directly in your code instead of using an always-constant relational comparison).
