@@ -288,4 +288,4 @@ was the main driver in the past.
 </center></p>
 
 If you haven't done so, be sure to watch the BlinkOn 6 talk on [Real-world JavaScript performance](https://youtu.be/xCx4uC7mn6Y)
-from my colleagues [Toon Verwaest](https://twitter.com/tverwaes) and [Camillo Bruni](mailto:cbruni@chromium.org).
+from my colleagues [Toon Verwaest](https://twitter.com/tverwaes) and [Camillo Bruni](https://twitter.com/camillobruni).
