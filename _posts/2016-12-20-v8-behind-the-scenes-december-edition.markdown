@@ -289,3 +289,17 @@ was the main driver in the past.
 
 If you haven't done so, be sure to watch the BlinkOn 6 talk on [Real-world JavaScript performance](https://youtu.be/xCx4uC7mn6Y)
 from my colleagues [Toon Verwaest](https://twitter.com/tverwaes) and [Camillo Bruni](https://twitter.com/camillobruni).
+
+### Update
+
+Apparently there's a [slide deck]() from my colleagues [Camillo Bruni](https://twitter.com/camillobruni) from the V8 runtime team and
+[Michael Lippautz]() from the V8 GC team that describes how to get to the *Runtime Call Stats* and the *Heap Stats* in
+[chrome://tracing](chrome://tracing).
+
+<p><center>
+  <a href="https://docs.google.com/presentation/d/1Lq2DD28CGa7bxawVH_2OcmyiTiBn74dvC6vn2essroY">
+    <img src="/images/2016/v8-stats-20161220.png" alt="V8 Stats" />
+  </a>
+</center></p>
+
+It should give you a rough idea how to use the new functionality in Chrome.
