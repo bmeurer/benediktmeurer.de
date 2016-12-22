@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "V8: Behind the Scenes (December Edition)"
+title: "V8: Behind the Scenes (December Edition feat. WebAssembly and Real World Performance)"
 ---
 
 Following up on what [I promised earlier](/2016/11/25/v8-behind-the-scenes-november-edition) here's another edition on what's going on
@@ -31,7 +31,7 @@ we built a small wrapper around the WebAssembly component in V8, that allows it 
 to the native bytecode format. Two weeks ago we [staged the new asm.js pipeline](http://crrev.com/2553963003), which sends
 [asm.js](http://asmjs.org) code through the new WebAssembly pipeline instead of the TurboFan JavaScript compiler pipeline, and executes
 the resulting machine code in the WebAssembly native execution environment. This allows you to leverage many of the benefits of
-WebAssembly today, with full backwards compatibility.
+WebAssembly today and brings ahead-of-time compilation (AOT) for asm.js to Chrome, with full backwards compatibility.
 
 <p><center>
   <img src="/images/2016/asmjs-wasm-20161220.png" alt="asm.js WebAssembly pipeline" />
@@ -45,7 +45,7 @@ The WebAssembly compilation pipeline reuses some backend parts of the TurboFan c
 similar code, but with a lot less compilation and optimization overhead, and leveraging various benefits of the WebAssembly
 execution environment. For example, the `asm-wasm-builder` extracts the asm.js
 type annotation and uses those to generate typed WebAssembly code. If it hits any unsupported language constructs, it will just
-bail out and we will fall back to the JavaScript pipeline for this asm.js module. In contrast TurboFan must be able to deal with
+bail out and we will fall back to the TurboFan JavaScript compiler pipeline for this asm.js module. In contrast TurboFan must be able to deal with
 the whole EcmaScript 2017 language and can only consume a fraction of the static type information. For example consider the
 following asm.js module:
 
@@ -139,7 +139,7 @@ process, for example by DevTools, or to kill a tab that is executing an endless 
 of the input, which is passed and returned in machine register `xmm1` (WebAssembly has its own native calling convention
 that is slightly different from the usual [platform calling
 conventions](https://software.intel.com/sites/default/files/article/402129/mpx-linux64-abi.pdf)). Contrast this with the
-code generated via the JavaScript pipeline:
+code generated via the TurboFan JavaScript compiler pipeline:
 
 {% highlight nasm %}
                   -- B0 start (construct frame) --
