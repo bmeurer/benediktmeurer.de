@@ -25,7 +25,7 @@ relevant to the [web performance crisis](https://channel9.msdn.com/Blogs/msedged
   <img src="/images/2017/toppages-20170130.jpg" alt="Top Pages" />
 </center>
 
-Most of these improvements come are possible because we can reduce the number of optimizations and deoptimizations during startup, but
+Most of these improvements are possible because we can reduce the number of optimizations and deoptimizations during startup, but
 also because we need to parse only once now to generate Ignition bytecode, and optimized code is then generated from bytecode rather
 than having to reparse the function for Crankshaft.
 
