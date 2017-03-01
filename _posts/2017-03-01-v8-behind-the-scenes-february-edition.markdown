@@ -19,7 +19,7 @@ This lack of balance led to highly unpredictable performance. For example, when 
   <img src="/images/2017/cliff-20170301.jpg" alt="Steep cliff" />
 </center></p>
 
-V8 has been like this cliff. If you pay attention, then it’s stunning and beautiful. But if you don’t, and you fall off the cliff, you’re screwed. Performance differences of **100x** weren’t uncommon in the past. Of these cliffs, the `arguments` object handling in Crankshaft is probably the one which people hit most often and which is the most frustrating too. The fundamental assumption in Crankshaft is that `arguments` object does not escape, and thus Crankshaft does not need to materialize the actual JavaScript `arguments` object **ever**, but instead can just take the parameters from the activation record. So, in order words, there’s no safety net. It’s all or nothing. Let’s consider this simple dispatching logic:
+V8 has been like this cliff. If you pay attention, then it’s stunning and beautiful. But if you don’t, and you fall off the cliff, you’re screwed. Performance differences of **100x** weren’t uncommon in the past. Of these cliffs, the `arguments` object handling in Crankshaft is probably the one which people hit most often and which is the most frustrating too. The fundamental assumption in Crankshaft is that `arguments` object does not escape, and thus Crankshaft does not need to materialize the actual JavaScript `arguments` object **ever**, but instead can just take the parameters from the activation record. So, in other words, there’s no safety net. It’s all or nothing. Let’s consider this simple dispatching logic:
 
 {% highlight javascript %}
 var callbacks = [
@@ -76,7 +76,7 @@ $ node --trace-opt --future example.js
 $ 
 {% endhighlight %}
 
-n this trivial example, the performance difference is already **2.5x**, and TurboFan doesn’t even generate awesome code ⸺ yet. So you take the performance hit just because you’re faced with the choice of two extremes: Fast path vs. slow path. And V8’s focus on the fast path in the past often led to making the slow path even slower, for example because you pay more for tracking feedback that you need to generate almost perfect code in some fast case, or simply because you have to fall through even more checks to get to the slow path.
+In this trivial example, the performance difference is already **2.5x**, and TurboFan doesn’t even generate awesome code ⸺ yet. So you take the performance hit just because you’re faced with the choice of two extremes: Fast path vs. slow path. And V8’s focus on the fast path in the past often led to making the slow path even slower, for example because you pay more for tracking feedback that you need to generate almost perfect code in some fast case, or simply because you have to fall through even more checks to get to the slow path.
 
 Taking a step back again: If TurboFan was supposed to help us, then it had to do something about the slow path too. And we figured that we’d have to address two things to make this happen:
 
