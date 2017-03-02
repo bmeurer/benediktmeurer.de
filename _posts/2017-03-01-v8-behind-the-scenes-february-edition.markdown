@@ -88,13 +88,13 @@ Widening the fast path is crucial to ensure that the resources the JavaScript en
 But that alone wouldn’t really help, especially since TurboFan compilation is more expensive than Crankshaft (you really have to acknowledge the awesome engineering work that went into Crankshaft here, which still shines as core part of the [Dart](https://www.dartlang.org/) engine). In fact real-world performance would have suffered a lot from just replacing Crankshaft with TurboFan in many cases. And real-world performance is starting to hurt V8 and Chrome seriously, as we move to a world where most of the web traffic comes from mobile devices, and more and more of these devices are low-end Android devices. In this world, page load time and low overhead ⸺ both memory and execution wise ⸺ are crucial for success. For example, we discovered that **30%** of the managed memory in typical web applications was used by Code objects:
 
 <p><center>
-  <a href="https://docs.google.com/presentation/d/1eF3gub1ToNtUKPsnPeIThaJUi7cpucmBYp3aWuZJcVA/edit#slide=id.g1453eb7f19_1_108">
+  <a href="https://docs.google.com/presentation/d/1chhN90uB8yPaIhx_h2M3lPyxPgdPmkADqSNAoXYQiVE/edit#slide=id.g1453eb7f19_1_108">
     <img src="/images/2017/managedmemory-20170301.png" alt="Managed Memory Usage" />
   </a>
   <br />
   <small><i>
     Source:
-    <a href="https://docs.google.com/presentation/d/1eF3gub1ToNtUKPsnPeIThaJUi7cpucmBYp3aWuZJcVA/edit#slide=id.g1453eb7f19_1_108">V8: Hooking up the Ignition to the TurboFan</a>,
+    <a href="https://docs.google.com/presentation/d/1chhN90uB8yPaIhx_h2M3lPyxPgdPmkADqSNAoXYQiVE/edit#slide=id.g1453eb7f19_1_108">V8: Hooking up the Ignition to the TurboFan</a>,
     BlinkOn 7 conference,
     <a href="https://twitter.com/rossmcilroy">@rossmcilroy</a> and
     <a href="https://twitter.com/leszekswirski">@leszekswirski</a>.
@@ -106,13 +106,13 @@ That means **30%** of the memory is taken by the VM for its internal execution s
 But even with these mitigations in place, the overhead of code generated for functions was significant. And the TurboFan optimizing compiler wouldn’t help at all here. But as it turned out, some smart engineers figured out that we could reuse the actual code generation parts of the TurboFan pipeline to build the [Ignition interpreter](https://docs.google.com/document/d/11T2CRex9hXxoJwbYqVQ32yIPMh0uouUZLdyrtmMoL44), which drastically reduces the code memory overhead. In addition to that it also improves page load time and helps to mitigate the parsing overhead, because the TurboFan optimizing compiler no longer needs to reparse the function source when it starts to optimize, but can [optimize directly from the interpreters’ bytecode](https://docs.google.com/presentation/d/1eF3gub1ToNtUKPsnPeIThaJUi7cpucmBYp3aWuZJcVA/edit#slide=id.g1c373bc8f0_0_8).
 
 <p><center>
-  <a href="https://docs.google.com/presentation/d/1eF3gub1ToNtUKPsnPeIThaJUi7cpucmBYp3aWuZJcVA/edit#slide=id.g1453eb7f19_5_539">
+  <a href="https://docs.google.com/presentation/d/1chhN90uB8yPaIhx_h2M3lPyxPgdPmkADqSNAoXYQiVE/edit#slide=id.g1453eb7f19_5_539">
     <img src="/images/2017/memoryimprovements-20170301.png" alt="Managed Memory Improvements" />
   </a>
   <br />
   <small><i>
     Source:
-    <a href="https://docs.google.com/presentation/d/1eF3gub1ToNtUKPsnPeIThaJUi7cpucmBYp3aWuZJcVA/edit#slide=id.g1453eb7f19_5_539">V8: Hooking up the Ignition to the TurboFan</a>,
+    <a href="https://docs.google.com/presentation/d/1chhN90uB8yPaIhx_h2M3lPyxPgdPmkADqSNAoXYQiVE/edit#slide=id.g1453eb7f19_5_539">V8: Hooking up the Ignition to the TurboFan</a>,
     BlinkOn 7 conference,
     <a href="https://twitter.com/rossmcilroy">@rossmcilroy</a> and
     <a href="https://twitter.com/leszekswirski">@leszekswirski</a>.
