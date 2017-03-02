@@ -96,7 +96,8 @@ But that alone wouldn’t really help, especially since TurboFan compilation is 
     Source:
     <a href="https://docs.google.com/presentation/d/1eF3gub1ToNtUKPsnPeIThaJUi7cpucmBYp3aWuZJcVA/edit#slide=id.g1453eb7f19_1_108">V8: Hooking up the Ignition to the TurboFan</a>,
     BlinkOn 7 conference,
-    <a href="https://twitter.com/rossmcilroy">@rossmcilroy</a>.
+    <a href="https://twitter.com/rossmcilroy">@rossmcilroy</a> and
+    <a href="https://twitter.com/leszekswirski">@leszekswirski</a>.
   </i></small>
 </center></p>
 
@@ -113,7 +114,8 @@ But even with these mitigations in place, the overhead of code generated for fun
     Source:
     <a href="https://docs.google.com/presentation/d/1eF3gub1ToNtUKPsnPeIThaJUi7cpucmBYp3aWuZJcVA/edit#slide=id.g1453eb7f19_5_539">V8: Hooking up the Ignition to the TurboFan</a>,
     BlinkOn 7 conference,
-    <a href="https://twitter.com/rossmcilroy">@rossmcilroy</a>.
+    <a href="https://twitter.com/rossmcilroy">@rossmcilroy</a> and
+    <a href="https://twitter.com/leszekswirski">@leszekswirski</a>.
   </i></small>
 </center></p>
 
