@@ -176,7 +176,7 @@ function isA(o) { return o instanceof A; }
 {% endhighlight %}
 
 would be slowed down a lot if you implement ES2015 naively, because in addition to the actual prototype chain walk that you need to perform
-for `instanceof`, you know also need to lookup the `@@hasInstance` property on `A`s prototype first and call that method. To mitigate that
+for `instanceof`, you know also need to lookup the `@@hasInstance` property on `A`'s prototype first and call that method. To mitigate that
 problem we decided to go with a mechanism called a *protector cell* in the beginning, which allows certain parts of V8 to assume that a certain
 event didn't happen so far, so we don't need to perform certain checks. In this case the protector cell would guard against the addition of
 a property named `Symbol.hasInstance` anywhere in V8. Assuming that no one installed any other `@@hasInstance` function anywhere, we could just
