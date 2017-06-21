@@ -24,7 +24,7 @@ class Point {
 }
 {% endhighlight %}
 
-In addition to that consider the following `test` driver function, which creates a couple of `Point` instances, and computes the `distance` between them several million times, summing up the result (yeah I know it's a micro-benchmark, but it bare with me for a second):
+In addition to that consider the following `test` driver function, which creates a couple of `Point` instances, and computes the `distance` between them several million times, summing up the result (yeah I know it's a micro-benchmark, but bear with me for a second):
 
 {% highlight javascript %}
 function test() {
@@ -170,6 +170,10 @@ Point.prototype.distance = function (other) {
 {% endhighlight %}
 
 The underlying reason for the performance difference when the `Point` class lives inside the `test` function is that the `class` literal is then executed multiple times (exactly 5 times in my example above), whereas if it lives outside the `test` function, it's only executed once. Everytime the `class` definition is executed, a new prototype object is created, which carries all the methods of the class. In addition to that a new *constructor* function is created, which corresponds to the `class`, and has the prototype object set as it's `"prototype"` property.
+
+<p><center>
+  <img src="/images/2017/devtools-20170620.png" alt="Global vs. local class" />
+</center></p>
 
 New instances of the class are created using this `"prototype"` as their prototype object. But since V8 tracks the prototype of an instance as part of the *object shape* or *hidden class* (see [Setting up prototypes in V8](https://medium.com/@tverwaes/setting-up-prototypes-in-v8-ec9c9491dfe2) for some details on this) in order to optimize access to properties on the prototype chain, having different prototypes automatically implies having different object shapes. And as such the generated code get's ever more polymorphic if the `class` definition is executed multiple times, and eventually V8 gives up on polymorphism after it has seen more than 4 different object shapes, and enters the so-called *megamorphic* state, which means it kind of gives up on generating highly optimized code.
 
