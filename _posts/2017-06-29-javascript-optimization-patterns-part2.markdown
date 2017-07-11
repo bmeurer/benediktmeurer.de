@@ -35,7 +35,7 @@ Frame size 0
    63 S> 0x1859bd52f506 @    8 : 96                Return
 Constant pool (size = 1)
 0x1859bd52f4b1: [FixedArray] in OldSpace
- - map = 0x2f062f402309 <Map(FAST_HOLEY_ELEMENTS)>
+ - map = 0x2f062f402309 <Map(PACKED_HOLEY_ELEMENTS)>
  - length: 1
            0: 0x1859bd52ef11 <String[9]: INCREMENT>
 Handler Table (size = 16)
@@ -401,7 +401,7 @@ Frame size 8
 0x19518f50423a    5a  488d5818       REX.W leaq rbx,[rax+0x18]
 0x19518f50423e    5e  4883c001       REX.W addq rax,0x1
 0x19518f504242    62  49899d78e40300 REX.W movq [r13+0x3e478],rbx
-0x19518f504249    69  48bb9105294321300000 REX.W movq rbx,0x302143290591    ;; object: 0x302143290591 <Map(FAST_HOLEY_ELEMENTS)>
+0x19518f504249    69  48bb9105294321300000 REX.W movq rbx,0x302143290591    ;; object: 0x302143290591 <Map(PACKED_HOLEY_ELEMENTS)>
 0x19518f504253    73  488958ff       REX.W movq [rax-0x1],rbx
 0x19518f504257    77  498b5d70       REX.W movq rbx,[r13+0x70]
 0x19518f50425b    7b  48895807       REX.W movq [rax+0x7],rbx
@@ -467,7 +467,7 @@ Frame size 8
 0x3f0511b8420b    2b  488d5818       REX.W leaq rbx,[rax+0x18]
 0x3f0511b8420f    2f  4883c001       REX.W addq rax,0x1
 0x3f0511b84213    33  49899d78e40300 REX.W movq [r13+0x3e478],rbx
-0x3f0511b8421a    3a  48bb9105d1acaa270000 REX.W movq rbx,0x27aaacd10591    ;; object: 0x27aaacd10591 <Map(FAST_HOLEY_ELEMENTS)>
+0x3f0511b8421a    3a  48bb9105d1acaa270000 REX.W movq rbx,0x27aaacd10591    ;; object: 0x27aaacd10591 <Map(PACKED_HOLEY_ELEMENTS)>
 0x3f0511b84224    44  488958ff       REX.W movq [rax-0x1],rbx
 0x3f0511b84228    48  498b5d70       REX.W movq rbx,[r13+0x70]
 0x3f0511b8422c    4c  48895807       REX.W movq [rax+0x7],rbx
@@ -551,7 +551,7 @@ $ node --print-opt-code --code-comments --allow-natives-syntax ex7.js
 0x2e1f81f84eab    2b  488d5818       REX.W leaq rbx,[rax+0x18]
 0x2e1f81f84eaf    2f  4883c001       REX.W addq rax,0x1
 0x2e1f81f84eb3    33  49899da8ec0300 REX.W movq [r13+0x3eca8],rbx
-0x2e1f81f84eba    3a  48bb012f6b7ceb110000 REX.W movq rbx,0x11eb7c6b2f01    ;; object: 0x11eb7c6b2f01 <Map(FAST_HOLEY_ELEMENTS)>
+0x2e1f81f84eba    3a  48bb012f6b7ceb110000 REX.W movq rbx,0x11eb7c6b2f01    ;; object: 0x11eb7c6b2f01 <Map(PACKED_HOLEY_ELEMENTS)>
 0x2e1f81f84ec4    44  488958ff       REX.W movq [rax-0x1],rbx
 0x2e1f81f84ec8    48  498b5d70       REX.W movq rbx,[r13+0x70]
 0x2e1f81f84ecc    4c  48895807       REX.W movq [rax+0x7],rbx
@@ -617,7 +617,7 @@ Frame size 8
 0x138cd238420b    2b  488d5818       REX.W leaq rbx,[rax+0x18]
 0x138cd238420f    2f  4883c001       REX.W addq rax,0x1
 0x138cd2384213    33  49899d78e40300 REX.W movq [r13+0x3e478],rbx
-0x138cd238421a    3a  48bb910501aa382d0000 REX.W movq rbx,0x2d38aa010591    ;; object: 0x2d38aa010591 <Map(FAST_HOLEY_ELEMENTS)>
+0x138cd238421a    3a  48bb910501aa382d0000 REX.W movq rbx,0x2d38aa010591    ;; object: 0x2d38aa010591 <Map(PACKED_HOLEY_ELEMENTS)>
 0x138cd2384224    44  488958ff       REX.W movq [rax-0x1],rbx
 0x138cd2384228    48  498b5d70       REX.W movq rbx,[r13+0x70]
 0x138cd238422c    4c  48895807       REX.W movq [rax+0x7],rbx
