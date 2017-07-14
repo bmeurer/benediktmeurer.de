@@ -252,13 +252,13 @@ const TESTS = [
 
 // Warmup.
 for (const test of TESTS) {
-  for (let i = 0; i < 10; ++i) test(m);
+  for (let i = 0; i < 10; ++i) test();
 }
 
 // Actual tests.
 for (const test of TESTS) {
   console.time(test.name);
-  test(m);
+  test();
   console.timeEnd(test.name);
 }
 {% endhighlight %}
