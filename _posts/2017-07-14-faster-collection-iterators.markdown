@@ -101,8 +101,8 @@ use of iterators. I highly recommend reading those resources.*
 The key to great performance for iteration is to make sure that the repeated calls to `iterator.next()` in the
 loop are optimized well, and ideally completely avoid the allocation of the `iterResult` using advanced compiler
 techniques like store-load propagation, escape analysis and scalar replacement of aggregates. To really shine
-performance-wise, the optimizing compiler should also completely eliminate the allocation of the `iterator` itself
-- the `iterable[Symbol.iterator]()` call - and operate on the backing-store of the `iterable` directly. We did this for
+performance-wise, the optimizing compiler should also completely eliminate the allocation of the `iterator`
+itself - the `iterable[Symbol.iterator]()` call - and operate on the backing-store of the `iterable` directly. We did this for
 the `Array` and `String` iterators before, implemented by [Caitlin Potter](https://twitter.com/caitp88), the [design
 document](https://docs.google.com/document/d/13z1fvRVpe_oEroplXEEX0a3WK94fhXorHjcOMsDmR-8) provides some details
 of the implementation. Essentially we could use the same ideas for the collection iterators, with some simplifications,
