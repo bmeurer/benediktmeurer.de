@@ -263,8 +263,8 @@ for (const test of TESTS) {
 }
 {% endhighlight %}
 
-We still loose some performance, especially in case of entry iteration (both `SetForOfEntries` and `MapForOf`)
-because our escape analysis cannot yet eliminate the key-value array allocations, and we also still loose some
+We still lose some performance, especially in case of entry iteration (both `SetForOfEntries` and `MapForOf`)
+because our escape analysis cannot yet eliminate the key-value array allocations, and we also still lose some
 performance in case of `forEach` since we don't have it working inside optimized code (i.e. inlined by TurboFan)
 at this point. But all of this is fixable and part of the long-term [ES2015 and beyond performance
 plan](https://docs.google.com/document/d/1EA9EbfnydAmmU_lM8R_uEMQ-U_v4l9zulePSBkeYWmY).
