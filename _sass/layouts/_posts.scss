@@ -78,4 +78,13 @@ header {
     vertical-align: middle;
   }
 }
-
+/*
+  Removes 25px + 25px of left/right margin on figure elements.
+  This keeps some of the indentation, and gives more space for code at the same time.
+*/
+@media screen and (max-width: 767px) {
+  figure {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+}
