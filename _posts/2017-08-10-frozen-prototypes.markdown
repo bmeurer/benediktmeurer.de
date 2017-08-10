@@ -5,7 +5,7 @@ title: Frozen Prototypes
 
 With the addition of [`Object.freeze`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze)
 and [`Object.seal`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/seal) in
-[ECMAScript 2015](http://www.ecma-international.org/ecma-262/6.0/), there's now a way for developers to prevent
+[ECMAScript 5.1](http://www.ecma-international.org/ecma-262/5.1/), there's a way for developers to prevent
 various kinds of mutations to objects. For example, `Object.freeze` can be used to make an object essentially
 *immutable*:
 
