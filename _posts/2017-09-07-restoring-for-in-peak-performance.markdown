@@ -47,7 +47,7 @@ var obj = {
 }
 var total = 0
 for (var prop in obj) {
-  if (Object.prototype.hasOwnProperty(obj, prop)) {
+  if (Object.prototype.hasOwnProperty.call(obj, prop)) {
     total += obj[prop]
   }
 }
