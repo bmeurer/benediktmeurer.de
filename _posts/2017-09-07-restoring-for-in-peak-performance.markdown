@@ -88,9 +88,17 @@ things like proxies):
   is identical to the object whose properties are being enumerated, and the shape of that object didn't change since the
   beginning of the loop, and the key passed to the call must be the current enumerated property name. This is correct,
   because fast mode `for..in` loops iterate only enumerable properties on the receiver itself.
-- A property access `object[key]` inside such a loop was turned into an `HLoadFieldByIndex` instruction, which was
-  using the known index of the value for `key` inside the `object`. This was additional *enum cache indices* table
+- A property access `object[key]` inside such a loop was turned into an `HLoadFieldByIndex` instruction,
+  using the known index of the value for `key` inside the `object`. This additional *enum cache indices* table
   is precomputed as part of the [*enum cache* setup](https://v8project.blogspot.com/2017/03/fast-for-in-in-v8.html).
+
+[![Enum cache structure](/images/2017/enum-cache-20170907.png)](https://v8project.blogspot.com/2017/03/fast-for-in-in-v8.html)
+
+While the *keys* in the *Enum Cache* contain the (String) names of the properties in enumeration order,
+the *indices* contain the location of the property values in the object (in the same order). But the *indices*
+aren't always available, since not all property values are stored directly on the object (i.e. accessor
+properties don't have a value, but rather specify a getter function). So even if an *Enum Cache* with *keys*
+is available, the *indices* might not be available.
 
 We didn't port this to Ignition and TurboFan initially, because there was a rather serious deoptimization loop hidden
 in this approach, which affected real world applications pretty badly, i.e. in many React applications one of the hottest
