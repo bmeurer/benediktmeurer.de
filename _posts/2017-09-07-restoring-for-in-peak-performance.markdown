@@ -81,7 +81,7 @@ Bruni](http://twitter.com/camillobruni) (who still owes me cookies for reading t
 
 Now on top of these fundamental concepts, Crankshaft optimized two additional aspects
 of fast mode `for..in` loops (i.e. `for..in` loops where we know from profiling information that only enumerable fast
-properties on the receiver were considered and the prototype chain didn't contani any enumerable properties or fancy
+properties on the receiver were considered and the prototype chain didn't contain any enumerable properties or fancy
 things like proxies):
 
 - A call to `Object#hasOwnProperty` inside such a loop was constant-folded to `true` if the object passed to the call
