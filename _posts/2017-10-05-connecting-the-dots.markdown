@@ -257,7 +257,7 @@ repeat(3)`abc${3+1}`;  // produces "abc4abc4abc4"
 Here the language specification even
 [requires implementations to cache the so-called *TemplateObject*](https://tc39.github.io/ecma262/#sec-gettemplateobject) to
 actively encourage constant-folding and avoid recomputation
-when going to optimized code. Unfortunately we didn't really took advantage of that so far. So I [started teaching both Ignition
+when going to optimized code. Unfortunately we didn't really take advantage of that so far. So I [started teaching both Ignition
 and TurboFan about *template objects*](https://chromium-review.googlesource.com/677462), which brought the ES6 implementation
 on par with the Babel transpiled code. Once that was done, we [looked into constant-folding sealed
 properties](https://chromium-review.googlesource.com/677603) consistently, i.e. own properties of objects that were either
