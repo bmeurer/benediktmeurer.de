@@ -65,7 +65,7 @@ DOM.renderAll(document.getElementById('my-app'), components);
 ```
 
 You call `DOM.renderAll` to render a collection of components to a part of the DOM. This is oversimplified
-of course, but you get the concept. Also note that this code doesn't follow any of the security advises for dealing
+of course, but you get the concept. Also note that this code doesn't follow any of the security advice for dealing
 with HTML/DOM from JavaScript, so please don't take any inspiration here.
 
 The interesting code here is inside of `DOM.renderAll`, where we access the property `component.render` of different
@@ -336,7 +336,7 @@ for (const degree of DEGREES) {
 Running this with V8 6.6, both approaches scale equally well and avoid the problem of hot `MEGAMORPHIC`
 property accesses.
 
-![Results][1]
+![Results for V8 6.6][1]
 
 So the takeaway here is that a high degree of polymorphism is not bad per se, but if you have a
 lot of `MEGAMORPHIC` property accesses on the critical path, then eventually your application is
@@ -344,4 +344,13 @@ going to spend a lot of time fighting for entries in the *megamorphic stub cache
 how V8 works currently). For component-based systems there are ways to avoid this situation by
 preloading methods used in hot code later.
 
-  [1]: /images/2018/results-20180323.png "results.png"
+## Update
+
+Just ran the same test again with V8 6.7.0 (candidate) as of today, and it seems that it does
+scale better, altough I'm unsure what changed in this area recently (I have to admit I haven't
+worked on this area of V8 a lot).
+
+![Results for V8 6.7][2]
+
+  [1]: /images/2018/results66-20180323.png "results 6.6.png"
+  [2]: /images/2018/results67-20180323.png "results 6.7.png"
