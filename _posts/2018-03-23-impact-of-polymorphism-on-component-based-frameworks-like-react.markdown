@@ -232,8 +232,8 @@ for (const degree of DEGREES) {
 ```
 
 The example above illustrates this problem, even with just a single access site `instance.foo` inside of the
-`naive` function, and varying degrees of polymorphism. Running this through `d8` you'll see that the solution
-doesn't scale very well:
+`naive` function, and varying degrees of polymorphism. Running this through `d8` (in V8 6.6) you'll see that
+the solution doesn't scale very well:
 
 ```
 $ out/Release/d8 components3.js
@@ -333,7 +333,8 @@ for (const degree of DEGREES) {
 }
 ```
 
-Both approaches scale equally well and avoid the problem of hot `MEGAMORPHIC` property accesses.
+Running this with V8 6.6, both approaches scale equally well and avoid the problem of hot `MEGAMORPHIC`
+property accesses.
 
 ![Results][1]
 
