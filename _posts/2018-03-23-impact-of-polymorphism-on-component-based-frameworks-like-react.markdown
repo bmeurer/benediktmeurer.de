@@ -344,6 +344,7 @@ going to spend a lot of time fighting for entries in the *megamorphic stub cache
 how V8 works currently). For component-based systems there are ways to avoid this situation by
 preloading methods used in hot code later.
 
+
 ## Update
 
 Just ran the same test again with V8 6.7.0 (candidate) as of today, and it seems that it does
@@ -351,6 +352,16 @@ scale better, altough I'm unsure what changed in this area recently (I have to a
 worked on this area of V8 a lot).
 
 ![Results for V8 6.7][2]
+
+
+## Disclaimer
+
+For the vast majority of JavaScript code that is written today, the heuristics in the JavaScript
+VMs (i.e. in V8) are perfectly fine, even for high degrees of polymorphism. So unless you're
+writing a framework like React, you may not need to worry about what's written in here. Also the
+usual advice still applies, more than ever: Write idiomatic JavaScript, let the engine take care
+of the performance, optimize only when necessary and after careful profiling.
+
 
   [1]: /images/2018/results66-20180323.png "results 6.6.png"
   [2]: /images/2018/results67-20180323.png "results 6.7.png"
