@@ -251,11 +251,11 @@ Here are the people currently working on features related to ES2015 and beyond f
 - [Adam Klein](mailto:adamk@chromium.org)
 - [Caitlin Potter](https://twitter.com/caitp)
 - [Daniel Ehrenberg](https://twitter.com/littledan)
-- [Franziska Hinkelmann](https://twitter/fhinkel)
+- [Franziska Hinkelmann](https://twitter.com/fhinkel)
 - [Georg Neis](mailto:neis@chromium.org)
 - [Jakob Gruber](https://twitter.com/schuay)
 - [Michael Starzinger](mailto:mstarzinger@chromium.org)
-- [Peter Marshall](mailto:petermarshall@chromium.org)
+- [Peter Marshall](https://twitter.com/hooraybuffer)
 - [Sathya Gunasekaran](https://twitter.com/_gsathya)
 
 And obviously there are the people who contributed a lot to ES6 itself and the initial V8 implementation:
