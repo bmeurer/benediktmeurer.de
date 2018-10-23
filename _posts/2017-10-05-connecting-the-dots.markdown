@@ -28,7 +28,7 @@ for the performance comparisons.
 As mentioned above this was the first time I hosted an intern at Google. It sure comes with a lot of work and some
 additional responsibilities, but it was super exciting. [Juliana](https://twitter.com/jupvfranco) was an awesome
 intern. I have to admit that the area that she was working on ([lazy deoptimization without code patching](https://goo.gl/N7hwEp)
-and [lazy unlinking of deoptimized functions](https://v8project.blogspot.com/2017/10/lazy-unlinking.html)) is not
+and [lazy unlinking of deoptimized functions](https://v8.dev/blog/lazy-unlinking)) is not
 my main area of expertise, so I had to rely a lot on my colleagues [Jaroslav Sevcik](https://twitter.com/jarinsev)
 and [Michael Starzinger](https://twitter.com/starzi) to help her out. But the end result is just amazing, especially
 getting rid of the weakly linked list of all closures in V8 is a major accomplishment.
@@ -80,7 +80,7 @@ all major JavaScript engines, including [SpiderMonkey](https://twitter.com/Spide
 # Restoring `for..in` peak performance
 
 This was also already described in a [detailed blog post](/2017/09/07/restoring-for-in-peak-performance/). The **TL;DR**
-is that when we [launched Ignition and TurboFan](https://v8project.blogspot.com/2017/05/launching-ignition-and-turbofan.html),
+is that when we [launched Ignition and TurboFan](https://v8.dev/blog/launching-ignition-and-turbofan),
 we did so with a couple of regressions that we'd need to address once the dust settles. One of the major performance hits
 was a **4-5x** regression in `for..in` peak performance as noticed in [Get ready: A new V8 is coming, Node.js performance is
 changing](https://www.nearform.com/blog/node-js-is-getting-a-new-v8-with-turbofan/).
@@ -359,7 +359,7 @@ The former was straight-forward, just [adding a new `ObjectIsArrayBufferView`
 predicate](https://chromium-review.googlesource.com/691660) to TurboFan and lowering calls to `ArrayBuffer.isView` to
 this newly introduced predicate. The latter was a bit more involved, and required both changes to the [baseline implementation
 and the TurboFan treatment](https://chromium-review.googlesource.com/695021). The fundamental idea was to use the fact
-that each kind of `TypedArray` has a specific [elements kind](https://v8project.blogspot.com/2017/09/elements-kinds-in-v8.html),
+that each kind of `TypedArray` has a specific [elements kind](https://v8.dev/blog/elements-kinds),
 i.e. `UINT8_ELEMENTS`, `FLOAT64_ELEMENTS`, and so on. So the implementation now simply switches on the elements kind
 on the hidden class of the receiver and returns the proper String or `undefined` if it's not a `TypedArray`.
 
@@ -458,7 +458,7 @@ yields otherwise).
 
 Unfortunately [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is)
 was previously implemented as C++ builtin, despite having all the logic for a fast
-[`CodeStubAssembler`](https://github.com/v8/v8/wiki/CodeStubAssembler-Builtins) based version in place already. Also
+[`CodeStubAssembler`](https://v8.dev/docs/csa-builtins) based version in place already. Also
 TurboFan didn't really know anything about `Object.is`, not even for the fairly simple cases where one side is statically
 known to be `-0` or `NaN` (the interesting cases), or where both inputs refer to the same SSA value, which can be
 constant-folded to `true` easily since `Object.is` identifies `NaN`s (in contrast to strict equality).

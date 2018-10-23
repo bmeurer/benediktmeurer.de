@@ -95,7 +95,7 @@ bar(new A);
 bar(new B);
 ```
 
-Running this with [`d8`](https://github.com/v8/v8/wiki/Using-D8) and the `--trace-ic` flag we can see that the
+Running this with [`d8`](https://v8.dev/docs/d8) and the `--trace-ic` flag we can see that the
 `LoadIC` (inline cache) for the property access `instance.foo` goes polymorphic, indicated by the `P` state:
 
 ```
