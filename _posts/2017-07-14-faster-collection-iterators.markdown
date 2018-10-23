@@ -170,7 +170,7 @@ The new implementation of
 [%SetIteratorPrototype%.next()](https://www.ecma-international.org/ecma-262/6.0/#sec-%setiteratorprototype%.next) does exactly
 that. The [baseline implementation](https://chromium-review.googlesource.com/563626) (i.e. the code you execute before the calling function becomes hot and eventually gets
 optimized by TurboFan) is now fully implemented in JavaScript land, using our so-called
-[`CodeStubAssembler`](https://github.com/v8/v8/wiki/CodeStubAssembler-Builtins), and essentially only calls to C++ to handle
+[`CodeStubAssembler`](https://v8.dev/docs/csa-builtins), and essentially only calls to C++ to handle
 garbage collection (when available memory is exhausted) or in case of an exception. The [optimized implementation](https://chromium-review.googlesource.com/570159) fully
 inlines the call to `iterator.next()` into the optimized code of the calling function, i.e. `sum` in the example above, and
 leveraging advanced compiler techniques it's able to avoid allocating both the `iterator` and the `iterResult` in case of
@@ -190,7 +190,7 @@ do we need to transition from JavaScript to C++ land, but to handle the `callbac
 </center></p>
 
 So just porting the baseline for the two `forEach` builtins to the 
-[`CodeStubAssembler`](https://github.com/v8/v8/wiki/CodeStubAssembler-Builtins) already allowed me to pick a couple of
+[`CodeStubAssembler`](https://v8.dev/docs/csa-builtins) already allowed me to pick a couple of
 low-hanging fruits here. Fully optimizing and inlining the `forEach` builtins into TurboFan optimized code requires a
 bit more magic and is not yet implemented.
 

@@ -3,7 +3,7 @@ layout: post
 title: Restoring for..in peak performance
 ---
 
-When we [launched Ignition and TurboFan](https://v8project.blogspot.com/2017/05/launching-ignition-and-turbofan.html) earlier this year,
+When we [launched Ignition and TurboFan](https://v8.dev/blog/launching-ignition-and-turbofan) earlier this year,
 we did so knowing it wouldn't be overall positive, but that we'll see performance regressions in several cases which we need to address in
 later releases. Most of these regressions were just a couple percent here and there, with a few significant regressions. Among the most
 serious regressions was the [4-5x performance hit on for..in peak performance](http://crbug.com/v8/6702), which was also highlighted in the
@@ -57,7 +57,7 @@ In this case, it doesn't really matter, because `obj` always has a single shape 
 prototype, so the lookup of `obj.hasOwnProperty` is both fast and safe.
 
 However looking at the performance of the micro-benchmarks in different V8 versions shows a significant drop in performance
-with the [release of V8 5.9](https://v8project.blogspot.com/2017/04/v8-release-59.html), which is when we launched Ignition
+with the [release of V8 5.9](https://v8.dev/blog/v8-release-59), which is when we launched Ignition
 and TurboFan.
 
 ![object iteration](/images/2017/nearform-20170907.png)
@@ -74,7 +74,7 @@ This was not an acceptable situation, so we had to take action and address this 
 we dive into that, let's recap quickly what happened in Crankshaft land earlier: The fundamental approach to fast `for..in`
 in V8 is mostly independent of the tier and the concrete optimizing compiler, i.e. it works with both Ignition and TurboFan
 (and also worked similarly with Fullcodegen and Crankshaft before we dropped them). This approach is documented in a
-[separate detailed blog post](https://v8project.blogspot.com/2017/03/fast-for-in-in-v8.html) by [Camillo
+[separate detailed blog post](https://v8.dev/blog/fast-for-in) by [Camillo
 Bruni](http://twitter.com/camillobruni) (who still owes me cookies for reading the full blog post).
 
 [![Camillo's tweet](/images/2017/cbruni-20170907.png)](https://twitter.com/camillobruni/status/837024653214421029)
@@ -90,9 +90,9 @@ things like proxies):
   because fast mode `for..in` loops iterate only enumerable properties on the receiver itself.
 - A property access `object[key]` inside such a loop was turned into an `HLoadFieldByIndex` instruction,
   using the known index of the value for `key` inside the `object`. This additional *enum cache indices* table
-  is precomputed as part of the [*enum cache* setup](https://v8project.blogspot.com/2017/03/fast-for-in-in-v8.html).
+  is precomputed as part of the [*enum cache* setup](https://v8.dev/blog/fast-for-in).
 
-[![Enum cache structure](/images/2017/enum-cache-20170907.png)](https://v8project.blogspot.com/2017/03/fast-for-in-in-v8.html)
+[![Enum cache structure](/images/2017/enum-cache-20170907.png)](https://v8.dev/blog/fast-for-in)
 
 While the *keys* in the *Enum Cache* contain the (String) names of the properties in enumeration order,
 the *indices* contain the location of the property values in the object (in the same order). But the *indices*

@@ -207,13 +207,13 @@ Note that `%Foo` is a special internal syntax and means call the function `Foo` 
 Yet another example was the Promise implementation in V8, which was suffering a lot, and people would actually prefer to use polyfills despite V8 providing a native Promise implementation for quite some time. By porting the Promise implementation to the `CodeStubAssembler`, we were able to speed up Promises and async/await by **500%**.
 
 <p><center>
-  <a href="https://v8project.blogspot.com/2017/02/v8-release-57.html">
+  <a href="https://v8.dev/blog/v8-release-57">
     <img src="/images/2017/promises-20170301.png" alt="Async performance improvements in V8" />
   </a>
   <br />
   <small><i>
     Source:
-    <a href="https://v8project.blogspot.com/2017/02/v8-release-57.html">V8 release 5.7</a>.
+    <a href="https://v8.dev/blog/v8-release-57">V8 release 5.7</a>.
   </i></small>
 </center></p>
 

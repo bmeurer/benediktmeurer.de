@@ -91,7 +91,7 @@ Google on TurboFan and TurboFan-related topics, i.e.
 - [TurboFan IR](https://docs.google.com/presentation/d/1Z9iIHojKDrXvZ27gRX51UxHD-bKf1QcPzSijntpMJBM)
 - [CodeStubAssembler: Redux](https://docs.google.com/presentation/d/1u6bsgRBqyVY3RddMfF1ZaJ1hWmqHZiVMuPRw_iKpHlY)
 
-and we will now try to make as much of this information available to the public as possible (check the [TurboFan](https://github.com/v8/v8/wiki/TurboFan)
+and we will now try to make as much of this information available to the public as possible (check the [TurboFan](https://v8.dev/docs/turbofan)
 page on the V8 wiki for additional resources). We also plan to give talks at various JavaScript and Node.js conferences next year (ping
 [me](https://twitter.com/bmeurer) if you would like us to talk about Ignition and TurboFan at some particular conference).
 
