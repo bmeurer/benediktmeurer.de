@@ -10,7 +10,6 @@ twitter: bmeurer
 
 exclude:
   - README.markdown
-  - vendor
 
 # SITE CONFIGURATION
 baseurl: "" # the subpath of your site, e.g. /blog/
