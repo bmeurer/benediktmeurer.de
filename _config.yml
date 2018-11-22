@@ -25,6 +25,9 @@ paginate_path: "page:num"
 
 # BUILD SETTINGS
 markdown: kramdown
-gems:
+plugins:
+  - jekyll-minifier
   - jekyll-paginate
+jekyll-minifier:
+  compress_javascript: false  # UglifyJS integration seems to be broken.
 highlighter: rouge
