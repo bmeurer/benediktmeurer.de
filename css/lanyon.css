@@ -370,6 +370,15 @@ a.post-continue:hover {
   color: inherit;
 }
 
+/* Embedded images */
+.page img[align=left] {
+  margin-right: 3%;
+}
+
+.page img[align=right] {
+  margin-left: 3%;
+}
+
 
 /*
  * Pagination
