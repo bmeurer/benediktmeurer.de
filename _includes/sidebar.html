@@ -1,38 +1,34 @@
-<div class="span-5 last" id="sidebar">
-  <div class="sidebarbox">
-    <h4>Pages</h4>
-    <ul id="pages">
-      <li><a rel="bookmark" title="Home" href="/">Home</a></li>
-      <li><a rel="bookmark" title="Archive" href="/archive">Archive</a></li>
-      <li><a rel="bookmark" title="Projects" href="/projects">Projects</a></li>
-      <li><a rel="bookmark" title="publications" href="/publications">Publications</a></li>
-      <li><a rel="bookmark" title="About" href="/about">About</a></li>
-    </ul>
+<!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <p>{{ site.description }}</p>
   </div>
 
-  <div class="sidebarbox">
-    <h4>Subscribe</h4>
-    <ul>
-      <li><a title="RSS Feed" href="{{ site.atom }}" class="icon-link" id="feed-link">RSS</a></li>
-    </ul>
-  </div>
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item{% if page.url == site.baseurl %} active{% endif %}" href="{{ site.baseurl }}/">Home</a>
 
-  <div class="sidebarbox">
-    <h4>Me Elsewhere</h4>
-    <ul>
-      <li><a rel="bookmark" title="GitHub" href="https://github.com/{{ site.github }}" class="icon-link" id="github-link">GitHub</a></li>
-      <li><a rel="bookmark" title="Twitter" href="http://twitter.com/{{ site.twitter }}" class="icon-link" id="twitter-link">Twitter</a></li>
-      <li><a rel="bookmark" title="Facebook" href="https://facebook.com/benedikt.meurer" class="icon-link" id="facebook-link">Facebook</a></li>
-	    <li><a rel="bookmark" title="LinkedIn" href="http://linkedin.com/in/benediktmeurer" class="icon-link" id="linkedin-link">LinkedIn</a></li>
-	    <li><a rel="bookmark" title="ohloh" href="http://www.ohloh.net/accounts/bmeurer" class="icon-link" id="ohloh-link">ohloh</a></li>
-    </ul>
-  </div>
+    {% comment %}
+      The code below dynamically generates a sidebar nav of pages with
+      `layout: page` in the front-matter. See readme for usage.
+    {% endcomment %}
 
-  <div class="sidebarbox">
-    <h4>Contact Me</h4>
-    <ul>
-      <li><a rel="bookmark" title="Email" href="{{ site.email }}" class="icon-link" id="gmail-link">Gmail</a></li>
-    </ul>
+    {% assign pages_list = site.pages | sort:"url" %}
+    {% for node in pages_list %}
+      {% if node.title != null %}
+        {% if node.layout == "page" %}
+          <a class="sidebar-nav-item{% if page.url == node.url %} active{% endif %}" href="{{ node.url }}">{{ node.title }}</a>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  </nav>
+
+  <div class="sidebar-item">
+    <p>
+      &copy; {{ site.time | date: '%Y' }}. All rights reserved.
+    </p>
   </div>
 </div>
-
