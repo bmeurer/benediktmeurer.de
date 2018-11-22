@@ -7,14 +7,18 @@ title: Blog
   {% for post in paginator.posts %}
   <div class="post">
     <h1 class="post-title">
-      <a href="{{ post.url | prepend: site.baseurl }}">
-        {{ post.title }}
-      </a>
+      <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
     </h1>
 
     <span class="post-date">{{ post.date | date_to_string }}</span>
 
+    {% comment %}
     {{ post.content }}
+    {% endcomment %}
+
+    {{ post.excerpt }}
+
+    <a class="post-continue" href="{{ post.url | prepend: site.baseurl }}">Continue reading</a>
   </div>
   {% endfor %}
 </div>
@@ -35,4 +39,3 @@ title: Blog
     <span class="pagination-item newer">Newer</span>
   {% endif %}
 </div>
-

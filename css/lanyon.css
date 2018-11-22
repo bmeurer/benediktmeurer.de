@@ -331,6 +331,20 @@ a.sidebar-nav-item:focus {
   color: #9a9a9a;
 }
 
+/* Continue reading link */
+a.post-continue {
+  display: block;
+  padding: 1rem;
+  border: 1px solid #eee;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
+  color: #ccc;
+  text-align: center;
+}
+
+a.post-continue:hover {
+  background-color: #f5f5f5;
+}
+
 /* Related posts */
 .related {
   padding-top: 2rem;
