@@ -16,7 +16,6 @@ baseurl: "" # the subpath of your site, e.g. /blog/
 url: "https://benediktmeurer.de"
 
 # SCRIPTS
-google_analytics: "UA-24476004-1"
 disqus_shortname: "benediktmeurer"
 
 # PAGINATION
