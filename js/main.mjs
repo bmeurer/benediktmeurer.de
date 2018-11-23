@@ -17,3 +17,22 @@ if (location.search.includes('utm_source')) {
   // set the location to `location.pathname` directly.
   history.replaceState({}, '', location.pathname);
 }
+
+// Google Analytics.
+const UA_ID = 'UA-24476004-1';
+self.dataLayer = [];
+self.gtag = function() {
+  // Note: This needs to be an actual `arguments` object. Proper arrays
+  // (such as those produced by rest parameters) prevent any analytics
+  // from being collected at all. :(
+  self.dataLayer.push(arguments);
+};
+gtag('js', new Date());
+gtag('config', UA_ID, {
+  'anonymize_ip': true,
+  'referrer': document.referrer.split('?')[0],
+});
+const firstScript = document.scripts[0];
+const scriptElement = document.createElement('script');
+scriptElement.src = `https://www.googletagmanager.com/gtag/js?id=${UA_ID}`;
+firstScript.parentNode.insertBefore(scriptElement, firstScript);
