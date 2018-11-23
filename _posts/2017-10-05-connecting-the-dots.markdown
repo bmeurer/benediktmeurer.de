@@ -67,7 +67,7 @@ and make these calls as fast as direct calls or indirect calls via the
 [`Function.prototype.call`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call)
 builtin.
 
-![Object constructor calls performance results](/images/2017/results-20170831.png)
+![Object constructor calls performance results](/images/2017/results-20170831.svg)
 
 What was awesome about this change is that it went [viral](https://twitter.com/v8js/status/903150329973403648) and soon
 all major JavaScript engines, including [SpiderMonkey](https://twitter.com/SpiderMonkeyJS/status/903572265379520512),
@@ -143,7 +143,7 @@ it, so we had to [introduce some magic](https://chromium-review.googlesource.com
 where the `Object` constructor is being used as the base class, so that TurboFan can still fully inline the
 object instantiation.
 
-![Object constructor subclassing performance](/images/2017/object-constructor-subclassing-20171005.png)
+![Object constructor subclassing performance](/images/2017/object-constructor-subclassing-20171005.svg)
 
 Compared to Chrome 58, which is latest version shipping with the old Crankshaft based optimization pipeline,
 the performance of subclassing `Object` improved by **5.4x**.
@@ -175,7 +175,7 @@ function ar2str(uint16arr) {
 It turned out to be fairly straight-forward to just add a [fast-path for `TypedArray`s to the `%CreateListFromArrayLike`
 C++ runtime function](https://chromium-review.googlesource.com/657405), which is used by `Function.prototype.apply` under the hood.
 
-![CreateListFromArrayLike performance](/images/2017/create-list-from-array-like-20171005.png)
+![CreateListFromArrayLike performance](/images/2017/create-list-from-array-like-20171005.svg)
 
 So it's a **2.2x** to **3.4x** improvement compared to Chrome 58, and there's probably still some room for improvement
 in the future. The same optimization was also later [ported to
@@ -199,7 +199,7 @@ A [similar observation](https://bugs.webkit.org/show_bug.cgi?id=175823) had alre
 And it turned out that we were also missing this optimization in V8. So I took the idea from SpiderMonkey and [ported it
 to TurboFan](https://chromium-review.googlesource.com/657582).
 
-![Array.prototype.push performance](/images/2017/array-push-20171005.png)
+![Array.prototype.push performance](/images/2017/array-push-20171005.svg)
 
 This essentially removes the weird performance cliff when going from single argument to multiple arguments in a single
 call to `Array.prototype.push`. And we also closed the gap on the
@@ -264,7 +264,7 @@ properties](https://chromium-review.googlesource.com/677603) consistently, i.e. 
 frozen via [`Object.freeze`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze)
 or sealed via [`Object.seal`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/seal).
 
-![Tagged templates performance](/images/2017/template-string-tag-20171005.png)
+![Tagged templates performance](/images/2017/template-string-tag-20171005.svg)
 
 Together these changes yielded a massive performance improvement of up to **23x** and helped us to boost the
 [`six-speed-templatestringtag-es6`](https://arewefastyet.com/#machine=29&view=single&suite=six-speed&subtest=templatestringtag-es6)
@@ -307,7 +307,7 @@ fancy performance cliff, yielding a roughly **3x** to **4x** performance improve
 **8x** improvement compared to Chrome 58 (which didn't get the inlining right for this case), on the micro-benchmarks from
 the [tracking bug](https://bugs.chromium.org/p/v8/issues/detail?id=6856#c1).
 
-![Inlined literals performance](/images/2017/inlined-literals-20171005.png)
+![Inlined literals performance](/images/2017/inlined-literals-20171005.svg)
 
 
 # Optimize `ArrayBuffer` view checks
@@ -363,7 +363,7 @@ that each kind of `TypedArray` has a specific [elements kind](https://v8.dev/blo
 i.e. `UINT8_ELEMENTS`, `FLOAT64_ELEMENTS`, and so on. So the implementation now simply switches on the elements kind
 on the hidden class of the receiver and returns the proper String or `undefined` if it's not a `TypedArray`.
 
-![TypedArray predicate performance](/images/2017/arraybuffer-view-checks-20171005.png)
+![TypedArray predicate performance](/images/2017/arraybuffer-view-checks-20171005.svg)
 
 We observe up to **14.5x** performance improvements compared to Chrome 58.
 
@@ -379,7 +379,7 @@ bug was a [no brainer](https://chromium-review.googlesource.com/691731): We just
 truncate `true`, `false`, `undefined` and `null` to numbers instead of sending the IC to `MEGAMORPHIC` state, and also
 tell TurboFan to properly convert the right-hand side of the assignment to a number first (if it's not already a number).
 
-![TypedArray boolean performance](/images/2017/typed-array-boolean-20171005.png)
+![TypedArray boolean performance](/images/2017/typed-array-boolean-20171005.svg)
 
 With this in place the performance of storing `true` or `false` to a `TypedArray` is now identical to storing integers,
 compared to Chrome 61 that's a solid **70x** improvement.
@@ -417,7 +417,7 @@ dots](https://chromium-review.googlesource.com/695108) again (plus some [yak
 shaving](https://chromium-review.googlesource.com/695307) to repair a bug that I flushed out with the initial CL) to
 fix the odd performance cliff with polymorphic Symbol lookups.
 
-![Polymorphic symbol lookup performance](/images/2017/symbol-lookup-polymorphic-20171005.png)
+![Polymorphic symbol lookup performance](/images/2017/symbol-lookup-polymorphic-20171005.svg)
 
 ![Slava saying it's fixed on Twitter](/images/2017/slava-fixed-20171005.png)
 
@@ -467,7 +467,7 @@ As mentioned we had all the building blocks in place to handle `Object.is` in a 
 exercise in [porting the existing implementation](https://chromium-review.googlesource.com/700254) and hooking
 it up to TurboFan.
 
-![Object.is performance](/images/2017/object-is-20171005.png)
+![Object.is performance](/images/2017/object-is-20171005.svg)
 
 So performance of `Object.is` improved by up to **14x** since Chrome 58, and starting with Chrome 63 and/or Node 9,
 it should be fine performance-wise to use `Object.is`, especially for the edge case checks, i.e. checking for `-0`
