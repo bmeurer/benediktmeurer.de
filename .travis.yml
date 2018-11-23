@@ -3,5 +3,6 @@ script:
 - bundle exec jekyll build
 deploy:
   provider: firebase
+  skip_cleanup: true
   token:
     secure: TdwSMUsuYw9J6rwKqCcNCgDhXvGz+IoHWAfZv2FDSYy08uRII5wrPpwQKv8S/rv9KYPw/4Hlm8Q82EHfeGeW5uJSxSuQTcFc9SwUbOKFI5kB4pUZ1DVwwT5MQmEPIijkkT7frPqhlvseGqB9aojBWdWM8i8NmHMkHW6PRWaeVU0=
