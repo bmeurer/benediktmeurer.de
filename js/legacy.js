@@ -11,4 +11,11 @@
       checkbox.checked = false;
     }
   }, false);
+
+  // Remove UTM garbage from URLs, to make it less likely such links get shared.
+  if (location.search.indexOf('utm_source') > -1) {
+    // This site doesn’t use query string parameters anyway, so we can just
+    // set the location to `location.pathname` directly.
+    history.replaceState({}, '', location.pathname);
+  }
 })();

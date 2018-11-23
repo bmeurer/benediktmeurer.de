@@ -10,3 +10,10 @@ document.addEventListener('click', event => {
     checkbox.checked = false;
   }
 }, false);
+
+// Remove UTM garbage from URLs, to make it less likely such links get shared.
+if (location.search.includes('utm_source')) {
+  // This site doesn’t use query string parameters anyway, so we can just
+  // set the location to `location.pathname` directly.
+  history.replaceState({}, '', location.pathname);
+}
