@@ -363,5 +363,5 @@ usual advice still applies, more than ever: Write idiomatic JavaScript, let the 
 of the performance, optimize only when necessary and after careful profiling.
 
 
-  [1]: /images/2018/results66-20180323.png "results 6.6.png"
-  [2]: /images/2018/results67-20180323.png "results 6.7.png"
+  [1]: /images/2018/results66-20180323.svg "Results for V8 6.6"
+  [2]: /images/2018/results67-20180323.svg "Results for V8 6.7"
