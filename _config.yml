@@ -8,8 +8,6 @@ description: "Personal website of Benedikt Meurer, JavaScript Engine Hacker and 
 github: bmeurer
 twitter: bmeurer
 
-include:
-  - _headers
 exclude:
   - README.markdown
   - vendor
