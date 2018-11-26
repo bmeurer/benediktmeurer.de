@@ -36,6 +36,7 @@ GEM
       jekyll (~> 3.5)
       uglifier (~> 3.2)
     jekyll-paginate (1.1.0)
+    jekyll-pwa-plugin (2.2.1)
     jekyll-sass-converter (1.5.2)
       sass (~> 3.4)
     jekyll-watch (2.1.2)
@@ -71,6 +72,7 @@ DEPENDENCIES
   jekyll
   jekyll-minifier
   jekyll-paginate
+  jekyll-pwa-plugin
 
 BUNDLED WITH
    1.16.1

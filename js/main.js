@@ -12,6 +12,19 @@
     }
   }, false);
 
+  // Install our service worker.
+  if ('serviceWorker' in navigator) {
+    addEventListener('load', function() {
+      navigator.serviceWorker.register('/sw.js').then(
+        function(result) {
+          console.log("SW registration succeeded: ", result);
+        },
+        function(error) {
+          console.error("SW registration failed: ", error)
+        });
+    });
+  }
+
   // Remove UTM garbage from URLs, to make it less likely such links get shared.
   if (location.search.indexOf('utm_source') > -1) {
     // This site doesn’t use query string parameters anyway, so we can just
