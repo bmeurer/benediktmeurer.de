@@ -32,11 +32,9 @@ pwa:
   precache_glob_directory: /
   precache_glob_patterns:
     - "{js,css,images}/**/*.{js,css,svg}"
-    - about/index.html
-    - archive/index.html
-    - images/me-small.jpg
+    - "*/index.html"
+    - "images/me-small*.jpg"
     - index.html
-    - publications/index.html
   precache_glob_ignores:
     - sw.js
 
