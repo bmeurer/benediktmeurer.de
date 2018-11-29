@@ -7,7 +7,7 @@ With the addition of [`Object.freeze`](https://developer.mozilla.org/en/docs/Web
 and [`Object.seal`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/seal) in
 [ECMAScript 5.1](http://www.ecma-international.org/ecma-262/5.1/), there's a way for developers to prevent
 various kinds of mutations to objects. For example, `Object.freeze` can be used to make an object essentially
-*immutable*:
+*immutable*.
 
 ```javascript
 "use strict";

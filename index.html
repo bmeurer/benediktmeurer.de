@@ -12,13 +12,8 @@ title: Blog
 
     <span class="post-date">{{ post.date | date_to_string }}</span>
 
-    {% comment %}
-    {{ post.content }}
-    {% endcomment %}
-
-    {{ post.excerpt }}
-
-    <a class="post-continue" href="{{ post.url | prepend: site.baseurl }}">Continue reading...</a>
+    {{ post.excerpt | markdownify | remove: '<p>' | remove: '</p>' }}
+    <a href="{{ post.url | prepend: site.baseurl }}"><strong>Read more...</strong></a>
   </div>
   {% endfor %}
 </div>

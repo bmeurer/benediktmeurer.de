@@ -9,7 +9,9 @@ JavaScript, specifically [`Map`](https://developer.mozilla.org/en/docs/Web/JavaS
 [`WeakMap`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/WeakMap)s and
 [`WeakSet`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/WeakSet)s). These collections are
 iterable via the newly introduced *iteration protocol*, which means you can use them together with language constructs
-like `for-of` and spreads. For example for `Set`s
+like `for-of` and spreads.
+
+For example for `Set`s
 
 <p><center>
   <img src="/images/2017/devtools-set-20170714.png" alt="Set iteration" />
