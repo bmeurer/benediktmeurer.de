@@ -6,7 +6,7 @@ layout: default
   <h1 class="post-title">{{ page.title }}</h1>
 
   <span class="post-date">
-    <i class="far fa-calendar-alt" title="Date published"> {{ page.date | date_to_string }}</i>
+    <i class="far fa-calendar-alt" title="Date published"> <a href="{{ page.url | prepend: site.baseurl }}" title="Permanent link to this post">{{ page.date | date_to_string }}</a></i>
   </span>
 
   {{ content }}
