@@ -10,7 +10,9 @@ title: Blog
       <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
     </h1>
 
-    <span class="post-date">{{ post.date | date_to_string }}</span>
+    <span class="post-date">
+      <i class="far fa-calendar-alt" title="Date published"> {{ post.date | date_to_string }}</i>
+    </span>
 
     {{ post.excerpt | markdownify | remove: '<p>' | remove: '</p>' }}
     <a href="{{ post.url | prepend: site.baseurl }}"><strong>Read more...</strong></a>
