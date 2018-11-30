@@ -9,9 +9,7 @@ Asynchronous processing in JavaScript traditionally had a reputation for not bei
 
 **Note:** If you prefer watching a presentation over reading articles, then enjoy the video below! If not, skip the video and read on.
 
-<figure>
-  <iframe src="https://www.youtube.com/embed/DFP5DKDQfOc" width="100%" height="360" frameborder="0" allowfullscreen></iframe>
-</figure>
+<iframe src="https://www.youtube.com/embed/DFP5DKDQfOc" width="100%" height="360" frameborder="0" allowfullscreen></iframe>
 
 ## A new approach to async programming
 
