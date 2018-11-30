@@ -7,6 +7,8 @@ email: benedikt.meurer@gmail.com
 description: "Personal website of Benedikt Meurer, JavaScript Engine Hacker and Programming Language Enthusiast."
 github: bmeurer
 twitter: bmeurer
+linkedin: benediktmeurer
+facebook: benedikt.meurer
 
 exclude:
   - README.markdown
