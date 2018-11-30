@@ -24,6 +24,10 @@ workbox.routing.registerRoute(
 
 // third party files
 workbox.routing.registerRoute(
-    /^https?:\/\/fonts.googleapis.com/,
+    /^https?:\/\/fonts\.googleapis\.com/,
+    workbox.strategies.staleWhileRevalidate()
+);
+workbox.routing.registerRoute(
+    /^https?:\/\/use\.fontawesome\.com/,
     workbox.strategies.staleWhileRevalidate()
 );
