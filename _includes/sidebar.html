@@ -20,8 +20,8 @@
       {% endif %}
     {% endfor %}
 
-    <a class="sidebar-nav-item" href="https://twitter.com/{{ site.twitter }}"><i class="fab fa-twitter"></i> Twitter</a>
-    <a class="sidebar-nav-item" href="https://github.com/{{ site.github }}"><i class="fab fa-github"></i> GitHub</a>
+    {% if site.twitter %}<a class="sidebar-nav-item" href="https://twitter.com/{{ site.twitter }}"><i class="fab fa-twitter"></i> Twitter</a>{% endif %}
+    {% if site.github %}<a class="sidebar-nav-item" href="https://github.com/{{ site.github }}"><i class="fab fa-github"></i> GitHub</a>{% endif %}
   </nav>
 
   <div class="sidebar-item">
