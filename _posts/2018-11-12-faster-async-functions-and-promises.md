@@ -125,7 +125,7 @@ The results on the [parallel benchmark](https://github.com/v8/promise-performanc
 
 We’ve managed to improve `Promise.all` performance by a factor of **8×**.
 
-However, the above benchmarks are synthetic micro-benchmarks. The V8 team is more interested in how our optimizations affect [real-world performance of actual user code](/blog/real-world-performance).
+However, the above benchmarks are synthetic micro-benchmarks. The V8 team is more interested in how our optimizations affect [real-world performance of actual user code](https://v8.dev/blog/real-world-performance).
 
 ![http benchmark results](/images/2018/http-benchmarks-20181112.svg "http benchmark results")
 
@@ -133,11 +133,11 @@ The above chart visualizes the performance of some popular HTTP middleware frame
 
 These performance improvements are the result of three key achievements:
 
-- [TurboFan](/docs/turbofan), the new optimizing compiler 🎉
-- [Orinoco](/blog/orinoco), the new garbage collector 🚛
+- [TurboFan](https://v8.dev/docs/turbofan), the new optimizing compiler 🎉
+- [Orinoco](https://v8.dev/blog/orinoco), the new garbage collector 🚛
 - a Node.js 8 bug causing `await` to skip microticks 🐛
 
-When we [launched TurboFan](/blog/launching-ignition-and-turbofan) in [Node.js 8](https://medium.com/the-node-js-collection/node-js-8-3-0-is-now-available-shipping-with-the-ignition-turbofan-execution-pipeline-aa5875ad3367), that gave a huge performance boost across the board.
+When we [launched TurboFan](https://v8.dev/blog/launching-ignition-and-turbofan) in [Node.js 8](https://medium.com/the-node-js-collection/node-js-8-3-0-is-now-available-shipping-with-the-ignition-turbofan-execution-pipeline-aa5875ad3367), that gave a huge performance boost across the board.
 
 We’ve also been working on a new garbage collector, called Orinoco, which moves garbage collection work off the main thread, and thus improves request processing significantly as well.
 
