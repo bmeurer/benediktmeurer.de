@@ -31,10 +31,7 @@ pwa:
   precache_recent_posts_num: 10
   precache_glob_directory: /
   precache_glob_patterns:
-    - "{js,css,images}/**/*.{js,css,svg}"
-    - "*/index.html"
-    - "images/me-small*.jpg"
-    - index.html
+    - "{js,css}/**/*.{js,css}"
   precache_glob_ignores:
     - sw.js
 
