@@ -12,7 +12,7 @@ This article describes some key fundamentals that are common to all JavaScript e
 **Note:** If you prefer watching a presentation over reading articles, then enjoy the video below! If not, skip the video and read on.
 
 <figure>
-  <iframe src="https://www.youtube.com/embed/IFWulQnM5E0" width="100%" height="360"></iframe>
+  <iframe src="https://www.youtube.com/embed/IFWulQnM5E0" width="100%" height="360" frameborder="0" allowfullscreen></iframe>
 </figure>
 
 ## Optimization tiers and execution trade-offs
