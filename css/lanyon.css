@@ -356,6 +356,16 @@ a.sidebar-nav-item:focus {
   margin-left: 3%;
 }
 
+/* Footnotes */
+.footnotes {
+	border-top: 1px solid #ccc;
+	padding-top: 10px;
+	font-size: 75%
+}
+.footnotes p {
+  margin-bottom: 0;
+}
+
 
 /*
  * Pagination
