@@ -27,18 +27,17 @@ These traditional JavaScript benchmarks drove amazing efforts to bring a level o
 the beginning of the century. Speed-ups up to a factor of 1000 were reported, and all of a sudden using `<script>` within a website was
 no longer a dance with the devil, and doing work client-side was not only possible, but even encouraged.
 
-<p><center>
+<figure>
   <a href="https://www.youtube.com/watch?v=PvZdTZ1Nl5o">
-    <img src="/images/2016/sethcds-20161216.png" alt="Measuring performance, A simplified history of benchmarking JS" />
+    <img src="/images/2016/sethcds-20161216.svg"
+         alt="Measuring performance, A simplified history of benchmarking JS"
+         title="Measuring performance, A simplified history of benchmarking JS">
   </a>
-  <br />
-  <small><i>
-    Source:
-    <a href="https://www.youtube.com/watch?v=PvZdTZ1Nl5o">Advanced JS performance with V8 and Web Assembly</a>,
-    Chrome Developer Summit 2016,
-    <a href="https://twitter.com/s3ththompson">@s3ththompson</a>.
-  </i></small>
-</center></p>
+  <figcaption>
+    Source: <a href="https://www.youtube.com/watch?v=PvZdTZ1Nl5o">Advanced JS performance with V8 and Web Assembly</a>,
+    Chrome Developer Summit 2016, <a href="https://twitter.com/s3ththompson">@s3ththompson</a>.
+  </figcaption>
+</figure>
 
 Now in 2016, all (relevant) JavaScript engines reached a level of performance that is incredible and web apps are as snappy as native
 apps (or can be as snappy as native apps). The engines ship with sophisticated optimizing compilers, that generate short sequences of
@@ -60,18 +59,17 @@ a fairly good job at that for quite some time, but nowadays the distribution of 
 so optimizing for Octane beyond where it is currently, is likely not going to yield any significant improvements in the real world
 (neither general web nor Node.js workloads).
 
-<p><center>
+<figure>
   <a href="https://youtu.be/xCx4uC7mn6Y">
-    <img src="/images/2016/verwaestblinkon-20161216.png" alt="Distribution of time in benchmarks vs. real world" />
+    <img src="/images/2016/verwaestblinkon-20161216.svg"
+         alt="Distribution of time in benchmarks vs. real world" 
+         title="Distribution of time in benchmarks vs. real world">
   </a>
-  <br />
-  <small><i>
-    Source:
-    <a href="https://youtu.be/xCx4uC7mn6Y">Real-World JavaScript Performance</a>,
-    BlinkOn 6 conference,
-    <a href="https://twitter.com/tverwaes">@tverwaes</a>.
-  </i></small>
-</center></p>
+  <figcaption>
+    Source: <a href="https://youtu.be/xCx4uC7mn6Y">Real-World JavaScript Performance</a>, BlinkOn 6 conference,
+    <a href="https://twitter.com/tverwaes">@tverwaes</a> and <a href="https://twitter.com/camillobruni">@camillobruni</a>.
+  </figcaption>
+</figure>
 
 Since it became more and more obvious that all the traditional benchmarks for measuring JavaScript performance, including the most
 recent versions of JetStream and Octane, might have outlived their usefulness, we started investigating new ways to measure real-world performance
@@ -85,11 +83,12 @@ positive impact on loading [youtube.com](http://youtube.com). In fact, spending 
 performance since the compiler takes more time, or you need to track additional feedback, thus eventually adding more time to the
 Compile, IC and Runtime buckets.
 
-<p><center>
-  <a href="http://browserbench.org/Speedometer">
-    <img src="/images/2016/speedometer-20161216.png" alt="Speedometer" />
-  </a>
-</center></p>
+<a href="http://browserbench.org/Speedometer">
+  <img src="/images/2016/speedometer-20161216.png"
+       srcset="/images/2016/speedometer-20161216.png, /images/2016/speedometer-20161216@2x.png 2x"
+       alt="Speedometer"
+       title="Speedometer">
+</a>
 
 There's another set of benchmarks, which try to measure overall browser performance, including JavaScript **and** DOM performance,
 with the most recent addition being the [Speedometer benchmark](http://browserbench.org/Speedometer). The benchmark tries to capture
@@ -102,18 +101,17 @@ significantly, and the [parser is being redesigned](https://twitter.com/bmeurer/
 this looks like it's only relevant in the browser space, we have very strong evidence that traditional peak performance benchmarks are
 also not a good proxy for real world Node.js application performance.
 
-<p><center>
+<figure>
   <a href="https://youtu.be/xCx4uC7mn6Y">
-    <img src="/images/2016/verwaestblinkon2-20161216.png" alt="Speedometer vs. Octane" />
+    <img src="/images/2016/verwaestblinkon2-20161216.svg"
+         alt="Speedometer vs. Octane"
+         title="Speedometer vs. Octane">
   </a>
-  <br />
-  <small><i>
-    Source:
-    <a href="https://youtu.be/xCx4uC7mn6Y">Real-World JavaScript Performance</a>,
-    BlinkOn 6 conference,
-    <a href="https://twitter.com/tverwaes">@tverwaes</a>.
-  </i></small>
-</center></p>
+  <figcaption>
+    Source: <a href="https://youtu.be/xCx4uC7mn6Y">Real-World JavaScript Performance</a>, BlinkOn 6 conference,
+    <a href="https://twitter.com/tverwaes">@tverwaes</a> and <a href="https://twitter.com/camillobruni">@camillobruni</a>.
+  </figcaption>
+</figure>
 
 All of this is probably already known to a wider audience, so I'll use the rest of this post to highlight a few concrete examples, why I think it's
 not only useful, but crucial for the health of the JavaScript community to stop paying attention to static peak performance benchmarks
@@ -126,11 +124,11 @@ with the prime example of performance test that has limited applicability in rea
 [`bitops-bitwise-and.js`](https://github.com/WebKit/webkit/blob/master/PerformanceTests/SunSpider/tests/sunspider-1.0.2/bitops-bitwise-and.js)
 performance test.
 
-<p><center>
-  <a href="https://github.com/WebKit/webkit/blob/master/PerformanceTests/SunSpider/tests/sunspider-1.0.2/bitops-bitwise-and.js">
-    <img src="/images/2016/bitops-bitwise-and-20161216.png" alt="bitops-bitwise-and.js" />
-  </a>
-</center></p>
+<a href="https://github.com/WebKit/webkit/blob/master/PerformanceTests/SunSpider/tests/sunspider-1.0.2/bitops-bitwise-and.js">
+  <img src="/images/2016/bitops-bitwise-and-20161216.png"
+       alt="bitops-bitwise-and.js"
+       title="bitops-bitwise-and.js">
+</a>
 
 There are a couple of algorithms that need fast bitwise and, especially in the area of code transpiled from C/C++ to JavaScript, so it
 does indeed make some sense to be able to perform this operation quickly. However real world web pages will probably not care whether
@@ -153,16 +151,16 @@ arguably looks a lot more reasonable that the bitwise and test, but looking at t
 reveals that a lot of time is spent on a single `eval` expression (up to 20% of the overall execution time for parsing and compiling
 plus up to 10% for actually executing the compiled code):
 
-<p><center>
-  <a href="https://github.com/WebKit/webkit/blob/master/PerformanceTests/SunSpider/tests/sunspider-1.0.2/string-tagcloud.js#L199">
-    <img src="/images/2016/string-tagcloud-20161216.png" alt="string-tagcloud.js" />
-  </a>
-</center></p>
+<a href="https://github.com/WebKit/webkit/blob/master/PerformanceTests/SunSpider/tests/sunspider-1.0.2/string-tagcloud.js#L199">
+  <img src="/images/2016/string-tagcloud-20161216.png"
+       alt="string-tagcloud.js"
+       title="string-tagcloud.js">
+</a>
 
 Looking closer reveals that this `eval` is executed exactly once, and is passed a JSONish string, that contains an array of 2501
 objects with `tag` and `popularity` fields:
 
-{% highlight javascript %}
+```js
 ([
   {
     "tag": "titillation",
@@ -196,9 +194,9 @@ objects with `tag` and `popularity` fields:
     "tag": "embryoctony",
     "popularity": 107852576
   },
-  ...
+  /* ... */
 ])
-{% endhighlight %}
+```
 
 Obviously parsing these object literals, generating native code for it and then executing that code, comes at a high cost. It
 would be a lot cheaper to just parse the input string as JSON and generate an appropriate object graph. So one trick to speed up
@@ -208,7 +206,7 @@ in 2007, this wouldn't even be a bad hack, since there was no [`JSON.parse`](htt
 but in 2017 this is just technical debt in the JavaScript engine and potentially slows down legit uses of `eval`. In fact
 updating the benchmark to modern JavaScript
 
-{% highlight patch %}
+```patch
 --- string-tagcloud.js.ORIG     2016-12-14 09:00:52.869887104 +0100
 +++ string-tagcloud.js  2016-12-14 09:01:01.033944051 +0100
 @@ -198,7 +198,7 @@
@@ -220,19 +218,18 @@ updating the benchmark to modern JavaScript
 
                  return typeof filter === 'function' ? walk('', j) : j;
              }
-{% endhighlight %}
+```
 
 yields an immediate performance boost, dropping runtime from 36ms to 26ms for V8 LKGR as of today, a 30% improvement!
 
-{% highlight console %}
+```
 $ node string-tagcloud.js.ORIG
 Time (string-tagcloud): 36 ms.
 $ node string-tagcloud.js
 Time (string-tagcloud): 26 ms.
 $ node -v
 v8.0.0-pre
-$ 
-{% endhighlight %}
+```
 
 This is a common problem with static benchmarks and performance test suites. Today noone would seriously use `eval`
 to parse JSON data (also for obvious security reaons, not only for the performance issues), but rather stick to
@@ -246,20 +243,20 @@ Ok, so let's look at yet another example: the
 This benchmark does a lot of matrix operations, where even the smartest compiler can't do a lot about it, but just has
 to execute it. Essentially the benchmark spends a lot of time executing the `Loop` function and functions called by it.
 
-<p><center>
-  <a href="https://github.com/WebKit/webkit/blob/master/PerformanceTests/SunSpider/tests/sunspider-1.0.2/3d-cube.js#L239">
-    <img src="/images/2016/3d-cube-loop-20161216.png" alt="3d-cube.js" />
-  </a>
-</center></p>
+<a href="https://github.com/WebKit/webkit/blob/master/PerformanceTests/SunSpider/tests/sunspider-1.0.2/3d-cube.js#L239">
+  <img src="/images/2016/3d-cube-loop-20161216.png"
+       alt="3d-cube.js"
+       title="3d-cube.js">
+</a>
 
 One interesting observation here is that the `RotateX`, `RotateY` and `RotateZ` functions are always called with the
 same constant parameter `Phi`.
 
-<p><center>
-  <a href="https://github.com/WebKit/webkit/blob/master/PerformanceTests/SunSpider/tests/sunspider-1.0.2/3d-cube.js#L151">
-    <img src="/images/2016/3d-cube-rotate-20161216.png" alt="3d-cube.js" />
-  </a>
-</center></p>
+<a href="https://github.com/WebKit/webkit/blob/master/PerformanceTests/SunSpider/tests/sunspider-1.0.2/3d-cube.js#L151">
+  <img src="/images/2016/3d-cube-rotate-20161216.png"
+       alt="3d-cube.js"
+       title="3d-cube.js">
+</a>
 
 This means that we basically always compute the same values for [`Math.sin`](https://tc39.github.io/ecma262/#sec-math.sin)
 and [`Math.cos`](https://tc39.github.io/ecma262/#sec-math.cos), 204 times each. There are only three different inputs,
@@ -277,16 +274,17 @@ We took serious hits on the SunSpider benchmark when we removed this benchmark s
 but we totally believe that it doesn't make sense to optimize for a benchmark while at the same time penalizing the
 real world use case in such a way.
 
-<p><center>
+<figure>
   <a href="https://arewefastyet.com/#machine=12&view=single&suite=ss&subtest=cube&start=1343350217&end=1415382608">
-    <img src="/images/2016/3d-cube-awfy-20161216.png" alt="3d-cube benchmark" />
+    <img src="/images/2016/3d-cube-awfy-20161216.png"
+         alt="3d-cube benchmark"
+         title="3d-cube benchmark">
   </a>
-  <br />
-  <small><i>
+  <figcaption>
     Source:
     <a href="https://arewefastyet.com/#machine=12&view=single&suite=ss&subtest=cube&start=1343350217&end=1415382608">arewefastyet.com</a>.
-  </i></small>
-</center></p>
+  </figcaption>
+</figure>
 
 Obviously a better way to deal with the constant sine/cosine inputs is a sane inlining heuristic that tries to
 balance inlining and take into account different factors like prefer inlining at call sites where constant folding
@@ -304,11 +302,11 @@ into account the overhead from incremental marking), that's more than 10% of the
 SunSpider suite! So any engine that doesn't want to risk a 10-20% slowdown due to a GC cycle has to somehow ensure it
 doesn't trigger GC while running SunSpider.
 
-<p><center>
-  <a href="https://github.com/WebKit/webkit/blob/master/PerformanceTests/SunSpider/resources/driver-TEMPLATE.html#L70">
-    <img src="/images/2016/sunspider-driver-20161216.png" alt="driver-TEMPLATE.html" />
-  </a>
-</center></p>
+<a href="https://github.com/WebKit/webkit/blob/master/PerformanceTests/SunSpider/resources/driver-TEMPLATE.html#L70">
+  <img src="/images/2016/sunspider-driver-20161216.png"
+       alt="driver-TEMPLATE.html"
+       title="driver-TEMPLATE.html">
+</a>
 
 There are different tricks to accomplish this, none of which has any positive impact in real world as far as I can tell.
 V8 uses a rather simple trick: Since every SunSpider test is run in a new `<iframe>`, which corresponds
@@ -331,17 +329,18 @@ company, and some of them even went as far as shipping old versions of V8 in the
 on SunSpider, exposing their users to all kinds of unpatched security holes that had long been fixed, and shielding
 their users from any real world performance benefits that come with more recent V8 versions!
 
-<p><center>
+<figure>
   <a href="https://www.engadget.com/2016/03/08/galaxy-s7-and-s7-edge-review/">
-    <img src="/images/2016/engadget-20161216.png" alt="Galaxy S7 and S7 Edge review: Samsung's finest get more polished" />
+    <img src="/images/2016/engadget-20161216.png"
+         alt="Galaxy S7 and S7 Edge review: Samsung's finest get more polished"
+         title="Galaxy S7 and S7 Edge review: Samsung's finest get more polished">
   </a>
-  <br />
-  <small><i>
+  <figcaption>
     Source:
     Galaxy S7 and S7 Edge review: Samsung's finest get more polished,
     <a href="https://www.engadget.com/2016/03/08/galaxy-s7-and-s7-edge-review/">www.engadget.com</a>.
-  </i></small>
-</center></p>
+  </figcaption>
+</figure>
 
 If we as the JavaScript community really want to be serious about real world performance in JavaScript land, we need to make the tech press
 stop using traditional JavaScript benchmarks to compare browsers or phones. I see that there's a benefit in being
@@ -351,9 +350,7 @@ need to compare two phones via a browser benchmark, please at least consider usi
 
 ### Cuteness break!
 
-<p><center>
-  <img src="http://images-cdn.9gag.com/photo/avZd9NX_700b.jpg" />
-</center></p>
+<img src="http://images-cdn.9gag.com/photo/avZd9NX_700b.jpg" width="100%">
 
 I always loved this in [Myles Borins](https://twitter.com/thealphanerd)' talks, so I had to shamelessly steal his idea.
 So now that we recovered from the SunSpider rant, let's go on to check the other classic benchmarks...
@@ -367,21 +364,21 @@ performance as SunSpider and Octane, so I'll highlight one particular example fr
 [`audio-oscillator.js`](https://github.com/h4writer/arewefastyet/blob/master/benchmarks/kraken/tests/kraken-1.1/audio-oscillator.js)
 test.
 
-<p><center>
-  <a href="https://github.com/h4writer/arewefastyet/blob/master/benchmarks/kraken/tests/kraken-1.1/audio-oscillator.js">
-    <img src="/images/2016/audio-oscillator-20161216.png" alt="audio-oscillator.js" />
-  </a>
-</center></p>
+<a href="https://github.com/h4writer/arewefastyet/blob/master/benchmarks/kraken/tests/kraken-1.1/audio-oscillator.js">
+  <img src="/images/2016/audio-oscillator-20161216.png"
+       alt="audio-oscillator.js"
+       title="audio-oscillator.js">
+</a>
 
 So the test invokes the `calcOsc` function 500 times. `calcOsc` first calls `generate` on the global `sine` `Oscillator`,
 then creates a new `Oscillator`, calls `generate` on that and adds it to the global `sine` oscillator. Without going into
 detail why the test is doing this, let's have a look at the `generate` method on the `Oscillator` prototype.
 
-<p><center>
-  <a href="https://github.com/h4writer/arewefastyet/blob/master/benchmarks/kraken/tests/kraken-1.1/audio-oscillator-data.js#L687">
-    <img src="/images/2016/audio-oscillator-generate-20161216.png" alt="audio-oscillator-data.js" />
-  </a>
-</center></p>
+<a href="https://github.com/h4writer/arewefastyet/blob/master/benchmarks/kraken/tests/kraken-1.1/audio-oscillator-data.js#L687">
+  <img src="/images/2016/audio-oscillator-generate-20161216.png"
+       alt="audio-oscillator-data.js"
+       title="audio-oscillator-data.js">
+</a>
 
 Looking at the code, you'd expect this to be dominated by the array accesses or the multiplications or the
 [`Math.round`](https://tc39.github.io/ecma262/#sec-math.round) calls in the loop, but surprisingly what's completely
@@ -390,11 +387,11 @@ in a profiler on any Intel machine reveals that more than 20% of the ticks are a
 we generate for the modulus. One interesting observation however is that the `waveTableLength` field of
 the `Oscillator` instances always contains the same value 2048, as it's only assigned once in the `Oscillator` constructor.
 
-<p><center>
-  <a href="https://github.com/h4writer/arewefastyet/blob/master/benchmarks/kraken/tests/kraken-1.1/audio-oscillator-data.js#L566">
-    <img src="/images/2016/audio-oscillator-constructor-20161216.png" alt="audio-oscillator-data.js" />
-  </a>
-</center></p>
+<a href="https://github.com/h4writer/arewefastyet/blob/master/benchmarks/kraken/tests/kraken-1.1/audio-oscillator-data.js#L566">
+  <img src="/images/2016/audio-oscillator-constructor-20161216.png"
+       alt="audio-oscillator-data.js"
+       title="audio-oscillator-data.js">
+</a>
 
 If we know that the right hand side of an integer modulus operation is a power of two, we can generate [way better
 code](https://graphics.stanford.edu/~seander/bithacks.html#ModulusDivisionEasy) obviously and completely avoid the `idiv`
@@ -411,20 +408,19 @@ languages](https://docs.google.com/presentation/d/1wZVIqJMODGFYggueQySdiA3tUYuHN
 Hooking this up with fullcodegen and Crankshaft was even fairly easy back then, the `BinaryOpIC` for `MOD` can also track
 known power of two right hand sides. In fact running the default configuration of V8 (with Crankshaft and fullcodegen)
 
-{% highlight console %}
+```
 $ ~/Projects/v8/out/Release/d8 --trace-ic audio-oscillator.js
 [...SNIP...]
 [BinaryOpIC(MOD:None*None->None) => (MOD:Smi*2048->Smi) @ ~Oscillator.generate+598 at audio-oscillator.js:697]
 [...SNIP...]
-$ 
-{% endhighlight %}
+```
 
 shows that the `BinaryOpIC` is picking up the proper constant feedback for the right hand side of the modulus, and properly
 tracks that the left hand side was always a small integer (a `Smi` in V8 speak), and we also always produced a small integer
 result. Looking at the generated code using `--print-opt-code --code-comments` quickly reveals that Crankshaft utilizes the
  feedback to generate an efficient code sequence for the integer modulus in `Oscillator.prototype.generate`:
 
-{% highlight nasm %}
+```
 [...SNIP...]
                   ;;; <@80,#84> load-named-field
 0x133a0bdacc4a   330  8b4343         movl rax,[rbx+0x43]
@@ -444,7 +440,7 @@ result. Looking at the generated code using `--print-opt-code --code-comments` q
                   ;;; <@127,#88> deoptimize
 0x133a0bdacd57   599  e81273cdff     call 0x133a0ba8406e
 [...SNIP...]
-{% endhighlight %}
+```
 
 So you see we load the value of `this.waveTableLength` (`rbx` holds the `this` reference), check that it's still 2048 (hexadecimal
 0x800), and if so just perform a bitwise and with the proper bitmask 0x7ff (`r11` contains the value of the loop induction variable
@@ -459,7 +455,7 @@ report feedback in the form `Smi*Smi->Smi` then. For example, let's assume we in
 `waveTableLength` on it, and call `generate` for the oscillator, then we'd lose 20% performance even though the actually interesting
 `Oscillator`s are not affected (i.e. the engine does non-local penalization here).
 
-{% highlight patch %}
+```patch
 --- audio-oscillator.js.ORIG    2016-12-15 22:01:43.897033156 +0100
 +++ audio-oscillator.js 2016-12-15 22:02:26.397326067 +0100
 @@ -1931,6 +1931,10 @@
@@ -472,18 +468,17 @@ report feedback in the form `Smi*Smi->Smi` then. For example, let's assume we in
 +
  var calcOsc = function() {
    sine.generate();
-{% endhighlight %}
+```
 
 Comparing the execution times of the original `audio-oscillator.js` and the version that contains an additional unused
 `Oscillator` instance with a modified `waveTableLength` shows the expected results:
 
-{% highlight console %}
+```
 $ ~/Projects/v8/out/Release/d8 audio-oscillator.js.ORIG
 Time (audio-oscillator-once): 64 ms.
 $ ~/Projects/v8/out/Release/d8 audio-oscillator.js
 Time (audio-oscillator-once): 81 ms.
-$ 
-{% endhighlight %}
+```
 
 This is an example for a pretty terrible performance cliff: Let's say a developer writes code for a library and does careful
 tweaking and optimizations using certain sample input values, and the performance is decent. Now a user starts using that
@@ -500,7 +495,7 @@ don't necessarily know that the right hand side is always a power of two (via dy
 different from Crankshaft, in that it always checks at runtime whether the input is a power of two, so general case 
 for signed integer modulus, with optimization for (unknown) power of two right hand side looks like this (in pseudo code):
 
-{% highlight ocaml %}
+```ocaml
 if 0 < rhs then
   msk = rhs - 1
   if rhs & msk != 0 then
@@ -515,17 +510,16 @@ else
     lhs % rhs
   else
     zero
-{% endhighlight %}
+```
 
 And that leads to a lot more consistent and predictable performance (with TurboFan):
 
-{% highlight console %}
+```
 $ ~/Projects/v8/out/Release/d8 --turbo audio-oscillator.js.ORIG
 Time (audio-oscillator-once): 69 ms.
 $ ~/Projects/v8/out/Release/d8 --turbo audio-oscillator.js
 Time (audio-oscillator-once): 69 ms.
-$ 
-{% endhighlight %}
+```
 
 The problem with benchmarks and over-specialization is that the benchmark can give you hints where to look and what to do,
 but it doesn't tell you how far you have to go and doesn't protect the optimization properly. For example, all JavaScript
@@ -581,7 +575,7 @@ however as it turns out it contains a bug that can be exploited to game the benc
 bug and added the exploit in this case). There's a function `D.prototype.UpdatePairs` in the benchmark that looks like this
 (deminified):
 
-{% highlight javascript %}
+```js
 D.prototype.UpdatePairs = function(b) {
     var e = this;
     var f = e.m_pairCount = 0,
@@ -612,12 +606,12 @@ D.prototype.UpdatePairs = function(b) {
         }
     }
 };
-{% endhighlight %}
+```
 
 Some profiling shows that a lot of time is spent in the innocent looking inner function passed to `e.m_tree.Query` in
 the first loop:
 
-{% highlight javascript %}
+```js
 function(t) {
     if (t == m) return true;
     if (e.m_pairCount == e.m_pairBuffer.length) e.m_pairBuffer[e.m_pairCount] = new O;
@@ -627,25 +621,25 @@ function(t) {
     ++e.m_pairCount;
     return true
 }
-{% endhighlight %}
+```
 
 More precisely the time is not spent in this function itself, but rather operations and builtin library functions
 triggered by this. As it turned out we spent 4-7% of the overall execution time of the benchmark calling into the
 [`Compare` runtime function](https://github.com/v8/v8/blob/5124589642ba12228dcd66a8cb8c84c986a13f35/src/runtime/runtime-object.cc#L884),
 which implements the general case for the [abstract relational comparison](https://tc39.github.io/ecma262/#sec-abstract-relational-comparison).
 
-<p><center>
-  <img src="/images/2016/box2d-compare-20161216.png" alt="Box2D compare profile" />
-</center></p>
+<img src="/images/2016/box2d-compare-20161216.png"
+     alt="Box2D compare profile"
+     title="Box2D compare profile">
 
 Almost all the calls to the runtime function came from the
 [`CompareICStub`](https://github.com/v8/v8/blob/5124589642ba12228dcd66a8cb8c84c986a13f35/src/x64/code-stubs-x64.cc#L2495), which is
 used for the two relational comparisons in the inner function:
 
-{% highlight javascript %}
+```js
 x.proxyA = t < m ? t : m;
 x.proxyB = t >= m ? t : m;
-{% endhighlight %}
+```
 
 So these two innocent looking lines of code are responsible for 99% of the time spent in this function! How come? Well, as with so many
 things in JavaScript, the [abstract relational comparison](https://tc39.github.io/ecma262/#sec-abstract-relational-comparison) is not
@@ -672,7 +666,7 @@ are relevant for the abstract relation comparison. So what happens if you write 
 Same for `t >= m`, which always produces `true` then. So the bug here is that using abstract relational comparison this way just doesn't
 make sense. And the way to exploit it is to have the compiler constant-fold it, i.e. similar to applying this patch to the benchmark:
 
-{% highlight patch %}
+```patch
 --- octane-box2d.js.ORIG        2016-12-16 07:28:58.442977631 +0100
 +++ octane-box2d.js     2016-12-16 07:29:05.615028272 +0100
 @@ -2021,8 +2021,8 @@
@@ -686,32 +680,30 @@ make sense. And the way to exploit it is to have the compiler constant-fold it, 
                      ++e.m_pairCount;
                      return true
                  },
-{% endhighlight %}
+```
 
 Because doing so results in a serious speed-up of 13% by not having to do the comparison, and all the propery lookups and builtin
 function calls triggered by it.
 
-{% highlight console %}
+```
 $ ~/Projects/v8/out/Release/d8 octane-box2d.js.ORIG
 Score (Box2D): 48063
 $ ~/Projects/v8/out/Release/d8 octane-box2d.js
 Score (Box2D): 55359
-$ 
-{% endhighlight %}
+```
 
 So how did we do that? As it turned out we already had a mechanism for tracking the shape of objects that are being compared in the
 `CompareIC`, the so-called *known receiver* map tracking (where *map* is V8 speak for object shape+prototype), but that was limited
 to abstract and strict equality comparisons. But I could easily extend the tracking to also collect the feedback for abstract
 relational comparison:
 
-{% highlight console %}
+```
 $ ~/Projects/v8/out/Release/d8 --trace-ic octane-box2d.js
 [...SNIP...]
 [CompareIC in ~+557 at octane-box2d.js:2024 ((UNINITIALIZED+UNINITIALIZED=UNINITIALIZED)->(RECEIVER+RECEIVER=KNOWN_RECEIVER))#LT @ 0x1d5a860493a1]
 [CompareIC in ~+649 at octane-box2d.js:2025 ((UNINITIALIZED+UNINITIALIZED=UNINITIALIZED)->(RECEIVER+RECEIVER=KNOWN_RECEIVER))#GTE @ 0x1d5a860496e1]
 [...SNIP...]
-$ 
-{% endhighlight %}
+```
 
 Here the `CompareIC` used in the baseline code tells us that for the LT (less than) and the GTE (greather than or equal) comparisons in the
 function we're looking at, it had only seen `RECEIVER`s so far (which is V8 speak for JavaScript objects), and all these receivers had the
@@ -721,17 +713,17 @@ messed with `L`s prototype chain, i.e. the `Symbol.toPrimitive`, `"valueOf"` and
 a `Symbol.toStringTag` accessor property. The rest of the story is *black voodoo magic* in Crankshaft, with a lot of cursing and initially
 forgetting to check `Symbol.toStringTag` properly:
 
-<p><center>
-  <a href="https://codereview.chromium.org/1355113002">
-    <img src="/images/2016/hydrogen-compare-20161216.png" alt="Hydrogen voodoo magic" />
-  </a>
-</center></p>
+<a href="https://codereview.chromium.org/1355113002">
+  <img src="/images/2016/hydrogen-compare-20161216.png"
+       alt="Hydrogen voodoo magic"
+       title="Hydrogen voodoo magic">
+</a>
 
 And in the end there was a rather huge performance boost on this particular benchmark:
 
-<p><center>
-  <img src="/images/2016/awfy-box2d-20161216.png" alt="Box2D boost" />
-</center></p>
+<img src="/images/2016/awfy-box2d-20161216.png"
+     alt="Box2D boost"
+     title="Box2D boost">
 
 To my defense, back then I was not convinced that this particular behavior would always point to a bug in the original code, so I was
 even expecting that code in the wild might hit this case fairly often, also because I was assuming that JavaScript developers wouldn't
@@ -751,11 +743,11 @@ The idea here was that since Mandreel stresses the VM's compiler, this test prov
 and long pauses between measurement checkpoints lower the final score. In theory that sounds very reasonable, and it does indeed make some
 sense. However as usual vendors figured out ways to cheat on this benchmark.
 
-<p><center>
-  <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1162272">
-    <img src="/images/2016/bugzilla-mandreel-20161216.png" alt="Mozilla bug 1162272" />
-  </a>
-</center></p>
+<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1162272">
+  <img src="/images/2016/bugzilla-mandreel-20161216.png"
+       alt="Mozilla bug 1162272"
+       title="Mozilla bug 1162272">
+</a>
 
 Mandreel contains a huge initialization function `global_init` that takes an incredible amount of time just parsing this function, and
 generating baseline code for it. Since engines usually parse various functions in scripts multiple times, one so-called pre-parse step
@@ -767,16 +759,16 @@ clear for the `global_init` function in the Mandreel benchmark, thus we'd would 
 parsing + compiling the big function. So we [added an additional heuristic](https://codereview.chromium.org/1102523003) that would
 also avoids the pre-parsing for this `global_init` function.
 
-<p><center>
+<figure>
   <a href="https://arewefastyet.com/#machine=29&view=single&suite=octane&subtest=MandreelLatency&start=1415924086&end=1446461709">
-    <img src="/images/2016/awfy-mandreel-20161216.png" alt="MandreelLatency benchmark" />
+    <img src="/images/2016/awfy-mandreel-20161216.png" 
+         alt="MandreelLatency benchmark"
+         title="MandreelLatency benchmark">
   </a>
-  <br />
-  <small><i>
-    Source:
-    <a href="https://arewefastyet.com/#machine=29&view=single&suite=octane&subtest=MandreelLatency&start=1415924086&end=1446461709">arewefastyet.com</a>.
-  </i></small>
-</center></p>
+  <figcaption>
+    Source: <a href="https://arewefastyet.com/#machine=29&view=single&suite=octane&subtest=MandreelLatency&start=1415924086&end=1446461709">arewefastyet.com</a>.
+  </figcaption>
+</figure>
 
 So we saw an almost 200% improvement just by detecting `global_init` and avoiding the expensive pre-parse step. We are somewhat
 certain that this should not negatively impact real world use cases, but there's no guarantee that this won't bite you on large
@@ -789,11 +781,11 @@ where a long pause between checkpoints is an indication of high latency in the g
 classifies them into buckets and penalizes frequent long pauses with a low score. Sounds great! No GC pauses, no jank. So much for the theory. Let's
 have a look at the benchmark, here's what's at the core of the whole splay tree business:
 
-<p><center>
-  <a href="https://github.com/chromium/octane/blob/master/splay.js#L85">
-    <img src="/images/2016/splay-insertnode-20161216.png" alt="splay.js" />
-  </a>
-</center></p>
+<a href="https://github.com/chromium/octane/blob/master/splay.js#L85">
+  <img src="/images/2016/splay-insertnode-20161216.png"
+       alt="splay.js"
+       title="splay.js">
+</a>
 
 This is the core of the splay tree construction, and despite what you might think looking at the full benchmark, this is more or less all
 that matters for the SplayLatency score. How come? Actually what the benchmark does is to construct huge splay trees, so that the majority
@@ -801,7 +793,7 @@ of nodes survive, thus making it to old space. With a generational garbage colle
 violates the [generational hypothesis](http://www.memorymanagement.org/glossary/g.html) leading to extreme pause times for essentially
 evacuating everything from new space to old space. Running V8 in the old configuration clearly shows this problem:
 
-{% highlight console %}
+```
 $ out/Release/d8 --trace-gc --noallocation_site_pretenuring octane-splay.js
 [20872:0x7f26f24c70d0]       10 ms: Scavenge 2.7 (6.0) -> 2.7 (7.0) MB, 1.1 / 0.0 ms  allocation failure
 [20872:0x7f26f24c70d0]       12 ms: Scavenge 2.7 (7.0) -> 2.7 (8.0) MB, 1.7 / 0.0 ms  allocation failure
@@ -879,8 +871,7 @@ $ out/Release/d8 --trace-gc --noallocation_site_pretenuring octane-splay.js
 [20872:0x7f26f24c70d0]     2105 ms: Scavenge 225.8 (305.0) -> 225.4 (305.0) MB, 24.7 / 0.0 ms  allocation failure
 [20872:0x7f26f24c70d0]     2138 ms: Scavenge 234.8 (305.0) -> 234.4 (305.0) MB, 23.1 / 0.0 ms  allocation failure
 [...SNIP...]
-$ 
-{% endhighlight %}
+```
 
 So the key observation here is that allocating the splay tree nodes in old space directly would avoid essentially all the
 overhead of copying objects around and reduce the number of minor GC cycles to the bare minimum (thereby reducing the pauses
@@ -889,7 +880,7 @@ that would try to dynamically gather feedback at allocation sites when run in ba
 percent of the objects allocated here survives, and if so instrument the optimized code to allocate objects in old space
 directly - i.e. *pretenure the objects*.
 
-{% highlight console %}
+```
 $ out/Release/d8 --trace-gc octane-splay.js
 [20885:0x7ff4d7c220a0]        8 ms: Scavenge 2.7 (6.0) -> 2.6 (7.0) MB, 1.2 / 0.0 ms  allocation failure
 [20885:0x7ff4d7c220a0]       10 ms: Scavenge 2.7 (7.0) -> 2.7 (8.0) MB, 1.6 / 0.0 ms  allocation failure
@@ -911,21 +902,21 @@ $ out/Release/d8 --trace-gc octane-splay.js
 [20885:0x7ff4d7c220a0]     1828 ms: Mark-sweep 485.2 (520.0) -> 101.5 (519.5) MB, 3.4 / 0.0 ms  (+ 102.8 ms in 58 steps since start of marking, biggest step 4.5 ms, walltime since start of marking 183 ms) finalize incremental marking via stack guard GC in old space requested
 [20885:0x7ff4d7c220a0]     2028 ms: Scavenge 371.4 (519.5) -> 358.5 (519.5) MB, 12.1 / 0.0 ms  allocation failure
 [...SNIP...]
-$ 
-{% endhighlight %}
+```
 
 And indeed that essentially fixed the problem for the SplayLatency benchmark completely and boosted our score by over 250%!
 
-<p><center>
+<figure>
   <a href="https://arewefastyet.com/#machine=12&view=single&suite=octane&subtest=SplayLatency&start=1384889558&end=1415405874">
-    <img src="/images/2016/awfy-splay-20161216.png" alt="SplayLatency benchmark" />
+    <img src="/images/2016/awfy-splay-20161216.png"
+         alt="SplayLatency benchmark"
+         title="SplayLatency benchmark">
   </a>
-  <br />
-  <small><i>
+  <figcaption>
     Source:
     <a href="https://arewefastyet.com/#machine=12&view=single&suite=octane&subtest=SplayLatency&start=1384889558&end=1415405874">arewefastyet.com</a>.
-  </i></small>
-</center></p>
+  </figcaption>
+</figure>
 
 As mentioned in the [SIGPLAN paper](https://research.google.com/pubs/pub43823.html) we had good reasons to believe that allocation
 site pretenuring might be a win for real world applications, and were really looking forward to seeing improvements and extending
@@ -954,9 +945,7 @@ incremental marking on both latency and throughput.
 
 ### Cuteness break!
 
-<p><center>
-  <img src="https://pbs.twimg.com/profile_images/491838225300717568/sy5AWvt1.jpeg" />
-</center></p>
+<img src="https://pbs.twimg.com/profile_images/491838225300717568/sy5AWvt1.jpeg" width="100%">
 
 Breathe.
 
@@ -970,26 +959,25 @@ cross the line of *useful competition*, you'll start wasting the time of your en
 performance! If we are serious about performance for the web, we need to start judging browser by real world performance and not
 their ability to game four year old benchmarks. We need to start educating the (tech) press, or failing that, at least ignore them.
 
-<p><center>
+<figure>
   <a href="http://venturebeat.com/2016/10/25/browser-benchmark-battle-october-2016-chrome-vs-firefox-vs-edge/3/">
-    <img src="/images/2016/venturebeat-20161216.png" alt="Browser benchmark battle October 2016: Chrome vs. Firefox vs. Edge" />
+    <img src="/images/2016/venturebeat-20161216.png"
+         alt="Browser benchmark battle October 2016: Chrome vs. Firefox vs. Edge" 
+         title="Browser benchmark battle October 2016: Chrome vs. Firefox vs. Edge">
   </a>
-  <br />
-  <small><i>
+  <figcaption>
     Source:
     Browser benchmark battle October 2016: Chrome vs. Firefox vs. Edge,
     <a href="http://venturebeat.com/2016/10/25/browser-benchmark-battle-october-2016-chrome-vs-firefox-vs-edge/3">venturebeat.com</a>.
-  </i></small>
-</center></p>
+  </figcaption>
+</figure>
 
 Noone is afraid of competition, but gaming potentially broken benchmarks is not really useful investment of engineering time. We can
 do a lot more, and take JavaScript to the next level. Let's work on meaningful performance tests that can drive competition on areas of
 interest for the end user and the developer. Additionally let's also drive meaningful improvements for server and tooling side code
 running in Node.js (either on V8 or ChakraCore)!
 
-<p><center>
-  <img src="/images/2016/measure-20161216.jpg" />
-</center></p>
+<img src="/images/2016/measure-20161216.jpg" width="100%">
 
 One closing comment: Don't use traditional JavaScript benchmarks to compare phones. It's really the most useless thing you can do, as the
 JavaScript performance often depends a lot on the software and not necessarily on the hardware, and Chrome ships a new version every six
