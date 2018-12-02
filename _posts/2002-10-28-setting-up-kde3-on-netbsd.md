@@ -46,11 +46,11 @@ Now, that KDE 3 is installed properly, all you need to do, is setup your X sessi
 KDE 3. Therefore edit (maybe create) the file <code>.xsession</code> in your home directory
 and put in the following lines:
 
-{% highlight sh %}
+```sh
 #!/bin/sh
 export PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/pkg/bin:/usr/pkg/sbin:/usr/local/bin:/usr/local/sbin:/usr/X11R6/bin
 exec /usr/X11R6/bin/startkde
-{% endhighlight %}
+```
 
 Then mark the file executable by typing <code>chmod +x $HOME/.xsession</code>, login as usual
 with xdm and feel happy about your new and fancy KDE desktop :-).
@@ -71,23 +71,23 @@ package and the <a
 href="ftp://ftp.netbsd.org/pub/NetBSD-current/pkgsrc/fonts/ttmkfdir/README.html">fonts/ttmkfdir</a> package.
 Then goto <code>/usr/X11R6/lib/X11/fonts/TrueType</code> and type:
 
-{% highlight console %}
+```
 $ ttmkfdir > fonts.scale
 $ mkfontdir
-{% endhighlight %}
+```
 
 After that add the following line to your <code>/usr/X11R6/lib/X11/XF86Config-4</code>
 in the <code>Files</code> section
 
-{% highlight sh %}
+```sh
 FontPath "/usr/X11R6/lib/X11/fonts/TrueType/"
-{% endhighlight %}
+```
 
 and
 
-{% highlight sh %}
+```sh
 dir "/usr/X11R6/lib/X11/fonts/TrueType"
-{% endhighlight %}
+```
 
 to your <code>/usr/X11R6/lib/X11/XftConfig</code>. Logout from your X session and restart your
 X server by hitting <code>CTRL-ALT-BACKSPACE</code> at your xdm login prompt. Relogin to your

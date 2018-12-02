@@ -10,7 +10,7 @@ The performance and compatibility of [Function.prototype.bind](http://tc39.githu
 Consider the following simple test driver, which defines a (non-trivial) test function ``foo`` and creates two bound functions ``foo1`` and ``foo2``
 based on it, which both bind the receiver and the first argument to some primitive.
 
-{% highlight javascript %}
+```js
 "use strict";
 function foo(x, y, z) { return this + x + y + z }
 var foo1 = foo.bind(1, 0);
@@ -30,7 +30,7 @@ var startTime = Date.now();
 for (let i = 0; i < 10; ++i) test();
 var endTime = Date.now();
 print("Time: " + (endTime - startTime) + "ms.");
-{% endhighlight %}
+```
 
 Now running this program with V8 tip-of-tree as of today requires a whopping 12,078ms to execute the test loop on a HP z620 work station running
 Ubuntu 14.04. Looking at the performance profile, almost all the time is spend in the

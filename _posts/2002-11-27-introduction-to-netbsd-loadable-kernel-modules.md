@@ -38,11 +38,11 @@ the module <code>fibo.o</code> and let all the function's names begin with <code
 will provide 8 minor devices <code>/dev/fibo0</code> to <code>/dev/fibo7</code>.
 Each minor device offers the following functions:
 
-{% highlight cpp %}
+```c
 static int fibo_open(dev_t, int, int, struct proc *);
 static int fibo_close(dev_t, int, int, struct proc *);
 static int fibo_read(dev_t dev, struct uio *, int);
-{% endhighlight  %}
+```
 
 You can open and close a device provided by this driver and you'll be able to read from it (we'll have
 a closer look at the parameters later, when we discuss the actual functions). Now we need to tell the
@@ -50,7 +50,7 @@ kernel that we provide a character device with the 3 functions listed above. The
 in a <code>struct cdevsw</code> (_cdevsw_ means _character device switch_ and the <code>struct cdevsw</code>
 is defined in <code>sys/conf.h</code>).
 
-{% highlight cpp %}
+```c
 static struct cdevsw fibo_dev = {
   fibo_open,
   fibo_close,
@@ -63,7 +63,7 @@ static struct cdevsw fibo_dev = {
   (dev_type_mmap((*))) enodev,
   0
 };
-{% endhighlight %}
+```
 
 <code>enodev</code> is a generic function that simply returns the
 [errno(2)](http://netbsd.gw.com/cgi-bin/man-cgi?errno+2+NetBSD-1.6) <code>ENODEV</code>
@@ -78,13 +78,13 @@ information over. The <code>MOD_DEV</code> macro was changed in NetBSD-current, 
 the following construct to get things working with both NetBSD 1.6 and earlier and NetBSD 1.6H and
 later (thanks to [Anil Gopinath](mailto:anil_public@yahoo.com) for the hint).
 
-{% highlight cpp %}
+```c
 #if (__NetBSD_Version__ >= 106080000)
 MOD_DEV("fibo", "fibo", NULL, -1, &fibo_dev, -1);
 #else
 MOD_DEV("fibo", LM_DT_CHAR, -1, &fibo_dev);
 #endif
-{% endhighlight %}
+```
 
 This means that our module is named <code>fibo</code>, we'll provide a character device (minor devices
 are handled by the module itself, so they doesn't matter for now), we want to retrieve a dynamic major
@@ -95,13 +95,13 @@ provide the information about the supported operations in <code>fibo_dev</code>.
 In order to ensure proper unloading of the module we need to keep a global reference counter of opened
 minor devices.
 
-{% highlight cpp %}
+```c
 static int fibo_refcnt = 0;
-{% endhighlight %}
+```
 
 And furtheron we need to keep a bunch of information about each minor device.
 
-{% highlight cpp %}
+```c
 struct fibo_softc {
   int       sc_refcnt;
   u_int32_t sc_current;
@@ -111,7 +111,7 @@ struct fibo_softc {
 #define MAXFIBODEVS 8
  
 static struct fibo_softc fibo_scs[MAXFIBODEVS];
-{% endhighlight %}
+```
 
 As mentioned above our driver will provide 8 minor devices. Each minor device stores information about
 how often it was opened (in our example each minor device can only be opened once to keep things simple),
@@ -128,13 +128,13 @@ consist entirely of a single <code>DISPATCH</code> line, with <code>DISPATCH</co
 macro defined in <code>sys/lkm.h</code> to handle loading, unloading and stating for us. So our
 <code>fibo_lkmentry</code> function will look like this:
 
-{% highlight cpp %}
+```c
 int
 fibo_lkmentry(struct lkm_table *lkmtp, int cmd, nt ver)
 {
   DISPATCH(lkmtp, cmd, ver, fibo_handle, fibo_handle, fibo_handle);
 }
-{% endhighlight %}
+```
 
 Now we need a handler function for our module to do module specific tasks when loading, unloading or stating
 the module. The name of this handler function is passed to <code>DISPATCH</code> (see above) to tell the
@@ -147,7 +147,7 @@ the handler is called with the <code>LKM_E_UNLOAD</code> command and we need to 
 required any more (e.g. check if all devices are closed for char/block driver modules) before confirming the
 unload command.
 
-{% highlight cpp %}
+```c
 static int
 fibo_handle(struct lkm_table *lkmtp, int cmd)
 {
@@ -177,7 +177,7 @@ fibo_handle(struct lkm_table *lkmtp, int cmd)
   
   return (0);
 }
-{% endhighlight %}
+```
  
 The open function is quite simple as most of the hard stuff is already handled by the NetBSD kernel
 (e.g. the kernel will automatically allocate a [vnode(9)](http://netbsd.gw.com/cgi-bin/man-cgi?vnode+9+NetBSD-1.6)
@@ -192,7 +192,7 @@ handling is completely up to you and that this is a never ending source of mista
 the minor device data (the Fibonacci starting numbers 1, 0 + 1 = 1, 1 + 1 = 2, 1 + 2 = 3, ...) and increase the
 minor device and the global module reference counter.
 
-{% highlight cpp %}
+```c
 static int
 fibo_open(dev_t dev, int flag, int mode, struct proc *p)
 {
@@ -216,7 +216,7 @@ fibo_open(dev_t dev, int flag, int mode, struct proc *p)
   
   return (0);
 }
-{% endhighlight %}
+```
  
 The close function has the same parameters with the same meanings as the open function described above. It
 is used to free the internal data structures of a minor device opened before. You do not need to worry whether
@@ -224,7 +224,7 @@ the device was opened before or to do things like releasing the vnode associated
 to do is to cleanup the module specific stuff. In our example this means decreasing the minor device and the
 global module reference counters and so that our close function is quite simple.
 
-{% highlight cpp %}
+```c
 static int
 fibo_close(dev_t dev, int flag, int mode, struct proc *p)
 {
@@ -238,7 +238,7 @@ fibo_close(dev_t dev, int flag, int mode, struct proc *p)
   
   return (0);
 }
-{% endhighlight %}
+```
  
 Last but not least the read function. This function has 3 parameters: the device major and minor numbers like
 in the open and close functions, a <code>flag</code> field indicating for example whether the read should be
@@ -252,7 +252,7 @@ for kernel-space to user-space and kernel-space to kernel-space data moving. See
 
 Back on stage, we should first have a look at the read function and discuss the details afterwards.
 
-{% highlight cpp %}
+```c
 static int
 fibo_read(dev_t dev, struct uio *uio, int flag)
 {
@@ -288,7 +288,7 @@ fibo_read(dev_t dev, struct uio *uio, int flag)
   
   return (0);
 }
-{% endhighlight %}
+```
  
 So the first thing we do, is to check whether the process requests less than <code>sizeof(u_int32_t)</code>
 bytes (actually 4 bytes). Our read function always reads a bunch of 4-byte blocks and to keep it simple
@@ -319,38 +319,38 @@ is always passed three arguments: the module id (in decimal), the module type (i
 major device number (this differs for other types of LKMs such as system call modules). So our script is pretty
 simple:
 
-{% highlight sh %}
+```sh
 if [ $# -ne 3 ]; then
   echo "$0 should only be called from modload(8) with 3 args"
   exit 1
 fi
-{% endhighlight %}
+```
           
 First check whether all three command line arguments are present and exit with error code if not.
 
-{% highlight sh %}
+```sh
 for i in 0 1 2 3 4 5 6 7; do
   rm -f /dev/fibo$i
   mknod /dev/fibo$i c $3 $i
   chmod 666 /dev/fibo$i
 done
 exit 0
-{% endhighlight %}
+```
           
 And finally (re)create the required special device nodes. Now we are ready to give our module a first test run.
 Compile the module and load the module with the following command (this needs to be run as superuser):
 
-{% highlight sh %}
+```sh
 modload -e fibo_lkmentry -p fibo_post.sh fibo.o
-{% endhighlight %}
+```
  
 If everything went well, the [modstat(8)](http://netbsd.gw.com/cgi-bin/man-cgi?modstat+8+NetBSD-1.6) program
 should present you output similar to this:
           
-{% highlight text %}
+```
 Type    Id  Off Loadaddr Size Info     Rev Module Name
 DEV      0   29 dca4f000 0004 dca4f260   1 fibo
-{% endhighlight %}
+```
 
             
 Testing the module
@@ -360,7 +360,7 @@ In order to test your new kernel module, we need a small test program that does 
 32bit unsigned integer value from <code>/dev/fibo0</code> and outputs the value to standard output. See the
 sample program below:
 
-{% highlight cpp %}
+```c
 #define DEVICE "/dev/fibo0"
  
 int
@@ -381,14 +381,14 @@ main(int argc, char **argv)
   close(fd);
   return 0;
 }
-{% endhighlight %}
+```
  
 When you run this sample test program, it will output Fibonacci numbers below 2971215074 until you interrupt
 or kill the program. To unload the kernel module, you need to run the following command (as superuser):
 
-{% highlight sh %}
+```sh
 modunload -n fibo
-{% endhighlight %}
+```
 
 The complete sources for the example above, including a <code>Makefile</code>, are available online at:
 

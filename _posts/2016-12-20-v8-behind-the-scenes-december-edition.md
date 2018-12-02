@@ -49,7 +49,7 @@ bail out and we will fall back to the TurboFan JavaScript compiler pipeline for 
 the whole EcmaScript 2017 language and can only consume a fraction of the static type information. For example consider the
 following asm.js module:
 
-{% highlight javascript %}
+```js
 function Module(stdlib) {
   "use asm";
   function f(x) {
@@ -64,7 +64,7 @@ function Module(stdlib) {
   }
   return {g: g};
 }
-{% endhighlight %}
+```
 
 It contains two functions `f` and `g`, the latter being exported and callable by regular JavaScript code, i.e. `g` is an
 entrypoint to the asm.js module. `g` doesn't do much but calls `f` with whatever input you pass to `g` converted to a
@@ -77,7 +77,7 @@ In this concrete example, the `asm-wasm-builder` knows after validation that `f`
 a [`double`](http://asmjs.org/spec/latest/#double) as result. For example, let's run the module above through the new
 WebAssembly pipeline:
 
-{% highlight console %}
+```
 $ ~/Projects/v8/out/Debug/d8 --validate-asm --trace-wasm-decoder asm.js
 [...SNIP...]
   +0  local decls count   : 00 = 0
@@ -99,14 +99,13 @@ wasm-decode ok
 [...SNIP...]
 asm.js:1: Converted asm.js to WebAssembly: success
 asm.js:1: Instantiated asm.js: success
-$ 
-{% endhighlight %}
+```
 
 This shows the WebAssembly bytecode generated for the function `f`. As you can see the code doesn't need to perform any
 type checks on the input; there's still a somewhat unnecessary `F64Mul` of `x` and `1.0` in there, but the TurboFan
 backend will eliminate this prior to code generation. The final code generated for `f` using WebAssembly looks like this:
 
-{% highlight nasm %}
+```
                   -- B0 start (no frame) --
 0x10a04e985b00     0  493ba5780c0000 REX.W cmpq rsp,[r13+0xc78]
 0x10a04e985b07     7  0f8605000000   jna 18  (0x10a04e985b12)
@@ -131,7 +130,7 @@ backend will eliminate this prior to code generation. The final code generated f
 0x10a04e985b4e    78  5d             pop rbp
 0x10a04e985b4f    79  ebbc           jmp 13  (0x10a04e985b0d)
 0x10a04e985b51    81  0f1f00         nop
-{% endhighlight %}
+```
 
 It first does a so-called *stack check*, which checks that we don't exceed a certain stack limit; besides guarding
 against stack overflows, this mechanism is used by Chrome to be able to interrupt the main thread of the renderer
@@ -141,7 +140,7 @@ that is slightly different from the usual [platform calling
 conventions](https://software.intel.com/sites/default/files/article/402129/mpx-linux64-abi.pdf)). Contrast this with the
 code generated via the TurboFan JavaScript compiler pipeline:
 
-{% highlight nasm %}
+```
                   -- B0 start (construct frame) --
 0x26d963005ec0     0  55             push rbp
 0x26d963005ec1     1  4889e5         REX.W movq rbp,rsp
@@ -207,7 +206,7 @@ code generated via the TurboFan JavaScript compiler pipeline:
 0x26d963005f85   197  4883e801       REX.W subq rax,0x1
 0x26d963005f89   201  c5fb1045e8     vmovsd xmm0,[rbp-0x18]
 0x26d963005f8e   206  e974ffffff     jmp 71  (0x26d963005f07)
-{% endhighlight %}
+```
 
 It's a lot heavier since it has to use the JavaScript calling convention and the [uniform tagging
 scheme](https://wingolog.org/archives/2011/05/18/value-representation-in-javascript-implementations), and it

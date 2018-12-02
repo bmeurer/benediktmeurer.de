@@ -21,7 +21,7 @@ information as part of the type feedback that is gathered in various places duri
 greatly reduces the call overhead. And thanks to the new architecture in TurboFan, this also enables the compiler to inline the target function into the
 caller. So I just landed a [change](https://codereview.chromium.org/1581343002) in V8 that does exactly that, and achieved an amazing speedup.
 
-{% highlight javascript %}
+```js
 "use strict";
 function foo(x, y, z) { return this + x + y + z }
 var foo1 = foo.bind(1, 0);
@@ -41,7 +41,7 @@ var startTime = Date.now();
 for (let i = 0; i < 10; ++i) test();
 var endTime = Date.now();
 print("Time: " + (endTime - startTime) + "ms.");
-{% endhighlight %}
+```
 
 Looking at my ``Function.prototype.bind`` microbenchmark again, and running it with TurboFan (passing the ``--turbo`` flag to ``d8`` or via
 ``--js-flags=--turbo`` to Chrome), the time goes down to 31ms, compared to the 240ms it takes with Crankshaft or 360ms with TurboFan before

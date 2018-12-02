@@ -13,10 +13,10 @@ The thumbnail loading is quite fast, but nevertheless adds a little overhead (bo
 
 What we really need with Thunar (or in a separate tool based on Thunar-VFS) is a way to cleanup dead thumbnails:
 
-{% highlight console %}
+```
 $ ls -1 ~/.thumbnails/normal|wc -l
    5867
-{% endhighlight %}
+```
 
 ### Update 
 

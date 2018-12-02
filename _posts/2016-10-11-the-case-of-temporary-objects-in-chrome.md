@@ -18,7 +18,7 @@ The immediate cause of the problem is the way we deal with [hidden classes](http
 for short-living, temporary objects (in some rare cases this could also bite you with long-living objects, but that's unlikely). Consider the following
 simple example script:
 
-{% highlight javascript %}
+```js
 // Some simple 2D point class with distance helper function.
 function Point(x, y) {
   this.x = x;
@@ -45,23 +45,22 @@ print("--- After warmup ---");
 
 // Let's see.
 print(distanceToOrigin(42, 24));
-{% endhighlight %}
+```
 
 Let's execute this simple example ``ex1.js`` in the [d8 shell](https://developers.google.com/v8/build), using a Debug build of V8. Then we observe the
 following output:
 
-{% highlight console %}
+```
 $ out/Debug/d8 ex1.js
 --- Before warmup ---
 --- After warmup ---
 48.373546489791295
-$ 
-{% endhighlight %}
+```
 
 That shouldn't come as a surpise. So let's see what's going on under the hood, and trace the maps (aka hidden classes) that we create. We can do this using
 the ``--trace-maps`` command line flag in ``d8``:
 
-{% highlight console %}
+```
 $ out/Debug/d8 ex1.js --trace-maps
 ...SNIP...
 --- Before warmup ---
@@ -73,8 +72,7 @@ $ out/Debug/d8 ex1.js --trace-maps
 [TraceMaps: SlowToFast from= 0x26e52588a189 to= 0x26e52588a291 reason= OptimizeAsPrototype ]
 --- After warmup ---
 48.373546489791295
-$ 
-{% endhighlight %}
+```
 
 So what happens here is that create a so called *initial map* for the ``Point`` constructor, which is located at address ``0x26e52588a0d9`` in this case,
 and then while executing the ``Point`` constructor first transition ``this`` from the initial map ``0x26e52588a0d9`` to the map ``0x26e52588a1e1`` adding
@@ -85,13 +83,13 @@ a property ``x``, and then further transition that map to ``0x26e52588a239`` add
 
 Now let's see what happens if we call ``distanceToOrigin`` another time, i.e. add another line
 
-{% highlight javascript %}
+```js
 print(distanceToOrigin(2, 2));
-{% endhighlight %}
+```
 
 at the end of ``ex1.js`` and execute that with the tracing flag:
 
-{% highlight console %}
+```
 $ out/Debug/d8 ex1.js --trace-maps
 ...SNIP...
 --- Before warmup ---
@@ -104,25 +102,23 @@ $ out/Debug/d8 ex1.js --trace-maps
 --- After warmup ---
 48.373546489791295
 2.8284271247461903
-$ 
-{% endhighlight %}
+```
 
 As you can see we don't need to create new maps for the second iteration again, but reuse the existing transition tree that was created during
 warmup. So far the garbage collector was not involved at all. We can easily verify that by running the example with the ``--trace-gc`` flag:
 
-{% highlight console %}
+```
 $ out/Debug/d8 ex1.js --trace-gc
 --- Before warmup ---
 --- After warmup ---
 48.373546489791295
 2.8284271247461903
-$ 
-{% endhighlight %}
+```
 
 Let's see what happens if we add the GC to the mix, which can be done explicitly in the ``d8`` shell by passing the ``--expose-gc`` command
 flag, which enables you to manually trigger a full GC by calling the ``gc`` object. Consider the following ``ex2.js``:
 
-{% highlight javascript %}
+```js
 // Some simple 2D point class with distance helper function.
 function Point(x, y) {
   this.x = x;
@@ -155,23 +151,22 @@ gc();
 
 // Let's see again.
 print(distanceToOrigin(2, 2));
-{% endhighlight %}
+```
 
 Again running this with ``--trace-gc`` (and ``--expose-gc``) to verify that we really trigger a GC here:
 
-{% highlight console %}
+```
 $ out/Debug/d8 ex2.js --expose-gc --trace-gc
 --- Before warmup ---
 --- After warmup ---
 48.373546489791295
 [3701:0x7f33fb799120]       32 ms: Mark-sweep 1.1 (6.0) -> 1.1 (7.0) MB, 16.3 / 0.0 ms  testing GC in old space requested
 2.8284271247461903
-$ 
-{% endhighlight %}
+```
 
 So let's run this with ``--trace-maps`` to observe the difference we get when the GC is involved:
 
-{% highlight console %}
+```
 $ out/Debug/d8 ex2.js --expose-gc --trace-gc --trace-maps
 ...SNIP...
 --- Before warmup ---
@@ -186,8 +181,7 @@ $ out/Debug/d8 ex2.js --expose-gc --trace-gc --trace-maps
 [TraceMaps: Transition from= 0x8e7a5d0a1e1 to= 0x8e7a5d0a239 name= x ]
 [TraceMaps: Transition from= 0x8e7a5d0a239 to= 0x8e7a5d0a291 name= y ]
 2.8284271247461903
-$ 
-{% endhighlight %}
+```
 
 This seems weird on first sight: We re-create the transition tree for the final ``Point`` map after the full GC. Don't get confused
 with the addresses here, these are the same because we have a separate space for maps, where we do free list allocation and thus
@@ -206,7 +200,7 @@ This happens because we don't have any live object that points to the final ``Po
 weak pointers in V8. Assuming we would have a live object with the final ``Point`` map when the GC runs, then we wouldn't nuke
 the maps and thus wouldn't have to re-create the transition trees, i.e. considering another mutation of the example:
 
-{% highlight javascript %}
+```js
 // Some simple 2D point class with distance helper function.
 function Point(x, y) {
   this.x = x;
@@ -239,12 +233,12 @@ print(distanceToOrigin(42, 24));
 
 // Let's see again.
 print(distanceToOrigin(2, 2));
-{% endhighlight %}
+```
 
 Now running this script ``ex3.js``, we observe the expected behavior (i.e. re-using the maps that were created during the initial
 warmup phase):
 
-{% highlight console %}
+```
 $ out/Debug/d8 ex3.js --expose-gc --trace-gc --trace-maps
 ...SNIP...
 --- Before warmup ---
@@ -257,8 +251,7 @@ $ out/Debug/d8 ex3.js --expose-gc --trace-gc --trace-maps
 48.373546489791295
 [6069:0x7effd4328120]       34 ms: Mark-sweep 1.1 (6.0) -> 1.1 (7.0) MB, 16.2 / 0.0 ms  testing GC in old space requested
 2.8284271247461903
-$ 
-{% endhighlight %}
+```
 
 To summarize, the performance issue here is that we constantly need to re-learn all the hidden classes for short-living,
 temporary objects, and that is fairly slow, since we need to re-create all the metadata for tracking, plus all the [inline
@@ -266,7 +259,7 @@ caches](http://mrale.ph/blog/2012/06/03/explaining-js-vms-in-js-inline-caches.ht
 the original maps have to re-learn the new maps. This can be seen by running the ``ex2.js`` with ``--trace-ic`` to visualize
 the ICs:
 
-{% highlight console %}
+```
 $ out/Debug/d8 ex2.js --expose-gc --trace-gc --trace-ic
 ...SNIP...
 [LoadGlobalIC in ~+98 at ex2.js:20 (0->1) map=0x1dce36c09d11 0x1032c1ca8419 <String[5]: print>]
@@ -314,13 +307,12 @@ $ out/Debug/d8 ex2.js --expose-gc --trace-gc --trace-ic
 [LoadIC in ~distance+207 at ex2.js:8 (1->1) map=0x1dce36c0a291 0xf2c2440e189 <String[1]: y>]
 [CallIC in ~+699 at ex2.js:32 (0->1) map=(nil) 0x1a5946502231 <String[5]: print>]
 2.8284271247461903
-$ 
-{% endhighlight %}
+```
 
 Let's only look at the ``LoadIC``s in ``distance``, i.e. the inline caches for the property accesses
 to the ``p1`` and ``p2`` objects in the first two lines of ``distance``:
 
-{% highlight console %}
+```
 $ out/Debug/d8 ex2.js --expose-gc --trace-gc --trace-ic
 ...SNIP...
 --- Before warmup ---
@@ -348,8 +340,7 @@ $ out/Debug/d8 ex2.js --expose-gc --trace-gc --trace-ic
 [LoadIC in ~distance+207 at ex2.js:8 (1->1) map=0x1dce36c0a291 0xf2c2440e189 <String[1]: y>]
 ...SNIP...
 2.8284271247461903
-$ 
-{% endhighlight %}
+```
 
 What we observe is that during warmup (which includes two calls to ``distance``) the ``LoadIC``s
 transition from *uninitialized* state (indicated by the ``0``) to *premonomorphic* state (indicated
@@ -369,7 +360,7 @@ objects were strong references, but that caused terrible memory leaks where a si
 we [multiplied the impact of the fundamental problem](https://bugs.chromium.org/p/v8/issues/detail?id=3664), for
 example consider what the optimizing compiler does when we add it to the equation:
 
-{% highlight javascript %}
+```js
 // Some simple 2D point class with distance helper function.
 function Point(x, y) {
   this.x = x;
@@ -404,14 +395,14 @@ gc();
 
 // Let's see again.
 print(distanceToOrigin(2, 2));
-{% endhighlight %}
+```
 
 We use the ``%OptimizeFunctionOnNextCall`` intrinsic in the ``d8`` shell to forcibly mark the function ``distance`` for optimization
  when it's called the next time. We need to pass the ``--allow-natives-syntax`` command flag to ``d8`` to enable the use of these
 intrinsics. So let's run this ``ex4.js`` with ``--trace-opt`` and ``--trace-deopt`` to check what the optimized code is
 doing:
 
-{% highlight console %}
+```
 $ out/Debug/d8 ex4.js --allow-natives-syntax --expose-gc --trace-gc --trace-opt --trace-deopt
 ...SNIP...
 --- Before warmup ---
@@ -426,8 +417,7 @@ $ out/Debug/d8 ex4.js --allow-natives-syntax --expose-gc --trace-gc --trace-opt 
 [evicting entry from optimizing code map (deoptimized code) for 0x3577c29ac679 <SharedFunctionInfo distance>]
 [8274:0x7fef1862c180]       33 ms: Mark-sweep 1.1 (6.0) -> 1.1 (7.0) MB, 15.8 / 0.0 ms  testing GC in old space requested
 2.8284271247461903
-$ 
-{% endhighlight %}
+```
 
 As expected we optimize the function ``distance`` during warmup and can use the optimized code afterwards. However during
 the garbage collection we mark exactly this optimized code object for deoptimization and eventually unlink the optimized
@@ -437,7 +427,7 @@ this case we have weak references to the final ``Point`` map embedded into the c
 accesses to ``x`` and ``y`` in the beginning of ``distance``, as can be seen by looking at the optimized code that is
 generated for ``distance`` (when running with the ``--print-opt-code --code-comments`` command line flags):
 
-{% highlight nasm %}
+```
 ...SNIP...
 0x2e1542b05b83    35  488b4518       REX.W movq rax,[rbp+0x18]
                   ;;; <@24,#16> check-non-smi
@@ -461,7 +451,7 @@ generated for ``distance`` (when running with the ``--print-opt-code --code-comm
                   ;;; <@34,#21> load-named-field
 0x2e1542b05bc7   103  8b4a1b         movl rcx,[rdx+0x1b]
 ...SNIP...
-{% endhighlight %}
+```
 
 These two references to the final ``Point`` map ``0x25206770a2e9`` are treated weakly by the garbage collector, which means
 that the code object becomes invalid once the target objects die. Thus V8 has to deoptimize in this case, which means we need
@@ -469,7 +459,7 @@ to go back to unoptimized code and eventually re-optimize when the function beco
 a catch: You can only do this for a certain number of times until V8 gives up on optimizing this function completely, i.e.
 let's run this in a loop
 
-{% highlight javascript %}
+```js
 // Some simple 2D point class with distance helper function.
 function Point(x, y) {
   this.x = x;
@@ -506,11 +496,11 @@ for (let i = 1; i <= 12; ++i) {
   // Let's see again.
   distanceToOrigin(2, 2);
 }
-{% endhighlight %}
+```
 
 and check the output with ``--trace-opt``:
 
-{% highlight console %}
+```
 $ out/Debug/d8 ex5.js --allow-natives-syntax --expose-gc --trace-opt
 ...SNIP...
 --- Before warmup ---
@@ -526,8 +516,7 @@ $ out/Debug/d8 ex5.js --allow-natives-syntax --expose-gc --trace-opt
 [evicting entry from optimizing code map (deoptimized code) for 0x51ae02c6b9 <SharedFunctionInfo distance>]
 [disabled optimization for 0x51ae02c6b9 <SharedFunctionInfo distance>, reason: Optimized too many times]
 --- After optimized 12 ---
-$ 
-{% endhighlight %}
+```
 
 Oops, so after we did this 11 times, there's no way to have the ``distance`` function optimized again, and you will be
 stuck with unoptimized baseline code. For heavy framework based websites / webapps it usually doesn't take long to

@@ -21,7 +21,7 @@ This lack of balance led to highly unpredictable performance. For example, when 
 
 V8 has been like this cliff. If you pay attention, then it’s stunning and beautiful. But if you don’t, and you fall off the cliff, you’re screwed. Performance differences of **100x** weren’t uncommon in the past. Of these cliffs, the `arguments` object handling in Crankshaft is probably the one which people hit most often and which is the most frustrating too. The fundamental assumption in Crankshaft is that `arguments` object does not escape, and thus Crankshaft does not need to materialize the actual JavaScript `arguments` object **ever**, but instead can just take the parameters from the activation record. So, in other words, there’s no safety net. It’s all or nothing. Let’s consider this simple dispatching logic:
 
-{% highlight javascript %}
+```js
 var callbacks = [
   function sloppy() {},
   function strict() { "use strict"; }
@@ -36,23 +36,21 @@ function dispatch() {
 for(var i = 0; i < 100000; ++i) {
   dispatch(1, 2, 3, 4, 5);
 }
-{% endhighlight %}
+```
 
 Looking at it naively, it seems to follow the rules for the `arguments` object in Crankshaft: In `dispatch` we only use `arguments` together with [`Function.prototype.apply`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Function/apply). Yet, running this simple `example.js` in node tells us that all optimizations are disabled for `dispatch`:
 
-{% highlight console %}
-
+```
 $ node --trace-opt example.js
 ...
 [marking 0x353f56bcd659 <JS Function dispatch (SharedFunctionInfo 0x187ffee58fc9)> for optimized recompilation, reason: small function, ICs with typeinfo: 6/7 (85%), generic ICs: 0/7 (0%)]
 [compiling method 0x353f56bcd659 <JS Function dispatch (SharedFunctionInfo 0x187ffee58fc9)> using Crankshaft]
 [disabled optimization for 0x167a24a58fc9 <SharedFunctionInfo dispatch>, reason: Bad value context for arguments value]
-$ 
-{% endhighlight %}
+```
 
 The infamous [Bad value context for arguments value](https://gist.github.com/Hypercubed/89808f3051101a1a97f3) reason. So, what is the problem here? Despite the code following the rules for `arguments` object, it falls off the performance cliff. The real reason is pretty subtle: Crankshaft can only optimize `fn.apply(receiver,arguments)` if it knows that `fn.apply` is [`Function.prototype.apply`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Function/apply), and it only knows that for monomorphic `fn.apply` property accesses. That is, `fn` has to have exactly the same hidden class ⸺ map in V8 terminology ⸺ all the time. But `callbacks[0]` and `callbacks[1]` have different maps, since `callbacks[0]` is a sloppy mode function, whereas `callbacks[1]` is a strict mode function:
 
-{% highlight console %}
+```
 $ cat example2.js
 var callbacks = [
   function sloppy() {},
@@ -61,20 +59,18 @@ var callbacks = [
 console.log(%HaveSameMap(callbacks[0], callbacks[1]));
 $ node --allow-natives-syntax example2.js
 false
-$ 
-{% endhighlight %}
+```
 
 TurboFan on the other hand happily optimizes dispatch (using the [latest Node.js LKGR](https://medium.com/@bmeurer/help-us-test-the-future-of-node-js-6079900566f)):
 
-{% highlight console %}
+```
 $ node --trace-opt --future example.js
 [marking 0x20fa7d04cee9 <JS Function dispatch (SharedFunctionInfo 0x27431e85d299)> for optimized recompilation, reason: small function, ICs with typeinfo: 6/6 (100%), generic ICs: 0/6 (0%)]
 [compiling method 0x20fa7d04cee9 <JS Function dispatch (SharedFunctionInfo 0x27431e85d299)> using TurboFan]
 [optimizing 0x1c22925834d9 <JS Function dispatch (SharedFunctionInfo 0x27431e85d299)> - took 0.526, 0.513, 0.069 ms]
 [completed optimizing 0x1c22925834d9 <JS Function dispatch (SharedFunctionInfo 0x27431e85d299)>]
 ...
-$ 
-{% endhighlight %}
+```
 
 In this trivial example, the performance difference is already **2.5x**, and TurboFan doesn’t even generate awesome code ⸺ yet. So you take the performance hit just because you’re faced with the choice of two extremes: Fast path vs. slow path. And V8’s focus on the fast path in the past often led to making the slow path even slower, for example because you pay more for tracking feedback that you need to generate almost perfect code in some fast case, or simply because you have to fall through even more checks to get to the slow path.
 
@@ -135,7 +131,7 @@ For example, using `Object.create` in a simple microbenchmark often gave pretty 
 
 Another prime example is `Function.prototype.bind`, which was a pretty popular entry point to blaming V8 for bad builtin performance (i.e. [John-David Dalton](https://twitter.com/jdalton) made it a habit to point to the poor performance of bound functions in V8… and he was right). The implementation of `Function.prototype.bind` in V8 two years ago was basically this:
 
-{% highlight javascript %}
+```js
 // ES6 9.2.3.2 Function.prototype.bind(thisArg , ...args)
 function FunctionBind(this_arg) { // Length is 1.
   if (!IS_CALLABLE(this)) throw MakeTypeError(kFunctionBind);
@@ -200,7 +196,7 @@ function FunctionBind(this_arg) { // Length is 1.
   // TODO(lrn): Do set these to be thrower.
   return result;
 }
-{% endhighlight %}
+```
 
 Note that `%Foo` is a special internal syntax and means call the function `Foo` in the C++ runtime, whereas `%_Bar` is a special internal syntax to inline some assembly identified by `Bar`. I leave it as an exercise to the reader to figure out why this code would be slow, given that crossing the boundary to the C++ runtime is pretty expensive (you can also read about it [here](http://benediktmeurer.de/2015/12/25/a-new-approach-to-function-prototype-bind/)). Just rewriting this builtin in a saner way (initially fully based on a single C++ implementation) and providing a simpler implementation for bound functions yielded **60,000%** improvements. The final performance boost was achieved when the `Function.prototype.bind` builtin itself was ported to the `CodeStubAssembler`.
 

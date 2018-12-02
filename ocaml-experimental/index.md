@@ -32,44 +32,44 @@ The native code toplevel was moved to a new project [ocamlnat](/ocamlnat).
 
 Download the latest source code release [ocaml-{{ page.version }}.tar.bz2](/files/source/ocaml-{{ page.version }}.tar.bz2) (or any other release from the list above), and extract the source distribution tarball using the following command:
 
-{% highlight console %}
+```
 $ tar xjf ocaml-{{ page.version }}.tar.bz2
 $ cd ocaml-{{ page.version }}
-{% endhighlight %}
+```
 
 The installation is similar to the installation of any regular upstream OCaml source distribution, so make sure to consult the [INSTALL](https://raw.github.com/bmeurer/ocaml-experimental/master/INSTALL) and [README](https://raw.github.com/bmeurer/ocaml-experimental/master/README) files if you run into trouble.
 
 Assuming that you want to install the experimental OCaml into `/usr/local` on a Unix-like system (i.e. Linux, BSD or Mac OS X), proceed by
 
-{% highlight console %}
+```
 $ ./configure -prefix /usr/local
 $ make world
 $ make opt
 $ make opt.opt
-{% endhighlight %}
+```
 
 These are basically the standard configuration and build steps as described in the [INSTALL](https://raw.github.com/bmeurer/ocaml-experimental/master/INSTALL) file. Feel free to pass additional parameters the `configure` script if you need to.
 
 Afterwards run the following command to also build the new native OCaml toplevel `ocamlnat`, which is currently only available on Unix-like systems running on x86 or x86-64 processors, so this command will fail on other systems.
 
-{% highlight console %}
+```
 $ make ocamlnat
-{% endhighlight %}
+```
 
 The final step is to install the new OCaml distribution into the selected prefix directory (i.e. `/usr/local`).
 
-{% highlight console %}
+```
 $ sudo make install
-{% endhighlight %}
+```
 
 Et voila, now you can use your new OCaml distribution, especially the new `ocamlnat` toplevel. Assuming that you installed it into `/usr/local`, then you can execute it using the following command, which presents you with an interactive toplevel prompt, i.e.:
 
-{% highlight console %}
+```
 $ /usr/local/bin/ocamlnat
         Objective Caml version {{ page.version }} ({{ page.date }}) - native toplevel
 
 # 
-{% endhighlight %}
+```
 
 You can use it as a drop-in replacement for the byte code toplevel `ocaml` in almost all cases, and enjoy a performance boost of up to **100x** (compared to the byte code toplevel), as detailed [here](/2011/09/14/ocamlnat-benchmark) and [here](http://arxiv.org/pdf/1110.1029).
 

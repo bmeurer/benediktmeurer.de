@@ -34,17 +34,17 @@ He (rightfully) noted that Chrome and Node don't have any reasonably fast way to
  time to change that. In order to understand what's slow and why, it's important to understand
 how *iteration* works. This is easiest to understand by looking at a very simple `for-of` loop:
 
-{% highlight javascript %}
+```js
 function sum(iterable) {
   let x = 0;
   for (const y of iterable) x += y;
   return x;
 }
-{% endhighlight %}
+```
 
 Running that through [Babel](http://babeljs.io) we get the following code:
 
-{% highlight javascript %}
+```js
 function sum(iterable) {
   var x = 0;
   var _iteratorNormalCompletion = true;
@@ -73,7 +73,7 @@ function sum(iterable) {
 
   return x;
 }
-{% endhighlight %}
+```
 
 If you've seen one of my [recent](https://docs.google.com/presentation/d/1DKEpAIwj9grN5UQODWo54BpdJNPVSE7soWBJTeXQq9A)
 [talks](https://docs.google.com/presentation/d/1wiiZeRQp8-sXDB9xXBUAGbaQaWJC84M5RNxRyQuTmhk) about ES2015 and beyond,
@@ -82,7 +82,7 @@ to implement `for-of` (details vary).
 
 Ignoring the (boring) exception handling, the core of the iteration boils down to this very simple loop:
 
-{% highlight javascript %}
+```js
 function sum(iterable) {
   var x = 0;
   var iterator = iterable[Symbol.iterator]();
@@ -93,7 +93,7 @@ function sum(iterable) {
   }
   return x;
 }
-{% endhighlight %}
+```
 
 *Side note: There's a great blog post [Iterables and iterators in ECMAScript 6](http://2ality.com/2015/02/es6-iteration.html)
 and a whole section [Iterables and iterators](http://exploringjs.com/es6/ch_iteration.html) in the book "Exploring
@@ -115,7 +115,7 @@ JavaScript and C++ code. For example, the
 [%SetIteratorPrototype%.next()](https://www.ecma-international.org/ecma-262/6.0/#sec-%setiteratorprototype%.next)
 was implemented like this.
 
-{% highlight javascript %}
+```js
 function SetIteratorNextJS() {
   if (!IS_SET_ITERATOR(this)) {
     throw %make_type_error(kIncompatibleMethodReceiver,
@@ -139,7 +139,7 @@ function SetIteratorNextJS() {
 
   return result;
 }
-{% endhighlight %}
+```
 
 What this code does is essentially the following:
 
@@ -206,7 +206,7 @@ Overall we improve the performance of `Map` and `Set` iteration by up to a facto
 
 I used the following simple micro-benchmark to measure the iteration overhead:
 
-{% highlight javascript %}
+```js
 const s = new Set;
 const m = new Map;
 for (let i = 0; i < 1e7; ++i) {
@@ -263,7 +263,7 @@ for (const test of TESTS) {
   test();
   console.timeEnd(test.name);
 }
-{% endhighlight %}
+```
 
 We still lose some performance, especially in case of entry iteration (both `SetForOfEntries` and `MapForOf`)
 because our escape analysis cannot yet eliminate the key-value array allocations, and we also still lose some

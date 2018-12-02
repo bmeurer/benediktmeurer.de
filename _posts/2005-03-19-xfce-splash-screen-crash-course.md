@@ -9,18 +9,18 @@ The whole splash thingy is a bit complex atm. On the first level, there are spla
 
 <code>balou</code> theming is pretty easy, its just a <code>themerc</code> file and a logo image file. Check the <code>Default</code> balou theme in the xfce4-session source to get an idea of the file format/content (it includes a few comments). To distribute a theme, create a directory layout like this:
 
-{% highlight sh %}
+```
 Name
 Name/balou
 Name/balou/themerc
 Name/balou/logo.png
-{% endhighlight %}
+```
 
 where <code>Name</code> is the name of your theme. Then tar up the stuff like this:
 
-{% highlight console %}
+```
 $ tar czvf Name.tar.gz Name
-{% endhighlight %}
+```
 
 Now users can simply install the theme by dragging the <code>.tar.gz</code> file from  a file manager and dropping it to the <code>balou</code> configure screen in the  settings manager.
 

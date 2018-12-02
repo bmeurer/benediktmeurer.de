@@ -70,47 +70,47 @@ And there's another important aspect that tends to be forgotten easily: V8 is no
 
 Speaking of the example above, whether or not [ToBoolean](https://tc39.github.io/ecma262/#sec-toboolean) is heavily optimized by the engine or not, and specifically what kind of feedback is tracked and consumed about the incoming values, is and should remain somewhat irrelevant. If you can write your hot code in a way that is optimizable independent of certain speculative optimizations, you should favor that way. For example, when you have a value `obj` that can either be `undefined` or an object, consider ruling out `undefined` explicit via
 
-{% highlight javascript %}
+```js
 if (obj !== undefined) {
   // …
 }
-{% endhighlight %}
+```
 
 or even better:
 
-{% highlight javascript %}
+```js
 if (obj !== void 0) {
   // …
 }
-{% endhighlight %}
+```
 
 This might also help your future self understanding this code in two years, as with
 
-{% highlight javascript %}
+```js
 if (obj) {
   // …
 }
-{% endhighlight %}
+```
 
 it's not clear that all you intended to do back then was to rule out `undefined` for `obj`.
 
 This is especially useful to keep in mind when using `||` and `&&` in JavaScript. For example I've seen developers using `||` to implement default parameters like this:
 
-{% highlight javascript %}
+```js
 function foo(a, b) {
   a = a || "value";
   b = b || 4;
   // …
 }
-{% endhighlight %}
+```
 
 When asked whether the empty string is a valid input for `a` or `0` is a valid input for `b`, they were quite surprised to notice that they would rule out valid inputs this way. So don't do this! Instead use the ES2015 feature:
 
-{% highlight javascript %}
+```js
 function foo(a = "value", b = 4) {
   // …
 }
-{% endhighlight %}
+```
 
 This only replaces `undefined` values with defaults, which is sane. There's also an [interesting performance aspect](https://github.com/developit/preact/pull/610) to using `&&` and `||` in JavaScript. I'll see if I can do a series about writing *Explicit JavaScript* with focus on performance aspects from the VMs perspective, which might help to shed some light on this topic.
 

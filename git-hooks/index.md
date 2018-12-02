@@ -17,16 +17,16 @@ git-hooks provides a simple mechanism to manage hooks for several [Git](http://g
 
 You need [CMake](http://www.cmake.org) and [GCC](http://gcc.gnu.org) in order to build and install git-hooks. You will also need to have [Git](http://git-scm.com) and [Perl](http://www.perl.org) installed for the hooks to work properly.  To build git-hooks run
 
-{% highlight console %}
+```
 $ cmake /path/to/git-hooks
 $ make
-{% endhighlight %}
+```
 
 in a new directory (preferably, tho you may also run it from the source directory). Then, use
 
-{% highlight console %}
+```
 $ make install
-{% endhighlight %}
+```
 
 to install git-hooks. This will install git-hooks to <code>/usr/local</code>. You can use ccmake to change the installation prefix. Below, we will assume that you installed git-hooks to <code>/usr/local</code>.
 
@@ -35,11 +35,11 @@ to install git-hooks. This will install git-hooks to <code>/usr/local</code>. Yo
 
 To setup a repository using git-hooks, just use the repository template that ships with git-hooks.
 
-{% highlight console %}
+```
 $ mkdir myrepo.git
 $ cd myrepo.git
 $ git --bare init --template=/usr/local/share/git-hooks/template ...
-{% endhighlight %}
+```
 
 This will setup the new repository <code>myrepo.git</code> with git-hooks. Check the sample config file that will be created for <code>myrepo.git</code>.
 

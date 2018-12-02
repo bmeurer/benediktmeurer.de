@@ -30,16 +30,16 @@ See the [LICENSE](http://github.com/bmeurer/BMKit/raw/master/LICENSE) file for d
 
 Run the following command to add BMKit as a [Git](http://git-scm.org) submodule to your project. Be sure you have are you in the root folder of your project.
 
-{% highlight console %}
+```
 $ git submodule add git://github.com/bmeurer/BMKit.git Vendor/BMKit
-{% endhighlight %}
+```
 
 If you don't want to add BMKit as a submodule to your project or if your project is not managed using [Git](http://git-scm.org), then you can run the following commands to download the source code of the most recent revision.
 
-{% highlight console %}
+```
 $ mkdir -p Vendor/BMKit
 $ curl -L http://github.com/bmeurer/BMKit/tarball/master | tar xz --strip 1 -C Vendor/BMKit
-{% endhighlight %}
+```
 
 
 ### Adding to your Project
@@ -56,12 +56,12 @@ $ curl -L http://github.com/bmeurer/BMKit/tarball/master | tar xz --strip 1 -C V
 
 To use BMKit, simply add the following line to your source file. I recommend adding this to your prefix to make things easy.
 
-{% highlight objc %}
+```objective_c
 #import <BMKit/BMKit.h>
-{% endhighlight %}
+```
 
 You can also import individual files instead of the whole framework by doing something like:
 
-{% highlight objc %}
+```objective_c
 #import <BMKit/BMNetworkReachabilityController.h>
-{% endhighlight %}
+```

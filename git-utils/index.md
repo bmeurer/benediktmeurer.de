@@ -17,9 +17,9 @@ git-utils is a collection of simple utilities that made my [Git](http://git-scm.
 
 You don't need anything special, just a working installation of [Git](http://git-scm.com) and a UNIX system (tested with Mac OS X and Linux). To install the git-utils into `/usr/local` run
 
-{% highlight console %}
+```
 $ sudo make install
-{% endhighlight %}
+```
 
 or just pick the scripts that you need and place them wherever you want.
 

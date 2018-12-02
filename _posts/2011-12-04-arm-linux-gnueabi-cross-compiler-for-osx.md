@@ -7,48 +7,48 @@ I spent some time getting a decent cross compiler toolchain for `arm-linux-gnuea
 
 The stuff is available from my [local MacPorts repository](https://github.com/bmeurer/MacPorts). To get it working on your Mac, make sure to update to the latest MacPorts first, using:
 
-{% highlight console %}
+```
 $ sudo port selfupdate
 $ sudo port upgrade outdated
-{% endhighlight %}
+```
 
 Continue by cloning my MacPorts repository and editing the MacPorts `sources.conf` file (as superuser):
 
-{% highlight console %}
+```
 $ git clone git://github.com/bmeurer/MacPorts.git
 $ cd MacPorts/ports
 $ sudo vim /opt/local/etc/macports/sources.conf
-{% endhighlight %}
+```
 
 Add a new line to the file *before* the line with the `[default]` tag
 
-{% highlight console %}
+```
 file:///path/to/MacPorts/ports [nosync]
-{% endhighlight %}
+```
 
 where `/path/to/MacPorts` is the path to the MacPorts repository clone. Once done, run
 
-{% highlight console %}
+```
 $ portindex
-{% endhighlight %}
+```
 
 in the `MacPorts/ports` subdirectory to add the ports from my local MacPorts repository to the list of available ports (remember to rerun `portindex` everytime you pull from my repository). Now you can continue installing the cross compiler ports, using either
 
-{% highlight console %}
+```
 $ sudo port install arm-linux-gnueabi-gcc
-{% endhighlight %}
+```
 
 to install just the binutils, gcc and the basic runtime, or
 
-{% highlight console %}
+```
 $ sudo port install arm-linux-gnueabi-ocaml-compiler
-{% endhighlight %}
+```
 
 to also install the OCaml cross compiler and its runtime. Installing the toolchain will take some time depending on the available bandwidth and the overall speed of your machine.
 
 Once done, your new cross compiler will be ready in `/opt/local`, with its system root in `/opt/local/arm-linux-gnueabi/sysroot` and related tools in `/opt/local/bin`, prefixed with `arm-linux-gnueabi-`, i.e.
 
-{% highlight console %}
+```
 $ arm-linux-gnueabi-as --version
 GNU assembler (MacPorts 2011/12/02) 2.22
 Copyright 2011 Free Software Foundation, Inc.
@@ -87,6 +87,6 @@ ext_dll: .so
 os_type: Unix
 default_executable_name: a.out
 systhread_supported: true
-{% endhighlight %}
+```
 
 To help with cross compilation of OCaml projects using `ocamlfind`, the `arm-linux-gnueabi-ocaml-compiler` port also installs a custom `ocamlfind` configuration file `/opt/local/etc/arm-linux-gnueabi-ocamlfind.conf`, which you can use to utilize the cross compiler toolchain by setting the environment variable `OCAMLFIND_CONF` to point to this file.

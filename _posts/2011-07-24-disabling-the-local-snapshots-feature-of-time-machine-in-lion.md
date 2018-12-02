@@ -7,9 +7,9 @@ title: Disabling the local snapshots feature of Time Machine in Lion
 
 Besides the disk space issue, the local snapshots feature also slows down your MBP noticably. You'll notice that the disk is spinning most of the time, and the file copying performed by Time Machine trashes your caches. Everything feels terribly slow after some time. Thankfully Apple engineers included a switch to turn of the local snapshots feature, <code>tmutil</code> supports a new command <code>disablelocal</code> in OS X Lion. Use the following command to disable the local snapshots feature of Time Machine:
 
-{% highlight console %}
+```
 $ sudo tmutil disablelocal
-{% endhighlight %}
+```
 
 Note that it might take some time for Time Machine to cleanup the <code>/.MobileBackups</code> folder.
 

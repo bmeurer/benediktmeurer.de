@@ -9,7 +9,7 @@ Meanwhile I just got back from a very interesting dinner discussion with [Brian 
 
 Consider the following artificial `Point` class, which has a method `distance` that computes the [Manhatten distance](https://en.wiktionary.org/wiki/Manhattan_distance) of two such points.
 
-{% highlight javascript %}
+```js
 class Point {
   constructor(x, y) {
     this.x = x;
@@ -22,11 +22,11 @@ class Point {
     return dx + dy;
   }
 }
-{% endhighlight %}
+```
 
 In addition to that consider the following `test` driver function, which creates a couple of `Point` instances, and computes the `distance` between them several million times, summing up the result (yeah I know it's a micro-benchmark, but bear with me for a second):
 
-{% highlight javascript %}
+```js
 function test() {
   const points = [
     new Point(10, 10),
@@ -43,11 +43,11 @@ function test() {
   }
   return result;
 }
-{% endhighlight %}
+```
 
 Now we have a proper benchmarkfor the `Point` class and in particular its `distance` method. Let's do a couple of runs of the `test` driver to see what the performance is, using the following HTML snippet:
 
-{% highlight html %}
+```html
 <script>
     function test() {
         class Point {
@@ -85,7 +85,7 @@ Now we have a proper benchmarkfor the `Point` class and in particular its `dista
         console.timeEnd("test " + i);
     }
 </script>
-{% endhighlight %}
+```
 
 If you run this in Chrome 61 (canary), you'll see the following output in the Chrome Developer Tools Console:
 
@@ -99,7 +99,7 @@ test 5: 3894.27392578125ms
 
 The performance of the individual runs is very inconsistent. You can see that the performance get's worse with each subsequent run. The reason for the performance regression is that the `Point` class sits inside the `test` function.
 
-{% highlight html %}
+```html
 <script>
     class Point {
         constructor(x, y) {
@@ -137,7 +137,7 @@ The performance of the individual runs is very inconsistent. You can see that th
         console.timeEnd("test " + i);
     }
 </script>
-{% endhighlight %}
+```
 
 If we change the snippet slightly such that the `Point` class is defined outside of the `test` function, we'll get different results:
 
@@ -157,7 +157,7 @@ The performance is pretty much stable now with the usual noise. Notice that in b
 
 It's also worth noting that this has nothing to do with the new ES2015 `class` syntax; using old style ES5 syntax for the `Point` class yields the same performance results:
 
-{% highlight javascript %}
+```js
 function Point(x, y) {
   this.x = x;
   this.y = y;
@@ -167,7 +167,7 @@ Point.prototype.distance = function (other) {
   var dy = Math.abs(this.y - other.y);
   return dx + dy;
 }
-{% endhighlight %}
+```
 
 The underlying reason for the performance difference when the `Point` class lives inside the `test` function is that the `class` literal is then executed multiple times (exactly 5 times in my example above), whereas if it lives outside the `test` function, it's only executed once. Everytime the `class` definition is executed, a new prototype object is created, which carries all the methods of the class. In addition to that a new *constructor* function is created, which corresponds to the `class`, and has the prototype object set as it's `"prototype"` property.
 

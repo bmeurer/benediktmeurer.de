@@ -17,7 +17,7 @@ inject the version number from the most recent Git tag into the generated app bu
 actually pretty easy and requires just the following two lines of shell code in a custom
 *Build Phase*:
 
-{% highlight sh %}
+```sh
 # Update the CFBundleShortVersionString in the generated Info.plist using the most recent Git tag.
 # Idea taken from http://tinyurl.com/3usjj9d by Joachim Bondo.
 
@@ -26,7 +26,7 @@ GIT_RELEASE_VERSION=`git describe --tags`
 
 # Set the CFBundleShortVersionString in the generated Info.plist (stripping off the leading "v").
 defaults write "${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH%.*}" "CFBundleShortVersionString" "${GIT_RELEASE_VERSION#*v}"
-{% endhighlight %}
+```
 
 To add it to a target in your Xcode project, select the target, then *Add Build Phase → Add Run Script*,
 set the shell to `/bin/bash` and paste the contents of the script above. Make sure it is run

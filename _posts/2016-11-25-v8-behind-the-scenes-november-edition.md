@@ -111,25 +111,25 @@ For finding horrible performance cliffs and tracking progress on the relevant is
 ES6 (and beyond) features compared to their naive ES5 counterparts, i.e. not a 100% semantically equivalent version, but the naive version that
 a programmer would likely pick instead. For example an array destructuring like this
 
-{% highlight javascript %}
+```js
 var data = [1, 2, 3];
 
 function fn() {
   var [c] = data;
   return c;
 }
-{% endhighlight %}
+```
 
 in ES6 roughly corresponds to this code
 
-{% highlight javascript %}
+```js
 var data = [1, 2, 3];
 
 function fn() {
   var c = data[0];
   return c;
 }
-{% endhighlight %}
+```
 
 in ES5, even though these are not semantically equivalent since the first example is using [ES6 iteration](https://tc39.github.io/ecma262/#sec-iteration)
 while the second example is just using a plain indexed access to an [Array Exotic Object](https://tc39.github.io/ecma262/#sec-array-exotic-objects).
@@ -167,13 +167,13 @@ the right-hand side has a method `@@hasInstance`, and use that instead of the ol
 [Function.prototype[@@hasInstance]](https://tc39.github.io/ecma262/#sec-function.prototype-@@hasinstance), which itself just calls to OrdinaryHasInstance.
 So for example a function `isA` like this
 
-{% highlight javascript %}
+```js
 function A() { ... }
 
 ...
 
 function isA(o) { return o instanceof A; }
-{% endhighlight %}
+```
 
 would be slowed down a lot if you implement ES2015 naively, because in addition to the actual prototype chain walk that you need to perform
 for `instanceof`, you know also need to lookup the `@@hasInstance` property on `A`'s prototype first and call that method. To mitigate that
@@ -193,7 +193,7 @@ way to avoid depending on the global protector cell for the optimizing compilers
 For TurboFan, I did not only fix the regression, but also made it possible to optimize appropriately in the presence of custom
 `Symbol.hasInstance` handlers, which makes it possible to (mis)use `instanceof` for rather crazy things like this
 
-{% highlight javascript %}
+```js
 var Even = {[Symbol.hasInstance](x) { return x % 2 == 0; } }
 
 function isEven(x) {
@@ -202,12 +202,12 @@ function isEven(x) {
 
 isEven(1); // false
 isEven(2); // true
-{% endhighlight %}
+```
 
 and still generate awesome code for it. Assuming we run this example function with the new pipeline (Ignition and TurboFan) using
 `--turbo` and `--ignition-staging`, TurboFan is able to produce the following (close to perfect) code on x64:
 
-{% highlight nasm %}
+```
 ...SNIP...
 0x30e579704073    19  488b4510       REX.W movq rax,[rbp+0x10]
 0x30e579704077    23  48c1e820       REX.W shrq rax, 32
@@ -234,7 +234,7 @@ and still generate awesome code for it. Assuming we run this example function wi
 0x30e5797040b6    86  5d             pop rbp
 0x30e5797040b7    87  c21000         ret 0x10
 ...SNIP...
-{% endhighlight %}
+```
 
 We are not only able to inline the custom `Even[Symbol.hasInstance]()` method, but TurboFan also consumes the integer feedback
 that Ignition collected for the modulus operator and turns the `x % 2` into a bitwise-and operation. There are still a couple
