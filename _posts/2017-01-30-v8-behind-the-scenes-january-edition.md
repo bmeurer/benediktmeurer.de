@@ -39,9 +39,7 @@ both the next MunichJS User Group meetup in February and the next Munich Node Us
 Valley](https://twitter.com/holfelder/status/824670776917954564) event space at Google Munich - with Pizza and
 [gBräu](https://untappd.com/b/tilmans-biere-gbrau/1390481)!
 
-<center>
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/XBSyyxN7Q-o" frameborder="0" allowfullscreen></iframe>
-</center>
+<iframe src="https://www.youtube.com/embed/XBSyyxN7Q-o" width="100%" height="360" frameborder="0" allowfullscreen></iframe>
 
 Of course we also submitted a lot of talk proposals to various JavaScript and Node conferences, so expect to meet a lot more V8 folks, especially
 folks that you may not know in person yet, this year (depending on acceptance of these proposals, of course).

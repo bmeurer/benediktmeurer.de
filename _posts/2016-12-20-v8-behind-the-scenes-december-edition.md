@@ -279,13 +279,7 @@ We plan to make these measurement tools more accessible during 2017 and provide 
 We also plan to continue our effort to focus on real world performance improvements rather than looking at benchmarks only, which
 was the main driver in the past.
 
-<p><center>
-  <iframe width="640" height="360" src="https://www.youtube.com/embed/xCx4uC7mn6Y" frameborder="0" allowfullscreen></iframe>
-  <br />
-  <small><i>
-    Real-world JavaScript performance, BlinkOn 6 Day 2 Talk 4.
-  </i></small>
-</center></p>
+<iframe src="https://www.youtube.com/embed/xCx4uC7mn6Y" width="100%" height="360" frameborder="0" allowfullscreen></iframe>
 
 If you haven't done so, be sure to watch the BlinkOn 6 talk on [Real-world JavaScript performance](https://youtu.be/xCx4uC7mn6Y)
 from my colleagues [Toon Verwaest](https://twitter.com/tverwaes) and [Camillo Bruni](https://twitter.com/camillobruni).
