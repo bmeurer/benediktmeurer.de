@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Thunar 0.2.2 and libexo 0.3.1.4 alpha2 releases
+tags: thunar
 ---
 
 I just released Thunar-0.2.2alpha2 and libexo-0.3.1.4alpha2. As suggested by the name, it is an alpha release and it is thereby considered to be more or less stable in what it does, but it is by no means a final version.

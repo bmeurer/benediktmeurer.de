@@ -1,6 +1,9 @@
 ---
 layout: post
 title: JavaScript Optimization Patterns (Part 1)
+tags:
+  - javascript
+  - v8
 ---
 
 It's been a while since my last blog post, mostly because I didn't really have the time or the energy to sit down and write up all the stuff that I wanted to write about. Part of it was because I have been pretty busy with the [Ignition and TurboFan launch](https://v8.dev/blog/launching-ignition-and-turbofan) in Chrome 59, which fortunately was a huge success thus far. But also partly because I took some time off with my family. And last but not least I went to [JSConf EU](https://2017.jsconf.eu) and [Web Rebels](https://www.webrebels.org), and at the time of this writing I'm at [enterJS](https://www.enterjs.de/), procastinating on doing the final tweaking for my talk.

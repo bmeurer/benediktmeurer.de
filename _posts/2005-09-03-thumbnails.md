@@ -1,9 +1,10 @@
 ---
 layout: post
 title: Thumbnails
+tags: thunar
 ---
 
-It took quite some time and it wasn't very enjoyable, but now Thunar finally supports thumbnails (atleast loading):
+It took quite some time and it wasn't very enjoyable, but now Thunar finally supports thumbnails (at least loading):
 
 <a href="/images/2005/thunar-thumbnails-20050603.png"><img src="/images/2005/thunar-thumbnails-20050603.png" width="90%" /></a>
 
@@ -21,4 +22,3 @@ $ ls -1 ~/.thumbnails/normal|wc -l
 ### Update 
 
 For the sake of completeness: Konqueror's <code>VmData</code> size is <code>4364 kB</code> (KDE 3.4).
-

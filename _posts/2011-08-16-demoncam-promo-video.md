@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Demon Cam Promo Video
+tags: ios
 ---
 
 Wow that <a href="http://www.demoncam.com/film/">Promotion Video</a> for the [Demon Cam](http://www.demoncam.com/app/) is just awesome! I wonder if they will be able to actually make money with the app.

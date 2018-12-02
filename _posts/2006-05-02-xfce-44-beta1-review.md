@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Xfce 4.4 BETA1 review
+tags: xfce
 ---
 
 Tuxmachines.org has nice <a href="http://www.tuxmachines.org/node/6448">review of Xfce 4.4beta1</a>, which provides a more detailed overview than my <a href="/2006/04/18/major-changes-in-xfce-44-beta1">brief list of major changes</a>.

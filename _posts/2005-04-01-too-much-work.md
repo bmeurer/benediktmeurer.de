@@ -1,6 +1,9 @@
 ---
 layout: post
 title: Too much work...
+tags:
+  - thunar
+  - xfce
 ---
 
 So, CeBIT 2005 is over and - as usual - the result is: A lot of work. Very interesting work, tho. But it leaves me with no time for xfce (besides that, my energy level is near to zero when I return home). I don't even manage to read all my mail currently.

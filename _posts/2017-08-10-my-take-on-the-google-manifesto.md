@@ -1,6 +1,7 @@
 ---
 layout: post
 title: My take on the "Google Manifesto"
+tags: thoughts
 ---
 
 In the past couple of days there's been lots of discussions and ramblings around the so-called

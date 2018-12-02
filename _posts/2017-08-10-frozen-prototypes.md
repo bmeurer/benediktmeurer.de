@@ -1,6 +1,10 @@
 ---
 layout: post
 title: Frozen Prototypes
+tags:
+  - javascript
+  - performance
+  - v8
 ---
 
 With the addition of [`Object.freeze`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze)

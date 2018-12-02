@@ -1,6 +1,10 @@
 ---
 layout: post
 title: "JavaScript engine fundamentals: optimizing prototypes"
+tags:
+  - javascript
+  - presentations
+  - v8
 ---
 
 This article describes some key fundamentals that are common to all JavaScript engines — and not just [V8](https://twitter.com/v8js), the engine the authors ([Mathias](https://twitter.com/mathias) and [Benedikt](https://twitter.com/bmeurer)) work on. As a JavaScript developer, having a deeper understanding of how JavaScript engines work helps you reason about the performance characteristics of your code.

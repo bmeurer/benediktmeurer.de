@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Linux for losers
+tags: linux
 ---
 
 A friend of mine pointed me to an interesting <a href="http://www.forbes.com/intelligentinfrastructure/2005/06/16/linux-bsd-unix-cz_dl_0616theo.html">article</a> today, which on first sight looked like just another useless Linux vs. BSD article, esp. since it quotes Theo De Raadt, who was never known for being very objective.  But De Raadt points out some real problems with the Linux development model (everybody that has ever worked on the kernel or a non-trivial driver will be aware of these problems). Unfortunately, De Raadt's diction is very bad, as usual, and so it's unlikely that any of the Linux guys will pay much attention.
@@ -12,4 +13,3 @@ But in order to develop the way described above, you need to setup clear goals f
 I'm not trying to blame Linux/OSS hackers, instead I strongly invite people to think about their development models and their understanding of open source. Take the chance to develop high quality software in your spare time; many of us will be forced to develop low quality software in our daily job anyways (yannow that money thing), so don't you think you could do better in your spare time? Of course it takes time and the feeling of success won't show up that early, but in the end you can be proud of your work.
 
 Of course I could also be completely wrong here, and my understanding of open source is simply escapist.
-

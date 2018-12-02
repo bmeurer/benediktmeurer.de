@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Autostart editor
+tags: xfce
 ---
 
 Since we're now using desktop files instead of arbitrary scripts or symlinks, it is pretty easy to make the list of autostarted applications editable through a simple user interface. And so here's <code>xfce4-autostart-editor</code>:

@@ -1,6 +1,10 @@
 ---
 layout: post
 title: Restoring for..in peak performance
+tags:
+  - performance
+  - turbofan
+  - v8
 ---
 
 When we [launched Ignition and TurboFan](https://v8.dev/blog/launching-ignition-and-turbofan) earlier this year,

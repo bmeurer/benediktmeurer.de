@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Thunar - Name of the Beast?
+tags: thunar
 ---
 
 The name discussion started once again. Most popular seems to be:

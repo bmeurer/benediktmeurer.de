@@ -1,6 +1,7 @@
 ---
 layout: post
 title: A visual tour of Xfce 4.4.0
+tags: xfce
 ---
 
 As of today, the long awaited version 4.4.0 of the Xfce Desktop Environment is finally

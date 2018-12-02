@@ -1,6 +1,7 @@
---- 
+---
 layout: post
 title: New website
+tags: website
 ---
 
 It was about time to get my website up2date... once again. In order to get it right this

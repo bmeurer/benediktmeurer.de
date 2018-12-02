@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Blocks and Grand Central Dispatch
+tags: ios
 ---
 
 Yesterday I held a talk about <a href="http://en.wikipedia.org/wiki/Blocks_(C_language_extension)">Blocks</a> and

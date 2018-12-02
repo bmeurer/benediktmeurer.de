@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Icon view renderer
+tags: thunar
 ---
 
 I just updated my gtk+ sandbox and, wow, the new GtkIconView in gtk 2.8 does exactly what is required (atleast from a first look), without breaking the API, thanks to RedHat's Matthias Clasen. The new icon view uses cairo for rendering, which of course leads to flickering and rendering errors if combined with the <i>good old way</i> of rendering things in GDK, since the cell renderers in a Gtk+ 2.4/2.6 installation still use plain Xlib functions (through the GDK wrappers). But this is more or less easy to fix, as we can use GDK functions instead of cairo functions (probably Xrender for the rubberband... tho, unfortunately the most interesting function in GDK here isn't public).

@@ -25,6 +25,10 @@ disqus_shortname: "benediktmeurer"
 paginate: 10
 paginate_path: "page:num"
 
+# TAGS
+tag_page_layout: tag
+tag_page_dir: tags
+
 # PWA
 pwa:
   sw_src_filepath: sw.js
@@ -43,6 +47,7 @@ plugins:
   - jekyll-minifier
   - jekyll-paginate
   - jekyll-pwa-plugin
+  - "jekyll/tagging"
 jekyll-minifier:
   compress_javascript: false  # UglifyJS integration seems to be broken.
 highlighter: rouge

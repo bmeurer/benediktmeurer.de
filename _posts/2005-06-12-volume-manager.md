@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Volume Manager
+tags: thunar
 ---
 
 After spending some time improving the ThunarVfsURI internals (handling schemes other than <code>file://</code>, performance improvements and the like), I took the time to refine the basic requirements for the volume manager. The volume manager provides core functionality required for the trash system to work (esp. since my current plan for 1.0 excludes trashing to the *"home trash"* as fallback).

@@ -1,6 +1,9 @@
 ---
 layout: post
 title: "V8: Behind the Scenes (November Edition feat. Ignition+TurboFan and ES2015)"
+tags:
+  - turbofan
+  - v8
 ---
 
 So this is my attempt to start a series of blog posts about what's going on behind the scenes of V8 in order to bring more transparency to what we do for

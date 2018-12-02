@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Thunar 0.3.0 and libexo 0.3.1.6 releases
+tags: thunar
 ---
 
 I just released Thunar-0.3.0beta1 and libexo-0.3.1.6beta1 as part of <a href="http://www.xfce.org/">Xfce</a> 4.4BETA1 (separate tarballs are provided for users of Xfce 4.2.x that don't want to upgrade yet, and users of other desktop environments). As suggested by the name, it is a beta release and it is thereby considered to be more or less stable in what it does, but it is still not a final version.

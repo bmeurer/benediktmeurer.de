@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Some more screenshots
+tags: thunar
 ---
 
 Long time no post. So, here's another bunch of random screenshots.

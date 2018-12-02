@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Thunar 0.4.0 and libexo 0.3.1.10 rc1 releases
+tags: thunar
 ---
 
 I just released Thunar-0.4.0rc1 and libexo-0.3.1.10rc1 as part of <a href="http://www.xfce.org/">Xfce</a> 4.4RC1. The separate tarballs are provided for users of Xfce 4.2.x that don't want to upgrade yet, and users of other desktop environments. As suggested by the name it is not yet a final release, but is considered to be somewhat stable.

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: And then there was trash...
+tags: thunar
 ---
 
 The <code>ThunarFile</code> and <code>ThunarFolder</code> interfaces are now completely independent of the specific implementation. This makes it possible to support various different <i>file systems</i> with Thunar. As a first candidate, I implemented a first draft for the <i>Trash vfolder</i> today, which means Thunar is now able to display the contents of the trash cans currently connected to your system - well, in theory it is, but the trash manager doesn't handle foreign trash cans currently, but it will soon. :-)

@@ -1,6 +1,10 @@
 ---
 layout: post
 title: Faster Collection Iterators
+tags:
+  - javascript
+  - performance
+  - v8
 ---
 
 The [ECMAScript 2015 Language Specification](https://www.ecma-international.org/ecma-262/6.0/) introduced collections into

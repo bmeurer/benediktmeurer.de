@@ -1,6 +1,9 @@
 ---
 layout: post
 title: Thunar Location Bar vs. Path Bar
+tags:
+  - thunar
+  - xfce
 ---
 
 We are currently discussing the <a href="http://thunar.xfce.org/">Thunar</a> User Interface:

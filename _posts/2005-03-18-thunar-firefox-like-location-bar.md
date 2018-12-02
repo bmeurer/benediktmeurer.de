@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Thunar Firefox-like location bar
+tags: thunar
 ---
 
 So I added the firefox-like location bar to Thunar today (<a href="/2005/03/17/thunar-open-location-ideas">Brian Schott came up with that idea</a> yesterday) and after playing around with it for some time, I'm pretty sure that this is the solution to the location bar problem we've been trying to find during the last weeks.

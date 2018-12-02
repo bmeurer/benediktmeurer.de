@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Small things matter
+tags: thoughts
 ---
 
 After all the recent drama in the [Node.js](https://nodejs.org) community, which has been on-going for a long time actually, I was almost tempted to believe that a lot of this is really because problems deeply rooted within the american society leak into the (open source) tech community. And to a certain extent that’s probably true. But only to a certain extent. There’s more about the broader tech community that makes it an extremely hostile environment, without being influenced (directly) by the american society. A lot more than that.

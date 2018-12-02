@@ -1,6 +1,7 @@
 ---
 layout: post
 title: It just doesn't work(TM)
+tags: linux
 ---
 
 I just spent some time reading through the recent <i>Why Linux won't work on the desktop</i> and <i>The Linux desktop of the future</i> stuff. <b>Just works(TM)</b> seems to be the most important point today, and many projects claim to follow that idea. My experience is that most things <b>just work</b> if <i>[long list of conditions skipped]</i>.

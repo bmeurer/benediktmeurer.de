@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Thunar Firefox-like location bar
+tags: thunar
 ---
 
 I decided to upgrade the currently available libexo debian package to revision 85, so Ubuntu/Debian users do not need to compile libexo themselves in order to run the Thunar mockups or the currently available snapshots. The API shouldn't break during the next weeks, so you're mostly safe to upgrade.
