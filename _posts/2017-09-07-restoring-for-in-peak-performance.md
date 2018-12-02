@@ -14,7 +14,7 @@ serious regressions was the [4-5x performance hit on for..in peak performance](h
 [Get ready: A new V8 is coming, Node.js performance is changing](https://www.nearform.com/blog/node-js-is-getting-a-new-v8-with-turbofan/)
 blog post in the summer, and led to some [complaints](https://twitter.com/lukeed05/status/896815029239947264) in the community.
 
-# Motivation
+## Motivation
 
 That blog post contains a micro-benchmark to measure performance of [object
 iteration](https://github.com/davidmarkclements/v8-perf/blob/master/bench/object-iteration.js), which contains a test using the common
@@ -72,7 +72,7 @@ and access the values. It was almost 5 times faster than the next closest approa
 
 > "for those who’ve used for-in for its performance benefits it’s going to be a painful moment when we lose a large chunk of speed with no alternative approach available"
 
-# Solution
+## Solution
 
 This was not an acceptable situation, so we had to take action and address this significant performance issue. But before
 we dive into that, let's recap quickly what happened in Crankshaft land earlier: The fundamental approach to fast `for..in`
@@ -115,7 +115,7 @@ wouldn't run into the same deoptimization loop that was hurting Crankshaft. And 
 of `Object.prototype.hasOwnProperty.call(object, key)`](https://chromium-review.googlesource.com/636964) and the [strength
 reduction of `object[key]`](https://chromium-review.googlesource.com/645949) inside `for (var key in object) {...}` loops.
 
-# Performance
+## Performance
 
 Thanks to the two action items described above, plus general Ignition+TurboFan goodness, the peak performance of
 `for..in` was not only restored without adding back the deoptimization loop, but it's also faster than ever before

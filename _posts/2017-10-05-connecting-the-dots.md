@@ -26,7 +26,7 @@ I'm going to use V8 version 5.8 (which is the last version before we switched to
 for the performance comparisons.
 
 
-# An internship on laziness
+## An internship on laziness
 
 As mentioned above this was the first time I hosted an intern at Google. It sure comes with a lot of work and some
 additional responsibilities, but it was super exciting. [Juliana](https://twitter.com/jupvfranco) was an awesome
@@ -42,7 +42,7 @@ So I'd like to use this opportunity here to say: *Thank you, [Juliana](https://t
 the summer with us, it was awesome to have you as an intern!*
 
 
-# Object constructor calls in webpack bundles
+## Object constructor calls in webpack bundles
 
 I already wrote a detailed [article](/2017/08/31/object-constructor-calls-in-webpack-bundles/) about this topic. To summarize,
 [webpack](https://webpack.js.org/) v3 generates code the following bundled code
@@ -80,7 +80,7 @@ all major JavaScript engines, including [SpiderMonkey](https://twitter.com/Spide
 ![Collaboration](/images/2017/collaboration-20171005.png)
 
 
-# Restoring `for..in` peak performance
+## Restoring `for..in` peak performance
 
 This was also already described in a [detailed blog post](/2017/09/07/restoring-for-in-peak-performance/). The **TL;DR**
 is that when we [launched Ignition and TurboFan](https://v8.dev/blog/launching-ignition-and-turbofan),
@@ -112,7 +112,7 @@ Also worth noting, that despite having regressed from Node 7 to Node 8, the `for
 upcoming LTS (Node 8) still improves compared to the previous LTS (Node 6).
 
 
-# Optimize Object constructor subclassing
+## Optimize Object constructor subclassing
 
 Subclassing [`Object`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) explicitly
 was about **3-4x** times slower (upon instance creation) than just skipping the `extends` clause completely. While it didn't
@@ -152,7 +152,7 @@ Compared to Chrome 58, which is latest version shipping with the old Crankshaft 
 the performance of subclassing `Object` improved by **5.4x**.
 
 
-# Fast-path for `TypedArray`s in `Function.prototype.apply`
+## Fast-path for `TypedArray`s in `Function.prototype.apply`
 
 I'm also actively trying to address long-standing issues. One of these was a [report from 2012](http://crbug.com/v8/2435)
 titled "`String.fromcharCode.apply(undefined, uint8Array)` is super-slow", which discovered that using
@@ -187,7 +187,7 @@ SpiderMonkey](https://twitter.com/SpiderMonkeyJS/status/907950258973528064), whe
 [![String.fromCharCode with Function.prototype.apply in SpiderMonkey](/images/2017/spidermonkey-string-fromcharcode-20171005.png)](https://twitter.com/SpiderMonkeyJS/status/907950258973528064)
 
 
-# Optimize `Array.prototype.push` with multiple parameters
+## Optimize `Array.prototype.push` with multiple parameters
 
 Earlier last month, SpiderMonkey's [André Bargull](https://twitter.com/abargull)
 [discovered](https://bugzilla.mozilla.org/show_bug.cgi?id=1386001) that Firefox often missed opportunities to inline
@@ -212,7 +212,7 @@ benchmark.
 [![V8 six-speed-spread-literal-es5 results](/images/2017/v8-six-speed-spread-literal-es5-20171005.png)](https://twitter.com/bmeurer/status/907213466800414721)
 
 
-# Improved constant-folding
+## Improved constant-folding
 
 We also realized that TurboFan was missing several opportunities for constant-folding, specifically the
 [`six-speed-templatestring-es5`](https://arewefastyet.com/#machine=29&view=single&suite=six-speed&subtest=templatestring-es5) and
@@ -227,7 +227,7 @@ observed some massive speed-ups on these benchmarks.
 ![six-speed-templatestring-es6](/images/2017/six-speed-templatestring-es6-20171005.png)
 
 
-# Optimize tagged templates
+## Optimize tagged templates
 
 [Tagged templates](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) are one of the coolest
 features introduced with [ES2015](https://www.ecma-international.org/ecma-262/6.0/) - if you ask me 😛. I specifically love
@@ -276,7 +276,7 @@ benchmark even further (keep in mind that this is a micro-benchmark).
 [![Performance of tagged templates is now on par with transpiled code](/images/2017/six-speed-templatestring-tag-es6-20171005.png)](https://twitter.com/mathias/status/912223187005509632)
 
 
-# Properly optimize literals in inlined functions
+## Properly optimize literals in inlined functions
 
 Then I stumbled upon a [bug in TurboFan](https://bugs.chromium.org/p/v8/issues/detail?id=6856) where it would not always
 optimize array, object or regular expression literals properly when they occur in inlined functions. So for example, let's
@@ -313,7 +313,7 @@ the [tracking bug](https://bugs.chromium.org/p/v8/issues/detail?id=6856#c1).
 ![Inlined literals performance](/images/2017/inlined-literals-20171005.svg)
 
 
-# Optimize `ArrayBuffer` view checks
+## Optimize `ArrayBuffer` view checks
 
 Last week I was dragged into a conversion regarding [nodejs/node#15663](https://github.com/nodejs/node/pull/15663) and
 what could be done on the V8 side to help improve performance of these predicates. It turned out that all the relevant
@@ -371,7 +371,7 @@ on the hidden class of the receiver and returns the proper String or `undefined`
 We observe up to **14.5x** performance improvements compared to Chrome 58.
 
 
-# Miserable performance when storing booleans in typed arrays
+## Miserable performance when storing booleans in typed arrays
 
 This week's monday morning exercise. Every now and then some people ping some long-standing bugs hoping that someone would pick
 them up and fix them. In this case it was the infamous [Chromium bug 287773](http://crbug.com/287773), which was originally
@@ -388,7 +388,7 @@ With this in place the performance of storing `true` or `false` to a `TypedArray
 compared to Chrome 61 that's a solid **70x** improvement.
 
 
-# Polymorphic symbol lookup not well supported
+## Polymorphic symbol lookup not well supported
 
 Later that same day [Slava](http://twitter.com/mraleph) popped up with an
 [issue](https://twitter.com/mraleph/status/913818343429296128) that the [Dart](https://www.dartlang.org/) folks
@@ -451,7 +451,7 @@ of TurboFan were blocking the optimization. Removing that we got an overall **7.
 for the *clone pattern* above.
 
 
-# Improve performance of `Object.is`
+## Improve performance of `Object.is`
 
 And one last [issue](https://bugs.chromium.org/p/v8/issues/detail?id=6882) that also [originated in Node
 land](https://github.com/nodejs/node/blob/306391c/lib/util.js#L619). It turns out that `Object.is(x,-0)`
@@ -477,7 +477,7 @@ it should be fine performance-wise to use `Object.is`, especially for the edge c
 or checking for `NaN`.
 
 
-# Conclusion
+## Conclusion
 
 Congratulations, you made it through the whole blog post! 😉 No you won't get cookies, sorry...
 

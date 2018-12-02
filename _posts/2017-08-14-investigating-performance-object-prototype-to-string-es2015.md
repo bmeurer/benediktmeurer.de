@@ -9,7 +9,7 @@ tags:
 
 In this article (originally published on [ponyfoo.com](https://ponyfoo.com/articles/investigating-performance-object-prototype-to-string-es2015)), we'll discuss how `Object.prototype.toString()`  performs in the V8 engine, why it's important, how it changed with the introduction of ES2015 symbols, and how the baseline performance can be improved by **up to 6x** (based on findings from Mozilla engineers).
 
-# Introduction
+## Introduction
 
 The [ECMAScript 2015 Language Standard](http://ecma-international.org/ecma-262/6.0/) introduced the concept of so-called [well-known symbols](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Symbol#Well-known_symbols) to the JavaScript language. These are special built-in symbols which represent internal language behaviors that were not exposed to developers in ECMAScript 5 and earlier. Examples of these are:
 
@@ -36,7 +36,7 @@ This requires that the implementation of `Object.prototype.toString()` for ES201
 
 Here you can see the [`ToObject`](https://tc39.github.io/ecma262/#sec-toobject) conversion as well as the [`Get`](https://tc39.github.io/ecma262/#sec-get-o-p) for `@@toStringTag` (this is special internal syntax for the language specification for the well-known symbol with the name *toStringTag*). The addition of `Symbol.toStringTag` in ES2015 adds a lot of flexibility for developers, but at the same time comes at a cost.
 
-# Motivation
+## Motivation
 
 The performance of the `Object.prototype.toString()` method in Chrome and Node.js has been [under investigation](http://crbug.com/v8/5175) in the past already, because it is used heavily by certain frameworks and libraries to perform type tests. For example, the [AngularJS](https://angularjs.org/) framework uses it to implement various helper functions like [`angular.isDate`](https://github.com/angular/angular.js/blob/464dde8bd12d9be8503678ac5752945661e006a5/src/Angular.js#L616-L630), [`angular.isArrayBuffer`](https://github.com/angular/angular.js/blob/464dde8bd12d9be8503678ac5752945661e006a5/src/Angular.js#L739-L741) and [`angular.isRegExp`](https://github.com/angular/angular.js/blob/464dde8bd12d9be8503678ac5752945661e006a5/src/Angular.js#L680-L689) (among others):
 
@@ -104,7 +104,7 @@ In fact, running this simple micro-benchmark using the internal profiler built i
 
 ![Mozilla micro-benchmark performance profile (before)](/images/2017/mozilla-before-20170814.png)
 
-# Interesting symbols
+## Interesting symbols
 
 The [proposed solution for SpiderMonkey](https://bugzilla.mozilla.org/show_bug.cgi?id=1369042#c0) was to add the notion of an *interesting symbol*, which is a bit on every [hidden class](https://github.com/v8/v8/wiki/Design%20Elements) that says whether instances with this hidden class may have a property whose name is `@@toStringTag` or `@@toPrimitive`. This way the expensive search for `Symbol.toStringTag` can be avoided in the common case, where the lookup is negative anyways, which resulted in a **2x** improvement on the simple micro-benchmark for SpiderMonkey.
 
@@ -119,7 +119,7 @@ Object.prototype.toString.call(obj);  // slow-path
 
 Check this simple example: Here `obj` starts life as an instance with definitely no *interesting symbols* on it. So the first call to `Object.prototype.toString()` takes the new fast-path, where the `Symbol.toStringTag` lookup can be skipped (also because the `Object.prototype` doesn’t have any *interesting symbols* on it), whereas the second call takes the generic slow-path because `obj` now has an *interesting symbol*.
 
-# Performance
+## Performance
 
 Implementing this mechanism in V8 improves the performance on the above mentioned micro-benchmark by roughly **5.8x** on a Z620 Linux workstation. And checking the performance profile again, we can see that we no longer spend time in the `GetPropertyStub`, but the micro-benchmark is now dominated by the `Object.prototype.toString()` built-in as expected:
 
@@ -133,7 +133,7 @@ Measuring the impact on the [Speedometer](http://browserbench.org/Speedometer) b
 
 ![Speedometer results](/images/2017/results-speedometer-20170814.png)
 
-# Conclusion
+## Conclusion
 
 Even a highly optimized built-in like `Object.prototype.toString()` still provides some potential for further optimization - leading up to **6.5x improvements** in throughput - if you dig deep enough into appropriate performance tests (like the Speedometer AngularJS benchmark in this case). Kudos to [Jan de Mooij](https://twitter.com/jandemooij) and [Tom Schuster](http://twitter.com/evilpies) from Mozilla for doing the investigation in this case, and coming up with the cool idea of *interesting symbols*!
 

@@ -11,7 +11,7 @@ Following up on my talk ["A Tale of TurboFan"](https://www.youtube.com/watch?v=c
 
 *This article was originally published on [ponyfoo.com](https://ponyfoo.com/articles/an-introduction-to-speculative-optimization-in-v8).*
 
-# Overview
+## Overview
 
 Before we dive into the details of how TurboFan works, I'll briefly explain how V8 works on a high level. Let's have a look at this _simplified breakdown of how V8 works_ (taken from the ["JavaScript Start-up Performance"](https://medium.com/reloading/javascript-start-up-performance-69200f43b201) blog post by my colleague [Addy Osmani](https://twitter.com/addyosmani)):
 
@@ -23,7 +23,7 @@ During execution, Ignition collects _profiling information_ or _feedback_ about 
 
 Probably even more important — depending on your workload — the _feedback_ collected by the Ignition interpreter is consumed by the [TurboFan JavaScript compiler](https://v8.dev/blog/launching-ignition-and-turbofan) to generate highly-optimized machine code using a technique called _Speculative Optimization_. Here the optimizing compiler looks at what kinds of values were seen in the past and assumes that in the future we're going to see the same kinds of values. This allows TurboFan to leave out a lot of cases that it doesn't need to handle, which is extremely important to execute JavaScript at peak performance.
 
-# The Basic Execution Pipeline
+## The Basic Execution Pipeline
 
 Let's consider a reduced version of the example from my talk, focusing solely on the function `add`, and how this is executed by V8.
 
@@ -104,7 +104,7 @@ The special registers `a0` and `a1` correspond to the formal parameters for the 
 
 My colleague [Franziska Hinkelmann](https://twitter.com/fhinkel) wrote an article ["Understanding V8's Bytecode"](https://medium.com/dailyjs/understanding-v8s-bytecode-317d46c94775) a while ago that gives some additional insight into how V8's bytecode works.
 
-# Speculative Optimization
+## Speculative Optimization
 
 Now that you have a rough understanding of how V8 executes your JavaScript in the baseline case, it's time to start looking into how TurboFan fits into the picture, and how your JavaScript code can be turned into highly optimized machine code. The [`+` operator](https://tc39.github.io/ecma262/#sec-addition-operator-plus) is already such a complex operation in JavaScript which has to do a lot of checks before it eventually does the number addition on the inputs.
 
@@ -161,7 +161,7 @@ We can see the invocation count is 1, since we ran the function `add` exactly on
 
 But what is this `SignedSmall` type about? JavaScript doesn't have a type of that name. The name comes from an optimization that is done in V8 when representing small signed integer values that occur frequently enough in programs to deserve a special treatment (other JavaScript engines have similar optimizations).
 
-## Excurse: Value Representation
+### Excurse: Value Representation
 
 Let's briefly explore how JavaScript values are represented in V8 to better understand the underlying concept. V8 uses a technique called [Pointer Tagging](https://en.wikipedia.org/wiki/Tagged_pointer) to represent values in general. Most of the values we deal with live in the JavaScript heap, and have to be managed by the garbage collector (GC). But for some values it would be too expensive to always allocate them in memory. Especially for small integer values that are often used as indices to arrays and temporary computation results.
 
@@ -171,7 +171,7 @@ In V8, we have two possible _tagged representations_: A _Smi_ (short for **_Smal
 
 On 32-bit architectures, the _Smi_ representation has the least significant bit set to 0 and a signed 31-bit value shifted to the left by one stored in the upper 31-bit of the word.
 
-## Feedback Lattice
+### Feedback Lattice
 
 The `SignedSmall` feedback type refers to all values that have _Smi_ representation. For the `Add` operation it means that it has only seen inputs represented as _Smi_ so far and all outputs that were produced could also be represented as _Smi_ (i.e. the values didn't overflow the range of possible 32-bit integer values). Let's check what happens if we also call add with other numbers that are not representable as _Smi_.
 
@@ -215,7 +215,7 @@ The feedback starts as `None`, which indicates that we haven't seen anything so 
 
 It's important to note that the feedback can only progress in this lattice. It's impossible to ever go back. If we'd ever go back then we risk entering a so-called _deoptimization loop_ where the optimizing compiler consumes feedback and bails out from optimized code (back to the interpreter) whenever it sees values that don't agree with the feedback. The next time the function gets hot we will eventually optimize it again. So if we didn't progress in the lattice then TurboFan would generate the same code again, which effectively means it will bail out on the same kind of input again. Thus the engine would be busy just optimizing and deoptimizing code, instead of running your JavaScript code at high speed.
 
-# The Optimization Pipeline
+## The Optimization Pipeline
 
 Now that we know how Ignition collects feedback for the `add` function, let's see how TurboFan makes use of that feedback to generate minimal code. I'll use the special intrinsic `%OptimizeFunctionOnNextCall()` to trigger optimization of a function in V8 at a very specific point in time. We often use these intrinsics to write tests that stress the engine in a very specific way.
 
@@ -295,7 +295,7 @@ Then we go on to perform the integer addition on the inputs. We need to test exp
 
 As said before, this is not yet the perfect code for this case, since here it would be beneficial to just perform the addition on _Smi_ representation directly, instead of going to _Word32_, which would save us three shift instructions. But even putting aside this minor aspect, you can see that the generated code is highly optimized and specialized to the profiling feedback. It doesn't even try to deal with other numbers, strings, big ints or arbitrary JavaScript objects here, but focuses only on the kind of values we've seen so far. This is the **key ingredient** to peak performance for many JavaScript applications.
 
-## Making progress
+### Making progress
 
 So what if you suddenly change your mind and want to add numbers instead? Let's change the example to something like this instead:
 
@@ -316,7 +316,7 @@ Running this with `--allow-natives-syntax` and `--trace-deopt` we observe the fo
 
 That's a lot of confusing output. But let's extract the important bits. First of all, we print a reason why we had to deoptimize, and in this case it's `not a Smi`, which means we baked in the assumption somewhere that a value is a _Smi_, but now we saw a _HeapObject_ instead. Indeed it's the value in `rax`, which is supposed to be a _Smi_, but it's the number 1.1 instead. So we fail on the first check for the `x` parameter and we need to deoptimize to go back to interpreting the bytecode. That is a topic for a separate article though.
 
-# Takeaway
+## Takeaway
 
 I hope you enjoyed this dive into how speculative optimization works in V8 and how it helps us to reach peak performance for JavaScript applications. Don't worry too much about these details though. When writing applications in JavaScript focus on the application design instead and make sure to use appropriate data structures and algorithms. Write idiomatic JavaScript, and let us worry about the low level bits of the JavaScript performance instead. If you find something that is too slow, and it shouldn't be slow, please [file a bug report](http://crbug.com/v8/new), so we get a chance to look into that.
 
