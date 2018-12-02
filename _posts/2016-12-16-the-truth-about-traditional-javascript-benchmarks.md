@@ -350,7 +350,7 @@ need to compare two phones via a browser benchmark, please at least consider usi
 
 ### Cuteness break!
 
-<img src="http://images-cdn.9gag.com/photo/avZd9NX_700b.jpg" width="100%">
+<img src="https://images-cdn.9gag.com/photo/avZd9NX_700b.jpg" width="100%">
 
 I always loved this in [Myles Borins](https://twitter.com/thealphanerd)' talks, so I had to shamelessly steal his idea.
 So now that we recovered from the SunSpider rant, let's go on to check the other classic benchmarks...
