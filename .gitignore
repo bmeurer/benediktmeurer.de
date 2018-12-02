@@ -1,6 +1,4 @@
-.sass-cache
 *.swp
 .DS_Store
-.firebase/
-firebase-debug.log
+.jekyll-metadata
 _site
