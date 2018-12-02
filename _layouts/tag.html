@@ -4,8 +4,5 @@ layout: default
 
 <h1>Blog posts tagged “{{ page.tag }}”</h1>
 
-<ol>
-  {% for post in page.posts %}
-    <li><a href="{{ post.url }}">{{ post.title }}</a> ({{ post.date | date_to_string }} | Tags: {{ post | tags }})</li>
-  {% endfor %}
-</ol>
+{% assign posts = page.posts %}
+{% include archive.html %}
