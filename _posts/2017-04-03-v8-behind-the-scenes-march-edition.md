@@ -5,50 +5,49 @@ title: "V8: Behind the Scenes (March Edition feat. I+TF launch and Declarative J
 
 I'm again running late for the March Edition, so that might turn into some kind of pattern. The last month was pretty exciting: We finally turned on Ignition and TurboFan by default for Chrome M59. It took two attempts, but it seems to stick now. Overall it went surprisingly well, despite the complexity and impact of this change; as my site director used to put it: ["Changing from Crankshaft to TurboFan in Chrome was like changing the engine of a F1 car at 250 km/h."](https://twitter.com/holfelder/status/842473381832409093)
 
-<p><center>
+<figure>
   <a href="https://twitter.com/bmeurer/status/839337377671839744">
-    <img src="/images/2017/landing-20170403.jpg" alt="Turn on Ignition + TurboFan" />
+    <img src="/images/2017/landing-20170403.jpg" alt="Turn on Ignition + TurboFan" title="Turn on Ignition + TurboFan">
   </a>
-</center></p>
+</figure>
 
 Note that with the switch, we also removed the `enable-v8-future` setting from `chrome://flags`, and instead added a kill switch `disable-v8-ignition-turbo` for the new configuration on Chrome M59. This kill switch has three possible settings: Default, Disabled and Enabled. If you leave it to Default, there's a certain chance that you get the old compiler pipeline even on Canary or Dev channel due to A/B testing. Set it to Disabled to ensure that you get the new pipeline, or set it to Enabled to go with Crankshaft and Full-Codegen again.
 
-<p><center>
-  <img src="/images/2017/m59-20170403.png" alt="Chrome M59" />
-</center></p>
+<figure>
+  <img src="/images/2017/m59-20170403.png" alt="Chrome M59" title="Chrome M59">
+</figure>
 
 The instructions for Chrome M58 (currently in the Beta channel) didn't change, Ignition and TurboFan is still controlled by the `enable-v8-future` flag:
 
-<p><center>
-  <img src="/images/2017/m58-20170403.png" alt="Chrome M58" />
-</center></p>
+<figure>
+  <img src="/images/2017/m58-20170403.png" alt="Chrome M58" title="Chrome M58">
+</figure>
 
 Turning on the new configuration by default uncovered a couple of issues that weren't known yet, so I was pretty busy helping to address those. But as far as I can tell, things look very promising now.
 
 End of last month I gave a presentation about [TurboFan: A new code generation architecture for V8](https://docs.google.com/presentation/d/1_eLlVzcj94_G4r9j9d_Lj5HRKFnq6jgpuPJtnmIBs88) at the [Munich Node.js User Group](http://www.mnug.de) meetup, talking a bit about things that will change with the new pipeline. Most importantly turning on the new pipeline greatly reduces overall complexity of V8, and makes it easier to port to new architectures, and what's even more important from a user's perspective, it completely eliminates the need to worry about so-called *optimization killers*, since TurboFan is able to handle every language construct. This doesn't mean that all of a sudden using a weird language construct like `with` is blazingly fast; but it means that the presence of one of these *optimization killers* in a function no longer disables the optimizing compiler completely for that particular function.
 
-<p><center>
+<figure>
   <a href="https://docs.google.com/presentation/d/1_eLlVzcj94_G4r9j9d_Lj5HRKFnq6jgpuPJtnmIBs88/edit#slide=id.g2134da681e_0_672">
-    <img src="/images/2017/optimization-killers-20170403.png" alt="Optimization Killers" />
+    <img src="/images/2017/optimization-killers-20170403.svg" alt="Optimization Killers" title="Optimization Killers">
   </a>
-  <br />
-  <small><i>
+  <figcaption>
     Source:
     <a href="https://docs.google.com/presentation/d/1_eLlVzcj94_G4r9j9d_Lj5HRKFnq6jgpuPJtnmIBs88/edit#slide=id.g2134da681e_0_672">TurboFan: A new code generation architecture for V8</a>,
     MNUG March '07 Meetup,
     <a href="https://twitter.com/bmeurer">@bmeurer</a>.
-  </i></small>
-</center></p>
+  </figcaption>
+</figure>
 
 Probably the most important changes are fully optimizable `try`-`catch`/`try`-`finally` statements, generators and `async` functions, and of course you can now use `let` and `const` without the risk of hitting the infamous [Unsupported phi use of const or let variable](https://github.com/vhf/v8-bailout-reasons/issues/12) bailout.
 
 One interesting and somewhat surprising follow-up was the discussion triggered by the performance advice I gave on what I called *Declarative JavaScript* in my talk:
 
-<p><center>
+<figure>
   <a href="https://twitter.com/michaelhaeu/status/845003383153025024">
-    <img src="/images/2017/declarative-javascript-20170403.png" alt="Declarative JavaScript" />
+    <img src="/images/2017/declarative-javascript-20170403.png" alt="Declarative JavaScript" title="Declarative JavaScript">
   </a>
-</center></p>
+</figure>
 
 First of all, it seems that various people are confused by the terminology. It seems that using the terms "explicit vs. implicit" instead of "declarative vs. obscure" is easier to understand for many people, so just imagine those terms when staring at the slide above. The main controversy however was around whether it makes sense to use this advice or assume that the engine will optimize all of this under the hood.
 
@@ -58,11 +57,11 @@ But the reality is: V8 doesn't have infinite resources. In fact with more and mo
 
 I sometimes hear developers say that these startup issues don't matter to Node.js, and V8 shouldn't penalize what they call *server performance*, but then the next thing I hear is them complaining that TypeScript, UglifyJS, Webpack, Babel, etc. run way too slow. This also runs on V8 and also suffers a lot from overhead during warmup, or too aggressive optimizations leading to frequent deoptimizations. I've seen a lot of evidence that reducing over-optimization has helped server workloads significantly, as for example measured by the Node.js AcmeAir benchmark.
 
-<p><center>
+<figure>
   <a href="https://twitter.com/bmeurer/status/834677090381348865">
-    <img src="/images/2017/acmeair-20170403.jpg" alt="AcmeAir" />
+    <img src="/images/2017/acmeair-20170403.jpg" alt="AcmeAir" title="AcmeAir">
   </a>
-</center></p>
+</figure>
 
 The throughput improved by over 45% mostly by reducing overhead in V8, accomplished via work guided mostly by client-side workloads. So for typical server-side workloads things don't look too different.
 

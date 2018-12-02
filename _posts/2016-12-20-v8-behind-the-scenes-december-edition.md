@@ -18,13 +18,10 @@ some big players on the web are expected to deliver native WebAssembly bytecode 
 feature detection; the majority of *native code on the web* users will likely continue to ship asm.js for the next two to three years
 (based on experience with other new web platform features).
 
-<p><center>
-  <img src="/images/2016/asmjs-turbofan-20161220.png" alt="asm.js TurboFan pipeline" />
-  <br />
-  <small><i>
-    The asm.js TurboFan compilation pipeline.
-  </i></small>
-</center></p>
+<figure>
+  <img src="/images/2016/asmjs-turbofan-20161220.png" alt="asm.js TurboFan pipeline" title="asm.js TurboFan pipeline">
+  <figcaption>The asm.js TurboFan compilation pipeline.</figcaption>
+</figure>
 
 Thus most users will not be able to benefit from the WebAssembly compilation and execution engine we built into Chrome directly. So
 we built a small wrapper around the WebAssembly component in V8, that allows it to also consume native code input via asm.js in addition
@@ -33,13 +30,10 @@ to the native bytecode format. Two weeks ago we [staged the new asm.js pipeline]
 the resulting machine code in the WebAssembly native execution environment. This allows you to leverage many of the benefits of
 WebAssembly today and brings ahead-of-time compilation (AOT) for asm.js to Chrome, with full backwards compatibility.
 
-<p><center>
-  <img src="/images/2016/asmjs-wasm-20161220.png" alt="asm.js WebAssembly pipeline" />
-  <br />
-  <small><i>
-    The asm.js WebAssembly compilation pipeline.
-  </i></small>
-</center></p>
+<figure>
+  <img src="/images/2016/asmjs-wasm-20161220.png" alt="asm.js WebAssembly pipeline" title="asm.js WebAssembly pipeline">
+  <figcaption>The asm.js WebAssembly compilation pipeline.</figcaption>
+</figure>
 
 The WebAssembly compilation pipeline reuses some backend parts of the TurboFan compiler pipeline, and is therefore able to generate
 similar code, but with a lot less compilation and optimization overhead, and leveraging various benefits of the WebAssembly
@@ -218,31 +212,30 @@ For micro-benchmarks that spend most of their time in a single loop or at least 
 unlikely that you experience a lot of benefits from having asm.js code take the WebAssembly pipeline, because
 the TurboFan type inference does a great job at eliminating almost all type checks.
 
-<p><center>
-  <img src="/images/2016/wasm-speedups-20161220.png" alt="Speed-ups for the WebAssembly pipeline" />
-  <br />
-  <small><i>
+<figure>
+  <img src="/images/2016/wasm-speedups-20161220.png" alt="Speed-ups for the WebAssembly pipeline" title="Speed-ups for the WebAssembly pipeline">
+  <figcaption>
     Speed-ups on macro-benchmarks in
     <a href="https://kripken.github.io/Massive">Massive</a> and
     <a href="https://github.com/kripken/embenchen">Embenchen</a>.
-  </i></small>
-</center></p>
+  </figcaption>
+</figure>
 
 If you are running [Chrome dev or canary channel](https://www.chromium.org/getting-involved/dev-channel), you
 can give it a try by enabling the experimental flag [Experimental Validate Asm.js and convert to WebAssembly when
 valid](chrome://flags/#enable-asm-webassembly) and restarting Chrome.
 
-<p><center>
-  <img src="/images/2016/asmjs-20161220.png" alt="Enable asm-wasm-builder" />
-</center></p>
+<figure>
+  <img src="/images/2016/asmjs-20161220.png" alt="Enable asm-wasm-builder" title="Enable asm-wasm-builder">
+</figure>
 
 The `asm-wasm-builder` will log information about asm.js module validation to the [Chrome Developer Tools](https://developer.chrome.com/devtools)
 console, similar to what [Firefox](http://www.mozilla.org/firefox) does, so you can easily verify that a certain asm.js module
 is recognized as valid:
 
-<p><center>
-  <img src="/images/2016/devtools-20161220.png" alt="Observe asm-wasm-builder in DevTools" />
-</center></p>
+<figure>
+  <img src="/images/2016/devtools-20161220.png" alt="Observe asm-wasm-builder in DevTools" title="Observe asm-wasm-builder">
+</figure>
 
 We expect to be able to enable this by default in early 2017 unless we hit some terrible stability or security
 problems.
@@ -255,9 +248,9 @@ support to V8 and Chrome for that, especially also tracing various internals of 
 *Runtime Call Stats* in V8, which collects precise timing information for all V8 components. This is accessible via
 [chrome://tracing](chrome://tracing) and gives you pretty detailed information about where time in V8 is spent.
 
-<p><center>
-  <img src="/images/2016/tracing-20161220.png" alt="Chrome tracing runtime call stats" />
-</center></p>
+<figure>
+  <img src="/images/2016/tracing-20161220.png" alt="Chrome tracing runtime call stats" title="Chrome tracing runtime call stats">
+</figure>
 
 Currently this requires quite a bit of knowledge about V8 to really draw useful conclusions from this, but we're working on better
 integration with the developer tools in Chrome (i.e. by exposing the stats via [lighthouse](https://github.com/GoogleChrome/lighthouse)).
@@ -265,9 +258,9 @@ Initially it was mostly useful for us internally since we had to understand wher
 nevertheless you can probably still use some of the data that is gathered. For example you can check how much overall time is spent
 preparsing your scripts:
 
-<p><center>
-  <img src="/images/2016/tracing-preparse-20161220.png" alt="Chrome tracing runtime call stats (Parse)" />
-</center></p>
+<figure>
+  <img src="/images/2016/tracing-preparse-20161220.png" alt="Chrome tracing runtime call stats (Parse)" title="Chrome tracing runtime call stats (Parse)">
+</figure>
 
 This is a good indicator whether your JavaScript bundles are bigger than they should be. For example in case of the [discourse demo
 page](https://try.discourse.org) we have to preparse 1217 times, but parse only 213 times. This doesn't automatically mean that only
@@ -290,10 +283,10 @@ from my colleagues [Camillo Bruni](https://twitter.com/camillobruni) from the V8
 Lippautz](https://twitter.com/mlippautz) from the V8 GC team that describes how to get to the *Runtime Call Stats* and the *Heap Stats* in
 [chrome://tracing](chrome://tracing).
 
-<p><center>
+<figure>
   <a href="https://docs.google.com/presentation/d/1Lq2DD28CGa7bxawVH_2OcmyiTiBn74dvC6vn2essroY">
-    <img src="/images/2016/v8-stats-20161220.png" alt="V8 Stats" />
+    <img src="/images/2016/v8-stats-20161220.png" alt="V8 Stats" title="V8 Stats">
   </a>
-</center></p>
+</figure>
 
 It should give you a rough idea how to use the new functionality in Chrome.

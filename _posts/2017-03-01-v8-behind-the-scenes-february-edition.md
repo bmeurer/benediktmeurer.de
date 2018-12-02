@@ -15,9 +15,9 @@ In mid 2015 we began to realize that TurboFan might actually solve a problem we 
 
 This lack of balance led to highly unpredictable performance. For example, when JavaScript code follows a certain pattern ⸺ avoid [all kinds of performance killers](https://github.com/petkaantonov/bluebird/wiki/Optimization-killers), keep everything monomorphic, limit the number of hot functions ⸺ you’ll be able to squeeze awesome performance out of V8, easily beating Java performance on similar code. But as soon as you leave this fine line of awesome performance, you often immediately fall off a steep cliff.
 
-<p><center>
-  <img src="/images/2017/cliff-20170301.jpg" alt="Steep cliff" />
-</center></p>
+<figure>
+  <img src="/images/2017/cliff-20170301.jpg" alt="Steep cliff" title="Steep cliff">
+</figure>
 
 V8 has been like this cliff. If you pay attention, then it’s stunning and beautiful. But if you don’t, and you fall off the cliff, you’re screwed. Performance differences of **100x** weren’t uncommon in the past. Of these cliffs, the `arguments` object handling in Crankshaft is probably the one which people hit most often and which is the most frustrating too. The fundamental assumption in Crankshaft is that `arguments` object does not escape, and thus Crankshaft does not need to materialize the actual JavaScript `arguments` object **ever**, but instead can just take the parameters from the activation record. So, in other words, there’s no safety net. It’s all or nothing. Let’s consider this simple dispatching logic:
 
@@ -83,45 +83,43 @@ Widening the fast path is crucial to ensure that the resources the JavaScript en
 
 But that alone wouldn’t really help, especially since TurboFan compilation is more expensive than Crankshaft (you really have to acknowledge the awesome engineering work that went into Crankshaft here, which still shines as core part of the [Dart](https://www.dartlang.org/) engine). In fact real-world performance would have suffered a lot from just replacing Crankshaft with TurboFan in many cases. And real-world performance is starting to hurt V8 and Chrome seriously, as we move to a world where most of the web traffic comes from mobile devices, and more and more of these devices are low-end Android devices. In this world, page load time and low overhead ⸺ both memory and execution wise ⸺ are crucial for success. For example, we discovered that **30%** of the managed memory in typical web applications was used by Code objects:
 
-<p><center>
+<figure>
   <a href="https://docs.google.com/presentation/d/1chhN90uB8yPaIhx_h2M3lPyxPgdPmkADqSNAoXYQiVE/edit#slide=id.g1453eb7f19_1_108">
-    <img src="/images/2017/managedmemory-20170301.png" alt="Managed Memory Usage" />
+    <img src="/images/2017/managedmemory-20170301.png" alt="Managed Memory Usage" title="Managed Memory Usage">
   </a>
-  <br />
-  <small><i>
+  <figcaption>
     Source:
     <a href="https://docs.google.com/presentation/d/1chhN90uB8yPaIhx_h2M3lPyxPgdPmkADqSNAoXYQiVE/edit#slide=id.g1453eb7f19_1_108">V8: Hooking up the Ignition to the TurboFan</a>,
     BlinkOn 7 conference,
     <a href="https://twitter.com/rossmcilroy">@rossmcilroy</a> and
     <a href="https://twitter.com/leszekswirski">@leszekswirski</a>.
-  </i></small>
-</center></p>
+  </figcaption>
+</figure>
 
 That means **30%** of the memory is taken by the VM for its internal execution support. That’s a lot! The vast majority of these Code objects came from Full-Codegen and the [IC (inline caching)](https://en.wikipedia.org/wiki/Inline_caching) system. V8 traditionally used to generate machine code for every function it executes, via the Full-Codegen compiler. That means even if the function is executed only once or twice during page load, we would still generate a Code object for it. And these code objects used to be really huge because Full-Codegen doesn’t really apply any serious optimizations (it was supposed to generate code as quickly as possible). We added mitigations for this in the past, like a code aging mechanism, where the GC (garbage collector) would eventually nuke Code objects for functions that weren’t executed for a certain period of time.
 
 But even with these mitigations in place, the overhead of code generated for functions was significant. And the TurboFan optimizing compiler wouldn’t help at all here. But as it turned out, some smart engineers figured out that we could reuse the actual code generation parts of the TurboFan pipeline to build the [Ignition interpreter](https://docs.google.com/document/d/11T2CRex9hXxoJwbYqVQ32yIPMh0uouUZLdyrtmMoL44), which drastically reduces the code memory overhead. In addition to that it also improves page load time and helps to mitigate the parsing overhead, because the TurboFan optimizing compiler no longer needs to reparse the function source when it starts to optimize, but can [optimize directly from the interpreters’ bytecode](https://docs.google.com/presentation/d/1eF3gub1ToNtUKPsnPeIThaJUi7cpucmBYp3aWuZJcVA/edit#slide=id.g1c373bc8f0_0_8).
 
-<p><center>
+<figure>
   <a href="https://docs.google.com/presentation/d/1chhN90uB8yPaIhx_h2M3lPyxPgdPmkADqSNAoXYQiVE/edit#slide=id.g1453eb7f19_5_539">
-    <img src="/images/2017/memoryimprovements-20170301.png" alt="Managed Memory Improvements" />
+    <img src="/images/2017/memoryimprovements-20170301.png" alt="Managed Memory Improvements" title="Managed Memory Improvements">
   </a>
-  <br />
-  <small><i>
+  <figcaption>
     Source:
     <a href="https://docs.google.com/presentation/d/1chhN90uB8yPaIhx_h2M3lPyxPgdPmkADqSNAoXYQiVE/edit#slide=id.g1453eb7f19_5_539">V8: Hooking up the Ignition to the TurboFan</a>,
     BlinkOn 7 conference,
     <a href="https://twitter.com/rossmcilroy">@rossmcilroy</a> and
     <a href="https://twitter.com/leszekswirski">@leszekswirski</a>.
-  </i></small>
-</center></p>
+  </figcaption>
+</figure>
 
 The interpreter is a big win for V8. But its impact on page load time and baseline performance is not overall positive. The issues with the slow paths, especially in the IC (inline caching) system, remain even with Ignition (and TurboFan). A key observation here, was that the traditional approach of having dedicated code stubs, so-called handlers, for the various combinations of maps (hidden classes) and names to speed up property accesses, doesn’t scale. For example, for each property access `o.x` executed by V8, it would generate one Code object for each map of `o`, which checks whether `o` still has this map and if so, loads the value of `x` according to that map. The knowledge about the object and the way how to get to the property value was thus encoded in tiny Code objects. This contributed a lot to the general code memory overhead, and was also fairly expensive in terms of [instruction cache](https://en.wikipedia.org/wiki/Cache_memory#Instruction_and_data_cache) utilization. But even worse, V8 would have to generate these Code objects for each and every property access that is executed at least two times (we mitigated overhead already by not doing this on the first execution).
 
 Some web pages would spend a significant amount of time just generating these property access handlers during page load. Again, replacing the optimizing compiler wouldn’t help at all, but instead we were able to generalize the TurboFan based code generation architecture that was introduced for Ignition to also be able to use it for code stubs. This allowed us to refactor the IC system to move away from handler Code objects towards a data-driven approach, where the information how to load or store a property is encoded via a data format, and TurboFan based code stubs (i.e. `LoadIC`, `StoreIC`, etc.) read this format and perform the appropriate actions, utilizing a new data structure, the so-called FeedbackVector, that is now attached to every function and is responsible to record and manage all execution feedback, necessary to speed up JavaScript execution. 
 
-<p><center>
-  <img src="/images/2017/datadrivenics-20170301.png" alt="Data-driven ICs" />
-</center></p>
+<figure>
+  <img src="/images/2017/datadrivenics-20170301.svg" alt="Data-driven ICs" title="Data-driven ICs">
+</figure>
 
 This greatly reduces the execution overhead during page load, and also significantly reduces the number of (tiny) Code objects. The new abstraction mechanism we build on top of the TurboFan code generation architecture is called the `CodeStubAssembler`, which provides a C++ based DSL (domain specific language) to generate machine code in a highly portable fashion. With this portable assembler, we can generate highly efficient code to even handle parts of the slow-path in JavaScript land without having to go to the C++ runtime (which is the really slow path).
 
@@ -202,22 +200,21 @@ Note that `%Foo` is a special internal syntax and means call the function `Foo` 
 
 Yet another example was the Promise implementation in V8, which was suffering a lot, and people would actually prefer to use polyfills despite V8 providing a native Promise implementation for quite some time. By porting the Promise implementation to the `CodeStubAssembler`, we were able to speed up Promises and async/await by **500%**.
 
-<p><center>
+<figure>
   <a href="https://v8.dev/blog/v8-release-57">
-    <img src="/images/2017/promises-20170301.png" alt="Async performance improvements in V8" />
+    <img src="/images/2017/promises-20170301.svg" alt="Async performance improvements in V8" title="Async performance improvements in V8">
   </a>
-  <br />
-  <small><i>
+  <figcaption>
     Source:
     <a href="https://v8.dev/blog/v8-release-57">V8 release 5.7</a>.
-  </i></small>
-</center></p>
+  </figcaption>
+</figure>
 
 So despite being the most well-known component in the whole TurboFan story, the actual optimizing compiler is only one part of the puzzle and depending on how you look at it, it’s not even the most important part. Below is a rough sketch of the current TurboFan code generation architecture. A lot of those parts are already shipping in Chrome today. For example a lot of the builtins have been utilizing TurboFan for quite a while, Ignition is enabled for low-end Android devices since [Chrome 53](https://v8project.blogspot.de/2016/08/firing-up-ignition-interpreter.html), and most of the data-driven IC work is already available. Thus the final launch of the full pipeline is probably the most important event in the whole TurboFan story, but in some sense it’s just the icing on the cake.
 
-<p><center>
-  <img src="/images/2017/architecture-20170301.png" alt="TurboFan code generation architecture" />
-</center></p>
+<figure>
+  <img src="/images/2017/architecture-20170301.svg" alt="TurboFan code generation architecture" title="TurboFan code generation architecture">
+</figure>
 
 For me personally, this is just the beginning, as the new architecture opens a whole new world of possible optimizations for JavaScript. It will be exciting to push forward on optimizing the [`Array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) builtins, such as [`Array.prototype.map`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map), [`Array.prototype.forEach`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) and friends, and finally being able to inline them into TurboFan optimized code, which was more or less fundamentally impossible in Crankshaft for a couple of reasons. And I’m also looking forward to ways to further improve performance of new ES2015+ language features.
 

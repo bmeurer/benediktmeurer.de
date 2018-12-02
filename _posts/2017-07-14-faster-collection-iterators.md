@@ -13,15 +13,15 @@ like `for-of` and spreads.
 
 For example for `Set`s
 
-<p><center>
-  <img src="/images/2017/devtools-set-20170714.png" alt="Set iteration" />
-</center></p>
+<figure>
+  <img src="/images/2017/devtools-set-20170714.png" alt="Set iteration" title="Set iteration">
+</figure>
 
 and similarly for `Map`s
 
-<p><center>
-  <img src="/images/2017/devtools-map-20170714.png" alt="Map iteration" />
-</center></p>
+<figure>
+  <img src="/images/2017/devtools-map-20170714.png" alt="Map iteration" title="Map iteration">
+</figure>
 
 demoing various kinds of iteration. This is defined and implemented by
 [Map Iterator Objects](https://www.ecma-international.org/ecma-262/6.0/#sec-map-iterator-objects) and
@@ -158,9 +158,9 @@ for the optimizing compiler (neither TurboFan nor Crankshaft) to get rid of any 
 had to transition between JavaScript and C++ land. A rough visualization of how this works in case of the `sum` function
 would look like this:
 
-<p><center>
-  <img src="/images/2017/set-iterator-next-js-20170714.png" alt="Old SetIteratorNextJS" />
-</center></p>
+<figure>
+  <img src="/images/2017/set-iterator-next-js-20170714.svg" alt="Old SetIteratorNextJS" title="Old SetIteratorNextJS">
+</figure>
 
 In V8 the execution is always in one of two states (actually there are more, but that doesn't matter here), you're either
 executing C++ code or you're executing JavaScript. Transitioning between these two states is expensive. Going from JavaScript
@@ -187,9 +187,9 @@ which receive a `callback` that's invoked on all the items in the collection. Th
 very recently with some additional self-hosted JavaScript), making the baseline performance pretty bad, because not only
 do we need to transition from JavaScript to C++ land, but to handle the `callback` we need to transition back into JavaScript.
 
-<p><center>
-  <img src="/images/2017/set-iterator-foreach-20170714.png" alt="Old SetIteratorForEach" />
-</center></p>
+<figure>
+  <img src="/images/2017/set-iterator-foreach-20170714.svg" alt="Old SetIteratorForEach" title="Old SetIteratorForEach">
+</figure>
 
 So just porting the baseline for the two `forEach` builtins to the 
 [`CodeStubAssembler`](https://v8.dev/docs/csa-builtins) already allowed me to pick a couple of
@@ -200,9 +200,9 @@ bit more magic and is not yet implemented.
 
 Overall we improve the performance of `Map` and `Set` iteration by up to a factor of **11** from Chrome 60 to Chrome 61.
 
-<p><center>
-  <img src="/images/2017/improvements-20170714.png" alt="Performance results" />
-</center></p>
+<figure>
+  <img src="/images/2017/improvements-20170714.svg" alt="Performance results" title="Performance results">
+</figure>
 
 I used the following simple micro-benchmark to measure the iteration overhead:
 

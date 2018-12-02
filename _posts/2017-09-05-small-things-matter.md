@@ -37,10 +37,10 @@ I had to read it a couple of times, because at first I couldn’t really believe
 
 It’s hard to imagine how terrifying this situation is for an individual if you haven’t been in that position yourself. A lot of it has to do with stereotypes. If you look around and you’re the only woman in a computer science class then it’s a lot more likely that you might think to yourself that you’re probably not capable of doing computer science, than if you’re a man looking around and seeing mostly other men. This does of course apply to all minorities not just women in tech. So assume that you’re already somewhat willing to believe that “this is not for you”, then it’s not particularly difficult to imagine what happens to your confidence when people around you constantly assure you that “girls suck at tech”.
 
-<p><center>
-  <img src="https://imgs.xkcd.com/comics/how_it_works.png" alt="How it works" /><br />
-  Source: <a href="https://xkcd.com/385">https://xkcd.com/385</a>
-</center></p>
+<figure>
+  <img src="https://imgs.xkcd.com/comics/how_it_works.png" alt="How it works" title="How it works">
+  <figcaption>Source: <a href="https://xkcd.com/385">https://xkcd.com/385</a></figcaption>
+</figure>
 
 So in order to create equal chances for everyone (independent of gender/race/etc) we need to do extra work for the minorities, because otherwise the “look around you” factor is already working against minorities. I often hear people around me complaining that we should not spend extra money/effort that “only benefits minorities”. But quite frankly this is bullshit. In particular a woman in tech usually has to invest a lot more effort to get into the same position as a man, even if it’s *only* the mental and psychological overhead of reassuring yourself that girls don’t just suck at computer science.
 

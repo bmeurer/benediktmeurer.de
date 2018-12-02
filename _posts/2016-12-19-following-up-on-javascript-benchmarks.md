@@ -37,9 +37,7 @@ to pick the benchmark based on real world applicability, which is honestly very 
 honest here: Apple is clearly setting the bar high for everyone wrt. real world web performance! This is and will be a major
 challenge for us, but I'm excited to pick up that challenge!
 
-<p><center>
-  <img src="/images/2016/speedometer-20161219.png" />
-</center></p>
+<img src="/images/2016/speedometer-20161219.png" title="Speedometer score" alt="Speedometer score">
 
 We have been adding ways to Chrome infrastructure to measure performance from inside the browser, which gave a lot of important
 insight, but is not portable across browsers. From these investigations I am concluding that Speedometer might be the best
