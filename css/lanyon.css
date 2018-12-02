@@ -309,7 +309,7 @@ a.sidebar-nav-item:focus {
 
 .page,
 .post {
-  margin-bottom: 4em;
+  margin-bottom: 2em;
 }
 
 /* Blog post or page title */
@@ -356,6 +356,11 @@ a.sidebar-nav-item:focus {
 }
 .footnotes p {
   margin-bottom: 0;
+}
+
+/* Comments */
+.comments {
+  margin-top: 4em;
 }
 
 

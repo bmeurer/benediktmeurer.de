@@ -11,11 +11,13 @@ title: Blog
     </h1>
 
     <span class="post-date">
-      <i class="far fa-calendar-alt" title="Date published"> {{ post.date | date_to_string }}</i>
+      <i class="far fa-calendar-alt" title="Date published"></i> {{ post.date | date_to_string }}
     </span>
 
-    {{ post.excerpt | markdownify | remove: '<p>' | remove: '</p>' }}
-    <a href="{{ post.url | prepend: site.baseurl }}"><strong>Read more...</strong></a>
+    <p>
+      {{ post.excerpt | markdownify | remove: '<p>' | remove: '</p>' }}
+      <a href="{{ post.url | prepend: site.baseurl }}"><strong>Read more...</strong></a>
+    </p>
   </div>
   {% endfor %}
 </div>
