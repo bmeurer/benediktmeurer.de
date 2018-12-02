@@ -233,9 +233,19 @@ img {
 }
 
 /* Figures */
+figure {
+  margin-left: 0;
+  margin-right: 0;
+}
+figure img {
+  margin: 0 auto;
+}
 figcaption {
   font-size: smaller;
   font-style: italic;
+  margin-top: 10px;
+  margin-left: 40px;
+  margin-right: 40px;
   text-align: center;
 }
 
