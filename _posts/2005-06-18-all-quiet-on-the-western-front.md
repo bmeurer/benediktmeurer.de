@@ -1,6 +1,10 @@
 ---
 layout: post
 title: All quiet on the western front...
+tags:
+  - debian
+  - thunar
+  - xfce
 ---
 
 It's been very quiet in the Xfce community lately. The traffic on <code>thunar-dev</code> and <code>xfce4-dev</code> is amazingly low. I'm currently the only one to work on Thunar, tho Alexander, Jean-Francois and Brian have expressly declared their interest to help earlier. In addition the Thunar website project seems to be fast asleep.

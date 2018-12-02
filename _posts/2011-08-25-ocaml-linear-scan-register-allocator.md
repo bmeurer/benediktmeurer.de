@@ -1,6 +1,9 @@
 ---
 layout: post
 title: Linear Scan Register Allocator for the OCaml Native Code Compiler
+tags:
+  - ocaml
+  - research
 ---
 
 I recently imported the first working version of the [Linear Scan Register Allocator](http://www.cs.ucla.edu/~palsberg/course/cs132/linearscan.pdf) for the [OCaml](http://caml.inria.fr/ocaml) Native Code Compiler `ocamlopt` into the [linear-scan-register-allocator](https://github.com/bmeurer/ocaml-experimental/tree/linear-scan-register-allocator) branch of my [ocaml-experimental](https://github.com/bmeurer/ocaml-experimental) repository. The register allocator was implemented for `ocamlopt` by Marcell Fischbach as part of his diploma thesis. It presents a first step towards a (better) native OCaml toplevel `ocamlnat`. Use the following command to checkout the source code:

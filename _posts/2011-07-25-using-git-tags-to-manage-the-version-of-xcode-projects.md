@@ -1,6 +1,9 @@
 ---
 layout: post
 title: Using Git tags to manage the version of Xcode projects
+tags:
+  - git
+  - xcode
 ---
 
 Inspired by a

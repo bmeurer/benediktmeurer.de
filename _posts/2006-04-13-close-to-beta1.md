@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Close to BETA1
+tags: thunar
 ---
 
 We're close to Thunar BETA1, hopefully this weekend. So, time to share a few screenshots. The BETA1 includes a full-featured tree pane...

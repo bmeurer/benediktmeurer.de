@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Thunar Firefox-like location bar (the 2nd skin)
+tags: thunar
 ---
 
 Just came up with a better idea for the location bar layout:

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Volume Manager (2nd)
+tags: thunar
 ---
 
 I tried to come up with the basic requirements for the volume manager interface and did some prototyping with the BSD implementation. My mail to thunar-dev, which summarizes the results of my current research, is still pending - I guess I shouldn't attach source code to mails. :-)

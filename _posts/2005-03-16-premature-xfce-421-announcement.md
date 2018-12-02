@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Premature Xfce 4.2.1 announcement
+tags: netbsd
 ---
 
 <a href="http://osnews.com/">OSNews</a> did it again today, but not only did they

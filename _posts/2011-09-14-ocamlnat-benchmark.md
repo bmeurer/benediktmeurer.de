@@ -1,6 +1,7 @@
 ---
 layout: post
 title: OCamlNat benchmark
+tags: ocaml
 ---
 
 Now that we have working versions of our new native OCaml toplevel `ocamlnat` without toolchain dependencies for both `i386` and `amd64`, I decided to run a few benchmarks, comparing our [ocamlnat](https://github.com/bmeurer/ocaml-experimental/tree/ocamlnat-jit) to OCaml 3.12.1 (both the byte code toplevel and the ocamlnat that silently ships with 3.12.1) and to our byte-code just-in-time compiler [OCamlJIT2](https://github.com/bmeurer/ocamljit2).

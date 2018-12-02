@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Just another screenshot
+tags: thunar
 ---
 
 Spent the day implementing additional parts of Thunar's core.

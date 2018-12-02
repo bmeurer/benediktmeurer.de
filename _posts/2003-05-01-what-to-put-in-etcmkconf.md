@@ -1,6 +1,7 @@
 ---
 layout: post
 title: What to put in /etc/mk.conf
+tags: netbsd
 ---
 
 In order to get a sane build environment and to build sane packages out of your environment, you should consider overriding some default

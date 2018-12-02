@@ -1,6 +1,7 @@
 ---
 layout: post
 title: thunar-archive-plugin 0.1.2
+tags: thunar
 ---
 
 I just released the second version of the thunar-archive-plugin. It includes a bunch of new translations, and fixes the problem that the folder was not properly reloaded after creating or extracting an archive. It requires <a href="http://thunar.xfce.org/">Thunar</a> 0.2.2alpha2 or above and <a href="http://fileroller.sourceforget.net/">File Roller</a>.

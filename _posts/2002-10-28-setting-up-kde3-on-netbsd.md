@@ -1,6 +1,9 @@
 ---
 layout: post
 title: Setting up KDE 3 on NetBSD
+tags:
+  - kde
+  - netbsd
 ---
 
 

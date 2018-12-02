@@ -1,6 +1,11 @@
 ---
 layout: post
 title: Faster async functions and promises
+tags:
+  - javascript
+  - performance
+  - presentations
+  - v8
 ---
 
 Asynchronous processing in JavaScript traditionally had a reputation for not being particularly fast. To make matters worse, debugging live JavaScript applications — in particular Node.js servers — is no easy task, _especially_ when it comes to async programming. Luckily the times, they are a-changin’. This article explores how we optimized async functions and promises in V8 (and to some extent in other JavaScript engines as well), and describes how we improved the debugging experience for async code.

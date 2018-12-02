@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Compact View
+tags: thunar
 ---
 
 Thanks to Matt McClinch, who worked out a patch for <a href="http://thunar.xfce.org/">Thunar</a> and libexo, Thunar BETA1 will also include the often requested Windows Explorer-like <i>Compact View</i>.

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Gitweb and HTTP transport for public repositories
+tags: git
 ---
 
 It took me some time to figure out how to get

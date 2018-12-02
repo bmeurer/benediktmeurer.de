@@ -1,6 +1,9 @@
 ---
 layout: post
 title: "V8: Behind the Scenes (February Edition feat. A tale of TurboFan)"
+tags:
+  - turbofan
+  - v8
 ---
 
 February has been an exciting and very, very busy month for me. As you have probably heard, we’ve finally announced that we will [launch](https://groups.google.com/forum/#!topic/v8-dev/YXpjhVeHlbI) the Ignition+TurboFan pipeline in Chrome 59. So despite running late, and not making it for February actually, I’d like to take the time to reflect on the TurboFan tale a bit, and tell my story here. Remember, that everything you read here is my very personal opinion and doesn’t reflect the opinion of V8, Chrome or Google.

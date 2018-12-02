@@ -1,6 +1,10 @@
 ---
 layout: post
 title: "V8: Behind the Scenes (January Edition feat. Ignition+TurboFan and Community Engagement)"
+tags:
+  - presentations
+  - turbofan
+  - v8
 ---
 
 Not a lot happened behind the scenes of V8 since [the December Edition](/2017/12/20/v8-behind-the-scenes-december-edition) due to holidays

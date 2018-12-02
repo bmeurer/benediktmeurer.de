@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Location buttons
+tags: thunar
 ---
 
 People tend to prefer pictures, so screenshot first:

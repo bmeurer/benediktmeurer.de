@@ -1,6 +1,7 @@
 ---
 layout: post
 title: My window manager is faster than yours
+tags: xfce
 ---
 
 <a href="http://enlightenment.org/">Enlightenment</a>'s <a href="http://www.rasterman/">Carsten Haitzler</a> (the *rasterman*) came up with a benchmark about 2 weeks ago, that was meant to measure the performance of today's most popular window managers for X11. Surprise, suprise, E17 is on top of both lists.

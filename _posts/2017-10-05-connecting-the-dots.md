@@ -1,6 +1,9 @@
 ---
 layout: post
 title: Connecting the dots
+tags:
+  - turbofan
+  - v8
 ---
 
 The last months have been a hectic time for me. I was hosting my first intern [Juliana Franco](https://twitter.com/jupvfranco)

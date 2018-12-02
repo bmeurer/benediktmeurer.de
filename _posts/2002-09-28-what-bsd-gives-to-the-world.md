@@ -1,6 +1,7 @@
---- 
+---
 layout: post
 title: What BSD gives to the world
+tags: netbsd
 ---
 
 Today I read an interesting article on BSD and what it gave

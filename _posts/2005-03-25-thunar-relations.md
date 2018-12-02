@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Thunar Relations
+tags: thunar
 ---
 
 Some more thoughts on the Thunar architecture:

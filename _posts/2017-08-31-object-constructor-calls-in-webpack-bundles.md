@@ -1,6 +1,10 @@
 ---
 layout: post
 title: Object constructor calls in webpack bundles
+tags:
+  - performance
+  - v8
+  - webpack
 ---
 
 Yesterday I was pointed to [webpack#5600](https://github.com/webpack/webpack/issues/5600), which

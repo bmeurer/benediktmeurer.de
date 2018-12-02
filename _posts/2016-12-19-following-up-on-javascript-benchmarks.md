@@ -1,6 +1,10 @@
 ---
 layout: post
 title: Following up on JavaScript benchmarks
+tags:
+  - javascript
+  - performance
+  - benchmarks
 ---
 
 Following up on my [latest blog post on the truth about traditional JavaScript benchmarks](/2016/12/16/the-truth-about-traditional-javascript-benchmarks)

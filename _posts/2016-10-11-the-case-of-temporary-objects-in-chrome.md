@@ -1,6 +1,9 @@
 ---
 layout: post
 title: The case of temporary objects in Chrome
+tags:
+  - javascript
+  - v8
 ---
 
 For the last couple of months we - together with some awesome [Ember](https://twitter.com/stefanpenner) [folks](https://twitter.com/krisselden) - have

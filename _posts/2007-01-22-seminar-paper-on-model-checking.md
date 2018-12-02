@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Seminar Paper on Model Checking
+tags: research
 ---
 
 Just uploaded my seminar paper on [PLTL Model

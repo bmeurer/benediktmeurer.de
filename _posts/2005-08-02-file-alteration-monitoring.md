@@ -1,6 +1,7 @@
 ---
 layout: post
 title: File alteration monitoring
+tags: thunar
 ---
 
 Just committed a change to get file alteration monitoring working again in Thunar. I had more or less carefully evaluated the possibilities of doing the monitoring within the Thunar process, using a combination of various <i>backends</i>:

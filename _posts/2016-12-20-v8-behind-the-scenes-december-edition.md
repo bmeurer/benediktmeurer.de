@@ -1,6 +1,10 @@
 ---
 layout: post
 title: "V8: Behind the Scenes (December Edition feat. WebAssembly and Real World Performance)"
+tags:
+  - turbofan
+  - v8
+  - webassembly
 ---
 
 Following up on what [I promised earlier](/2016/11/25/v8-behind-the-scenes-november-edition) here's another edition on what's going on

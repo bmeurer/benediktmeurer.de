@@ -1,6 +1,10 @@
 ---
 layout: post
 title: The truth about traditional JavaScript benchmarks
+tags:
+  - javascript
+  - performance
+  - benchmarks
 ---
 
 It is probably fair to say that [JavaScript](https://en.wikipedia.org/wiki/JavaScript) is *the most important technology* these days when it

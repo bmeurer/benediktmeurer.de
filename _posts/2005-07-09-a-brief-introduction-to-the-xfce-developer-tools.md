@@ -1,6 +1,7 @@
 ---
 layout: post
 title: A brief introduction to the Xfce Developer Tools
+tags: xfce
 ---
 
 

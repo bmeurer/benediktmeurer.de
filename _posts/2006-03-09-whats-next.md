@@ -1,6 +1,7 @@
 ---
 layout: post
 title: What's next?
+tags: thunar
 ---
 
 Thunar will enter beta phase soon, so I thought I'd share two additional screenshots of what's to come soon.

@@ -1,6 +1,10 @@
 ---
 layout: post
 title: "V8: Behind the Scenes (March Edition feat. I+TF launch and Declarative JavaScript)"
+tags:
+  - javascript
+  - turbofan
+  - v8
 ---
 
 I'm again running late for the March Edition, so that might turn into some kind of pattern. The last month was pretty exciting: We finally turned on Ignition and TurboFan by default for Chrome M59. It took two attempts, but it seems to stick now. Overall it went surprisingly well, despite the complexity and impact of this change; as my site director used to put it: ["Changing from Crankshaft to TurboFan in Chrome was like changing the engine of a F1 car at 250 km/h."](https://twitter.com/holfelder/status/842473381832409093)

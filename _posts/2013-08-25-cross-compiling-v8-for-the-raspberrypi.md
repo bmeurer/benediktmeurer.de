@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Cross-compiling V8 for the Raspberry Pi
+tags: v8
 ---
 
 The [Raspberry Pi](http://www.raspberrypi.org) is probably the most popular Linux ARM device nowadays (not including the ARM based Android smartphones and tablets) and [V8](http://v8.googlecode.com) is the most popular JavaScript engine, so chances are you may want to run (a recent version of) V8 on the Raspberry Pi. Building on the device is an option, but that takes ages. So you will probably want to cross-compile V8 on your powerful Linux workstation instead.

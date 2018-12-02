@@ -1,6 +1,7 @@
 ---
 layout: post
 title: And the laugh of the day goes to...
+tags: debian
 ---
 
 ... my favourite Linux based operating system, [Debian](http://www.debian.org). The mighty and outstanding Debian people finally came to the conclusion that it might be a good idea to release their software from time to time (sarge will become stable right after the Hurd 1.0 release). Oh, really. Why did noone think of this earlier?

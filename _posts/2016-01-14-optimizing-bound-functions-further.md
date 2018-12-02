@@ -1,6 +1,10 @@
 ---
 layout: post
 title: Optimizing bound functions further
+tags:
+  - javascript
+  - performance
+  - v8
 ---
 
 As mentioned in my previous [blog post about a new approach to Function.prototype.bind]({{ site.baseurl }}/2015/12/25/a-new-approach-to-function-prototype-bind)

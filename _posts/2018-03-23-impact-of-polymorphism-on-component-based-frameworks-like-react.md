@@ -1,6 +1,10 @@
 ---
 layout: post
 title: Impact of polymorphism on component-based frameworks like React
+tags:
+  - performance
+  - react
+  - v8
 ---
 
 I just realized that this is going to be the very first blog post of 2018 that I write myself - versus bugging

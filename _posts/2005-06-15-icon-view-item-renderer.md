@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Icon view item renderer
+tags: thunar
 ---
 
 One of the first things that perplexed me when I looked at GtkIconView (back in the gtk 2.5 days) was <i>"why the hell is there no GtkIconViewItemRenderer?"</i>. I guess somebody was worried about performance and therefore the renderer was hardcoded into the first icon view implementations (which is of course not very flexible and can lead to weird work-arounds on the model side). Unfortunately, I hoped that over the time somebody else would notice the problem and magically fix it for the stable 2.6 icon view.

@@ -12,4 +12,3 @@ Of course, sane defaults should be choosen for the different services. Services 
 This way you'll have a very flexible, but yet easy to use system. The average user will probably just stay with the (sane) defaults, while the more advanced users will reconfigure certain aspects. And the logging of the events ensures that you don't miss events while you're away.
 
 Does KISS mean nothing in today's open source world?
-

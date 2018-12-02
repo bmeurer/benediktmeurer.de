@@ -1,6 +1,10 @@
 ---
 layout: post
 title: JavaScript Optimization Patterns (Part 2)
+tags:
+  - javascript
+  - performance
+  - v8
 ---
 
 Following up on [part one of this series](/2017/06/20/javascript-optimization-patterns-part1/) last week, here's another
