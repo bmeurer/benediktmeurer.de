@@ -16,13 +16,11 @@ workbox.routing.setDefaultHandler(workbox.strategies.networkFirst());
 // let Workbox handle our precache list
 workbox.precaching.precacheAndRoute(self.__precacheManifest);
 
-// use `cacheFirst` strategy for images
+// use `Stale-while-revalidate` strategy for images and fonts.
 workbox.routing.registerRoute(
     /images/,
-    workbox.strategies.cacheFirst()
+    workbox.strategies.staleWhileRevalidate()
 );
-
-// third party files
 workbox.routing.registerRoute(
     /^https?:\/\/fonts\.googleapis\.com/,
     workbox.strategies.staleWhileRevalidate()
