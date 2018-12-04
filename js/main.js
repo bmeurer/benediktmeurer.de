@@ -32,21 +32,13 @@
   });
 
   // Google Analytics.
-  var UA_ID = 'UA-24476004-1';
-  self.dataLayer = [];
-  self.gtag = function() {
-    // Note: This needs to be an actual `arguments` object. Proper arrays
-    // (such as those produced by rest parameters) prevent any analytics
-    // from being collected at all. :(
-    self.dataLayer.push(arguments);
-  };
-  gtag('js', new Date());
-  gtag('config', UA_ID, {
-    'anonymize_ip': true,
-    'referrer': document.referrer.split('?')[0]
-  });
+  self.ga=self.ga || function() { (ga.q = ga.q || []).push(arguments) };
+  ga.l = +new Date;
+  ga('create', 'UA-24476004-1', 'auto');
+  ga('set', 'referrer', document.referrer.split('?')[0]);
+  ga('send', 'pageview');
   var firstScript = document.scripts[0];
   var scriptElement = document.createElement('script');
-  scriptElement.src = 'https://www.googletagmanager.com/gtag/js?id=' + UA_ID;
+  scriptElement.src = 'https://www.google-analytics.com/analytics.js';
   firstScript.parentNode.insertBefore(scriptElement, firstScript);
 })();
