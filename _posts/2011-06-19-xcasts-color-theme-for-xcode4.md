@@ -11,7 +11,7 @@ for Textmate](http://railscasts.com/about).
 
 ## Screenshot
 
-![Screenshot](http://github.com/bmeurer/XCasts-color-theme-for-Xcode-4/raw/master/XCasts-screenshot.png "Screenshot")
+![Screenshot](https://github.com/bmeurer/XCasts-color-theme-for-Xcode-4/raw/master/XCasts-screenshot.png "Screenshot")
 
 ## Installation
 
