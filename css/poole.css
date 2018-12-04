@@ -161,6 +161,13 @@ abbr[title] {
   border-bottom: 1px dotted #e5e5e5;
 }
 
+svg.icon {
+  fill: currentColor;
+  height: 1em;
+  width: 1em;
+  vertical-align: text-top;
+}
+
 /* Code */
 code,
 pre {
@@ -381,12 +388,10 @@ tbody tr:nth-child(odd) th {
   margin-bottom: 1rem;
   color: #9a9a9a;
 }
-.post-date svg,
-.post-tags svg {
+.post-date svg.icon,
+.post-tags svg.icon {
   width: 1.1em;
   height: 1.1em;
-  vertical-align: text-top;
-  fill: #9a9a9a;
 }
 
 

@@ -10,7 +10,7 @@
 
   <nav class="sidebar-nav">
     <a class="sidebar-nav-item{% if page.url == site.baseurl %} active{% endif %}" href="{{ site.baseurl }}/">
-      <svg><use xlink:href="/images/icons.svg#home" /></svg>
+      <svg class="icon"><use xlink:href="/images/icons.svg#icon-home" /></svg>
       Home
     </a>
 
@@ -19,7 +19,7 @@
       {% if node.title != null %}
         {% if node.layout == "page" %}
         <a class="sidebar-nav-item{% if page.url == node.url %} active{% endif %}" href="{{ node.url }}">
-          <svg><use xlink:href="/images/icons.svg#{{ node.icon }}" /></svg>
+          <svg class="icon"><use xlink:href="/images/icons.svg#icon-{{ node.icon }}" /></svg>
           {{ node.title }}
         </a>
         {% endif %}
@@ -28,14 +28,14 @@
 
     {% if site.twitter %}
     <a class="sidebar-nav-item" href="https://twitter.com/{{ site.twitter }}">
-      <svg><use xlink:href="/images/icons.svg#twitter" /></svg>
+      <svg class="icon"><use xlink:href="/images/icons.svg#icon-twitter" /></svg>
       Twitter
     </a>
     {% endif %}
 
     {% if site.github %}
     <a class="sidebar-nav-item" href="https://github.com/{{ site.github }}">
-      <svg><use xlink:href="/images/icons.svg#github" /></svg>
+      <svg class="icon"><use xlink:href="/images/icons.svg#icon-github" /></svg>
       GitHub
     </a>
     {% endif %}

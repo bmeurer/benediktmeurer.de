@@ -182,12 +182,6 @@ h1, h2, h3, h4, h5, h6 {
   padding: .5rem 1rem;
   border-top: 1px solid rgba(255,255,255,.1);
 }
-.sidebar-nav-item svg {
-  width: 1em;
-  height: 1em;
-  vertical-align: text-top;
-  fill: #fff;
-}
 .sidebar-nav-item.active,
 a.sidebar-nav-item:hover,
 a.sidebar-nav-item:focus {
@@ -327,22 +321,6 @@ a.sidebar-nav-item:focus {
 .page-title,
 .post-title {
   margin-top: 0;
-}
-
-/* Post author */
-.post-author {
-  margin-bottom: 20px;
-  text-align: center!important;
-}
-.post-author img {
-  border-radius: 50%;
-  margin: 0 auto;
-}
-.post-author span {
-  display: block;
-  font-size: 200%;
-  padding-top: 10px;
-  padding-bottom: 1px;
 }
 
 /* Embedded images */
