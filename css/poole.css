@@ -165,7 +165,8 @@ svg.icon {
   fill: currentColor;
   height: 1em;
   width: 1em;
-  vertical-align: text-top;
+  vertical-align: baseline;
+  margin-bottom: -0.1em;  /* account for the displacement */
 }
 
 /* Code */
