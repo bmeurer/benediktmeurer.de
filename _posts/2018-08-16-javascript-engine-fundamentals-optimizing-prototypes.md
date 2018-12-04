@@ -9,7 +9,7 @@ tags:
 
 This article describes some key fundamentals that are common to all JavaScript engines — and not just [V8](https://twitter.com/v8js), the engine the authors ([Mathias](https://twitter.com/mathias) and [Benedikt](https://twitter.com/bmeurer)) work on. As a JavaScript developer, having a deeper understanding of how JavaScript engines work helps you reason about the performance characteristics of your code.
 
-[Previously](https://mathiasbynens.be/notes/shapes-ics), we discussed how JavaScript engines optimize object and array access through the use of Shapes and Inline Caches. This article explains optimization pipeline trade-offs and describes how engines speed up accesses to prototype properties.
+[Previously](/2018/06/14/javascript-engine-fundamentals-shapes-and-inline-caches/), we discussed how JavaScript engines optimize object and array access through the use of Shapes and Inline Caches. This article explains optimization pipeline trade-offs and describes how engines speed up accesses to prototype properties.
 
 *This article was originally published on [Mathias' blog](https://mathiasbynens.be/notes/prototypes), co-authored by [Mathias Bynens](https://twitter.com/mathias).*
 
@@ -19,7 +19,7 @@ This article describes some key fundamentals that are common to all JavaScript e
 
 ## Optimization tiers and execution trade-offs
 
-[Our previous article](https://mathiasbynens.be/notes/shapes-ics) discussed how modern JavaScript engines all have the same overall pipeline:
+[Our previous article](/2018/06/14/javascript-engine-fundamentals-shapes-and-inline-caches/) discussed how modern JavaScript engines all have the same overall pipeline:
 
 ![To execute JavaScript, engines use an interpreter and one or more optimization tiers](/images/2018/js-engine-pipeline-20180816.svg "To execute JavaScript, engines use an interpreter and one or more optimization tiers")
 
@@ -136,11 +136,11 @@ This is one of the main reasons why JavaScript engines don't just *"optimize eve
 
 ## Optimizing prototype property access
 
-[Our previous article](https://mathiasbynens.be/notes/shapes-ics#optimizing-property-access) explained how JavaScript engines optimize object property loads using Shapes and Inline Caches. To recap, engines store the `Shape` of the object separately from the object's values.
+[Our previous article](/2018/06/14/javascript-engine-fundamentals-shapes-and-inline-caches/#optimizing-property-access) explained how JavaScript engines optimize object property loads using Shapes and Inline Caches. To recap, engines store the `Shape` of the object separately from the object's values.
 
 ![Object shapes](/images/2018/shape-2-20180816.svg "Object shapes")
 
-Shapes enable an optimization called _Inline Caches_ or _ICs_ for short. Combined, Shapes and ICs can speed up repeated property accesses from the same place in your code. 
+Shapes enable an optimization called _Inline Caches_ or _ICs_ for short. Combined, Shapes and ICs can speed up repeated property accesses from the same place in your code.
 
 ![Shapes and Inline Caches](/images/2018/ic-4-20180816.svg "Shapes and Inline Caches")
 
