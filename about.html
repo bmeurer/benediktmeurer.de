@@ -2,8 +2,31 @@
 layout: page
 title: About
 tab: about
-icon: fas fa-user-alt
+icon: about
 ---
+
+<style>
+.post-author {
+  margin-bottom: 20px;
+  text-align: center!important;
+}
+.post-author img {
+  border-radius: 50%;
+  margin: 0 auto;
+}
+.post-author span {
+  display: block;
+  font-size: 200%;
+  padding-top: 10px;
+  padding-bottom: 1px;
+}
+.post-author span svg {
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+  vertical-align: middle;
+}
+</style>
 
 <div class="post-author">
   <a href="/images/me.jpg">
@@ -13,10 +36,18 @@ icon: fas fa-user-alt
   </a>
 
   <span>
-    {% if site.twitter %}<a href="https://twitter.com/{{ site.twitter }}"><i class="fab fa-twitter-square"></i></a>{% endif %}
-    {% if site.github  %}<a href="https://github.com/{{ site.github }}"><i class="fab fa-github-square"></i></a>{% endif %}
-    {% if site.linkedin %}<a href="https://linkedin.com/in/{{ site.linkedin }}"><i class="fab fa-linkedin"></i></a>{% endif %}
-    {% if site.facebook %}<a href="https://www.facebook.com/{{ site.facebook }}"><i class="fab fa-facebook-square"></i></a>{% endif %}
+    {% if site.twitter %}
+    <a href="https://twitter.com/{{ site.twitter }}" target="_blank"><svg><use xlink:href="/images/icons.svg#icon-twitter-square" /></svg></a>
+    {% endif %}
+    {% if site.github  %}
+    <a href="https://github.com/{{ site.github }}" target="_blank"><svg><use xlink:href="/images/icons.svg#icon-github-square" /></svg></a>
+    {% endif %}
+    {% if site.linkedin %}
+    <a href="https://linkedin.com/in/{{ site.linkedin }}" target="_blank"><svg><use xlink:href="/images/icons.svg#icon-linkedin-square" /></svg></a>
+    {% endif %}
+    {% if site.facebook %}
+    <a href="https://www.facebook.com/{{ site.facebook }}" target="_blank"><svg><use xlink:href="/images/icons.svg#icon-facebook-square" /></svg></a>
+    {% endif %}
   </span>
 </div>
 
@@ -109,7 +140,9 @@ icon: fas fa-user-alt
 <p>
   This <a href="/">website</a> is built using <a href="http://github.com/mojombo/jekyll"
   target="_blank">Jekyll</a>, a blog-aware, static site generator written in Ruby, and is
-  based on the <a href="http://lanyon.getpoole.com" target="_blank">Lanyon</a> theme.
+  based on the <a href="http://lanyon.getpoole.com" target="_blank">Lanyon</a> theme. Some
+  of the icons used on this page were taken from the <a href="https://fontawesome.com"
+  target="_blank">Font Awesome</a>project.
 
   The <a href="http://en.wikipedia.org/wiki/Source_code" target="_blank">source code</a> used to
   create this <a href="/" target="_blank">website</a> is publicly available on <a

@@ -9,19 +9,36 @@
   </div>
 
   <nav class="sidebar-nav">
-    <a class="sidebar-nav-item{% if page.url == site.baseurl %} active{% endif %}" href="{{ site.baseurl }}/"><i class="fas fa-home"></i> Home</a>
+    <a class="sidebar-nav-item{% if page.url == site.baseurl %} active{% endif %}" href="{{ site.baseurl }}/">
+      <svg class="icon"><use xlink:href="/images/icons.svg#icon-home" /></svg>
+      Home
+    </a>
 
     {% assign pages_list = site.pages | sort:"url" %}
     {% for node in pages_list %}
       {% if node.title != null %}
         {% if node.layout == "page" %}
-        <a class="sidebar-nav-item{% if page.url == node.url %} active{% endif %}" href="{{ node.url }}"><i class="{{ node.icon }}"></i> {{ node.title }}</a>
+        <a class="sidebar-nav-item{% if page.url == node.url %} active{% endif %}" href="{{ node.url }}">
+          <svg class="icon"><use xlink:href="/images/icons.svg#icon-{{ node.icon }}" /></svg>
+          {{ node.title }}
+        </a>
         {% endif %}
       {% endif %}
     {% endfor %}
 
-    {% if site.twitter %}<a class="sidebar-nav-item" href="https://twitter.com/{{ site.twitter }}"><i class="fab fa-twitter"></i> Twitter</a>{% endif %}
-    {% if site.github %}<a class="sidebar-nav-item" href="https://github.com/{{ site.github }}"><i class="fab fa-github"></i> GitHub</a>{% endif %}
+    {% if site.twitter %}
+    <a class="sidebar-nav-item" href="https://twitter.com/{{ site.twitter }}">
+      <svg class="icon"><use xlink:href="/images/icons.svg#icon-twitter" /></svg>
+      Twitter
+    </a>
+    {% endif %}
+
+    {% if site.github %}
+    <a class="sidebar-nav-item" href="https://github.com/{{ site.github }}">
+      <svg class="icon"><use xlink:href="/images/icons.svg#icon-github" /></svg>
+      GitHub
+    </a>
+    {% endif %}
   </nav>
 
   <div class="sidebar-item">

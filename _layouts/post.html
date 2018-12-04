@@ -6,13 +6,14 @@ layout: default
   <h1 class="post-title">{{ page.title }}</h1>
 
   <span class="post-date">
-    <i class="far fa-calendar-alt" title="Date published"></i> <a href="{{ page.url | prepend: site.baseurl }}" title="Permanent link to this post">{{ page.date | date_to_string }}</a>
+    <svg class="icon"><use xlink:href="/images/icons.svg#icon-calendar" /></svg>
+    <a href="{{ page.url | prepend: site.baseurl }}" title="Permanent link to this post">{{ page.date | date_to_string }}</a>
   </span>
 
   <span class="post-tags">
     {% for tag in page.tags %}
       {% if forloop.first %}
-        <i class="fas fa-tags" title="page tags"></i>
+        <svg class="icon"><use xlink:href="/images/icons.svg#icon-tags" /></svg>
       {% endif %}
       <a href="{{ site.baseurl }}/tags/{{ tag | cgi_escape }}" title="Blog posts tagged “{{ tag }}”" rel="tag">{{ tag }}</a>
       {% unless forloop.last %} &bull; {% endunless %}
