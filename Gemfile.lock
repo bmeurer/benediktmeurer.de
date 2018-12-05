@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/bmeurer/jekyll-pwa.git
+  revision: d0aba118af56e85656b78b1ea38b5c372c0865da
+  ref: d0aba118af56e85656b78b1ea38b5c372c0865da
+  specs:
+    jekyll-pwa-plugin (2.1.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -36,7 +43,6 @@ GEM
       jekyll (>= 3.5)
       uglifier (~> 4.1)
     jekyll-paginate (1.1.0)
-    jekyll-pwa-plugin (2.2.1)
     jekyll-sass-converter (1.5.2)
       sass (~> 3.4)
     jekyll-tagging (1.1.0)
@@ -75,7 +81,7 @@ DEPENDENCIES
   jekyll
   jekyll-minifier (>= 0.1.9)
   jekyll-paginate
-  jekyll-pwa-plugin
+  jekyll-pwa-plugin!
   jekyll-tagging
 
 BUNDLED WITH
