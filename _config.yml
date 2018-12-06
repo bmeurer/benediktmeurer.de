@@ -31,23 +31,20 @@ paginate_path: "page:num"
 tag_page_layout: tag
 tag_page_dir: tags
 
-# PWA
-pwa:
+# SERVICE WORKER
+workbox:
   sw_src_filepath: sw.js
   sw_dest_filename: sw.js
-  dest_js_directory: js
   precache_recent_posts_num: 10
-  precache_glob_directory: /
   precache_glob_patterns:
-    - "{js,css}/**/*.{js,css}"
-  precache_glob_ignores:
-    - sw.js
+    - "css/*.css"
+    - "js/main.js"
 
 # BUILD SETTINGS
 markdown: kramdown
 plugins:
   - jekyll-minifier
   - jekyll-paginate
-  - jekyll-pwa-plugin
   - "jekyll/tagging"
+  - jekyll-workbox-plugin
 highlighter: rouge

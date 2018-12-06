@@ -41,4 +41,11 @@
   var scriptElement = document.createElement('script');
   scriptElement.src = 'https://www.google-analytics.com/analytics.js';
   firstScript.parentNode.insertBefore(scriptElement, firstScript);
+
+  // Install the service worker
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+      navigator.serviceWorker.register('/sw.js');
+    });
+  }
 })();
