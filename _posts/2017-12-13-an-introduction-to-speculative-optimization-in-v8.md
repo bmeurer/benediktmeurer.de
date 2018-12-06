@@ -1,6 +1,7 @@
 ---
 layout: post
 title: An Introduction to Speculative Optimization in V8
+canonical: "https://ponyfoo.com/articles/an-introduction-to-speculative-optimization-in-v8"
 tags:
   - performance
   - turbofan
@@ -8,8 +9,6 @@ tags:
 ---
 
 Following up on my talk ["A Tale of TurboFan"](https://www.youtube.com/watch?v=cvybnv79Sek) ([slides](https://docs.google.com/presentation/d/1UXR1H2elTdAYJJ0Eed7lUctCVUserav9sAYSidxp8YE)) at [JS Kongress](2017.js-kongress.de), I wanted to give some additional context on how TurboFan, V8's optimizing compiler, works and how V8 turns your JavaScript into highly-optimized machine code. For the talk I had to be brief and leave out several details. So I'll use this opportunity to fill the gaps, especially how V8 collects and uses the profiling information to perform speculative optimizations.
-
-*This article was originally published on [ponyfoo.com](https://ponyfoo.com/articles/an-introduction-to-speculative-optimization-in-v8).*
 
 ## Overview
 

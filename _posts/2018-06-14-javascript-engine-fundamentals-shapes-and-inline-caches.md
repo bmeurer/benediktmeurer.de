@@ -2,6 +2,7 @@
 layout: post
 title: "JavaScript engine fundamentals: Shapes and Inline Caches"
 canonical: "https://mathiasbynens.be/notes/shapes-ics"
+coauthor: mathias
 tags:
   - javascript
   - presentations
@@ -9,8 +10,6 @@ tags:
 ---
 
 This article describes some key fundamentals that are common to all JavaScript engines — and not just [V8](https://twitter.com/v8js), the engine the authors ([Benedikt](https://twitter.com/bmeurer) and [Mathias](https://twitter.com/mathias)) work on. As a JavaScript developer, having a deeper understanding of how JavaScript engines work helps you reason about the performance characteristics of your code.
-
-*This article was originally published on [Mathias' blog](https://mathiasbynens.be/notes/shapes-ics), co-authored by [Mathias Bynens](https://twitter.com/mathias).*
 
 *Note:* If you prefer watching a presentation over reading articles, then enjoy the video below! If not, skip the video and read on.
 
