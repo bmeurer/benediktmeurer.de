@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Faster async functions and promises
+canonical: "https://v8.dev/blog/fast-async"
 tags:
   - javascript
   - performance
