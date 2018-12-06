@@ -1,19 +1,12 @@
 <head>
   <meta charset="utf-8">
-  <link href="https://gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-  <!-- DNS Prefetch and Preconnect -->
-  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
-  <link rel="dns-prefetch" href="https://www.google-analytics.com">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://www.google-analytics.com">
 
   <!-- Web App Manifest -->
   <link rel="manifest" href="/manifest.json">
 
   <!-- Theme color (red08 in Base16) -->
-  <meta name="theme-color" content="#ac4142" />
+  <meta name="theme-color" content="#ac4142">
 
   <!-- Provide description for SEO -->
   <meta name="description" content="{{ site.description }}">
@@ -39,7 +32,7 @@
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ site.baseurl }}/images/apple-touch-icon-precomposed.png">
 
   <!-- RSS -->
-  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ "/feed.xml" | prepend: site.baseurl}}">
 
   <!-- JS -->
   <script defer src="/js/main.js"></script>
