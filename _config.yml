@@ -11,7 +11,9 @@ linkedin: benediktmeurer
 facebook: benedikt.meurer
 
 exclude:
-  - README.markdown
+  - Gemfile
+  - Gemfile.lock
+  - README.md
   - vendor
 include:
   - _headers
