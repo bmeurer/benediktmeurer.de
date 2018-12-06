@@ -20,6 +20,18 @@ layout: default
     {% endfor %}
   </span>
 
+  {% if page.canonical %}
+  <span class="post-canonical">
+    {% if page.coauthor %}
+      This article was originally published <a href="{{ page.canonical }}" rel="noreferrer" target="_blank">here</a>,
+      co-authored by <a href="{{ site.data.people[page.coauthor].url }}" rel="noreferrer"
+      target="_blank">{{ site.data.people[page.coauthor].name }}</a>.
+    {% else %}
+      This article was originally published <a href="{{ page.canonical }}" rel="noreferrer" target="_blank">here</a>.
+    {% endif %}
+  </span>
+  {% endif %}
+
   {{ content }}
 </div>
 

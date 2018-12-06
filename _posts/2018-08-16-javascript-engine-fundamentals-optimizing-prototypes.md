@@ -2,6 +2,7 @@
 layout: post
 title: "JavaScript engine fundamentals: optimizing prototypes"
 canonical: "https://mathiasbynens.be/notes/prototypes"
+coauthor: mathias
 tags:
   - javascript
   - presentations
@@ -11,8 +12,6 @@ tags:
 This article describes some key fundamentals that are common to all JavaScript engines — and not just [V8](https://twitter.com/v8js), the engine the authors ([Mathias](https://twitter.com/mathias) and [Benedikt](https://twitter.com/bmeurer)) work on. As a JavaScript developer, having a deeper understanding of how JavaScript engines work helps you reason about the performance characteristics of your code.
 
 [Previously](/2018/06/14/javascript-engine-fundamentals-shapes-and-inline-caches/), we discussed how JavaScript engines optimize object and array access through the use of Shapes and Inline Caches. This article explains optimization pipeline trade-offs and describes how engines speed up accesses to prototype properties.
-
-*This article was originally published on [Mathias' blog](https://mathiasbynens.be/notes/prototypes), co-authored by [Mathias Bynens](https://twitter.com/mathias).*
 
 **Note:** If you prefer watching a presentation over reading articles, then enjoy the video below! If not, skip the video and read on.
 
