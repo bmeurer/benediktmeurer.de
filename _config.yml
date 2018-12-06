@@ -13,6 +13,8 @@ facebook: benedikt.meurer
 exclude:
   - README.markdown
   - vendor
+include:
+  - _headers
 
 # SITE CONFIGURATION
 baseurl: "" # the subpath of your site, e.g. /blog/

@@ -1,0 +1,3 @@
+# Disable caching for the service worker.
+/sw.js
+  Cache-Control: no-cache
