@@ -1,3 +1,7 @@
 # Disable caching for the service worker.
 /sw.js
   Cache-Control: no-cache
+
+# Tell IE to render using the latest mode.
+/*
+  X-UA-Compatible: IE=edge
