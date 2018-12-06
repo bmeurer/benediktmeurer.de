@@ -50,6 +50,4 @@ plugins:
   - jekyll-paginate
   - jekyll-pwa-plugin
   - "jekyll/tagging"
-jekyll-minifier:
-  compress_javascript: false  # UglifyJS integration seems to be broken.
 highlighter: rouge
