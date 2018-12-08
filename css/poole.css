@@ -175,7 +175,7 @@ pre {
   font-family: Menlo, Monaco, "Courier New", monospace;
 }
 code {
-  padding: 1px 2px;
+  padding: .12em .25em;
   font-size: 85%;
   color: #bf616a;
   background-color: #f9f9f9;
