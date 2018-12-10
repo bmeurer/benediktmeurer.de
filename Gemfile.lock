@@ -1,3 +1,15 @@
+GIT
+  remote: https://github.com/bmeurer/jekyll-minifier.git
+  revision: 4a985d1f8f6ad2ec34cffba85de6e4e3b77e2c65
+  branch: 4a985d1
+  specs:
+    jekyll-minifier (0.1.8)
+      cssminify2 (~> 2.0)
+      htmlcompressor (~> 0.4)
+      jekyll (>= 3.5)
+      json-minify (~> 0.0.3)
+      uglifier (~> 4.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -30,11 +42,6 @@ GEM
       pathutil (~> 0.9)
       rouge (>= 1.7, < 4)
       safe_yaml (~> 1.0)
-    jekyll-minifier (0.1.9)
-      cssminify2 (~> 2.0)
-      htmlcompressor (~> 0.4)
-      jekyll (>= 3.5)
-      uglifier (~> 4.1)
     jekyll-paginate (1.1.0)
     jekyll-sass-converter (1.5.2)
       sass (~> 3.4)
@@ -43,6 +50,9 @@ GEM
     jekyll-watch (2.1.2)
       listen (~> 3.0)
     jekyll-workbox-plugin (0.0.1)
+    json (2.1.0)
+    json-minify (0.0.3)
+      json (> 0)
     kramdown (1.17.0)
     liquid (4.0.1)
     listen (3.1.5)
@@ -73,10 +83,10 @@ PLATFORMS
 
 DEPENDENCIES
   jekyll
-  jekyll-minifier (>= 0.1.9)
+  jekyll-minifier!
   jekyll-paginate
   jekyll-tagging
   jekyll-workbox-plugin
 
 BUNDLED WITH
-   1.16.1
+   1.17.1
