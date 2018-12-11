@@ -1,0 +1,11 @@
+nodeconfeu2018:
+  title: "holding on to your performance promises"
+  with: [mayalekova]
+  confname: "NodeConf EU 2018"
+  confurl: "https://www.nodeconf.eu"
+  abstract: >
+    The ES2015 revision of JavaScript introduced Promises as primitives for asynchronous operations and generators as primitives for concurrent programming.
+
+    On top of that ES2017/18 added async functions and generators. This talk briefly explores these primitives, and dives into the performance peculiarities of Promises-based programming paradigms. We’ll especially look into how these operations perform in V8, the JavaScript engine that powers both Node.js and Chrome.
+  youtube_id: DFP5DKDQfOc
+  slides: "https://slidr.io/bmeurer/holding-on-to-your-performance-promises"
