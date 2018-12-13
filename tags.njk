@@ -1,0 +1,13 @@
+---
+layout: default
+title: Tags
+---
+
+<div class="page">
+  <h1 class="page-title">{{ title }}</h1>
+  <ul>
+    {% for tag in collections.tagList %}
+      <li><a href="/tags/{{ tag | slug }}">{{ tag }}</a></li>
+    {% endfor %}
+  </ul>
+</div>

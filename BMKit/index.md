@@ -56,12 +56,12 @@ $ curl -L http://github.com/bmeurer/BMKit/tarball/master | tar xz --strip 1 -C V
 
 To use BMKit, simply add the following line to your source file. I recommend adding this to your prefix to make things easy.
 
-```objective_c
+```objectivec
 #import <BMKit/BMKit.h>
 ```
 
 You can also import individual files instead of the whole framework by doing something like:
 
-```objective_c
+```objectivec
 #import <BMKit/BMNetworkReachabilityController.h>
 ```

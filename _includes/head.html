@@ -13,17 +13,11 @@
   <!-- Enable responsiveness on mobile devices-->
   <meta name="viewport" content="width=device-width,initial-scale=1">
 
-  <title>
-    {% if page.title == "Home" %}
-      {{ site.title }} &middot; {{ site.tagline }}
-    {% else %}
-      {{ page.title }} &middot; {{ site.title }}
-    {% endif %}
-  </title>
+  <title>{{ title }} &middot; {{ site.title }}</title>
 
-  {% if page.canonical %}
+  {% if canonical %}
   <!-- Canonical URLs -->
-  <link rel="canonical" href="{{ page.canonical }}">
+  <link rel="canonical" href="{{ canonical }}">
   {% endif %}
 
   <!-- CSS -->
@@ -36,7 +30,7 @@
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ site.baseurl }}/images/apple-touch-icon-precomposed.png">
 
   <!-- RSS -->
-  <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ "/feed.xml" | prepend: site.baseurl}}">
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ site.baseurl}}/feed.xml">
 
   <!-- JS -->
   <script defer src="/js/main.js"></script>

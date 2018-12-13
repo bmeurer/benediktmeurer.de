@@ -11,7 +11,7 @@ gcc is still buggy on Alpha. And in general you should think twice before settin
 several programs to segfault frequently or not run at all. Here are some lines from my `mk.conf`, which might help you
 (they will honor all default values but -ON):
 
-```make
+```makefile
 COMMONCFLAGS?=-O2 -pipe
 COPTS:=${COMMONCFLAGS} ${COPTS:C/-O[0-9]*//g}
 CFLAGS:=${COMMONCFLAGS} ${CFLAGS:C/-O[0-9]*//g}
@@ -24,7 +24,7 @@ for [sudo](ftp://ftp.netbsd.org/pub/NetBSD-current/pkgsrc/security/sudo/README.h
 [su(1)](http://www.tac.eu.org/cgi-bin/man-cgi?su+1+NetBSD-current), so you may need not to type the root password everytime you install a
 package as a user. Here are the lines from my `mk.conf`:
 
-```make
+```makefile
 .if exists(/usr/pkg/bin/sudo)
 SU_CMD=/usr/pkg/bin/sudo /bin/sh -c
 .endif
@@ -35,7 +35,7 @@ Another helpful thing to do, is to override the default `MASTER_SITE` with faste
 from where pkgsrc should try to fetch the needed distfiles first and after that fails, it will try several other mirrors, and only if a distfile cannot
 be found there, it'll try to fetch it from the `MASTER_SITE`s specified for the package. Here are the lines from my `mk.conf`:
 
-```make
+```makefile
 MASTER_SITE_OVERRIDE+= \
   ftp://tatooine.kosmos.all/pub/NetBSD/packages/distfiles/ \
   ftp://ftp.de.netbsd.org/pub/NetBSD/packages/distfiles/ \

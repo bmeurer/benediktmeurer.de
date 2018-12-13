@@ -3,13 +3,13 @@
 
 <head>
   <meta charset="UTF-8" />
-  <title>{{ page.title }}</title>
+  <title>{{ title }}</title>
 
   <!-- Site Author -->
   <meta name="author" content="{{ site.author }}" />
 
   <!-- Page Description -->
-  <meta name="description" content="{{ page.description }}" />
+  <meta name="description" content="{{ description }}" />
 
   <!-- Google Site Verification -->
   <meta name="google-site-verification" content="1gkRIROhZsIi5eq-oNYG1R73thPYUmsb7IIQpDpBiB0" />
@@ -32,23 +32,23 @@
 </head>
 
 <body>
-  <a class="fork" href="https://github.com/{{ site.github }}/{{ page.github }}"><img src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub" /></a>
+  <a class="fork" href="https://github.com/{{ site.github }}/{{ github }}"><img src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub" /></a>
 
   <div id="container">
-    <h1><a href="https://github.com/{{ site.github }}/{{ page.github }}">{{ page.title }}</a></h1>
+    <h1><a href="https://github.com/{{ site.github }}/{{ github }}">{{ title }}</a></h1>
 
     {{ content }}
-      
+
     <h2>Source code</h2>
 
     <p>
       Available on GitHub:
-      <a href="https://github.com/{{ site.github }}/{{ page.github }}">https://github.com/{{ site.github }}/{{ page.github }}</a>
+      <a href="https://github.com/{{ site.github }}/{{ github }}">https://github.com/{{ site.github }}/{{ github }}</a>
     </p>
 
     <p>
-      Download it in either <a href="https://github.com/{{ site.github }}/{{ page.github }}/zipball/master">zip</a>
-      or <a href="https://github.com/{{ site.github }}/{{ page.github }}/tarball/master">tar</a> formats.
+      Download it in either <a href="https://github.com/{{ site.github }}/{{ github }}/zipball/master">zip</a>
+      or <a href="https://github.com/{{ site.github }}/{{ github }}/tarball/master">tar</a> formats.
     </p>
 
     <p>
@@ -56,23 +56,19 @@
     </p>
 
     <div class="highlight">
-      <pre><code class="console"><span class="gp">$</span> git clone git://github.com/{{ site.github }}/{{ page.github }}.git</code></pre>
+      <pre><code class="console"><span class="gp">$</span> git clone git://github.com/{{ site.github }}/{{ github }}.git</code></pre>
     </div>
-
-    <p>
-      <a class="button" href="github-mac://openRepo/https://github.com/{{ site.github }}/{{ page.github }}"> Clone in Mac</a>
-    </p>
 
     <h2>Bug Reports</h2>
 
     <p>
       If you come across any problems, please create a <a
-      href="https://github.com/{{ site.github }}/{{ page.github }}/issues">ticket</a>
+      href="https://github.com/{{ site.github }}/{{ github }}/issues">ticket</a>
       and we will try to get it fixed as soon as possible.
     </p>
 
     <p>
-      <a class="button" href="https://github.com/{{ site.github }}/{{ page.github }}/issues/new">Report a Bug</a>
+      <a class="button" href="https://github.com/{{ site.github }}/{{ github }}/issues/new">Report a Bug</a>
     </p>
 
     <h2>Contributing</h2>
@@ -82,7 +78,7 @@
     </p>
 
     <ol>
-      <li><a href="https://help.github.com/fork-a-repo/">Fork</a> {{ page.github }}.</li>
+      <li><a href="https://help.github.com/fork-a-repo/">Fork</a> {{ github }}.</li>
       <li>Create a topic branch - <tt>git checkout -b my_branch</tt></li>
       <li>Push to your topic branch - <tt>git push origin my_branch</tt></li>
       <li>Create a <a href="https://help.github.com/pull-requests/">Pull Request</a> from your topic branch.</li>
@@ -90,17 +86,17 @@
     </ol>
 
     <p>
-      <a class="button" href="https://github.com/{{ site.github }}/{{ page.github }}/fork">Fork {{ page.github }}</a>
+      <a class="button" href="https://github.com/{{ site.github }}/{{ github }}/fork">Fork {{ github }}</a>
     </p>
 
     <h2>Copyright</h2>
 
     <p>
-      Copyright &copy; {{ page.copyright }} {{ site.author }}. See the
-      <a href="https://github.com/{{ site.github }}/{{ page.github }}/raw/master/LICENSE">LICENSE</a>
+      Copyright &copy; {{ copyright }} {{ site.author }}. See the
+      <a href="https://github.com/{{ site.github }}/{{ github }}/raw/master/LICENSE">LICENSE</a>
       file for details.
     </p>
-      
+
     <div class="footer">
       <p>
         Copyright &copy; {{ site.time | date: "%Y" }} {{ site.author }}

@@ -68,7 +68,7 @@ in a translatable manner, after setting up the proper textdomain for gettext.
 We continue with the <code>sample/Makefile.am</code>, which contains instructions
 about how to compile the <code>sample/main.c</code> file:
 
-```make
+```makefile
 INCLUDES = \
   -DDBUS_API_SUBJECT_TO_CHANGE \
   -DG_LOG_DOMAIN=\"sample\" \
@@ -107,7 +107,7 @@ article.
 Furthermore we will also need a toplevel <code>Makefile.am</code>, which should
 look like this:
 
-```make
+```makefile
 SUBDIRS = \
   po \
   sample
@@ -154,7 +154,7 @@ $ touch AUTHORS ChangeLog NEWS README
 You should of course add content to these files later on, but for now, we want to
 concentrate on the important facts, the contents of <code>configure.ac</code>:
 
-```sh
+```bash
 dnl Version information
 m4_define([sample_version_major], [0])
 m4_define([sample_version_minor], [0])

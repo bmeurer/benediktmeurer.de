@@ -210,7 +210,7 @@ in 2007, this wouldn't even be a bad hack, since there was no [`JSON.parse`](htt
 but in 2017 this is just technical debt in the JavaScript engine and potentially slows down legit uses of `eval`. In fact
 updating the benchmark to modern JavaScript
 
-```patch
+```diff
 --- string-tagcloud.js.ORIG     2016-12-14 09:00:52.869887104 +0100
 +++ string-tagcloud.js  2016-12-14 09:01:01.033944051 +0100
 @@ -198,7 +198,7 @@
@@ -459,7 +459,7 @@ report feedback in the form `Smi*Smi->Smi` then. For example, let's assume we in
 `waveTableLength` on it, and call `generate` for the oscillator, then we'd lose 20% performance even though the actually interesting
 `Oscillator`s are not affected (i.e. the engine does non-local penalization here).
 
-```patch
+```diff
 --- audio-oscillator.js.ORIG    2016-12-15 22:01:43.897033156 +0100
 +++ audio-oscillator.js 2016-12-15 22:02:26.397326067 +0100
 @@ -1931,6 +1931,10 @@
@@ -670,7 +670,7 @@ are relevant for the abstract relation comparison. So what happens if you write 
 Same for `t >= m`, which always produces `true` then. So the bug here is that using abstract relational comparison this way just doesn't
 make sense. And the way to exploit it is to have the compiler constant-fold it, i.e. similar to applying this patch to the benchmark:
 
-```patch
+```diff
 --- octane-box2d.js.ORIG        2016-12-16 07:28:58.442977631 +0100
 +++ octane-box2d.js     2016-12-16 07:29:05.615028272 +0100
 @@ -2021,8 +2021,8 @@

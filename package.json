@@ -1,25 +1,17 @@
 {
-  "name": "benediktmeurer.de",
-  "version": "0.0.1",
-  "description": "Personal website of Benedikt Meurer",
+  "private": true,
   "scripts": {
+    "lint": "markdownlint **/*.md",
     "build": "eleventy"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/bmeurer/benediktmeurer.de.git"
-  },
-  "author": {
-    "name": "Benedikt Meurer",
-    "email": "benedikt.meurer@googlemail.com",
-    "url": "https://benediktmeurer.de"
-  },
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/bmeurer/benediktmeurer.de/issues"
-  },
-  "homepage": "https://github.com/bmeurer/benediktmeurer.de#readme",
   "devDependencies": {
-    "@11ty/eleventy": "^0.6.0"
+    "@11ty/eleventy": "^0.6.0",
+    "@11ty/eleventy-plugin-rss": "^1.0.3",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^2.0.0",
+    "luxon": "^1.8.2",
+    "markdown-it": "^8.4.2",
+    "markdown-it-anchor": "^5.0.2",
+    "markdown-it-footnote": "^3.0.1",
+    "markdownlint-cli": "^0.13.0"
   }
 }

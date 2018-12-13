@@ -320,7 +320,7 @@ is always passed three arguments: the module id (in decimal), the module type (i
 major device number (this differs for other types of LKMs such as system call modules). So our script is pretty
 simple:
 
-```sh
+```bash
 if [ $# -ne 3 ]; then
   echo "$0 should only be called from modload(8) with 3 args"
   exit 1
@@ -329,7 +329,7 @@ fi
           
 First check whether all three command line arguments are present and exit with error code if not.
 
-```sh
+```bash
 for i in 0 1 2 3 4 5 6 7; do
   rm -f /dev/fibo$i
   mknod /dev/fibo$i c $3 $i
@@ -341,7 +341,7 @@ exit 0
 And finally (re)create the required special device nodes. Now we are ready to give our module a first test run.
 Compile the module and load the module with the following command (this needs to be run as superuser):
 
-```sh
+```bash
 modload -e fibo_lkmentry -p fibo_post.sh fibo.o
 ```
  
@@ -387,7 +387,7 @@ main(int argc, char **argv)
 When you run this sample test program, it will output Fibonacci numbers below 2971215074 until you interrupt
 or kill the program. To unload the kernel module, you need to run the following command (as superuser):
 
-```sh
+```bash
 modunload -n fibo
 ```
 

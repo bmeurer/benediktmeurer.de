@@ -12,7 +12,7 @@ that your Git repositories are located under <code>/srv/git</code> and the
 gitweb files are installed in <code>/usr/share/gitweb</code> with the
 configuration file in <code>/etc/gitweb.conf</code>.
 
-```conf
+```
 # Dumb transport clone URLs for public repositories
 AliasMatch ^/git(/.*\.git)/HEAD$ /srv/git/$1/HEAD
 AliasMatch ^/git(/.*\.git)/info(/.*)? /srv/git/$1/info$2

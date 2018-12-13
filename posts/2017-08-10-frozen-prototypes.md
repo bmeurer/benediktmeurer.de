@@ -88,7 +88,7 @@ elements objects). Unfortunately the helper functions used by the affected `Arra
 prototypes for `empty_fixed_array`, but not for `empty_slow_elements_dictionary`, so they would automatically
 fall back to the generic, safe route instead of attempting the fast-path.
 
-```patch
+```diff
 diff --git a/src/objects-inl.h b/src/objects-inl.h
 index 010ac2e06e..68f24baf15 100644
 --- a/src/objects-inl.h

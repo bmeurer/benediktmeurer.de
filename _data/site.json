@@ -1,0 +1,16 @@
+{
+  "title": "Benedikt Meurer",
+  "tagline": "JavaScript Engine Hacker and Programming Language Enthusiast.",
+  "author": "Benedikt Meurer",
+  "email": "benedikt.meurer@gmail.com",
+  "description": "Personal website of Benedikt Meurer, JavaScript Engine Hacker and Programming Language Enthusiast.",
+  "github": "bmeurer",
+  "twitter": "bmeurer",
+  "linkedin": "benediktmeurer",
+  "facebook": "benedikt.meurer",
+
+  "baseurl": "",
+  "url": "https://benediktmeurer.de",
+
+  "disqus_shortname": "benediktmeurer"
+}

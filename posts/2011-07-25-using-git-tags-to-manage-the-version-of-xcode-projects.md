@@ -20,7 +20,7 @@ inject the version number from the most recent Git tag into the generated app bu
 actually pretty easy and requires just the following two lines of shell code in a custom
 *Build Phase*:
 
-```sh
+```bash
 # Update the CFBundleShortVersionString in the generated Info.plist using the most recent Git tag.
 # Idea taken from http://tinyurl.com/3usjj9d by Joachim Bondo.
 

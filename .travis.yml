@@ -1,3 +1,7 @@
-language: ruby
+language: node_js
+node_js:
+  - 10
+before_script:
+  - npm install @11ty/eleventy -g
 script:
-  - bundle exec jekyll build
+  - eleventy

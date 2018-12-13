@@ -334,8 +334,6 @@ a.sidebar-nav-item:focus {
 
 /* Footnotes */
 .footnotes {
-	border-top: 1px solid #ccc;
-	padding-top: 10px;
 	font-size: 75%
 }
 .footnotes p {

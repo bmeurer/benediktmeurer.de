@@ -3,31 +3,35 @@ layout: default
 ---
 
 <div class="post">
-  <h1 class="post-title">{{ page.title }}</h1>
+  <h1 class="post-title">{{ title }}</h1>
 
   <span class="post-date">
     <svg class="icon"><use xlink:href="/images/icons.svg#icon-calendar" /></svg>
-    <a href="{{ page.url | prepend: site.baseurl }}" title="Permanent link to this post">{{ page.date | date_to_string }}</a>
+    <a href="{{ page.url }}" title="Permanent link to this post">
+      <time itemprop="datePublished" datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDateString }}</time>
+    </a>
   </span>
 
+  {% if tags %}
   <span class="post-tags">
-    {% for tag in page.tags %}
+    {% for tag in tags %}
       {% if forloop.first %}
         <svg class="icon"><use xlink:href="/images/icons.svg#icon-tags" /></svg>
       {% endif %}
-      <a href="{{ site.baseurl }}/tags/{{ tag | cgi_escape }}" title="Blog posts tagged “{{ tag }}”" rel="tag">{{ tag }}</a>
+      <a href="{{ site.baseurl }}/tags/{{ tag | slug }}" title="Blog posts tagged “{{ tag }}”" rel="tag">{{ tag }}</a>
       {% unless forloop.last %} &bull; {% endunless %}
     {% endfor %}
   </span>
+  {% endif %}
 
-  {% if page.canonical %}
+  {% if canonical %}
   <span class="post-canonical">
     {% if page.coauthor %}
-      This article was originally published <a href="{{ page.canonical }}" rel="noreferrer" target="_blank">here</a>,
+      This article was originally published <a href="{{ canonical }}" rel="noreferrer" target="_blank">here</a>,
       co-authored by <a href="{{ site.data.people[page.coauthor].url }}" rel="noreferrer"
       target="_blank">{{ site.data.people[page.coauthor].name }}</a>.
     {% else %}
-      This article was originally published <a href="{{ page.canonical }}" rel="noreferrer" target="_blank">here</a>.
+      This article was originally published <a href="{{ canonical }}" rel="noreferrer" target="_blank">here</a>.
     {% endif %}
   </span>
   {% endif %}
