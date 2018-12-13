@@ -1,0 +1,25 @@
+{
+  "name": "benediktmeurer.de",
+  "version": "0.0.1",
+  "description": "Personal website of Benedikt Meurer",
+  "scripts": {
+    "build": "eleventy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bmeurer/benediktmeurer.de.git"
+  },
+  "author": {
+    "name": "Benedikt Meurer",
+    "email": "benedikt.meurer@googlemail.com",
+    "url": "https://benediktmeurer.de"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bmeurer/benediktmeurer.de/issues"
+  },
+  "homepage": "https://github.com/bmeurer/benediktmeurer.de#readme",
+  "devDependencies": {
+    "@11ty/eleventy": "^0.6.0"
+  }
+}
