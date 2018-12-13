@@ -8,20 +8,20 @@ hide: true
 
 <script type="text/javascript">
   $(document).ready(function() {
-    RunSlideShow("iphone-top", "iphone-overlay", "/{{ page.folder }}/screenshot1.jpg;/{{ page.folder }}/screenshot2.jpg;/{{ page.folder }}/screenshot3.jpg;/{{ page.folder }}/screenshot4.jpg", 5);
+    RunSlideShow("iphone-top", "iphone-overlay", "/images/{{ folder }}/screenshot1.jpg;/images/{{ folder }}/screenshot2.jpg;/images/{{ folder }}/screenshot3.jpg;/images/{{ folder }}/screenshot4.jpg", 5);
   });
 </script>
 <div id="phone">
-  <div id="iphone-overlay"><img id="iphone-top" src="/{{ page.folder }}/screenshot1.jpg" alt="Demo Animation" style="opacity: 0;" /></div>
+  <div id="iphone-overlay"><img id="iphone-top" src="/images/{{ folder }}/screenshot1.jpg" alt="Demo Animation" style="opacity: 0;" /></div>
 </div>
-<div id="header" style="background-image: url(/{{ page.folder }}/header-logo.png);"></div>
+<div id="header" style="background-image: url(/images/{{ folder }}/header-logo.png);"></div>
 
 <nav id="menu">
-  <a class="underlined" href="/{{ page.folder }}/">HOME</a>
-  <a href="/{{ page.folder }}/faq/">FAQ</a>
-  <a href="/{{ page.folder }}/contact/">CONTACT</a>
+  <a class="underlined" href="/{{ folder }}/">HOME</a>
+  <a href="/{{ folder }}/faq/">FAQ</a>
+  <a href="/{{ folder }}/contact/">CONTACT</a>
 </nav>
-  
+
 <article>
   <h1>Wireless access to photos on your iOS device</h1>
 
@@ -46,7 +46,7 @@ hide: true
     <li>Works with any operating system (Mac, Windows, Linux)</li>
     <li>PhotoAccess is <a href="http://github.com/{{ site.github }}/PhotoAccess" rel="noreferrer" target="_blank">open source</a>!</li>
   </ul>
-  
+
   <a id="appstore" href="http://itunes.apple.com/app/id451041227"><img src="/images/iphoneapp-appstore-badge.png" alt="Available on the App Store"></a>
 </article>
 
