@@ -26,7 +26,7 @@ better <i>re-addition</i>) of the trash support, which implements the <a
 href="http://freedesktop.org/wiki/Standards_2ftrash_2dspec">Desktop Trash Can Specification</a>
 (but is currently limited to the home trash).
 
-<center><img alt"Trash Support" src="/images/2006/preview-0.4.0rc1/trash.png" /></center>
+<center><img alt="Trash Support" src="/images/2006/preview-0.4.0rc1/trash.png" /></center>
 
 So when you delete files now, they will not be lost forever, but instead will be moved to your
 trash can, and can be recovered easily by right-clicking on the file or folder and selecting
@@ -107,7 +107,7 @@ in GLib 2.10 and above where appropriate.
 Thunar - and other Xfce components as well - is still looking for contributions, may it be
 knowledge, time or money. If you feel like donating any of this to Thunar, visit the <a
 href="http://thunar.xfce.org/contribute.html">Contribute to Thunar</a> page and be sure to
-subscribe to the <a href="http://foo-projects.org/mailman/listinfo/thunar-dev">thunar-dev</a> 
+subscribe to the <a href="http://foo-projects.org/mailman/listinfo/thunar-dev">thunar-dev</a>
 mailinglist.
 
 
