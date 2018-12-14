@@ -7,7 +7,7 @@ layout: default
 
   <span class="post-date">
     <svg class="icon"><use xlink:href="/images/icons.svg#icon-calendar" /></svg>
-    <a href="{{ page.url }}" title="Permanent link to this post">
+    <a href="{{ page.url | cleanUrl }}" title="Permanent link to this post">
       <time itemprop="datePublished" datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDateString }}</time>
     </a>
   </span>
@@ -26,10 +26,10 @@ layout: default
 
   {% if canonical %}
   <span class="post-canonical">
-    {% if page.coauthor %}
+    {% if coauthor %}
       This article was originally published <a href="{{ canonical }}" rel="noreferrer" target="_blank">here</a>,
-      co-authored by <a href="{{ site.data.people[page.coauthor].url }}" rel="noreferrer"
-      target="_blank">{{ site.data.people[page.coauthor].name }}</a>.
+      co-authored by <a href="{{ people[coauthor].url }}" rel="noreferrer"
+      target="_blank">{{ people[coauthor].name }}</a>.
     {% else %}
       This article was originally published <a href="{{ canonical }}" rel="noreferrer" target="_blank">here</a>.
     {% endif %}
