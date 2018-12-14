@@ -7,6 +7,14 @@ const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
 const markdownItFootnote = require('markdown-it-footnote');
 
+const markdown = markdownIt({ html: true, linkify: true })
+  .use(markdownItAnchor, {
+    permalink: true,
+    permalinkClass: "bookmark",
+    permalinkSymbol: "#"
+  })
+  .use(markdownItFootnote);
+
 module.exports = eleventyConfig => {
   eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPlugin(pluginSyntaxHighlight, {
@@ -31,7 +39,6 @@ module.exports = eleventyConfig => {
 
   eleventyConfig.addFilter('cleanUrl', (path) => {
     if (path === '/') return path;
-    if (path === 'https://benediktmeurer.de/') return path;
     if (path.endsWith('/')) return path.slice(0, -1);
     return path;
   });
@@ -51,12 +58,13 @@ module.exports = eleventyConfig => {
     }
     return content;
   });
+  eleventyConfig.addFilter('markdown', string => {
+    return markdown.renderInline(string);
+  });
 
   // only content in the `posts/` directory
   eleventyConfig.addCollection("posts", collection => {
-    return collection.getFilteredByGlob("./posts/*").sort(function(a, b) {
-      return b.date - a.date;
-    });
+    return collection.getFilteredByGlob("./posts/*").sort((a, b) => b.date - a.date);
   });
   eleventyConfig.addCollection('tagList', collection => {
     const set = new Set();
@@ -82,14 +90,7 @@ module.exports = eleventyConfig => {
   eleventyConfig.addPassthroughCopy("robots.txt");
 
   /* Markdown Plugins */
-  eleventyConfig.setLibrary("md", markdownIt({ html: true, linkify: true })
-    .use(markdownItAnchor, {
-      permalink: true,
-      permalinkClass: "bookmark",
-      permalinkSymbol: "#"
-    })
-    .use(markdownItFootnote)
-  );
+  eleventyConfig.setLibrary("md", markdown);
 
   // Minification
   if (process.env.NODE_ENV === "production") {
