@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: http://benediktmeurer.de/sitemap.xml
-
+Sitemap: https://benediktmeurer.de/sitemap.xml
