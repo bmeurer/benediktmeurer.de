@@ -131,7 +131,7 @@ module.exports = eleventyConfig => {
 
     markdownTemplateEngine: "liquid",
     htmlTemplateEngine: "liquid",
-    dataTemplateEngine: "njk",
+    dataTemplateEngine: false,
     passthroughFileCopy: true,
     dir: {
       input: ".",
