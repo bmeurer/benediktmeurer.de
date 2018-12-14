@@ -1,0 +1,16 @@
+[build]
+  publish = "_site"
+  command = "npx eleventy"
+
+[build.environment]
+  NODE_ENV = "production"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-UA-Compatible = "IE=edge"
+
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    Cache-Control = "no-cache"
