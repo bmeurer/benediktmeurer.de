@@ -1,26 +1,17 @@
+importScripts('https://storage.googleapis.com/workbox-cdn/releases/4.0.0-alpha.0/workbox-sw.js');
+
 // set names for both precache & runtime cache
 workbox.core.setCacheNameDetails({
     prefix: 'benediktmeurer.de',
-    suffix: 'v1',
-    precache: 'precache',
-    runtime: 'runtime-cache'
 });
-
-// let Service Worker take control of pages ASAP
-workbox.skipWaiting();
-workbox.clientsClaim();
-
-// default to `networkFirst` strategy
-workbox.routing.setDefaultHandler(workbox.strategies.networkFirst());
 
 // let Workbox handle our precache list
 workbox.precaching.precacheAndRoute([]);
 
-// use stale-while-revalidate strategy for our images.
-workbox.routing.registerRoute(
-    /images/,
-    workbox.strategies.staleWhileRevalidate()
-);
+workbox.googleAnalytics.initialize({});
+
+// let Service Worker take control of pages ASAP
+workbox.skipWaiting();
 
 // Cache the Google Fonts stylesheets with a stale-while-revalidate strategy.
 workbox.routing.registerRoute(

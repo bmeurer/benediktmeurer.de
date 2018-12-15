@@ -33,7 +33,7 @@
   // Install the service worker
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function() {
-      // TODO(bmeurer): navigator.serviceWorker.register('/sw.js');
+      navigator.serviceWorker.register('/sw.js');
     });
   }
 })();

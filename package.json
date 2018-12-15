@@ -1,8 +1,11 @@
 {
   "private": true,
   "scripts": {
-    "lint": "markdownlint **/*.md",
-    "build": "eleventy"
+    "build:eleventy": "eleventy",
+    "build:workbox": "workbox injectManifest workbox-config.js",
+    "build": "npm run build:eleventy && npm run build:workbox",
+    "clean": "rm -rf -- _site",
+    "lint": "markdownlint **/*.md"
   },
   "devDependencies": {
     "@11ty/eleventy": "^0.6.0",
@@ -13,6 +16,7 @@
     "markdown-it": "^8.4.2",
     "markdown-it-anchor": "^5.0.2",
     "markdown-it-footnote": "^3.0.1",
-    "markdownlint-cli": "^0.13.0"
+    "markdownlint-cli": "^0.13.0",
+    "workbox-cli": "^3.6.3"
   }
 }
