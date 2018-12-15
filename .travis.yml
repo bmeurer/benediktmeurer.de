@@ -4,7 +4,5 @@ node_js:
 env:
   - NODE_ENV=development
   - NODE_ENV=production
-before_script:
-  - npm install @11ty/eleventy -g
 script:
-  - eleventy
+  - npm run build
