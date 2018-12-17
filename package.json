@@ -11,6 +11,11 @@
     "start": "superstatic --port=8000",
     "test": "npm run lint && npm run build"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
+  },
   "dependencies": {
     "@11ty/eleventy": "^0.6.0",
     "@11ty/eleventy-plugin-rss": "^1.0.3",
@@ -26,5 +31,8 @@
     "postcss-cli": "^6.0.1",
     "superstatic": "^6.0.4",
     "workbox-cli": "^3.6.3"
+  },
+  "devDependencies": {
+    "husky": "^1.2.1"
   }
 }
