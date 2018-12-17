@@ -29,11 +29,40 @@ function buildJSON() {
 /** Builds (and optionally minifies) the sw.js */
 function buildServiceWorker() {
   return workbox
-    .injectManifest({
+    .generateSW({
+      skipWaiting: true,
+      runtimeCaching: [
+        {
+          // Cache the Google Fonts stylesheets with a stale-while-revalidate strategy.
+          urlPattern: /^https:\/\/fonts\.googleapis\.com/,
+          handler: "staleWhileRevalidate",
+          options: { cacheName: "google-fonts-stylesheets" }
+        },
+        {
+          // Cache the underlying font files with a cache-first strategy for 1 year.
+          urlPattern: /^https:\/\/fonts\.gstatic\.com/,
+          handler: "cacheFirst",
+          options: {
+            cacheName: "google-fonts-webfonts",
+            cacheableResponse: { statuses: [0, 200] },
+            expiration: {
+              maxAgeSeconds: 60 * 60 * 24 * 365,
+              maxEntries: 30
+            }
+          }
+        }
+      ],
+      cacheId: "benediktmeurer.de",
+      offlineGoogleAnalytics: true,
       globDirectory: destDir,
-      globPatterns: ["**/*.{css,js}", "images/icons.svg", "favicon.ico"],
+      globPatterns: [
+        "css/main.css",
+        "favicon.ico",
+        "images/icons.svg",
+        "index.html",
+        "js/main.js"
+      ],
       swDest: `${destDir}/sw.js`,
-      swSrc: `${srcDir}/sw.js`,
       templatedUrls: {
         "/": ["index.html"]
       }
@@ -51,9 +80,6 @@ function buildServiceWorker() {
           .pipe(uglify())
           .pipe(gulp.dest(`${destDir}`));
       }
-    })
-    .then(() => {
-      console.info("Service worker generation completed.");
     });
 }
 
@@ -78,7 +104,8 @@ function buildStyles() {
 
 /** Copy resources */
 function copyResources() {
-  return gulp.src(`${srcDir}/{{files,images}/**/*.*,favicon.ico}`)
+  return gulp
+    .src(`${srcDir}/{{files,images}/**/*.*,favicon.ico}`)
     .pipe(gulp.dest(destDir));
 }
 
