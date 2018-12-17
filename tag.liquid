@@ -1,0 +1,13 @@
+---
+layout: page
+renderData:
+  title: 'Blog posts tagged “{{ tag }}”'
+pagination:
+  data: collections.tagList
+  size: 1
+  alias: tag
+permalink: /tags/{{ tag | slug }}/
+---
+
+{% assign posts = collections[tag] | reverse %}
+{% include archive %}

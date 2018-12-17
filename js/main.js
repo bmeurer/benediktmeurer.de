@@ -19,18 +19,6 @@
     history.replaceState({}, '', location.pathname);
   }
 
-  // Append bookmark links to h2-h6 inside of posts.
-  document.querySelectorAll(".post h2, .post h3, .post h4, .post h5, .post h6").forEach(function(h) {
-    var t = document.createTextNode(" ");
-    h.appendChild(t);
-    var a = document.createElement("a");
-    a.href = "#" + h.id;
-    a.text = "#";
-    a.setAttribute("aria-hidden", "true")
-    a.setAttribute("class", "bookmark")
-    h.appendChild(a);
-  });
-
   // Google Analytics.
   self.ga=self.ga || function() { (ga.q = ga.q || []).push(arguments) };
   ga.l = +new Date;

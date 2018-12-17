@@ -1,3 +1,8 @@
-language: ruby
+language: node_js
+node_js:
+  - 10
+env:
+  - NODE_ENV=development
+  - NODE_ENV=production
 script:
-  - bundle exec jekyll build
+  - npm run build

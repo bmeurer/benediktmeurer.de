@@ -1,5 +1,4 @@
 *.swp
 .DS_Store
-.jekyll-metadata
 _site
-vendor
+node_modules

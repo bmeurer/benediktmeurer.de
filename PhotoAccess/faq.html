@@ -1,0 +1,70 @@
+---
+layout: iphoneapp
+folder: PhotoAccess
+title: PhotoAccess FAQ
+description: Quick access to photos on your iPhone
+hide: true
+---
+
+<div id="phone">
+  <div id="iphone-overlay"><img id="iphone-top" src="/images/{{ folder }}/screenshot5.jpg" alt="Demo Animation"/></div>
+</div>
+<div id="header" style="background-image: url(/images/{{ folder }}/header-logo.png);"></div>
+
+<nav id="menu">
+  <a href="/{{ folder }}/">HOME</a>
+  <a class="underlined" href="/{{ folder }}/faq/">FAQ</a>
+  <a href="/{{ folder }}/contact/">CONTACT</a>
+</nav>
+
+<article>
+  <h1>PhotoAccess FAQ</h1>
+
+  <p>
+    These are the answers to some of the most frequently asked questions about PhotoAccess.
+    Should you have other questions, please <a href="/{{ folder }}/contact/">contact me</a>.
+  </p>
+
+  <ul>
+    <li><a href="#unable-to-load">My web browser won't load the download URL, what can I do?</a></li>
+<!--
+    <li><a href="#us-appstore">Why isn't PhotoAccess available on the US App Store?</a></li>
+-->
+    <li><a href="#ios3">Any chance to have PhotoAccess running on iOS 3?</a></li>
+  </ul>
+</article>
+
+<article class="wide_content">
+
+  <h2 id="unable-to-load">My web browser won't load the download URL, what can I do?</h2>
+  <p>
+    Make sure that PhotoAccess is actually running in the foreground. You cannot
+    access the web interface while PhotoAccess is in the background.
+  </p>
+  <p>
+    Make sure that you entered the correct URL, especially make sure that you
+    did not forget the colon and the port (i.e. <code>:8080</code>). Also make
+    sure that the computer from which you are trying to access the photos is on
+    the same (WiFi) network as the iOS device running PhotoAccess.
+  </p>
+  <p>
+    If all fails, try to reinstall PhotoAccess by removing it from your device
+    and downloading it again from the App Store.
+  </p>
+
+<!--
+  <h2 id="us-appstore">Why isn't PhotoAccess available on the US App Store?</h2>
+  <p>
+    The <a rel="noreferrer" target="_blank"
+    href="http://www.guardian.co.uk/technology/appsblog/2011/jul/15/app-developers-withdraw-us-patents">situation
+    for iOS app developers</a> with respect to the US App Store is really bad right now. So instead of tilting
+    at windmills we just keep our apps away from the US App Store until the US patent mess is fixed.
+  </p>
+-->
+
+  <h2 id="ios3">Any chance to have PhotoAccess running on iOS 3?</h2>
+  <p>
+    There are no plans to backport PhotoAccess to iOS 3.
+  </p>
+
+</article>

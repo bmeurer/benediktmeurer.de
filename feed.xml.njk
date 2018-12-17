@@ -1,0 +1,25 @@
+---
+permalink: /feed.xml
+excludeFromSitemap: true
+---
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>{{ site.title }}</title>
+  <subtitle>{{ site.tagline }}</subtitle>
+  <link href="{{ "/feed.xml" | url | absoluteUrl(site.url) | cleanUrl }}" rel="self"/>
+  <link href="{{ site.url }}"/>
+  <updated>{{ collections.posts | head(1) | rssLastUpdatedDate }}</updated>
+  <author>
+    <name>{{ site.author }}</name>
+  </author>
+  {%- for post in collections.posts | head(10) %}
+  {% set absolutePostUrl %}{{ post.url | url | absoluteUrl(site.url) | cleanUrl }}{% endset %}
+  <entry>
+    <title>{{ post.data.title }}</title>
+    <link href="{{ absolutePostUrl }}"/>
+    <updated>{{ post.date | rssDate }}</updated>
+    <id>{{ absolutePostUrl }}</id>
+    <content type="html">{{ post.templateContent | htmlToAbsoluteUrls(absolutePostUrl) }}</content>
+  </entry>
+  {%- endfor %}
+</feed>

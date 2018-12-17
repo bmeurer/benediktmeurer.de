@@ -1,0 +1,178 @@
+---
+layout: page
+title: About
+---
+
+<style>
+.post-author {
+  margin-bottom: 20px;
+  text-align: center!important;
+}
+.post-author img {
+  border-radius: 50%;
+  margin: 0 auto;
+}
+.post-author span {
+  display: block;
+  font-size: 200%;
+  padding-top: 10px;
+  padding-bottom: 1px;
+}
+.post-author span svg {
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+  vertical-align: middle;
+}
+</style>
+
+<div class="post-author">
+  <a href="/images/me.jpg">
+    <img
+      srcset="/images/me-small.jpg, /images/me-small@2x.jpg 2x"
+      src="/images/me-small.jpg" />
+  </a>
+
+  <span>
+    {% if site.twitter %}
+    <a href="https://twitter.com/{{ site.twitter }}" rel="noreferrer" target="_blank"><svg><use xlink:href="/images/icons.svg#icon-twitter-square" /></svg></a>
+    {% endif %}
+    {% if site.github  %}
+    <a href="https://github.com/{{ site.github }}" rel="noreferrer" target="_blank"><svg><use xlink:href="/images/icons.svg#icon-github-square" /></svg></a>
+    {% endif %}
+    {% if site.linkedin %}
+    <a href="https://linkedin.com/in/{{ site.linkedin }}" rel="noreferrer" target="_blank"><svg><use xlink:href="/images/icons.svg#icon-linkedin-square" /></svg></a>
+    {% endif %}
+    {% if site.facebook %}
+    <a href="https://www.facebook.com/{{ site.facebook }}" rel="noreferrer" target="_blank"><svg><use xlink:href="/images/icons.svg#icon-facebook-square" /></svg></a>
+    {% endif %}
+  </span>
+</div>
+
+<p>
+  I am Benedikt Meurer, a <a href="http://en.wikipedia.org/wiki/Software_engineer"
+  rel="noreferrer" target="_blank">software engineer</a> living in <a href="http://en.wikipedia.org/wiki/Ottobrunn"
+  rel="noreferrer" target="_blank">Ottobrunn</a>, a municipality southeast of <a
+  href="http://en.wikipedia.org/wiki/Munich" rel="noreferrer" target="_blank">Munich</a>, <a
+  href="http://en.wikipedia.org/wiki/Bavaria" rel="noreferrer" target="_blank">Bavaria</a>, <a
+  href="http://en.wikipedia.org/wiki/Germany" rel="noreferrer" target="_blank">Germany</a>.
+  I received my diploma in applied computer science with
+  electrical engineering from the <a href="http://www.uni-siegen.de"
+  rel="noreferrer" target="_blank">Universit&auml;t Siegen</a> in 2007, and afterwards I have been working
+  as a research associate at the <a href="http://ps.informatik.uni-siegen.de"
+  rel="noreferrer" target="_blank">Lehrstuhl f&uuml;r Compilerbau und Softwareanalyse</a> (and
+  the <a href="http://www.rs.uni-siegen.de/" rel="noreferrer" target="_blank">Lehrstuhl f&uuml;r
+  Mikrosystementwurf</a> in 2007/2008) for five years. In 2013 I joined <a
+  rel="noreferrer" target="_blank" href="https://www.google.com/about/company">Google</a> to work on the
+  <a rel="noreferrer" target="_blank" href="https://v8.dev">V8 JavaScript Engine</a> in
+  the <a rel="noreferrer" target="_blank" href="http://www.google.com/about/careers/locations/munich/">Munich
+  office</a>, where I am currently working as tech lead for the JavaScript execution
+  optimization team.
+</p>
+
+<p>
+  Besides that,
+  I have been working as a software developer for <a href="http://os-cillation.de"
+  rel="noreferrer" target="_blank">os-cillation GmbH</a> from 2003 to 2013, where the major part of my work
+  was spent on KVM-over-IP solutions with <a href="http://en.wikipedia.org/wiki/Embedded_linux"
+  rel="noreferrer" target="_blank">Embedded Linux</a>, and some <a
+  href="http://en.wikipedia.org/wiki/IOS_(Apple)" rel="noreferrer" target="_blank">iOS</a> related development,
+  but I also worked on the the <a href="http://xfld.org" rel="noreferrer" target="_blank">Xfld Linux Live CD</a>,
+  the <a href="http://xfce-installers.os-cillation.com" rel="noreferrer" target="_blank">Xfce installers</a>,
+  <a href="http://terminal.os-cillation.com" rel="noreferrer" target="_blank">Terminal</a> and other
+  random projects.
+</p>
+
+<p>
+  I spent a rather large amount of my spare time on developing and contributing to
+  <a href="http://en.wikipedia.org/wiki/Open_source" rel="noreferrer" target="_blank">open source</a>
+  <a href="/projects/">projects</a>. During my studies from 2002 to 2007, I developed and maintained
+  various core parts of the <a href="http://www.xfce.org" rel="noreferrer" target="_blank">Xfce desktop
+  environment</a>, including the new file manager <a href="http://www.xfce.org/projects/thunar"
+  rel="noreferrer" target="_blank">Thunar</a>, which I wrote from scratch to replace the unpopular
+  <a href="http://xffm.sourceforge.net" rel="noreferrer" target="_blank">Xffm</a> file manager, the
+  <a href="http://www.xfce.org/projects/xfce4-session" rel="noreferrer" target="_blank">Session Manager</a>,
+  the <a href="http://www.xfce.org/projects/libxfce4" rel="noreferrer" target="_blank">Xfce Libraries</a>,
+  the <a href="http://www.xfce.org/projects/terminal" rel="noreferrer" target="_blank">Terminal</a>,
+  innumerable plugins and goodies, and several other core components.
+</p>
+
+<p>
+  In recent years my interest shifted away from <a href="http://www.freedesktop.org/"
+  rel="noreferrer" target="_blank">free desktop</a> application development
+  toward <a href="http://en.wikipedia.org/wiki/Cocoa_(API)" rel="noreferrer" target="_blank">Cocoa</a>
+  and <a href="http://developer.apple.com/technologies/ios/cocoa-touch.html"
+  rel="noreferrer" target="_blank">CocoaTouch</a> application development for Mac OS X and iOS. In June
+  2011 I founded the <a href="http://cocoaheads.informatik.uni-siegen.de/"
+  rel="noreferrer" target="_blank">CocoaHeads Siegen chapter</a>, an <a
+  href="https://groups.google.com/group/cocoaheads-siegen" rel="noreferrer" target="_blank">informal group</a>
+  of Cocoa developers, that get together for short talks and presentations, and to talk
+  about <a href="http://www.apple.com/macosx" rel="noreferrer" target="_blank">Mac</a> and <a
+  href="http://www.apple.com/ios" rel="noreferrer" target="_blank">iOS</a> programming.
+</p>
+
+<p>
+  I'm also interested in functional programming languages and compiler design, influenced
+  by my studies and my university work. During my life at the university, I developed and
+  maintained various <a href="http://caml.inria.fr/ocaml" rel="noreferrer" target="_blank">OCaml</a> related
+  projects, including a <a href="https://github.com/bmeurer/ocamljit2"
+  rel="noreferrer" target="_blank">Just-In-Time compilation engine for OCaml byte code</a> and an <a
+  href="/ocamlnat" rel="noreferrer" target="_blank">interactive toplevel based on the optimizing native code
+  compiler</a>. In 2011 I created a <a
+  href="https://github.com/bmeurer/ocaml-arm/wiki" rel="noreferrer" target="_blank">brand new ARM port</a>
+  for the <a href="http://caml.inria.fr/ocaml" rel="noreferrer" target="_blank">OCaml</a> native code compiler,
+  and since January 2012 I am now the official maintainer of the <a href="http://www.arm.com/"
+  rel="noreferrer" target="_blank">ARM</a> port.
+</p>
+
+
+<h2>Contact</h2>
+
+<p>
+  If you want to get in touch with me, feel free to shoot me an <a href="mailto:{{ site.email }}">email</a>.
+</p>
+
+
+<h2>Copyleft &amp; Copyright</h2>
+
+<p>
+  This <a href="/">website</a> is built using <a href="https://11ty.io"
+  rel="noreferrer" target="_blank">11ty</a>, a blog-aware, static site generator written in JavaScript, and is
+  based on the <a href="http://lanyon.getpoole.com" rel="noreferrer" target="_blank">Lanyon</a> theme (originally
+  developed for the <a href="https://jekyllrb.org" rel="noreferrer" target="_blank">Jekyll</a> static site generator). Some
+  of the icons used on this page were taken from the <a href="https://fontawesome.com"
+  rel="noreferrer" target="_blank">Font Awesome</a> project.
+
+  The <a href="http://en.wikipedia.org/wiki/Source_code" rel="noreferrer" target="_blank">source code</a> used to
+  create this <a href="/" rel="noreferrer" target="_blank">website</a> is publicly available on <a
+  href="http://github.com/{{ site.github }}/benediktmeurer.de" rel="noreferrer" target="_blank">GitHub</a>.
+</p>
+
+<p>
+  The following directories and their contents are <a href="http://en.wikipedia.org/wiki/Copyright"
+  rel="noreferrer" target="_blank">copyright</a> &copy; <a href="{{ site.url }}" rel="noreferrer" target="_blank">{{ site.author }}</a>.
+  You may not reuse anything therein without my permission:
+  <ul>
+    <li><a href="https://github.com/{{ site.github }}/benediktmeurer.de/tree/master/posts" rel="noreferrer" target="_blank">posts</a></li>
+  </ul>
+</p>
+
+<p>
+  The remaining files are <a href="http://en.wikipedia.org/wiki/Mit_license" rel="noreferrer" target="_blank">MIT licensed</a>
+  unless stated otherwise. Feel free to reuse the <a href="http://en.wikipedia.org/wiki/Html"
+  rel="noreferrer" target="_blank">HTML</a> and <a href="http://en.wikipedia.org/wiki/Css" rel="noreferrer" target="_blank">CSS</a> (based on files
+  taken from the <a href="http://lanyon.getpoole.com" rel="noreferrer" target="_blank">Lanyon</a> theme) as you please.
+  If you do use them, a link back to this <a href="/">website</a> would be appreciated, but is not required.
+</p>
+
+
+<h2>Disclaimer</h2>
+
+<p>
+  The opinions expressed herein are my own personal opinions and do not represent my employer's view in any way.
+</p>
+
+<p>
+  This <a href="/">website</a> is not responsible for externally hosted material, including linked
+  articles, photos or any other media.
+</p>
