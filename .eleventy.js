@@ -37,7 +37,7 @@ module.exports = eleventyConfig => {
     return array.slice(0, n);
   });
 
-  eleventyConfig.addFilter('cleanUrl', (path) => {
+  eleventyConfig.addFilter('cleanUrl', path => {
     if (path === '/') return path;
     if (path.endsWith('/')) return path.slice(0, -1);
     return path;
@@ -80,14 +80,6 @@ module.exports = eleventyConfig => {
     }
     return [...set].sort();
   });
-
-  eleventyConfig.addPassthroughCopy("css");
-  eleventyConfig.addPassthroughCopy("favicon.ico");
-  eleventyConfig.addPassthroughCopy("files");
-  eleventyConfig.addPassthroughCopy("images");
-  eleventyConfig.addPassthroughCopy("js");
-  eleventyConfig.addPassthroughCopy("manifest.json");
-  eleventyConfig.addPassthroughCopy("robots.txt");
 
   /* Markdown Plugins */
   eleventyConfig.setLibrary("md", markdown);
@@ -138,7 +130,6 @@ module.exports = eleventyConfig => {
     markdownTemplateEngine: "liquid",
     htmlTemplateEngine: "liquid",
     dataTemplateEngine: false,
-    passthroughFileCopy: true,
     dir: {
       input: ".",
       includes: "_includes",
