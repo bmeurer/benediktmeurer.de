@@ -1,0 +1,8 @@
+---
+permalink: /robots.txt
+excludeFromSitemap: true
+---
+User-agent: *
+Allow: /
+
+Sitemap: {{ "sitemap.xml" | url | absoluteUrl(site.url) }}

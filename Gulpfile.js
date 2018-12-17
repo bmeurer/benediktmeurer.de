@@ -78,7 +78,7 @@ function buildStyles() {
 
 /** Copy resources */
 function copyResources() {
-  return gulp.src(`${srcDir}/{{files,images}/**/*.*,favicon.ico,robots.txt}`)
+  return gulp.src(`${srcDir}/{{files,images}/**/*.*,favicon.ico}`)
     .pipe(gulp.dest(destDir));
 }
 
