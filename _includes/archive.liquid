@@ -7,7 +7,7 @@
     {% if last_month %}
     </dl>
     {% endif %}
-    <h3><a href="/archive/#{{ post.date | date:'%B-%Y' }}" name="{{ post.date | date:'%B-%Y' }}">{{ month }}</a></h3>
+    <h3><a href="/archive#{{ post.date | date:'%B-%Y' }}" name="{{ post.date | date:'%B-%Y' }}">{{ month }}</a></h3>
       <dl>
         <dt style="float:left">
           <time datetime="{{ post.date | htmlDateString }}"
