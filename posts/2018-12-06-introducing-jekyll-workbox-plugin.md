@@ -79,3 +79,10 @@ workbox.precaching.precacheAndRoute([]);
 
 It's important to have the `workbox.precaching.precacheAndRoute([])` in there, which `jekyll-workbox-plugin`
 will automatically populate.
+
+## Update
+
+I've switched my [website](https://benediktmeurer.de) to use the [11ty](https://11ty.io) static site
+generator instead of [Jekyll](https://jekyllrb.com), mostly because I like to learn more about the
+JavaScript ecosystem first-hand, while still using a static site generator. So I'm no longer using
+this plugin myself.
