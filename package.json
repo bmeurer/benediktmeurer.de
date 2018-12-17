@@ -7,7 +7,8 @@
     "build:workbox": "workbox injectManifest workbox-config.js && minify --out-file _site/sw.js _site/sw.js",
     "build": "npm run build:eleventy && npm run build:postcss && npm run build:babel-minify && npm run build:workbox",
     "clean": "rm -rf -- _site",
-    "lint": "markdownlint **/*.md"
+    "lint": "markdownlint **/*.md",
+    "start": "superstatic --port=8000"
   },
   "dependencies": {
     "@11ty/eleventy": "^0.6.0",
@@ -22,6 +23,7 @@
     "markdown-it-footnote": "^3.0.1",
     "markdownlint-cli": "^0.13.0",
     "postcss-cli": "^6.0.1",
+    "superstatic": "^6.0.4",
     "workbox-cli": "^3.6.3"
   }
 }
