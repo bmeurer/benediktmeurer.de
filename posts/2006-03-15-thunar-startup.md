@@ -18,7 +18,7 @@ Ok, so removed that patch, rebuilt the port, and voila...
 
 1/2 second from startup to <code>gtk_main()</code>, that's quite ok. Now whats left over is the question why <code>gtk_window_size_request()</code> takes that long on first call. Looking at the <a href="http://www.foo-projects.org/~benny/tmp/thunar-profile-startup/thunar-profile-startup1.truss.log">truss log</a> again, it seems to be the Pango initialization. Have to check this later...
 
-### Update
+## Update
 
 For the sake of completeness, here's the time it takes to completely open and display (measured as <i>wait for the last expose event</i>) a folder (the thunar source directory, 223 files and folders) in Thunar:
 

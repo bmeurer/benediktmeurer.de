@@ -67,9 +67,9 @@ The ECMAScript specification essentially defines all objects as dictionaries, wi
 
 Other than the `[[Value]]` itself, the spec defines these properties:
 
-* `[[Writable]]` which determines whether the property can be reassigned to,
-* `[[Enumerable]]` which determines whether the property shows up in `for`-`in` loops,
-* and `[[Configurable]]` which determines whether the property can be deleted.
+- `[[Writable]]` which determines whether the property can be reassigned to,
+- `[[Enumerable]]` which determines whether the property shows up in `for`-`in` loops,
+- and `[[Configurable]]` which determines whether the property can be deleted.
 
 The `[[double square brackets]]` notation looks funky, but that’s just how the spec represents properties that aren’t directly exposed to JavaScript. You can still get to these property attributes for any given object and property in JavaScript by using the `Object.getOwnPropertyDescriptor` API:
 
@@ -168,11 +168,11 @@ The benefit becomes clear when we have multiple objects. No matter how many obje
 
 All JavaScript engines use shapes as an optimization, but they don’t all call them shapes:
 
-* Academic papers call them _Hidden Classes_ (confusing w.r.t. JavaScript classes)
-* V8 calls them _Maps_ (confusing w.r.t. JavaScript `Map`s)
-* Chakra calls them _Types_ (confusing w.r.t. JavaScript’s dynamic types and `typeof`)
-* JavaScriptCore calls them _Structures_
-* SpiderMonkey calls them _Shapes_
+- Academic papers call them _Hidden Classes_ (confusing w.r.t. JavaScript classes)
+- V8 calls them _Maps_ (confusing w.r.t. JavaScript `Map`s)
+- Chakra calls them _Types_ (confusing w.r.t. JavaScript’s dynamic types and `typeof`)
+- JavaScriptCore calls them _Structures_
+- SpiderMonkey calls them _Shapes_
 
 Throughout this article, we’ll continue to use the term _shapes_.
 
@@ -338,12 +338,12 @@ Even when just a single array element has non-default attributes, the entire arr
 
 We’ve learned how JavaScript engines store objects and arrays, and how Shapes and ICs help to optimize common operations on them. Based on this knowledge, we identified some practical JavaScript coding tips that can help boost performance:
 
-* Always initialize your objects in the same way, so they don’t end up having different shapes.
-* Don’t mess with property attributes of array elements, so they can be stored and operated on efficiently.
+- Always initialize your objects in the same way, so they don’t end up having different shapes.
+- Don’t mess with property attributes of array elements, so they can be stored and operated on efficiently.
 
 *Looking for more?* If you’re interested in how JavaScript engines speed up accesses to prototype properties, read the next article in this series, [“JavaScript engine fundamentals: optimizing prototypes”](/2018/08/16/javascript-engine-fundamentals-optimizing-prototypes/).
 
 ## Translations
 
-* [Chinese](https://hijiangtao.github.io/2018/06/17/Shapes-ICs/)
-* [Korean](https://shlrur.github.io/javascripts/javascript-engine-fundamentals-shapes-and-Inline-caches/)
+- [Chinese](https://hijiangtao.github.io/2018/06/17/Shapes-ICs/)
+- [Korean](https://shlrur.github.io/javascripts/javascript-engine-fundamentals-shapes-and-Inline-caches/)

@@ -25,16 +25,16 @@ As you can see, the speedup is quite impressive with our native toplevel being u
 If you want to try our new toplevel (and/or help with testing), you can always grab the latest source from my [ocaml-experimental](https://github.com/bmeurer/ocaml-experimental) repository using the following command
 
 ```
-$ git clone -b ocamlnat-jit git://github.com/bmeurer/ocaml-experimental.git ocamlnat-jit
-$ cd ocamlnat-jit
+git clone -b ocamlnat-jit git://github.com/bmeurer/ocaml-experimental.git ocamlnat-jit
+cd ocamlnat-jit
 ```
 
 and build and install it using
 
 ```
-$ ./configure -prefix /path/to/ocamlnat-jit
-$ make world opt ocamlnat
-$ make install
+./configure -prefix /path/to/ocamlnat-jit
+make world opt ocamlnat
+make install
 ```
 
 similar to the regular OCaml distribution. This will install a fully functional OCaml 3.12.1 system to `/path/to/ocamlnat-jit` together with a new binary `ocamlnat`, our native toplevel. You should be able to use `ocamlnat` as a drop-in replacement for `ocaml` in almost every case, unless you really need the byte code runtime (i.e. [Coq](http://coq.inria.fr) is one popular application that heavily depends on the byte code runtime).

@@ -269,7 +269,7 @@ preparsing your scripts:
 This is a good indicator whether your JavaScript bundles are bigger than they should be. For example in case of the [discourse demo
 page](https://try.discourse.org) we have to preparse 1217 times, but parse only 213 times. This doesn't automatically mean that only
 1/6th of the overall script bundles are being needed due to the way that parsing works internally in V8, but it's an indicator that
-looking into script size might be a good investment of the developers time. 
+looking into script size might be a good investment of the developers time.
 
 We plan to make these measurement tools more accessible during 2017 and provide developers with better insight into V8 performance.
 We also plan to continue our effort to focus on real world performance improvements rather than looking at benchmarks only, which

@@ -58,7 +58,7 @@ esac
 and setup the script using the following command:
 
 ```
-$ sudo insserv /etc/init.d/strato-hostname-fix.sh
+sudo insserv /etc/init.d/strato-hostname-fix.sh
 ```
 
 Afterwards just reboot the machine. The above was successfully tested with Debian 6.0.4 (squeeze), and should also work with recent Ubuntu versions.

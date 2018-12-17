@@ -42,7 +42,7 @@ We try to have correctness tests for each commit, but even that is often challen
 We have a set of agreed upon performance tests that run on each individual commit.
 
 
-## Funny third question. You’re have this quote in your twitter bio: “Probably broke the web for you once or twice” — please tell us at least one story.
+## Funny third question. You’re have this quote in your twitter bio: “Probably broke the web for you once or twice” — please tell us at least one story?
 
 Oh yeah that’s a fun story (in retrospect). 😁
 

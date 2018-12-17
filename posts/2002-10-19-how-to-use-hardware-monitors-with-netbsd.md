@@ -4,7 +4,7 @@ title: How to use hardware monitors with NetBSD
 ---
 
 Today, there are various environmental sensor ICs available on modern mainboards, which are able of monitoring fan speed,
-cpu and system temperature, and voltage for example. NetBSD currently supports the National Semiconductor LM78, LM79 and compatible 
+cpu and system temperature, and voltage for example. NetBSD currently supports the National Semiconductor LM78, LM79 and compatible
 hardware monitors (the <a href="http://www.tac.eu.org/cgi-bin/man-cgi?lm+4+NetBSD-current">lm(4)</a> device), the VIA VT82C686A hardware
 monitor (the <a href="http://www.tac.eu.org/cgi-bin/man-cgi?viaenv+4+NetBSD-current">viaenv(4)</a> device) and ACPI aware hardware
 monitors (the <a href="http://www.tac.eu.org/cgi-bin/man-cgi?acpi+4+NetBSD-current">acpi(4)</a> subsystem) through its <a

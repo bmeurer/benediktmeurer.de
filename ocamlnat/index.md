@@ -8,14 +8,11 @@ version: 0.1.1
 hide: true
 ---
 
-
-## About
-
 The {{ page.github }} project provides a new native code OCaml toplevel `ocamlnat`, which is mostly compatible to the byte code toplevel `ocaml`, but up to **100 times faster**. It is based on the optimizing native code compiler, the native runtime and an earlier prototype by [Alain Frisch](http://alain.frisch.fr). It is build upon Just-In-Time techniques and currently supports Unix-like systems (i.e. Linux, BSD or Mac OS X) running on x86 or x86-64 processors. Support for additional architectures and operating systems is planned, but not yet available.
 
 See below for download links and installation instructions.
 
-### Features
+## Features
 
 - Up to **100x** faster than the byte code toplevel, as detailed [here](/2011/09/14/ocamlnat-benchmark) and [here](http://arxiv.org/pdf/1110.1029).
 - Builtin [Findlib](http://projects.camlcity.org/projects/findlib.html) support, available via
@@ -33,25 +30,25 @@ See below for download links and installation instructions.
 Download the latest source code release [ocamlnat-{{ page.version }}.tar.bz2](/files/source/ocamlnat-{{ page.version }}.tar.bz2) (or any other release from the list above), and extract the source distribution tarball using the following command:
 
 ```
-$ tar xjf ocamlnat-{{ page.version }}.tar.bz2
-$ cd ocamlnat-{{ page.version }}
+tar xjf ocamlnat-{{ page.version }}.tar.bz2
+cd ocamlnat-{{ page.version }}
 ```
 
-The installation is similar to the installation of any other [OASIS](http://oasis.forge.ocamlcore.org) based software package, so make sure to consult the [INSTALL](https://raw.github.com/{{ site.github }}/{{ page.github }}/master/INSTALL) and [README](https://raw.github.com/{{ site.github }}/{{ page.github }}/master/README) files if you run into trouble.
+The installation is similar to the installation of any other [OASIS](http://oasis.forge.ocamlcore.org) based software package, so make sure to consult the [INSTALL](https://raw.github.com/{{site.github}}/{{page.github}}/master/INSTALL) and [README](https://raw.github.com/{{site.github}}/{{page.github}}/master/README) files if you run into trouble.
 
 Assuming that you want to install ocamlnat into `/usr/local` on a Unix-like system (i.e. Linux, BSD or Mac OS X), proceed as follows:
 
 ```
-$ ocaml setup.ml -configure
-$ ocaml setup.ml -build
+ocaml setup.ml -configure
+ocaml setup.ml -build
 ```
 
-These are basically the standard configuration and build steps as described in the [INSTALL](https://raw.github.com/{{ site.github }}/{{ page.github }}/master/INSTALL) file. Feel free to pass additional parameters the configuration phase if you need to.
+These are basically the standard configuration and build steps as described in the [INSTALL](https://raw.github.com/{{site.github}}/{{page.github}}/master/INSTALL) file. Feel free to pass additional parameters the configuration phase if you need to.
 
 The final step is to install `ocamlnat` into the selected binary directory (i.e. `/usr/local/bin`).
 
 ```
-$ sudo ocaml setup.ml -install
+sudo ocaml setup.ml -install
 ```
 
 Et voila, now you can use your new native toplevel `ocamlnat`. Assuming that you installed it into `/usr/local`, then you can execute it using the following command, which presents you with an interactive toplevel prompt, i.e.:
@@ -60,7 +57,7 @@ Et voila, now you can use your new native toplevel `ocamlnat`. Assuming that you
 $ /usr/local/bin/ocamlnat
         ocamlnat version {{ page.version }} (OCaml version 3.12.1)
 
-# 
+#
 ```
 
 You can use it as a drop-in replacement for the byte code toplevel `ocaml` in almost all cases, and enjoy a performance boost of up to **100x** (compared to the byte code toplevel), as detailed [here](/2011/09/14/ocamlnat-benchmark) and [here](http://arxiv.org/pdf/1110.1029).
@@ -74,4 +71,4 @@ You can use it as a drop-in replacement for the byte code toplevel `ocaml` in al
 
 ## License
 
-{{ page.title }} is licensed under the [Q Public License](http://en.wikipedia.org/wiki/Q_Public_License) similar to the [OCaml](http://caml.inria.fr/ocaml) distribution. See the [LICENSE](https://github.com/{{ site.github }}/{{ page.github }}/raw/master/LICENSE) file for details and exceptions.
+{{ page.title }} is licensed under the [Q Public License](http://en.wikipedia.org/wiki/Q_Public_License) similar to the [OCaml](http://caml.inria.fr/ocaml) distribution. See the [LICENSE](https://github.com/{{site.github}}/{{page.github}}/raw/master/LICENSE) file for details and exceptions.

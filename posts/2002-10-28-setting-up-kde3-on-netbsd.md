@@ -6,9 +6,6 @@ tags:
   - netbsd
 ---
 
-
-## Introduction
-
 Like most other Unix(TM)-like operating systems, the <a href="http://www.kde.org/">K Desktop
 Environment (KDE)</a> is also available for NetBSD. KDE is a powerful graphical desktop
 environment based upon <a href="http://trolltech.com/">Trolltech</a>'s <a
@@ -75,8 +72,8 @@ href="ftp://ftp.netbsd.org/pub/NetBSD-current/pkgsrc/fonts/ttmkfdir/README.html"
 Then goto <code>/usr/X11R6/lib/X11/fonts/TrueType</code> and type:
 
 ```
-$ ttmkfdir > fonts.scale
-$ mkfontdir
+ttmkfdir > fonts.scale
+mkfontdir
 ```
 
 After that add the following line to your <code>/usr/X11R6/lib/X11/XF86Config-4</code>

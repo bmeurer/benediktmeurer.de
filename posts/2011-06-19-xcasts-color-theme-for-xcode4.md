@@ -1,4 +1,4 @@
---- 
+---
 layout: post
 title: XCasts color theme for Xcode 4
 tags: xcode
@@ -15,8 +15,7 @@ for Textmate](http://railscasts.com/about).
 
 ## Installation
 
- * Download and install the [Inconsolata](http://www.levien.com/type/myfonts/inconsolata.html) font.
- * Place the file [XCasts.dvtcolortheme](http://raw.github.com/bmeurer/XCasts-color-theme-for-Xcode-4/master/XCasts.dvtcolortheme) into the directory `~/Library/Developer/Xcode/UserData/FontAndColorThemes/`.
- * Restart Xcode.
- * Open `XCode | Preferences | Fonts & Colors` and select the `XCasts` theme.
-
+- Download and install the [Inconsolata](http://www.levien.com/type/myfonts/inconsolata.html) font.
+- Place the file [XCasts.dvtcolortheme](http://raw.github.com/bmeurer/XCasts-color-theme-for-Xcode-4/master/XCasts.dvtcolortheme) into the directory `~/Library/Developer/Xcode/UserData/FontAndColorThemes/`.
+- Restart Xcode.
+- Open `XCode | Preferences | Fonts & Colors` and select the `XCasts` theme.

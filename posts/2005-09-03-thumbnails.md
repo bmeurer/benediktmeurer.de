@@ -19,6 +19,6 @@ $ ls -1 ~/.thumbnails/normal|wc -l
    5867
 ```
 
-### Update 
+## Update
 
 For the sake of completeness: Konqueror's <code>VmData</code> size is <code>4364 kB</code> (KDE 3.4).

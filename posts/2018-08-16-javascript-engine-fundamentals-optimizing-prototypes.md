@@ -145,6 +145,7 @@ Shapes enable an optimization called _Inline Caches_ or _ICs_ for short. Combine
 ![Shapes and Inline Caches](/images/2018/ic-4-20180816.svg "Shapes and Inline Caches")
 
 ### Classes and prototype-based programming
+
 Now that we know how to make property access fast on JavaScript objects, let's look at one of the more recent additions to JavaScript: classes. Here's what the JavaScript class syntax looks like:
 
 ```js
@@ -172,7 +173,7 @@ Bar.prototype.getX = function getX() {
 
 Here, we assign a `getX` property on the `Bar.prototype` object. This works in exactly the same way as with any other object, because **prototypes are just objects in JavaScript**! In prototype-based programming languages like JavaScript, methods are shared via the prototypes, while fields are stored on the actual instances.
 
-Let’s zoom in on what happens behind the scenes when we create a new instance of `Bar` called `foo`. 
+Let’s zoom in on what happens behind the scenes when we create a new instance of `Bar` called `foo`.
 
 ```js
 const foo = new Bar(true);
@@ -232,7 +233,7 @@ foo.getX();
 // Uncaught TypeError: foo.getX is not a function
 ```
 
-In this example, we call `foo.getX()` twice, but each time it has a completely different meaning and result. This is why, although prototypes are just objects in JavaScript, speeding up prototype property access is even more challenging for JavaScript engines than speeding up _own_ property access on regular objects. 
+In this example, we call `foo.getX()` twice, but each time it has a completely different meaning and result. This is why, although prototypes are just objects in JavaScript, speeding up prototype property access is even more challenging for JavaScript engines than speeding up _own_ property access on regular objects.
 
 Looking at programs in the wild, loading prototype properties is a very frequent operation: it happens every time you call a method!
 
@@ -371,5 +372,5 @@ We’ve learned how JavaScript engines store objects and classes, and how `Shape
 
 ## Translations
 
- - [Chinese](https://hijiangtao.github.io/2018/08/21/Prototypes/)
- - [Korean](https://shlrur.github.io/javascripts/javascript-engine-fundamentals-optimizing-prototypes/)
+- [Chinese](https://hijiangtao.github.io/2018/08/21/Prototypes/)
+- [Korean](https://shlrur.github.io/javascripts/javascript-engine-fundamentals-optimizing-prototypes/)

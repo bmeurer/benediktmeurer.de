@@ -11,6 +11,6 @@ The xfce4-panel in the latest Xfce 4.2.1 release contains a bug: It does not sav
 
 In case, you installed Xfce 4.2.1 from source, untar the <tt>xfce4-panel-4.2.1.tar.gz</tt> file again, download the patch <a href="/files/patches/xfce4-panel-4.2.1-store-config.patch">xfce4-panel-4.2.1-store-config.patch</a>, <tt>cd xfce4-panel-4.2.1</tt>, <tt>patch -Np1 &lt; /path/to/xfce4-panel-4.2.1-store-config.patch</tt> and afterwards run configure, make and make install as usual.
 
-### Update:
-<a href="/2005/03/18/xfce-4211-available">Xfce 4.2.1.1 available</a>.
+## Update
 
+<a href="/2005/03/18/xfce-4211-available">Xfce 4.2.1.1 available</a>.

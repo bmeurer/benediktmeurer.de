@@ -4,10 +4,6 @@ title: Introduction to NetBSD loadable kernel modules
 tags: netbsd
 ---
 
-
-Introduction
-------------
-
 Loadable kernel modules (LKMs) are quite popular on most modern operating systems such as
 [GNU/Linux](http://www.kernel.org), [FreeBSD](http://www.freebsd.org) and of course
 Microsoft Windows, just to name a few. They offer you the possibility to extend the kernel's
@@ -30,8 +26,7 @@ have to interact with <code>/dev/lkm</code> directly. Note, that you need to run
 with the [LKM](http://netbsd.gw.com/cgi-bin/man-cgi?lkm+4+NetBSD-1.6) option in order to make use of LKMs.
 
 
-Writing the module
-------------------
+## Writing the module
 
 I'd like to show you how to write a simple character device driver that does nothing but the simple job of
 calculating the [Fibonacci numbers](http://en.wikipedia.org/wiki/Fibonacci_number) (I'll therefore name
@@ -108,9 +103,9 @@ struct fibo_softc {
   u_int32_t sc_current;
   u_int32_t sc_previous;
 };
- 
+
 #define MAXFIBODEVS 8
- 
+
 static struct fibo_softc fibo_scs[MAXFIBODEVS];
 ```
 
@@ -157,29 +152,29 @@ fibo_handle(struct lkm_table *lkmtp, int cmd)
     /* check if module was already loaded */
     if (lkmexists(lkmtp))
       return (EEXIST);
-      
+
     /* initialize minor device structures */
     bzero(fibo_scs, sizeof(fibo_scs));
     printf("fibo: FIBONACCI driver loaded successfully\n");
     break;
-    
+
   case LKM_E_UNLOAD:
     /* check if a minor device is opened */
     if (fibo_refcnt > 0)
       return (EBUSY);
     break;
-    
+
   case LKM_E_STAT:
     break;
-    
+
   default:
     return (EIO);
   }
-  
+
   return (0);
 }
 ```
- 
+
 The open function is quite simple as most of the hard stuff is already handled by the NetBSD kernel
 (e.g. the kernel will automatically allocate a [vnode(9)](http://netbsd.gw.com/cgi-bin/man-cgi?vnode+9+NetBSD-1.6)
 for you). The parameters for the open function are the major and minor device numbers (use the <code>major</code>
@@ -198,27 +193,27 @@ static int
 fibo_open(dev_t dev, int flag, int mode, struct proc *p)
 {
   struct fibo_softc *fibosc = (fibo_scs + minor(dev));
-  
+
   if (minor(dev) >= MAXFIBODEVS)
     return (ENODEV);
-    
+
   /* check if device already open */
   if (fibosc->sc_refcnt > 0)
     return (EBUSY);
-    
+
   fibosc->sc_current = 1;
   fibosc->sc_previous = 0;
- 
+
   /* increase device reference counter */
   fibosc->sc_refcnt++;
-  
+
   /* increase module reference counter */
   fibo_refcnt++;
-  
+
   return (0);
 }
 ```
- 
+
 The close function has the same parameters with the same meanings as the open function described above. It
 is used to free the internal data structures of a minor device opened before. You do not need to worry whether
 the device was opened before or to do things like releasing the vnode associated with the device, all you need
@@ -230,17 +225,17 @@ static int
 fibo_close(dev_t dev, int flag, int mode, struct proc *p)
 {
   struct fibo_softc *fibosc = (fibo_scs + minor(dev));
-  
+
   /* decrease device reference counter */
   fibosc->sc_refcnt--;
-  
+
   /* decrease module reference counter */
   fibo_refcnt--;
-  
+
   return (0);
 }
 ```
- 
+
 Last but not least the read function. This function has 3 parameters: the device major and minor numbers like
 in the open and close functions, a <code>flag</code> field indicating for example whether the read should be
 done in a non-blocking fashion or such things and a pointer to a <code>struct uio</code> defined in
@@ -258,39 +253,39 @@ static int
 fibo_read(dev_t dev, struct uio *uio, int flag)
 {
   struct fibo_softc *fibosc = (fibo_scs + minor(dev));
-  
+
   if (uio->uio_resid < sizeof(u_int32_t))
     return (EINVAL);
-    
+
   while (uio->uio_resid >= sizeof(u_int32_t)) {
     int error;
-    
+
     /* copy to user space */
     if ((error = uiomove(&(fibosc->sc_current),
-    		    sizeof(fibosc->sc_current), uio))) {
+            sizeof(fibosc->sc_current), uio))) {
       return (error);
     }
-    
+
     /* prevent overflow */
     if (fibosc->sc_current > (MAXFIBONUM - 1)) {
       fibosc->sc_current = 1;
       fibosc->sc_previous = 0;
       continue;
     }
-    
+
     /* calculate */ {
       u_int32_t tmp;
-      
+
       tmp = fibosc->sc_current;
       fibosc->sc_current += fibosc->sc_previous;
       fibosc->sc_previous = tmp;
     }
   }
-  
+
   return (0);
 }
 ```
- 
+
 So the first thing we do, is to check whether the process requests less than <code>sizeof(u_int32_t)</code>
 bytes (actually 4 bytes). Our read function always reads a bunch of 4-byte blocks and to keep it simple
 and easy to understand we disallow reading less than 4 bytes at a time (<code>uio->uio_resid</code> holds
@@ -311,8 +306,7 @@ instead we return <code>0</code> on success and the positive errno value on fail
 handled by the NetBSD kernel itself, so we do not need to care about.
 
 
-Loading the module
-------------------
+## Loading the module
 
 Now that our device driver module is completed, we need a shell script that will be executed when the module
 is successfully loaded to create the required device nodes in <code>/dev</code>. This shell script (or program)
@@ -326,7 +320,7 @@ if [ $# -ne 3 ]; then
   exit 1
 fi
 ```
-          
+
 First check whether all three command line arguments are present and exit with error code if not.
 
 ```bash
@@ -337,25 +331,24 @@ for i in 0 1 2 3 4 5 6 7; do
 done
 exit 0
 ```
-          
+
 And finally (re)create the required special device nodes. Now we are ready to give our module a first test run.
 Compile the module and load the module with the following command (this needs to be run as superuser):
 
 ```bash
 modload -e fibo_lkmentry -p fibo_post.sh fibo.o
 ```
- 
+
 If everything went well, the [modstat(8)](http://netbsd.gw.com/cgi-bin/man-cgi?modstat+8+NetBSD-1.6) program
 should present you output similar to this:
-          
+
 ```
 Type    Id  Off Loadaddr Size Info     Rev Module Name
 DEV      0   29 dca4f000 0004 dca4f260   1 fibo
 ```
 
-            
-Testing the module
-------------------
+
+## Testing the module
 
 In order to test your new kernel module, we need a small test program that does nothing more than reading a
 32bit unsigned integer value from <code>/dev/fibo0</code> and outputs the value to standard output. See the
@@ -363,27 +356,27 @@ sample program below:
 
 ```c
 #define DEVICE "/dev/fibo0"
- 
+
 int
 main(int argc, char **argv)
 {
   u_int32_t val;
   int fd, ret;
-  
+
   if ((fd = open(DEVICE, O_RDONLY)) < 0)
     err(1, "unable to open " DEVICE);
-    
+
   while ((ret = read(fd, &val, sizeof(val))) == sizeof(val))
     printf("%u\n", val);
-    
+
   if (ret < 0)
     err(2, "read(" DEVICE ")");
-    
+
   close(fd);
   return 0;
 }
 ```
- 
+
 When you run this sample test program, it will output Fibonacci numbers below 2971215074 until you interrupt
 or kill the program. To unload the kernel module, you need to run the following command (as superuser):
 
@@ -393,7 +386,7 @@ modunload -n fibo
 
 The complete sources for the example above, including a <code>Makefile</code>, are available online at:
 
-- <a href="https://github.com/bmeurer/fibo_drv">https://github.com/bmeurer/fibo_drv</a>
+- <https://github.com/bmeurer/fibo_drv>
 
 A <code>tar</code> archive with the sources can be found
 <a href="https://github.com/bmeurer/fibo_drv/tarball/master">here</a>.

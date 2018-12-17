@@ -23,7 +23,7 @@ icons for minimized windows on the desktop, which is quite a popular feature fro
 world. Of course, you can disable the desktop icons altogether if you prefer a clean
 desktop.
 
-<center><img src="/images/2007/xfce44-desktop-settings.png" alt="Desktop Settings" /></center> 
+<center><img src="/images/2007/xfce44-desktop-settings.png" alt="Desktop Settings" /></center>
 
 <b>Xfdesktop</b> also continues to provide access to the applications menu, as it did in
 the previous Xfce releases.
@@ -56,10 +56,10 @@ volume will appear on the desktop and in <b>Thunar</b>'s side pane.
 
 <center><img src="/images/2007/xfce44-removable-volumes.png" alt="Removable Volumes" /></center>
 
-Click on the icon to automatically mount the volume. Right-click the icon to unmount the drive 
+Click on the icon to automatically mount the volume. Right-click the icon to unmount the drive
 or eject the media from the drive. Note however that this feature requires <a
-href="http://freedesktop.org/wiki/Software_2fhal">HAL</a> and is therefore only available for 
-Linux 2.6.x and FreeBSD 6.x and above at the time of this writing (there is limited removable 
+href="http://freedesktop.org/wiki/Software_2fhal">HAL</a> and is therefore only available for
+Linux 2.6.x and FreeBSD 6.x and above at the time of this writing (there is limited removable
 media support for FreeBSD 4.x and 5.x which does not require HAL).
 
 

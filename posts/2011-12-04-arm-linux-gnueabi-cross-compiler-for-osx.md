@@ -8,16 +8,16 @@ I spent some time getting a decent cross compiler toolchain for `arm-linux-gnuea
 The stuff is available from my [local MacPorts repository](https://github.com/bmeurer/MacPorts). To get it working on your Mac, make sure to update to the latest MacPorts first, using:
 
 ```
-$ sudo port selfupdate
-$ sudo port upgrade outdated
+sudo port selfupdate
+sudo port upgrade outdated
 ```
 
 Continue by cloning my MacPorts repository and editing the MacPorts `sources.conf` file (as superuser):
 
 ```
-$ git clone git://github.com/bmeurer/MacPorts.git
-$ cd MacPorts/ports
-$ sudo vim /opt/local/etc/macports/sources.conf
+git clone git://github.com/bmeurer/MacPorts.git
+cd MacPorts/ports
+sudo vim /opt/local/etc/macports/sources.conf
 ```
 
 Add a new line to the file *before* the line with the `[default]` tag
@@ -29,19 +29,19 @@ file:///path/to/MacPorts/ports [nosync]
 where `/path/to/MacPorts` is the path to the MacPorts repository clone. Once done, run
 
 ```
-$ portindex
+portindex
 ```
 
 in the `MacPorts/ports` subdirectory to add the ports from my local MacPorts repository to the list of available ports (remember to rerun `portindex` everytime you pull from my repository). Now you can continue installing the cross compiler ports, using either
 
 ```
-$ sudo port install arm-linux-gnueabi-gcc
+sudo port install arm-linux-gnueabi-gcc
 ```
 
 to install just the binutils, gcc and the basic runtime, or
 
 ```
-$ sudo port install arm-linux-gnueabi-ocaml-compiler
+sudo port install arm-linux-gnueabi-ocaml-compiler
 ```
 
 to also install the OCaml cross compiler and its runtime. Installing the toolchain will take some time depending on the available bandwidth and the overall speed of your machine.
@@ -73,7 +73,7 @@ bytecomp_c_compiler: arm-linux-gnueabi-gcc -fno-defer-pop -Wall -D_FILE_OFFSET_B
 bytecomp_c_libraries: -lm  -ldl -ltermcap -lpthread
 native_c_compiler: arm-linux-gnueabi-gcc -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT
 native_c_libraries: -lm  -ldl
-native_pack_linker: arm-linux-gnueabi-ld -r  -o 
+native_pack_linker: arm-linux-gnueabi-ld -r  -o
 ranlib: arm-linux-gnueabi-ranlib
 cc_profile: -pg
 architecture: arm

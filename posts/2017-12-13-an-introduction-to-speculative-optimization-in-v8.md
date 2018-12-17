@@ -95,11 +95,11 @@ To explain that, we first need to understand how the interpreter works on a high
 
 The special registers `a0` and `a1` correspond to the formal parameters for the function on the machine stack (in this case we have two formal parameters). Formal parameters are the parameters declared in the source code, which might be different from the actual number of parameters passed to the function at runtime. The last computed value of each bytecode is usually kept in a special register called the `accumulator`, the current _stack frame_ or _activation record_ is identified by the `stack pointer`, and the `program counter` points to the currently executed instruction in the bytecode. Let's check what the individual bytecodes do in this example:
 
-*   `StackCheck` compares the `stack pointer` to some known upper limit (actually a lower limit since the stack grows downwards on all architectures supported by V8). If the stack grows above a certain threshold, we abort execution of the function and throw a `RangeError` saying that the stack was overflowed.
-*   `Ldar a1` loads the value of the register `a1` into the `accumulator` register (the name stands for **_LoaD Accumulator Register_**).
-*   `Add a0, [0]` loads the value from the `a0` register and adds it to the value in the `accumulator` register. The result is then placed into the `accumulator` register again. Note that _addition_ here can also mean string concatenation, and that this operation can execute **arbitrary JavaScript** depending on the operands. The [`+` operator](https://tc39.github.io/ecma262/#sec-addition-operator-plus) in JavaScript is really complex, and many people have tried to illustrate the complexity in talks. [Emily Freeman](https://twitter.com/editingemily) recently gave a talk at JS Kongress titled ["JavaScript's "+" Operator and Decision Fatigue"](https://www.youtube.com/watch?v=v8ToNvB-_Q8) on precisely this topic.
+- `StackCheck` compares the `stack pointer` to some known upper limit (actually a lower limit since the stack grows downwards on all architectures supported by V8). If the stack grows above a certain threshold, we abort execution of the function and throw a `RangeError` saying that the stack was overflowed.
+- `Ldar a1` loads the value of the register `a1` into the `accumulator` register (the name stands for **_LoaD Accumulator Register_**).
+- `Add a0, [0]` loads the value from the `a0` register and adds it to the value in the `accumulator` register. The result is then placed into the `accumulator` register again. Note that _addition_ here can also mean string concatenation, and that this operation can execute **arbitrary JavaScript** depending on the operands. The [`+` operator](https://tc39.github.io/ecma262/#sec-addition-operator-plus) in JavaScript is really complex, and many people have tried to illustrate the complexity in talks. [Emily Freeman](https://twitter.com/editingemily) recently gave a talk at JS Kongress titled ["JavaScript's "+" Operator and Decision Fatigue"](https://www.youtube.com/watch?v=v8ToNvB-_Q8) on precisely this topic.
   The `[0]` operand to the `Add` operator refers to a _feedback vector slot_, where Ignition stores the profiling information about the values we've seen during execution of the function. We'll get back to this later when we investigate how TurboFan optimizes the function.
-*   `Return` ends execution of the current function and transfers control back to the caller. The value returned is the current value in the `accumulator` register.
+- `Return` ends execution of the current function and transfers control back to the caller. The value returned is the current value in the `accumulator` register.
 
 My colleague [Franziska Hinkelmann](https://twitter.com/fhinkel) wrote an article ["Understanding V8's Bytecode"](https://medium.com/dailyjs/understanding-v8s-bytecode-317d46c94775) a while ago that gives some additional insight into how V8's bytecode works.
 
@@ -206,11 +206,11 @@ First of all, we see that the invocation count is now 2, since we ran the functi
 
 The feedback starts as `None`, which indicates that we haven't seen anything so far, so we don't know anything. The `Any` state indicates that we have seen a combination of incompatible inputs or outputs. The `Any` state thus indicates that the `Add` is considered _polymorphic_. In contrast, the remaining states indicate that the `Add` is _monomorphic_, because it has seen and produced only values that are somewhat the same.
 
-*   `SignedSmall` means that all values have been small integers (signed 32-bit or 31-bit depending on the word size of the architecture), and all of them have been represented as _Smi_.
-*   `Number` indicates that all values have been regular numbers (this includes `SignedSmall`).
-*   `NumberOrOddball` includes all the values from `Number` plus `undefined`, `null`, `true` and `false`.
-*   `String` means that both inputs have been string values.
-*   `BigInt` means that both inputs have been BigInts, see the current [stage 2 proposal](https://tc39.github.io/proposal-bigint/) for details.
+- `SignedSmall` means that all values have been small integers (signed 32-bit or 31-bit depending on the word size of the architecture), and all of them have been represented as _Smi_.
+- `Number` indicates that all values have been regular numbers (this includes `SignedSmall`).
+- `NumberOrOddball` includes all the values from `Number` plus `undefined`, `null`, `true` and `false`.
+- `String` means that both inputs have been string values.
+- `BigInt` means that both inputs have been BigInts, see the current [stage 2 proposal](https://tc39.github.io/proposal-bigint/) for details.
 
 It's important to note that the feedback can only progress in this lattice. It's impossible to ever go back. If we'd ever go back then we risk entering a so-called _deoptimization loop_ where the optimizing compiler consumes feedback and bails out from optimized code (back to the interpreter) whenever it sees values that don't agree with the feedback. The next time the function gets hot we will eventually optimize it again. So if we didn't progress in the lattice then TurboFan would generate the same code again, which effectively means it will bail out on the same kind of input again. Thus the engine would be busy just optimizing and deoptimizing code, instead of running your JavaScript code at high speed.
 

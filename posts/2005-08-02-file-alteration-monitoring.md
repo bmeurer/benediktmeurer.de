@@ -4,19 +4,19 @@ title: File alteration monitoring
 tags: thunar
 ---
 
-Just committed a change to get file alteration monitoring working again in Thunar. I had more or less carefully evaluated the possibilities of doing the monitoring within the Thunar process, using a combination of various <i>backends</i>:
+Just committed a change to get file alteration monitoring working again in Thunar. I had more or less carefully evaluated the possibilities of doing the monitoring within the Thunar process, using a combination of various *backends*:
 
-* kevent (this was already in the first prototypes)
-* dnotify
-* inotify
-* regular stating in the main thread
-* regular stating in a separate thread
+- kevent (this was already in the first prototypes)
+- dnotify
+- inotify
+- regular stating in the main thread
+- regular stating in a separate thread
 
 But every solution I could think of would add way too much complexity to Thunar with no real gain. So the monitoring will now be done solely by FAM or Gamin. I strongly recommend Gamin, because it offers several advantages over FAM:
 
-* Can utilize various modern operating system services like kevent and inotify.
-* Allows its client to disable the sending of FAMExists events, which aren't used in Thunar (nor in any other FAM-based software I've seen recently) and produce only unnecessary noise.
-* Runs as user process rather than system service.
+- Can utilize various modern operating system services like kevent and inotify.
+- Allows its client to disable the sending of FAMExists events, which aren't used in Thunar (nor in any other FAM-based software I've seen recently) and produce only unnecessary noise.
+- Runs as user process rather than system service.
 
 On the other hand, if you use NFS mounted home directories, you should better stay with FAM for now.
 

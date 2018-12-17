@@ -624,7 +624,7 @@ Frame size 8
 
 So takeaways from this exercise:
 
-0. Looking at generated x64 machine code can be frightening.
+1. Looking at generated x64 machine code can be frightening.
 1. `const` comes with a cost for the TDZ, but can pay off in optimized code.
-2. `class` binding is equivalent to `let` binding, use `const` to get immutable binding on script scope.
-3. JavaScript VMs try to be smart within function scopes (as used by Node or webpack).
+1. `class` binding is equivalent to `let` binding, use `const` to get immutable binding on script scope.
+1. JavaScript VMs try to be smart within function scopes (as used by Node or webpack).

@@ -6,9 +6,9 @@ tags: thunar
 
 This is a minor release, which adds support for the new Drag'n'Drop menu in Thunar 0.5.0 and tangoified icons, as well as several new and updated translations.
 
-Download: <a href="http://developer.berlios.de/project/showfiles.php?group_id=910&release_id=11557">http://developer.berlios.de/project/showfiles.php?group_id=910&release_id=11557</a>
+Download: <http://developer.berlios.de/project/showfiles.php?group_id=910&release_id=11557>
 
-Release notes: <a href="http://developer.berlios.de/project/shownotes.php?release_id=11557">http://developer.berlios.de/project/shownotes.php?release_id=11557</a>
+Release notes: <http://developer.berlios.de/project/shownotes.php?release_id=11557>
 
-Website (with screenshots): <a href="http://foo-projects.org/~benny/projects/thunar-archive-plugin/index.html">http://foo-projects.org/~benny/projects/thunar-archive-plugin/index.html</a>
+Website (with screenshots): <http://foo-projects.org/~benny/projects/thunar-archive-plugin/index.html>
 

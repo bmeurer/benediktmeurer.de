@@ -66,7 +66,7 @@ so optimizing for Octane beyond where it is currently, is likely not going to yi
 <figure>
   <a href="https://youtu.be/xCx4uC7mn6Y">
     <img src="/images/2016/verwaestblinkon-20161216.svg"
-         alt="Distribution of time in benchmarks vs. real world" 
+         alt="Distribution of time in benchmarks vs. real world"
          title="Distribution of time in benchmarks vs. real world">
   </a>
   <figcaption>
@@ -352,7 +352,7 @@ able to just run a benchmark in each browser and compare the number that comes o
 use a benchmark that has something in common with what is relevant today, i.e. real world web pages; if you feel the
 need to compare two phones via a browser benchmark, please at least consider using [Speedometer](http://browserbench.org/Speedometer).
 
-### Cuteness break!
+### Cuteness break
 
 <img src="https://images-cdn.9gag.com/photo/avZd9NX_700b.jpg" width="100%">
 
@@ -496,7 +496,7 @@ unavoidable, because they are due to the fact that JavaScript performance is bas
 We have been spending **a lot** of time and energy trying to come up with ways to avoid these performance cliffs, and still
 provide (nearly) the same performance. As it turns out it makes a lot of sense to avoid `idiv` whenever possible, even if you
 don't necessarily know that the right hand side is always a power of two (via dynamic feedback), so what TurboFan does is
-different from Crankshaft, in that it always checks at runtime whether the input is a power of two, so general case 
+different from Crankshaft, in that it always checks at runtime whether the input is a power of two, so general case
 for signed integer modulus, with optimization for (unknown) power of two right hand side looks like this (in pseudo code):
 
 ```ocaml
@@ -765,7 +765,7 @@ also avoids the pre-parsing for this `global_init` function.
 
 <figure>
   <a href="https://arewefastyet.com/#machine=29&view=single&suite=octane&subtest=MandreelLatency&start=1415924086&end=1446461709">
-    <img src="/images/2016/awfy-mandreel-20161216.png" 
+    <img src="/images/2016/awfy-mandreel-20161216.png"
          alt="MandreelLatency benchmark"
          title="MandreelLatency benchmark">
   </a>
@@ -947,7 +947,7 @@ SplayLatency benchmark, but it's a lot better for real world use cases and it au
 also considering *concurrent marking* to offload the marking work to a separate thread and thus further reducing the negative impact of
 incremental marking on both latency and throughput.
 
-### Cuteness break!
+### Another cuteness break
 
 <img src="https://pbs.twimg.com/profile_images/491838225300717568/sy5AWvt1.jpeg" width="100%">
 
@@ -966,7 +966,7 @@ their ability to game four year old benchmarks. We need to start educating the (
 <figure>
   <a href="http://venturebeat.com/2016/10/25/browser-benchmark-battle-october-2016-chrome-vs-firefox-vs-edge/3/">
     <img src="/images/2016/venturebeat-20161216.png"
-         alt="Browser benchmark battle October 2016: Chrome vs. Firefox vs. Edge" 
+         alt="Browser benchmark battle October 2016: Chrome vs. Firefox vs. Edge"
          title="Browser benchmark battle October 2016: Chrome vs. Firefox vs. Edge">
   </a>
   <figcaption>

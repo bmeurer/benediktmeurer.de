@@ -8,7 +8,8 @@
     "build": "npm run build:eleventy && npm run build:postcss && npm run build:babel-minify && npm run build:workbox",
     "clean": "rm -rf -- _site",
     "lint": "markdownlint **/*.md",
-    "start": "superstatic --port=8000"
+    "start": "superstatic --port=8000",
+    "test": "npm run lint && npm run build"
   },
   "dependencies": {
     "@11ty/eleventy": "^0.6.0",

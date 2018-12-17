@@ -8,12 +8,9 @@ I just released Thunar-0.2.0alpha and libexo-0.3.1.2alpha. As the name suggests,
 
 You'll need atleast libxfce4util 4.2, Gtk+ 2.6, shared-mime-info 0.15 and desktop-file-utils 0.10 to build and run Thunar.
 
-The official announcement is available from:
-<a href="http://thunar.xfce.org/news.xhtml#2006-01-22">http://thunar.xfce.org/news.xhtml</a>
+The official announcement is available from: <http://thunar.xfce.org/news.xhtml>
 
-The source tarballs are available from:
-<a href="http://thunar.xfce.org/download.xhtml#0.2.0">http://thunar.xfce.org/download.xhtml</a>
+The source tarballs are available from: <http://thunar.xfce.org/download.xhtml>
 
-Please report bugs to the Xfce Bug Tracker (product <i>Thunar</i>) at:
-<a href="http://bugzilla.xfce.org/">http://bugzilla.xfce.org/</a>
+Please report bugs to the Xfce Bug Tracker (product <i>Thunar</i>) at: <http://bugzilla.xfce.org/>
 

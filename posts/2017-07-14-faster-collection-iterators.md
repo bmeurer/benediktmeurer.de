@@ -195,7 +195,7 @@ do we need to transition from JavaScript to C++ land, but to handle the `callbac
   <img src="/images/2017/set-iterator-foreach-20170714.svg" alt="Old SetIteratorForEach" title="Old SetIteratorForEach">
 </figure>
 
-So just porting the baseline for the two `forEach` builtins to the 
+So just porting the baseline for the two `forEach` builtins to the
 [`CodeStubAssembler`](https://v8.dev/docs/csa-builtins) already allowed me to pick a couple of
 low-hanging fruits here. Fully optimizing and inlining the `forEach` builtins into TurboFan optimized code requires a
 bit more magic and is not yet implemented.

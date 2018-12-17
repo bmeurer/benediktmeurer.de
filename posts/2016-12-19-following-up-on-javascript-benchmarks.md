@@ -53,6 +53,6 @@ world performance effort soon.
 I'm heavily focusing on client-side uses of V8 in the blog post. But that doesn't mean that we don't care about [Node.js](http://nodejs.org).
 In fact we do care a lot about Node.js applications nowadays and we are highly interested in ways to measure performance.
 Currently we are looking into ways how to use real world Node.js applications like [yarn](https://yarnpkg.com) to drive
-and track performance improvements, but we are only at the beginning. We are also obviously looking at the 
+and track performance improvements, but we are only at the beginning. We are also obviously looking at the
 [AcmeAir](https://github.com/acmeair/acmeair-nodejs) benchmark. We have [built a good relationship](http://v8project.blogspot.de/2016/12/v8-nodejs.html)
 with the Node.js community this year, and we're already seeing a lot of benefits there.
