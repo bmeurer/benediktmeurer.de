@@ -53,4 +53,3 @@ A new preferred applications framework was imported into Xfce, so users no longe
 There is also support to tweak the builtin composition manager in the window manager settings if <code>xfwm4</code> was built with support for the Xcomposite extension.
 
 This is just a very brief list of changes. A more complete review of Xfce 4.4BETA1 should be available during the next weeks.
-

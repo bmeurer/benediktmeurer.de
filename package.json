@@ -9,8 +9,17 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint"
+      "pre-commit": "lint-staged"
     }
+  },
+  "lint-staged": {
+    "*.{js,json,css,md}": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.md": [
+      "markdownlint"
+    ]
   },
   "dependencies": {
     "@11ty/eleventy": "^0.6.0",
@@ -35,6 +44,7 @@
     "workbox-build": "^3.6.3"
   },
   "devDependencies": {
-    "husky": "^1.2.1"
+    "husky": "^1.2.1",
+    "lint-staged": "^8.1.0"
   }
 }

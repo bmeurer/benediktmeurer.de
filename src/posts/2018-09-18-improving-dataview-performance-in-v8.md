@@ -15,7 +15,7 @@ Because of the performance penalty, JavaScript developers such as the Google Map
 
 ## Background
 
-Since the introduction of ES2015, JavaScript has supported reading and writing data in raw binary buffers called [`ArrayBuffer`s](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer). `ArrayBuffer`s cannot be directly accessed; rather, programs must use a so-called *array buffer view* object that can be either a `DataView` or a `TypedArray`.
+Since the introduction of ES2015, JavaScript has supported reading and writing data in raw binary buffers called [`ArrayBuffer`s](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer). `ArrayBuffer`s cannot be directly accessed; rather, programs must use a so-called _array buffer view_ object that can be either a `DataView` or a `TypedArray`.
 
 `TypedArray`s allow programs to access the buffer as an array of uniformly typed values, such as an `Int16Array` or a `Float32Array`.
 
@@ -52,7 +52,7 @@ Moreover, `DataView`s also allow the choice of the endianness of the data storag
 const buffer = new ArrayBuffer(32);
 const view = new DataView(buffer);
 
-view.setInt32(0, 0x8BADF00D, true); // Little-endian write.
+view.setInt32(0, 0x8badf00d, true); // Little-endian write.
 console.log(view.getInt32(0, false)); // Big-endian read.
 // Expected output: 0x0DF0AD8B (233876875)
 ```
@@ -66,15 +66,18 @@ Until recently, the `DataView` methods used to be implemented as built-in C++ ru
 In order to investigate the actual performance cost incurred by this implementation, we set up a performance benchmark that compares the native `DataView` getter implementation with a JavaScript wrapper simulating `DataView` behavior. This wrapper uses an `Uint8Array` to read data byte by byte from the underlying buffer, and then computes the return value from those bytes. Here is, for example, the function for reading little-endian 32-bit unsigned integer values:
 
 ```js
-function LittleEndian(buffer) { // Simulate little-endian DataView reads.
+function LittleEndian(buffer) {
+  // Simulate little-endian DataView reads.
   this.uint8View_ = new Uint8Array(buffer);
 }
 
 LittleEndian.prototype.getUint32 = function(byteOffset) {
-  return this.uint8View_[byteOffset] |
+  return (
+    this.uint8View_[byteOffset] |
     (this.uint8View_[byteOffset + 1] << 8) |
     (this.uint8View_[byteOffset + 2] << 16) |
-    (this.uint8View_[byteOffset + 3] << 24);
+    (this.uint8View_[byteOffset + 3] << 24)
+  );
 };
 ```
 
@@ -93,7 +96,7 @@ Our first step in improving the performance of `DataView` objects was to move th
 
 However, writing CSA code by hand is cumbersome. Control flow in CSA is expressed much like in assembly, using explicit labels and `goto`s, which makes the code harder to read and understand at a glance.
 
-In order to make it easier for developers to contribute to the optimized JavaScript standard library in V8, and to improve readability and maintainability, we started designing a new language called V8 *Torque*, that compiles down to CSA. The goal for *Torque* is to abstract away the low-level details that make CSA code harder to write and maintain, while retaining the same performance profile.
+In order to make it easier for developers to contribute to the optimized JavaScript standard library in V8, and to improve readability and maintainability, we started designing a new language called V8 _Torque_, that compiles down to CSA. The goal for _Torque_ is to abstract away the low-level details that make CSA code harder to write and maintain, while retaining the same performance profile.
 
 Rewriting the `DataView` code was an excellent opportunity to start using Torque for new code, and helped provide the Torque developers with a lot of feedback about the language. This is what the `DataView`’s `getUint32()` method looks like, written in Torque:
 

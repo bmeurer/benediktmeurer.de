@@ -17,4 +17,3 @@ On the other hand, we have the new path bar approach, which looks pretty similar
 <a href="/images/2005/20050316-thunar-pathbar.png"><img src="/images/2005/20050316-thunar-pathbar.png" width="90%" /></a>
 
 I tend to prefer the path bar approach...
-

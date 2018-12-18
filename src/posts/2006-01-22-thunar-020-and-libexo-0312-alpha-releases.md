@@ -13,4 +13,3 @@ The official announcement is available from: <http://thunar.xfce.org/news.xhtml>
 The source tarballs are available from: <http://thunar.xfce.org/download.xhtml>
 
 Please report bugs to the Xfce Bug Tracker (product <i>Thunar</i>) at: <http://bugzilla.xfce.org/>
-

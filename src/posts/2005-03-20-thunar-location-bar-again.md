@@ -17,4 +17,3 @@ The location bar user interface is very similar, except that it has location ent
 And a third possibility, as suggested by Jeff, would be to disable the bar completely. This will make ROX users happy as well.
 
 A tarball of the prototype with the stuff mentioned above is available <a href="/files/source/thunar-alternative-bar-20050320.tar.gz">here</a>.
-

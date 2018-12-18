@@ -6,9 +6,9 @@ tags: ocaml
 
 Now that we have working versions of our new native OCaml toplevel `ocamlnat` without toolchain dependencies for both `i386` and `amd64`, I decided to run a few benchmarks, comparing our [ocamlnat](https://github.com/bmeurer/ocaml-experimental/tree/ocamlnat-jit) to OCaml 3.12.1 (both the byte code toplevel and the ocamlnat that silently ships with 3.12.1) and to our byte-code just-in-time compiler [OCamlJIT2](https://github.com/bmeurer/ocamljit2).
 
-The benchmarks used are test programs from the `testsuite/tests` folder of the OCaml 3.12.1 distribution. They do more or less represent typical OCaml applications. The `almabench`, `fft` and `nucleic` programs are floating point benchmarks, `quicksort` and `sorts` are sorting algorithms, and the remaining are miscellaneous benchmarks. The programs were run on different platforms, measuring the combined user + system time for the process itself and all its child processes (only relevant for the *old* `ocamlnat` which invokes toolchain programs).
+The benchmarks used are test programs from the `testsuite/tests` folder of the OCaml 3.12.1 distribution. They do more or less represent typical OCaml applications. The `almabench`, `fft` and `nucleic` programs are floating point benchmarks, `quicksort` and `sorts` are sorting algorithms, and the remaining are miscellaneous benchmarks. The programs were run on different platforms, measuring the combined user + system time for the process itself and all its child processes (only relevant for the _old_ `ocamlnat` which invokes toolchain programs).
 
-Below is the resulting speedup of the different toplevels compared to the `ocaml` byte code toplevel, with `OCamlNat/ext` being the *old* `ocamlnat` with the toolchain dependencies that ships with OCaml 3.12.1 and `OCamlNat/jit` being our new implementation available from the [ocamlnat-jit](https://github.com/bmeurer/ocaml-experimental/tree/ocamlnat-jit) branch of my [ocaml-experimental](https://github.com/bmeurer/ocaml-experimental) repository.
+Below is the resulting speedup of the different toplevels compared to the `ocaml` byte code toplevel, with `OCamlNat/ext` being the _old_ `ocamlnat` with the toolchain dependencies that ships with OCaml 3.12.1 and `OCamlNat/jit` being our new implementation available from the [ocamlnat-jit](https://github.com/bmeurer/ocaml-experimental/tree/ocamlnat-jit) branch of my [ocaml-experimental](https://github.com/bmeurer/ocaml-experimental) repository.
 
 <center><a href="/images/2011/ocamlnat-benchmark-20110914.pdf"><img src="/images/2011/ocamlnat-benchmark-20110914-coruscant.png" /></a></center>
 
@@ -38,4 +38,3 @@ make install
 ```
 
 similar to the regular OCaml distribution. This will install a fully functional OCaml 3.12.1 system to `/path/to/ocamlnat-jit` together with a new binary `ocamlnat`, our native toplevel. You should be able to use `ocamlnat` as a drop-in replacement for `ocaml` in almost every case, unless you really need the byte code runtime (i.e. [Coq](http://coq.inria.fr) is one popular application that heavily depends on the byte code runtime).
-

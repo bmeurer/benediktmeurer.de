@@ -9,19 +9,16 @@ hide: true
 
 BMKit is a collection of [well documented](https://bmeurer.github.io/BMKit) Objective-C classes and categories for iOS (and Mac) development that make life easier by solving common problems in iOS (and Mac) development. Right now BMKit is a static library for iOS 4.0 and beyond.
 
-
 ## Documentation
 
 Documentation is done using [AppleDoc](https://github.com/tomaz/appledoc).
 
 <a class="button" href="https://bmeurer.github.io/BMKit">Read the Documentation online</a>
 
-
 ## License
 
 BMKit is licensed under the [Simplified BSD License](http://en.wikipedia.org/wiki/BSD_license).
 See the [LICENSE](http://github.com/bmeurer/BMKit/raw/master/LICENSE) file for details.
-
 
 ## Installation
 
@@ -38,7 +35,6 @@ mkdir -p Vendor/BMKit
 curl -L http://github.com/bmeurer/BMKit/tarball/master | tar xz --strip 1 -C Vendor/BMKit
 ```
 
-
 ### Adding to your Project
 
 - In Xcode, add the `BMKit.xcodeproj` to your project.
@@ -47,7 +43,6 @@ curl -L http://github.com/bmeurer/BMKit/tarball/master | tar xz --strip 1 -C Ven
 - Choose the _Build Settings_ tab. Make sure _All_ is selected in the top left of the bar under the tabs.
 - Add `Vendor/BMKit` to the _Header Search Path_ (do not click the _Recursive_ checkbox).
 - Add `-all_load -ObjC` to _Other Linker Flags_.
-
 
 ### Usage
 

@@ -19,7 +19,7 @@ Native [WebAssembly](http://webassembly.org) support is expected to hit the stab
 2017](http://webassembly.org/roadmap), but since there's no polyfill available (partially because WebAssembly semantics for heap access
 are different from asm.js), only
 some big players on the web are expected to deliver native WebAssembly bytecode **and** a separate asm.js fallback based on browser
-feature detection; the majority of *native code on the web* users will likely continue to ship asm.js for the next two to three years
+feature detection; the majority of _native code on the web_ users will likely continue to ship asm.js for the next two to three years
 (based on experience with other new web platform features).
 
 <figure>
@@ -60,14 +60,14 @@ function Module(stdlib) {
     x = +f(x);
     return +x;
   }
-  return {g: g};
+  return { g: g };
 }
 ```
 
 It contains two functions `f` and `g`, the latter being exported and callable by regular JavaScript code, i.e. `g` is an
 entrypoint to the asm.js module. `g` doesn't do much but calls `f` with whatever input you pass to `g` converted to a
 Number. According to the asm.js type annotations, `f` has type `double -> double`, but this information is only usable
-as long as the asm.js module *validates*, i.e. passes the type checks in the [asm.js specification](http://asmjs.org/spec/latest).
+as long as the asm.js module _validates_, i.e. passes the type checks in the [asm.js specification](http://asmjs.org/spec/latest).
 The `asm-wasm-builder` does the necessary validation and is thus able to generate code that leverages this type information
 without having to perform type checks at runtime (type checks are still necessary on the boundary to JavaScript obviously).
 In this concrete example, the `asm-wasm-builder` knows after validation that `f` is only used internally in the asm.js module
@@ -130,7 +130,7 @@ backend will eliminate this prior to code generation. The final code generated f
 0x10a04e985b51    81  0f1f00         nop
 ```
 
-It first does a so-called *stack check*, which checks that we don't exceed a certain stack limit; besides guarding
+It first does a so-called _stack check_, which checks that we don't exceed a certain stack limit; besides guarding
 against stack overflows, this mechanism is used by Chrome to be able to interrupt the main thread of the renderer
 process, for example by DevTools, or to kill a tab that is executing an endless loop. The code then computes the square
 of the input, which is passed and returned in machine register `xmm1` (WebAssembly has its own native calling convention
@@ -249,7 +249,7 @@ problems.
 As mentioned in my [blog post about JavaScript benchmarks](/2016/12/16/the-truth-about-traditional-javascript-benchmarks), we've been
 investigating a lot in techniques to properly measure real world performance, especially on the web. We've added a lot of tracing
 support to V8 and Chrome for that, especially also tracing various internals of V8. One of the new tracing options is the so-called
-*Runtime Call Stats* in V8, which collects precise timing information for all V8 components. This is accessible via
+_Runtime Call Stats_ in V8, which collects precise timing information for all V8 components. This is accessible via
 [chrome://tracing](chrome://tracing) and gives you pretty detailed information about where time in V8 is spent.
 
 <figure>
@@ -284,7 +284,7 @@ from my colleagues [Toon Verwaest](https://twitter.com/tverwaes) and [Camillo Br
 
 Apparently there's a [slide deck](https://docs.google.com/presentation/d/1Lq2DD28CGa7bxawVH_2OcmyiTiBn74dvC6vn2essroY)
 from my colleagues [Camillo Bruni](https://twitter.com/camillobruni) from the V8 runtime team and [Michael
-Lippautz](https://twitter.com/mlippautz) from the V8 GC team that describes how to get to the *Runtime Call Stats* and the *Heap Stats* in
+Lippautz](https://twitter.com/mlippautz) from the V8 GC team that describes how to get to the _Runtime Call Stats_ and the _Heap Stats_ in
 [chrome://tracing](chrome://tracing).
 
 <figure>

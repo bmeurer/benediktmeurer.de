@@ -17,4 +17,3 @@ The prototyping with the interface described by the requirements above was satis
 <a href="/images/2005/thunar-volume-manager-20050613.png"><img src="/images/2005/thunar-volume-manager-20050613.png" width="90%" /></a>
 
 Hopefully the discussion on the volume manager will come to a useful result soon and work on the trash system design can start.
-

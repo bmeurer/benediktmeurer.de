@@ -27,7 +27,9 @@ V8 has been like this cliff. If you pay attention, then it’s stunning and beau
 ```js
 var callbacks = [
   function sloppy() {},
-  function strict() { "use strict"; }
+  function strict() {
+    "use strict";
+  }
 ];
 
 function dispatch() {
@@ -36,7 +38,7 @@ function dispatch() {
   }
 }
 
-for(var i = 0; i < 100000; ++i) {
+for (var i = 0; i < 100000; ++i) {
   dispatch(1, 2, 3, 4, 5);
 }
 ```
@@ -82,7 +84,7 @@ Taking a step back again: If TurboFan was supposed to help us, then it had to do
 1. Widen the fast path.
 2. Improve the slow path.
 
-Widening the fast path is crucial to ensure that the resources the JavaScript engine spends on trying to optimize your code actually pay off. For example, it’s a complete waste of resources to collect type feedback and profile a function until it gets hot, just to then realize that it uses `arguments` in a way that isn’t supported. The stated goal for the TurboFan optimizing compiler is to support the full language, and always pay for itself. In the new world, tiering up from Ignition to TurboFan is always a win in terms of execution speed. In this sense, TurboFan is kind of a *better Crankshaft*.
+Widening the fast path is crucial to ensure that the resources the JavaScript engine spends on trying to optimize your code actually pay off. For example, it’s a complete waste of resources to collect type feedback and profile a function until it gets hot, just to then realize that it uses `arguments` in a way that isn’t supported. The stated goal for the TurboFan optimizing compiler is to support the full language, and always pay for itself. In the new world, tiering up from Ignition to TurboFan is always a win in terms of execution speed. In this sense, TurboFan is kind of a _better Crankshaft_.
 
 But that alone wouldn’t really help, especially since TurboFan compilation is more expensive than Crankshaft (you really have to acknowledge the awesome engineering work that went into Crankshaft here, which still shines as core part of the [Dart](https://www.dartlang.org/) engine). In fact real-world performance would have suffered a lot from just replacing Crankshaft with TurboFan in many cases. And real-world performance is starting to hurt V8 and Chrome seriously, as we move to a world where most of the web traffic comes from mobile devices, and more and more of these devices are low-end Android devices. In this world, page load time and low overhead ⸺ both memory and execution wise ⸺ are crucial for success. For example, we discovered that **30%** of the managed memory in typical web applications was used by Code objects:
 

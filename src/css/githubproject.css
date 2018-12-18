@@ -8,7 +8,7 @@
 html {
   font-size: 100%;
   overflow-y: scroll;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
 }
@@ -28,9 +28,9 @@ img {
 }
 
 a {
-  font-weight:bold;
+  font-weight: bold;
   text-decoration: none;
-  color: #6EAD1A;
+  color: #6ead1a;
 }
 
 a:focus {
@@ -53,7 +53,8 @@ strong {
   font-weight: bold;
 }
 
-pre, code {
+pre,
+code {
   font-family: consolas, monospace;
   font-size: 0.8125em;
   margin: 0;
@@ -102,12 +103,13 @@ p {
 }
 
 .highlight pre code {
-  background: url("/images/pre.png") repeat-x scroll 0 0 #F2F2F5;
-  box-shadow: 0 2px 4px #D8D8DC;
-  border: 1px solid #D8D8DC;
+  background: url("/images/pre.png") repeat-x scroll 0 0 #f2f2f5;
+  box-shadow: 0 2px 4px #d8d8dc;
+  border: 1px solid #d8d8dc;
   color: #000;
   display: block;
-  font-family: "Menlo","Monaco","Consolas", Lucida Console, Consolas, Monaco, monospace !important;
+  font-family: "Menlo", "Monaco", "Consolas", Lucida Console, Consolas, Monaco,
+    monospace !important;
   font-size: 12px;
   line-height: 1.6em;
   margin: 0 0 1.5em;
@@ -129,7 +131,7 @@ p {
 }
 
 .demo {
-  margin:1em 0 4em;
+  margin: 1em 0 4em;
 }
 
 .demo p {
@@ -145,29 +147,26 @@ p {
   font-size: 1.375em;
   line-height: 1.273;
   color: #fff;
-  background: #6EAD1A;
-  text-shadow:0 1px 1px rgba(0,0,0,0.4);
+  background: #6ead1a;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
   -moz-border-radius: 5px;
-       border-radius: 5px;
-  -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.4),
-                      inset 0 1px rgba(255,255,255,0.5),
-                      inset 0 12px rgba(255,255,255,0.2),
-                      inset 0 10px 20px rgba(255,255,255,0.25),
-                      inset 0 -12px 25px rgba(0,0,0,0.3);
-     -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.4),
-                      inset 0 1px rgba(255,255,255,0.5),
-                      inset 0 12px rgba(255,255,255,0.2),
-                      inset 0 10px 20px rgba(255,255,255,0.25),
-                      inset 0 -12px 25px rgba(0,0,0,0.3);
-          box-shadow: 0 1px 3px rgba(0,0,0,0.4),
-                      inset 0 1px rgba(255,255,255,0.5),
-                      inset 0 12px rgba(255,255,255,0.2),
-                      inset 0 10px 10px rgba(255,255,255,0.25),
-                      inset 0 -12px 25px rgba(0,0,0,0.3);
+  border-radius: 5px;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4),
+    inset 0 1px rgba(255, 255, 255, 0.5), inset 0 12px rgba(255, 255, 255, 0.2),
+    inset 0 10px 20px rgba(255, 255, 255, 0.25),
+    inset 0 -12px 25px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4),
+    inset 0 1px rgba(255, 255, 255, 0.5), inset 0 12px rgba(255, 255, 255, 0.2),
+    inset 0 10px 20px rgba(255, 255, 255, 0.25),
+    inset 0 -12px 25px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4), inset 0 1px rgba(255, 255, 255, 0.5),
+    inset 0 12px rgba(255, 255, 255, 0.2),
+    inset 0 10px 10px rgba(255, 255, 255, 0.25),
+    inset 0 -12px 25px rgba(0, 0, 0, 0.3);
   -webkit-transition: all 0.15s;
-     -moz-transition: all 0.15s;
-       -o-transition: all 0.15s;
-          transition: all 0.15s;
+  -moz-transition: all 0.15s;
+  -o-transition: all 0.15s;
+  transition: all 0.15s;
 }
 
 .button:hover,
@@ -189,7 +188,7 @@ p {
   font-size: 0.8125em;
 }
 
-@media screen and (max-width:480px) {
+@media screen and (max-width: 480px) {
   body {
     font-size: 0.875em;
   }
@@ -202,4 +201,3 @@ p {
     display: none;
   }
 }
-

@@ -7,7 +7,7 @@ tags:
 ---
 
 The last months have been a hectic time for me. I was hosting my first intern [Juliana Franco](https://twitter.com/jupvfranco)
-at Google working on the Deoptimizer during her [*internship on lazyiness*](https://twitter.com/v8js/status/915473224187760640).
+at Google working on the Deoptimizer during her [_internship on lazyiness_](https://twitter.com/v8js/status/915473224187760640).
 Then I was diagnosed with articular gout and almost couldn't walk for a week. And we finally moved into our new house with a lot
 of help from my awesome colleagues on the V8 team. On the [Node.js](https://nodejs.org) front, I became the [tech lead of Node
 performance](https://twitter.com/bmeurer/status/896996151731343361) in the V8 team, joined the [Node.js benchmarking working
@@ -25,7 +25,6 @@ I'm going to use V8 version 5.8 (which is the last version before we switched to
 6.1 (which is the current stable version in Chrome and also in Node 8) and 6.3 (which is the current development version)
 for the performance comparisons.
 
-
 ## An internship on laziness
 
 As mentioned above this was the first time I hosted an intern at Google. It sure comes with a lot of work and some
@@ -38,9 +37,8 @@ getting rid of the weakly linked list of all closures in V8 is a major accomplis
 
 ![Octane/Early Boyer](/images/2017/jupvfranco-20171005.png)
 
-So I'd like to use this opportunity here to say: *Thank you, [Juliana](https://twitter.com/jupvfranco), for spending
-the summer with us, it was awesome to have you as an intern!*
-
+So I'd like to use this opportunity here to say: _Thank you, [Juliana](https://twitter.com/jupvfranco), for spending
+the summer with us, it was awesome to have you as an intern!_
 
 ## Object constructor calls in webpack bundles
 
@@ -50,7 +48,7 @@ I already wrote a detailed [article](/2017/08/31/object-constructor-calls-in-web
 ```js
 var m = __webpack_require__(1);
 
-Object(m.foo)(1, 2);  // <- called without this (undefined/global object)
+Object(m.foo)(1, 2); // <- called without this (undefined/global object)
 ```
 
 for
@@ -58,7 +56,7 @@ for
 ```js
 import foo from "module";
 
-foo(1, 2);  // <- called without this (undefined/global object)
+foo(1, 2); // <- called without this (undefined/global object)
 ```
 
 essentially wrapping the target in the
@@ -79,7 +77,6 @@ all major JavaScript engines, including [SpiderMonkey](https://twitter.com/Spide
 
 ![Collaboration](/images/2017/collaboration-20171005.png)
 
-
 ## Restoring `for..in` peak performance
 
 This was also already described in a [detailed blog post](/2017/09/07/restoring-for-in-peak-performance/). The **TL;DR**
@@ -93,11 +90,11 @@ var obj = {
   x: 1,
   y: 1,
   z: 1
-}
-var total = 0
+};
+var total = 0;
 for (var prop in obj) {
   if (obj.hasOwnProperty(prop)) {
-    total += obj[prop]
+    total += obj[prop];
   }
 }
 ```
@@ -110,7 +107,6 @@ fine to upgrade V8 during LTS cycles).
 
 Also worth noting, that despite having regressed from Node 7 to Node 8, the `for..in` peak performance in the
 upcoming LTS (Node 8) still improves compared to the previous LTS (Node 6).
-
 
 ## Optimize Object constructor subclassing
 
@@ -128,7 +124,7 @@ instead of just
 class A { ... }
 ```
 
-where the only observable difference will be the prototype chain of the constructor, there's the case of *class factories*.
+where the only observable difference will be the prototype chain of the constructor, there's the case of _class factories_.
 When you use class factories to stamp out base classes, i.e. as mentioned
 [here](https://twitter.com/FremyCompany/status/905977048006402048) and
 [here](https://twitter.com/rauschma/status/905914341962252291),
@@ -151,7 +147,6 @@ object instantiation.
 Compared to Chrome 58, which is latest version shipping with the old Crankshaft based optimization pipeline,
 the performance of subclassing `Object` improved by **5.4x**.
 
-
 ## Fast-path for `TypedArray`s in `Function.prototype.apply`
 
 I'm also actively trying to address long-standing issues. One of these was a [report from 2012](http://crbug.com/v8/2435)
@@ -166,12 +161,19 @@ to construct Strings from character code sequences encoded in `Uint8Array`s or `
 function ar2str(uint16arr) {
   // break the computation into smaller arrays to avoid browser limits on array
   // size for .apply() call
-  var res = [], i = 0, len = uint16arr.length, MAX_ELEMENTS_PER_CALL = 100000;
+  var res = [],
+    i = 0,
+    len = uint16arr.length,
+    MAX_ELEMENTS_PER_CALL = 100000;
   while (i < len) {
-    res.push(String.fromCharCode.apply(
-        null, uint16arr.subarray(i, i += MAX_ELEMENTS_PER_CALL)));
+    res.push(
+      String.fromCharCode.apply(
+        null,
+        uint16arr.subarray(i, (i += MAX_ELEMENTS_PER_CALL))
+      )
+    );
   }
-  return res.join('');
+  return res.join("");
 }
 ```
 
@@ -185,7 +187,6 @@ in the future. The same optimization was also later [ported to
 SpiderMonkey](https://twitter.com/SpiderMonkeyJS/status/907950258973528064), where they observed similar speed-ups.
 
 [![String.fromCharCode with Function.prototype.apply in SpiderMonkey](/images/2017/spidermonkey-string-fromcharcode-20171005.png)](https://twitter.com/SpiderMonkeyJS/status/907950258973528064)
-
 
 ## Optimize `Array.prototype.push` with multiple parameters
 
@@ -211,7 +212,6 @@ benchmark.
 
 [![V8 six-speed-spread-literal-es5 results](/images/2017/v8-six-speed-spread-literal-es5-20171005.png)](https://twitter.com/bmeurer/status/907213466800414721)
 
-
 ## Improved constant-folding
 
 We also realized that TurboFan was missing several opportunities for constant-folding, specifically the
@@ -225,7 +225,6 @@ observed some massive speed-ups on these benchmarks.
 
 ![six-speed-templatestring-es5](/images/2017/six-speed-templatestring-es5-20171005.png)
 ![six-speed-templatestring-es6](/images/2017/six-speed-templatestring-es6-20171005.png)
-
 
 ## Optimize tagged templates
 
@@ -242,26 +241,23 @@ the [Computing tag functions for ES6 template literals](http://2ality.com/2016/1
  * interpretation.
  */
 function cook(strs, ...substs) {
-    return substs.reduce(
-        (prev,cur,i) => prev+cur+strs[i+1],
-        strs[0]
-    );
+  return substs.reduce((prev, cur, i) => prev + cur + strs[i + 1], strs[0]);
 }
 
 function repeat(times) {
-    return function (...args) {
-        return cook(...args).repeat(times);
-    };
+  return function(...args) {
+    return cook(...args).repeat(times);
+  };
 }
 
-repeat(3)`abc${3+1}`;  // produces "abc4abc4abc4"
+repeat(3)`abc${3 + 1}`; // produces "abc4abc4abc4"
 ```
 
 Here the language specification even
-[requires implementations to cache the so-called *TemplateObject*](https://tc39.github.io/ecma262/#sec-gettemplateobject) to
+[requires implementations to cache the so-called _TemplateObject_](https://tc39.github.io/ecma262/#sec-gettemplateobject) to
 actively encourage constant-folding and avoid recomputation
 when going to optimized code. Unfortunately we didn't really take advantage of that so far. So I [started teaching both Ignition
-and TurboFan about *template objects*](https://chromium-review.googlesource.com/677462), which brought the ES6 implementation
+and TurboFan about _template objects_](https://chromium-review.googlesource.com/677462), which brought the ES6 implementation
 on par with the Babel transpiled code. Once that was done, we [looked into constant-folding sealed
 properties](https://chromium-review.googlesource.com/677603) consistently, i.e. own properties of objects that were either
 frozen via [`Object.freeze`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze)
@@ -275,7 +271,6 @@ benchmark even further (keep in mind that this is a micro-benchmark).
 
 [![Performance of tagged templates is now on par with transpiled code](/images/2017/six-speed-templatestring-tag-es6-20171005.png)](https://twitter.com/mathias/status/912223187005509632)
 
-
 ## Properly optimize literals in inlined functions
 
 Then I stumbled upon a [bug in TurboFan](https://bugs.chromium.org/p/v8/issues/detail?id=6856) where it would not always
@@ -284,14 +279,16 @@ say you have code like this
 
 ```js
 function foo() {
-  function bar() { return { x: 1 }; };
+  function bar() {
+    return { x: 1 };
+  }
   return bar().x;
 }
 ```
 
 then `bar` will likely be inlined into `foo` during optimization, but the literal `{x:1}` will not be turned into an
-inline allocation, and instead call out to a generic code stub - the `FastCloneShallowObject` builtin - which is *a lot
-slower* than an inlined allocation, that can also be escape analyzed away. Interestingly, changing the code slightly to
+inline allocation, and instead call out to a generic code stub - the `FastCloneShallowObject` builtin - which is _a lot
+slower_ than an inlined allocation, that can also be escape analyzed away. Interestingly, changing the code slightly to
 
 ```js
 function bar() {
@@ -311,7 +308,6 @@ fancy performance cliff, yielding a roughly **3x** to **4x** performance improve
 the [tracking bug](https://bugs.chromium.org/p/v8/issues/detail?id=6856#c1).
 
 ![Inlined literals performance](/images/2017/inlined-literals-20171005.svg)
-
 
 ## Optimize `ArrayBuffer` view checks
 
@@ -334,20 +330,19 @@ function uncurryThis(func) {
 
 const TypedArrayPrototype = Object.getPrototypeOf(Uint8Array.prototype);
 
-const TypedArrayProto_toStringTag =
-    uncurryThis(
-      Object.getOwnPropertyDescriptor(TypedArrayPrototype,
-                                      Symbol.toStringTag).get);
+const TypedArrayProto_toStringTag = uncurryThis(
+  Object.getOwnPropertyDescriptor(TypedArrayPrototype, Symbol.toStringTag).get
+);
 
 function isTypedArray(value) {
   return TypedArrayProto_toStringTag(value) !== undefined;
 }
 
 function isUint8Array(value) {
-  return TypedArrayProto_toStringTag(value) === 'Uint8Array';
+  return TypedArrayProto_toStringTag(value) === "Uint8Array";
 }
 
-const isArrayBufferView = ArrayBuffer.isView
+const isArrayBufferView = ArrayBuffer.isView;
 ```
 
 Now you can use `isTypedArray(x)` to check whether `x` is any `TypedArray`, and `isUint8Array(x)` to check whether
@@ -370,7 +365,6 @@ on the hidden class of the receiver and returns the proper String or `undefined`
 
 We observe up to **14.5x** performance improvements compared to Chrome 58.
 
-
 ## Miserable performance when storing booleans in typed arrays
 
 This week's monday morning exercise. Every now and then some people ping some long-standing bugs hoping that someone would pick
@@ -387,7 +381,6 @@ tell TurboFan to properly convert the right-hand side of the assignment to a num
 With this in place the performance of storing `true` or `false` to a `TypedArray` is now identical to storing integers,
 compared to Chrome 61 that's a solid **70x** improvement.
 
-
 ## Polymorphic symbol lookup not well supported
 
 Later that same day [Slava](http://twitter.com/mraleph) popped up with an
@@ -402,15 +395,19 @@ had the time to dig into. The underlying issue is that for code like
 ```js
 const sym = Symbol();
 
-function foo(o) { return o[sym]; }
+function foo(o) {
+  return o[sym];
+}
 ```
 
 we don't deal well with the case where `o` has different hidden classes on the access to `o[sym]`. The responsible
-`KEYED_LOAD_IC` would immediately go to `MEGAMORPHIC` state (read: *become generic*) when it sees more than one
+`KEYED_LOAD_IC` would immediately go to `MEGAMORPHIC` state (read: _become generic_) when it sees more than one
 hidden class for `o`. Doing the same with string names using the dot syntax, i.e.
 
 ```js
-function foo(o) { return o.str; }
+function foo(o) {
+  return o.str;
+}
 ```
 
 is just fine and can handle up to 4 different hidden classes for `o` until it decides to go `MEGAMORPHIC`. Interestingly
@@ -425,19 +422,27 @@ fix the odd performance cliff with polymorphic Symbol lookups.
 ![Slava saying it's fixed on Twitter](/images/2017/slava-fixed-20171005.png)
 
 But that still didn't fully cover the case for [V8 issue 6367](http://crbug.com/v8/6367), which was about the
-*clone pattern* (as discovered in the ARES6 ML benchmark):
+_clone pattern_ (as discovered in the ARES6 ML benchmark):
 
 ```js
 class A {
-  static get [Symbol.species]() { return this; }
-  clone() { return new this.constructor[Symbol.species](); }
+  static get [Symbol.species]() {
+    return this;
+  }
+  clone() {
+    return new this.constructor[Symbol.species]();
+  }
 }
 
 class B extends A {
-  static get [Symbol.species]() { return this; }
+  static get [Symbol.species]() {
+    return this;
+  }
 }
 
-function foo(o) { return o.clone(); }
+function foo(o) {
+  return o.clone();
+}
 foo(new A());
 foo(new B());
 ```
@@ -448,8 +453,7 @@ to inline the polymorphic constructor call in `new this.constructor[Symbol.speci
 an instance of `A` or an instance of `B` depending on `this`. Again, it turned out that this was not something
 fundamental, but just [two trivial issues](https://chromium-review.googlesource.com/700596) where some parts
 of TurboFan were blocking the optimization. Removing that we got an overall **7.2x** combined performance boost
-for the *clone pattern* above.
-
+for the _clone pattern_ above.
 
 ## Improve performance of `Object.is`
 
@@ -475,7 +479,6 @@ it up to TurboFan.
 So performance of `Object.is` improved by up to **14x** since Chrome 58, and starting with Chrome 63 and/or Node 9,
 it should be fine performance-wise to use `Object.is`, especially for the edge case checks, i.e. checking for `-0`
 or checking for `NaN`.
-
 
 ## Conclusion
 

@@ -11,4 +11,3 @@ on [GitHub Pages](http://pages.github.com) though).
 I've also uploaded the [slides and source
 code](http://cocoaheads.informatik.uni-siegen.de/#2011-07-14) from the first CocoaHeads Siegen
 meeting.
-

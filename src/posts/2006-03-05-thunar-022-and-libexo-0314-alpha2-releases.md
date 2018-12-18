@@ -15,4 +15,3 @@ Additional (updated) screenshots are available at: <http://thunar.xfce.org/scree
 The source tarballs can be downloaded from: <http://thunar.xfce.org/download.html#0.2.2>
 
 Please report bugs to the Xfce Bug Tracker (product <i>Thunar</i>) at: <http://bugzilla.xfce.org/>
-

@@ -11,4 +11,3 @@ While working on the trash classes, I was testing the basics when I realized tha
 <a href="/images/2005/thunar-trash-b0rked2.png"><img src="/images/2005/thunar-trash-b0rked2.png" width="90%" /></a>
 
 I was pretty confused to see this <i>working</i> on first sight. My bet was that it would crash right away. But of course, it had to work that way. Anyway, not the expected behaviour from a user's point of view, but it looks just too weird to not post the screenshot here.
-

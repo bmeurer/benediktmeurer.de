@@ -16,11 +16,10 @@ functionality, and outstanding graphical design with the technological superiori
 operating system. Like NetBSD itself, KDE is also an Internet project and is licensed under the
 GNU General Public License (GPL), and is therefore open source software.
 
-
 ## Installation
 
 It is quite easy to install the latest KDE 3 on a NetBSD system using either binary packages or
-building it from <a href="http://www.pkgsrc.org/">pkgsrc</a>.  As I wrote this, there were no
+building it from <a href="http://www.pkgsrc.org/">pkgsrc</a>. As I wrote this, there were no
 official KDE 3 binary packages available on the ftp servers and I didn't have the space and
 bandwidth to put my packages online :-(. It would be nice, if someone could provide me with a
 few 100MB of web/ftp space to put my packages on, so that everyone reading this could use these
@@ -39,7 +38,6 @@ up the installation process by mounting the filesystem that contains the pkgsrc 
 that mounting a filesystem asyncronous may have a bad effect on your data if the computer
 crashes. So, you have been warned, use this option at <b>your own risk</b>.
 
-
 ## Postinstallation
 
 Now, that KDE 3 is installed properly, all you need to do, is setup your X session to start
@@ -52,12 +50,11 @@ export PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/pkg/bin:/usr/pkg/sbin:/usr/local/
 exec /usr/X11R6/bin/startkde
 ```
 
-Then mark the file executable by typing <code>chmod +x $HOME/.xsession</code>, login as usual
+Then mark the file executable by typing <code>chmod +x \$HOME/.xsession</code>, login as usual
 with xdm and feel happy about your new and fancy KDE desktop :-).
 
 If you're using <code>startx</code> instead of <code>xdm</code>, you need to edit the file
 <code>.xinitrc</code> in your home directory instead.
-
 
 ## Using antialiased fonts
 
@@ -95,11 +92,9 @@ KDE desktop and enable "Use Anti-Aliasing for fonts" in the KDE control center; 
 relogin, and choose some nice antialiased fonts (the ones with the <code>[Xft]</code> in the
 name) for your desktop. Enjoy! ;-).
 
-
 ## Feedback
 
 I hope you liked my little KDE 3 HowTo and I would be pleased to
 get some good (or even bad ;-) feedback from you. If you
 have any problems or questions on this topic, I'll try to help you
 getting things to work.
-

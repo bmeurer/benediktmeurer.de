@@ -49,7 +49,7 @@ for (let i = 0; i < 4242424242; ++i) {
 console.log(result);
 ```
 
-In V8 it starts running the bytecode in the Ignition interpreter. At some point the engine determines that the code is *hot* and starts up the TurboFan frontend, which is the part of TurboFan that deals with integrating profiling data and constructing a basic machine representation of the code. This is then sent to the TurboFan optimizer on a different thread for further improvements of the code.
+In V8 it starts running the bytecode in the Ignition interpreter. At some point the engine determines that the code is _hot_ and starts up the TurboFan frontend, which is the part of TurboFan that deals with integrating profiling data and constructing a basic machine representation of the code. This is then sent to the TurboFan optimizer on a different thread for further improvements of the code.
 
 ![Overview of the V8 pipeline](/images/2018/pipeline-detail-v8-20180816.svg "Overview of the V8 pipeline")
 
@@ -65,7 +65,7 @@ Chakra's architecture is very similar to SpiderMonkey's, but Chakra tries to run
 
 ![Overview of the Chakra pipeline](/images/2018/pipeline-detail-chakra-20180816.svg "Overview of the Chakra pipeline")
 
-When the generated code is ready, the engine starts to run this SimpleJIT code instead of the bytecode. The same goes for the FullJIT. The benefit of this approach is that the pause times where the copy happens are usually much shorter compared to running the full compiler (frontend). But the downside of this approach is that the *copy heuristic* might miss some information that would be required for a certain optimization, so it's trading code quality for latency to some extent.
+When the generated code is ready, the engine starts to run this SimpleJIT code instead of the bytecode. The same goes for the FullJIT. The benefit of this approach is that the pause times where the copy happens are usually much shorter compared to running the full compiler (frontend). But the downside of this approach is that the _copy heuristic_ might miss some information that would be required for a certain optimization, so it's trading code quality for latency to some extent.
 
 In JavaScriptCore, all optimizing compilers run **fully concurrent** with the main JavaScript execution; there's no copy phase! Instead, the main thread merely triggers compilation jobs on another thread. The compilers then use a complicated locking scheme to access profiling data from the main thread.
 
@@ -128,11 +128,11 @@ ret 0x18
 
 That's a **lot of code**, especially when compared to the four instructions we had in the bytecode! In general, bytecode tends to be a lot more compact than machine code, especially optimized machine code. On the other hand, bytecode needs an interpreter to run, whereas the optimized code can be executed directly by the processor.
 
-This is one of the main reasons why JavaScript engines don't just *"optimize everything"*. As we saw earlier, generating optimized machine code takes a long time, and on top of that, we just learned that **optimized machine code also requires more memory**.
+This is one of the main reasons why JavaScript engines don't just _"optimize everything"_. As we saw earlier, generating optimized machine code takes a long time, and on top of that, we just learned that **optimized machine code also requires more memory**.
 
 ![Optimization level vs memory usage](/images/2018/tradeoff-memory-20180816.svg "Optimization level vs memory usage")
 
-**Summary:** The reason JS engines have different optimization tiers is because of a fundamental trade-off between *generating code quickly* like with an interpreter, or *generating quick code* with an optimizing compiler. It's a scale, and adding more optimization tiers allows you to make more fine-grained decisions at the cost of additional complexity and overhead. In addition, there's a trade-off between the optimization level and the memory usage of the generated code. This is why JS engines try to optimize only *hot* functions.
+**Summary:** The reason JS engines have different optimization tiers is because of a fundamental trade-off between _generating code quickly_ like with an interpreter, or _generating quick code_ with an optimizing compiler. It's a scale, and adding more optimization tiers allows you to make more fine-grained decisions at the cost of additional complexity and overhead. In addition, there's a trade-off between the optimization level and the memory usage of the generated code. This is why JS engines try to optimize only _hot_ functions.
 
 ## Optimizing prototype property access
 
@@ -195,8 +195,12 @@ Ok, so now we know what happens when we define a class and we create a new insta
 
 ```js
 class Bar {
-  constructor(x) { this.x = x; }
-  getX() { return this.x; }
+  constructor(x) {
+    this.x = x;
+  }
+  getX() {
+    return this.x;
+  }
 }
 
 const foo = new Bar(true);
@@ -239,8 +243,12 @@ Looking at programs in the wild, loading prototype properties is a very frequent
 
 ```js
 class Bar {
-  constructor(x) { this.x = x; }
-  getX() { return this.x; }
+  constructor(x) {
+    this.x = x;
+  }
+  getX() {
+    return this.x;
+  }
 }
 
 const foo = new Bar(true);
@@ -260,10 +268,10 @@ The shape of `Bar.prototype` contains `'getX'` and did not change. This means no
 In the general case, that means we have to perform 1 check on the instance itself, plus 2 checks for each prototype up to the prototype which holds the property we're looking for. `1+2N`checks (where `N` is the number of prototypes involved) may not sound too bad for this case, because the prototype chain is relatively shallow. But oftentimes engines have to deal with much longer prototype chains, like in the case of common DOM classes. Here’s an example of that:
 
 ```js
-const anchor = document.createElement('a');
+const anchor = document.createElement("a");
 // → HTMLAnchorElement
 
-const title = anchor.getAttribute('title');
+const title = anchor.getAttribute("title");
 ```
 
 We have an `HTMLAnchorElement` and we call the `getAttribute()` method on it. Looking at the prototype chain of a simple anchor element, we can see that there are already 6 prototypes involved. And a lot of the interesting DOM methods are not on the direct prototypes, but even higher up in the chain.
@@ -286,8 +294,12 @@ Going back to the earlier example, we perform a total of 3 checks when accessing
 
 ```js
 class Bar {
-  constructor(x) { this.x = x; }
-  getX() { return this.x; }
+  constructor(x) {
+    this.x = x;
+  }
+  getX() {
+    return this.x;
+  }
 }
 
 const foo = new Bar(true);
@@ -331,7 +343,9 @@ Effectively, modifying `Object.prototype` while running your code means throwing
 Let's explore this a bit more with a concrete example: Say we have our class `Bar`, and we have a function `loadX` that calls a method on `Bar` objects. We call this `loadX` function a few times with instances of the same class.
 
 ```js
-class Bar { /* … */ }
+class Bar {
+  /* … */
+}
 
 function loadX(bar) {
   return bar.getX(); // IC for 'getX' on Bar instances
@@ -351,7 +365,9 @@ The inline cache in `loadX` now points to the `ValidityCell` for `Bar.prototype`
 Mutating `Object.prototype` is always a bad idea, as it invalidates any Inline Caches for prototype loads that the engine had put up until that point. Here's another example of what NOT to do:
 
 ```js
-Object.prototype.foo = function() { /* … */ };
+Object.prototype.foo = function() {
+  /* … */
+};
 
 // Run critical code:
 someObject.foo();
@@ -360,7 +376,7 @@ someObject.foo();
 delete Object.prototype.foo;
 ```
 
-We extend `Object.prototype`, which invalidates any prototype Inline Caches the engine put in place up until that point. Then we run some code that uses the new prototype method. The engine has to start over from scratch and set up new Inline Caches for any prototype property accesses. And then finally, we *"clean up after ourselves"* and remove the prototype method we added earlier.
+We extend `Object.prototype`, which invalidates any prototype Inline Caches the engine put in place up until that point. Then we run some code that uses the new prototype method. The engine has to start over from scratch and set up new Inline Caches for any prototype property accesses. And then finally, we _"clean up after ourselves"_ and remove the prototype method we added earlier.
 
 Cleaning up sounds like a good idea, right? Well actually, in this case it makes a bad situation even worse! Deleting the property modifies `Object.prototype`, so all the Inline Caches are invalidated all over again and the engine has to start from scratch once again.
 

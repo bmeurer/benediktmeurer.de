@@ -9,4 +9,3 @@ I just added support for <i>menu-merging</i> based on GtkUIManager to the Thunar
 Not many user-visible changes over the last weeks, but anyways, here's a new screenshot:
 
 <center><a href="/images/2005/thunar-20050712.png"><img src="/images/2005/thunar-20050712.png" width="90%" /></a></center>
-

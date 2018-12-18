@@ -57,7 +57,6 @@ FUNC at 12
 . . . VAR PROXY parameter[1] (0x7fbd5e818240) (mode = VAR) "y"
 ```
 
-
 This format is not very easy to consume, so let's visualize it.
 
 ![Abstract Syntax Tree][3]
@@ -143,17 +142,13 @@ console.log(add(1, 2));
 Running this with `--allow-natives-syntax` in `d8` we observe:
 
 ```html
-$ out/Debug/d8 --allow-natives-syntax add.js
-DebugPrint: 0xb5101ea9d89: [Function] in OldSpace
-…
- - feedback vector: 0xb5101eaa091: [FeedbackVector] in OldSpace
- - length: 1
- SharedFunctionInfo: 0xb5101ea99c9 <SharedFunctionInfo add>
- Optimized Code: 0
- Invocation Count: 1
- Profiler Ticks: 0
- Slot #0 BinaryOp BinaryOp:SignedSmall
-…
+$ out/Debug/d8 --allow-natives-syntax add.js DebugPrint: 0xb5101ea9d89:
+[Function] in OldSpace … - feedback vector: 0xb5101eaa091: [FeedbackVector] in
+OldSpace - length: 1 SharedFunctionInfo: 0xb5101ea99c9
+<SharedFunctionInfo add>
+  Optimized Code: 0 Invocation Count: 1 Profiler Ticks: 0 Slot #0 BinaryOp
+  BinaryOp:SignedSmall …</SharedFunctionInfo
+>
 ```
 
 We can see the invocation count is 1, since we ran the function `add` exactly once. Also there's no optimized code yet (indicated by the arguably confusing `0` output). But there's exactly one slot in the Feedback Vector, which is a `BinaryOp` slot whose current feedback is `SignedSmall`. What does that mean? The bytecode `Add` that refers to the feedback slot 0 has only seen inputs of type `SignedSmall` so far and has also only produced outputs of type `SignedSmall` up until now.
@@ -187,17 +182,13 @@ console.log(add(1.1, 2.2));
 Running this again with `--allow-natives-syntax` in `d8` we observe:
 
 ```html
-$ out/Debug/d8 --allow-natives-syntax add.js
-DebugPrint: 0xb5101ea9d89: [Function] in OldSpace
-…
- - feedback vector: 0x3fd6ea9ef9: [FeedbackVector] in OldSpace
- - length: 1
- SharedFunctionInfo: 0x3fd6ea9989 <SharedFunctionInfo add>
- Optimized Code: 0
- Invocation Count: 2
- Profiler Ticks: 0
- Slot #0 BinaryOp BinaryOp:Number
-…
+$ out/Debug/d8 --allow-natives-syntax add.js DebugPrint: 0xb5101ea9d89:
+[Function] in OldSpace … - feedback vector: 0x3fd6ea9ef9: [FeedbackVector] in
+OldSpace - length: 1 SharedFunctionInfo: 0x3fd6ea9989
+<SharedFunctionInfo add>
+  Optimized Code: 0 Invocation Count: 2 Profiler Ticks: 0 Slot #0 BinaryOp
+  BinaryOp:Number …</SharedFunctionInfo
+>
 ```
 
 First of all, we see that the invocation count is now 2, since we ran the function twice. And then we see that the `BinaryOp` slot value changed to `Number`, which indicates that we've seen arbitrary numbers for the addition (i.e. non-integer values). For addition there's a lattice of possible states for feedback, which roughly looks like this:
@@ -319,15 +310,15 @@ That's a lot of confusing output. But let's extract the important bits. First of
 
 I hope you enjoyed this dive into how speculative optimization works in V8 and how it helps us to reach peak performance for JavaScript applications. Don't worry too much about these details though. When writing applications in JavaScript focus on the application design instead and make sure to use appropriate data structures and algorithms. Write idiomatic JavaScript, and let us worry about the low level bits of the JavaScript performance instead. If you find something that is too slow, and it shouldn't be slow, please [file a bug report](http://crbug.com/v8/new), so we get a chance to look into that.
 
-  [1]: /images/2017/addy-20171213.png "addy.png"
-  [2]: /images/2017/devtools-20171213.png "devtools.png"
-  [3]: /images/2017/ast-20171213.svg "Abstract Syntax Tree"
-  [4]: /images/2017/interpreter-20171213.svg "Interpreter Overview"
-  [5]: /images/2017/add-operator-20171213.png "add-operator.png"
-  [6]: /images/2017/to-primitive-20171213.png "to-primitive.png"
-  [7]: /images/2017/closure-20171213.svg "Closure Structure"
-  [8]: /images/2017/tagging-20171213.svg "Tagging Scheme"
-  [9]: /images/2017/lattice-20171213.svg "Feedback lattice"
-  [10]: /images/2017/turbofan-20171213.svg "TurboFan"
-  [11]: /images/2017/overview-20171213.svg "Generated assembly overview"
-  [12]: /images/2017/deopt-20171213.png "deopt.png"
+[1]: /images/2017/addy-20171213.png "addy.png"
+[2]: /images/2017/devtools-20171213.png "devtools.png"
+[3]: /images/2017/ast-20171213.svg "Abstract Syntax Tree"
+[4]: /images/2017/interpreter-20171213.svg "Interpreter Overview"
+[5]: /images/2017/add-operator-20171213.png "add-operator.png"
+[6]: /images/2017/to-primitive-20171213.png "to-primitive.png"
+[7]: /images/2017/closure-20171213.svg "Closure Structure"
+[8]: /images/2017/tagging-20171213.svg "Tagging Scheme"
+[9]: /images/2017/lattice-20171213.svg "Feedback lattice"
+[10]: /images/2017/turbofan-20171213.svg "TurboFan"
+[11]: /images/2017/overview-20171213.svg "Generated assembly overview"
+[12]: /images/2017/deopt-20171213.png "deopt.png"

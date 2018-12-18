@@ -23,5 +23,4 @@ where <code>Name</code> is the name of your theme. Then tar up the stuff like th
 tar czvf Name.tar.gz Name
 ```
 
-Now users can simply install the theme by dragging the <code>.tar.gz</code> file from  a file manager and dropping it to the <code>balou</code> configure screen in the  settings manager.
-
+Now users can simply install the theme by dragging the <code>.tar.gz</code> file from a file manager and dropping it to the <code>balou</code> configure screen in the settings manager.

@@ -16,13 +16,11 @@ Before the conference the [YGLF crew](http://yglf.com.ua) wanted to learn more a
        alt="Interview with Benedikt Meurer">
 </figure>
 
-
 ## Benedikt Meurer
 
 Benedikt is a JavaScript compiler engineer who loves to tinker with different aspects of programming languages. He joined Google to work on the V8 JavaScript Engine, where he is working as tech lead for the Node.js performance team.
 
 His talk at [You Gotta Love Frontend Conference](http://yglf.com.ua) is [“Brave New World: Moving on to ES201X”](http://yglf.com.ua/schedule/#Benedikt-Meurer-25-14-00) as well as lightning talk [“JavaScript: The fairly odd parts”](http://yglf.com.ua/schedule/#Benedikt-Meurer-24-16-30).
-
 
 ## V8 has market dominance. Do you feel the lack of competition?
 
@@ -34,13 +32,11 @@ For example, both Node and Electron are growing very fast, and there’s not rea
 
 Similarly React Native currently ships with JSC only, and that’s mostly because V8 doesn’t run on iOS, which is not a fundamental limitation.
 
-
 ## Do you have performance regression tests for each pull request/commit? How long does it take to run all tests on V8?
 
 We try to have correctness tests for each commit, but even that is often challenging, due to the various heuristics and different paths a single line of JavaScript code can take through V8.
 
 We have a set of agreed upon performance tests that run on each individual commit.
-
 
 ## Funny third question. You’re have this quote in your twitter bio: “Probably broke the web for you once or twice” — please tell us at least one story?
 
@@ -56,4 +52,4 @@ Meanwhile we tried to figure out from some crash dumps what was happening under 
 
 One of my colleagues, [Toon Verwaest](https://twitter.com/tverwaes), one of the V8 gurus spend about a week auditing every single line of code that deals with `Array`s and he found and fixed a couple of unrelated bugs along the lines.
 
-Turned out that we had recently enabled TurboFan for some weird language constructs that Crankshaft couldn’t handle, and one of the functions in the YouTube update actually used TurboFan sometimes. And in that function there was a call to the `Array` constructor, which I recently added to TurboFan. And that was missing a single line which marked the resulting array as *holey* ( i.e. not packed). And so [V8](https://v8.dev) was using this array without doing proper hole checks on it.
+Turned out that we had recently enabled TurboFan for some weird language constructs that Crankshaft couldn’t handle, and one of the functions in the YouTube update actually used TurboFan sometimes. And in that function there was a call to the `Array` constructor, which I recently added to TurboFan. And that was missing a single line which marked the resulting array as _holey_ ( i.e. not packed). And so [V8](https://v8.dev) was using this array without doing proper hole checks on it.

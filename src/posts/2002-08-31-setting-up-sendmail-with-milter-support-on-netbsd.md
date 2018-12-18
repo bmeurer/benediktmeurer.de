@@ -7,9 +7,9 @@ Note that if you are using NetBSD 1.6T or better, the
 system sendmail already supports the Milter library. And pkgsrc
 supports sendmail installation (for 8.12.x, 8.12.9 at this
 moment) linked with Milter library. See mail/libmilter and
-mail/sendmail (use <code>make USE_MILTER=yes</code> command to
+mail/sendmail (use <code>make USE*MILTER=yes</code> command to
 build the last one).
-*(Thanks to Mishka for pointing this out)*
+*(Thanks to Mishka for pointing this out)\_
 
 This is a posting from <a href="mailto:mishka@batraq.anything3d.com">Mishka</a>
 to comp.unix.bsd.netbsd.misc on getting sendmail to work with libmilter using the <a

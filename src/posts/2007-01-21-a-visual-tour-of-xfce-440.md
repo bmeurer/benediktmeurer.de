@@ -8,7 +8,6 @@ As of today, the long awaited version 4.4.0 of the Xfce Desktop Environment is f
 available. I will try to highlight some of the new features which have been added since
 the last stable release.
 
-
 ## Desktop Icons
 
 One of the most often requested features during the 4.0 and 4.2 was support for icons
@@ -28,7 +27,6 @@ desktop.
 <b>Xfdesktop</b> also continues to provide access to the applications menu, as it did in
 the previous Xfce releases.
 
-
 ## File Manager
 
 The desktop icon support goes hand in hand with the new file manager <a
@@ -47,7 +45,6 @@ users to rename multiple files at once using a certain criterion.
 
 <center><img src="/images/2007/xfce44-thunar-bulk-rename.png" alt="Thunar Bulk Rename" /></center>
 
-
 ## Removable Drives and Media
 
 Xfce 4.4.0 provides easy access to data on removable drives and media. Just insert the media
@@ -62,7 +59,6 @@ href="http://freedesktop.org/wiki/Software_2fhal">HAL</a> and is therefore only 
 Linux 2.6.x and FreeBSD 6.x and above at the time of this writing (there is limited removable
 media support for FreeBSD 4.x and 5.x which does not require HAL).
 
-
 ## Text Editor
 
 The new text editor <b>MousePad</b> is included with this release. <b>MousePad</b> provides all
@@ -72,7 +68,6 @@ the basic editor functionality, nothing more, nothing less.
 
 You can think of <b>MousePad</b> as the equivalent to <b>NotePad</b> on Windows. It starts up
 very fast, usually in less than one second, even on older systems.
-
 
 ## Window Manager
 
@@ -97,7 +92,6 @@ Further on support for multiple image formats for window decoration themes was a
 
 Advanced controls for the window manager were also added, allowing thorough tweaking of window
 behavior.
-
 
 ## Panel
 
@@ -127,7 +121,6 @@ Goodies Project</a>, have been updated for the new panel, and several new plugin
 For example, the brand new <b>xfce4-xfapplet-plugin</b> allows users to add GNOME panel applets
 to the Xfce panel.
 
-
 ## Time Management
 
 The new time management application <b>Orage</b> replaces the <b>Xfcalendar</b>, which was
@@ -142,7 +135,6 @@ found in larger calendar applications like <b>Outlook</b> or <b>Evolution</b>. W
 <b>Orage</b> is based on <code>ical</code> and therefore compatible with other calendar
 applications.
 
-
 ## Terminal Emulator
 
 While <b>Terminal</b> was already available during the 4.2 days, it was not mature enough at
@@ -155,7 +147,6 @@ additional features, like multiple tabs per window, customizable toolbars and th
 to configure nearly every aspect of the application via <i>hidden options</i>. As can be
 seen in the screenshot above, this release also supports real transparency using <b>Xfwm4</b>'s
 integrated composition manager.
-
 
 ## Printing
 
@@ -176,7 +167,6 @@ internal workings of the printing support were improved, especially the <code>CU
 support. Besides that, the printing management functionality was moved to a library, so other
 applications can use the API to access the printer configuration.
 
-
 ## Autostart
 
 Xfce 4.4.0 implements the new <a
@@ -192,7 +182,6 @@ Mount</i> which is implemented in <a
 href="http://foo-projects.org/~benny/projects/thunar-volman/index.html">thunar-volman</a>.
 This release also includes the <b>xfce4-autostart-editor</b>, shown in the screenshot above,
 which allows users to easily add, remove or disable autostarted applications.
-
 
 ## Settings
 
@@ -213,6 +202,3 @@ And then there was the problem with the keyboard shortcuts in Xfce 4.2... Xfce 4
 the number of freely available keyboard shortcuts, while people wanted to assign any number
 of keyboard shortcuts. With Xfce 4.4 this limitation is history and the application shortcuts
 are now separated from the window manager shortcuts.
-
-
-

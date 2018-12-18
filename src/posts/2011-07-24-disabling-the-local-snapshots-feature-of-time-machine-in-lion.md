@@ -12,4 +12,3 @@ sudo tmutil disablelocal
 ```
 
 Note that it might take some time for Time Machine to cleanup the <code>/.MobileBackups</code> folder.
-

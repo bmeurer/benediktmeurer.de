@@ -13,4 +13,3 @@ contains the three XPI files in the browser and click on the files to
 install them, in the following order: The IPC module, the enigmime
 package and finally the enigmail package. Finally start Mozilla and
 configure enigmail as mentioned on the [EnigMail](http://enigmail.mozdev.org) website.
-

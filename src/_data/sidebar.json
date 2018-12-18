@@ -1,43 +1,44 @@
 {
   "items": [
-  {
-    "title": "Home",
-    "icon": "home",
-    "url": "/"
-  },
-  {
-    "title": "About",
-    "icon": "about",
-    "url": "/about/"
-  },
-  {
-    "title": "Projects",
-    "icon": "projects",
-    "url": "/projects/"
-  },
-  {
-    "title": "Publications",
-    "icon": "publications",
-    "url": "/publications/"
-  },
-  {
-    "title": "Archive",
-    "icon": "archive",
-    "url": "/archive/"
-  },
-  {
-    "title": "Tags",
-    "icon": "tags",
-    "url": "/tags/"
-  },
-  {
-    "title": "Twitter",
-    "icon": "twitter",
-    "url": "https://twitter.com/bmeurer"
-  },
-  {
-    "title": "GitHub",
-    "icon": "github",
-    "url": "https://github.com/bmeurer"
-  }
-]}
+    {
+      "title": "Home",
+      "icon": "home",
+      "url": "/"
+    },
+    {
+      "title": "About",
+      "icon": "about",
+      "url": "/about/"
+    },
+    {
+      "title": "Projects",
+      "icon": "projects",
+      "url": "/projects/"
+    },
+    {
+      "title": "Publications",
+      "icon": "publications",
+      "url": "/publications/"
+    },
+    {
+      "title": "Archive",
+      "icon": "archive",
+      "url": "/archive/"
+    },
+    {
+      "title": "Tags",
+      "icon": "tags",
+      "url": "/tags/"
+    },
+    {
+      "title": "Twitter",
+      "icon": "twitter",
+      "url": "https://twitter.com/bmeurer"
+    },
+    {
+      "title": "GitHub",
+      "icon": "github",
+      "url": "https://github.com/bmeurer"
+    }
+  ]
+}

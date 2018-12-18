@@ -20,7 +20,7 @@ cd MacPorts/ports
 sudo vim /opt/local/etc/macports/sources.conf
 ```
 
-Add a new line to the file *before* the line with the `[default]` tag
+Add a new line to the file _before_ the line with the `[default]` tag
 
 ```
 file:///path/to/MacPorts/ports [nosync]

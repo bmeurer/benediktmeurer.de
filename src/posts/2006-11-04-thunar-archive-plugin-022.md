@@ -11,4 +11,3 @@ Download: <http://developer.berlios.de/project/showfiles.php?group_id=910&releas
 Release notes: <http://developer.berlios.de/project/shownotes.php?release_id=11557>
 
 Website (with screenshots): <http://foo-projects.org/~benny/projects/thunar-archive-plugin/index.html>
-

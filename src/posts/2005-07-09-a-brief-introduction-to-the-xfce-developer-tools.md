@@ -15,7 +15,6 @@ As the name suggests, the Xfce Developer Tools are mainly useful for application
 developers to maintain their build environment. But users will also be required
 to install them if they plan to build software straight from CVS or SVN checkouts.
 
-
 ## Preparing the project
 
 In this section I will describe how to use the developer tools with your project.
@@ -94,7 +93,7 @@ macro and will point to the location where the translations are installed (e.g.
 <code>$(LIBXFCEGUI4_LIBS)</code> variables are set by the appropriate calls
 to <code>XDT_CHECK_OPTIONAL_PACKAGE()</code> and <code>XDT_CHECK_PACKAGE()</code>,
 which will be discussed below. Note that <code>$(DBUS_CFLAGS)</code> and
-<code>$(DBUS_LIBS)</code> will be empty if D-BUS was not found or disabled
+<code>\$(DBUS_LIBS)</code> will be empty if D-BUS was not found or disabled
 by the user.
 
 We also need to define <code>DBUS_API_SUBJECT_TO_CHANGE</code> because the D-BUS
@@ -196,7 +195,6 @@ macros here. If you are not familar with the basic autoconf and automake macros,
 you should have a look at the <a href="http://www.gnu.org/manual/manual.html">GNU
 manuals</a>.
 
-
 ### XDT_I18N(LINGUAS [, PACKAGE])
 
 This macro takes care of setting up everything for i18n support.
@@ -205,7 +203,6 @@ If <code>PACKAGE</code> isn't specified, it defaults to the package tarname; see
 the description of <code>AC_INIT()</code> for an explanation of what makes up
 the package tarname. Normally, you don't need to specify <code>PACKAGE</code>,
 but you can stick with the default.
-
 
 ### XDT_CHECK_PACKAGE(VARNAME, PACKAGE, VERSION [, ACTION-IF [, ACTION-IF-NOT]])
 
@@ -230,7 +227,6 @@ executed. If this parameter isn't specified, a diagnostic
 message will be printed and the configure script will
 be terminated with exit code 1.
 
-
 ### XDT_CHECK_OPTIONAL_PACKAGE(VARNAME, PACKAGE, VERSION, OPTIONNAME, HELPSTRING [, DEFAULT])
 
 Checks for an optional dependency on <code>PACKAGE</code> >= <code>VERSION</code>.
@@ -247,11 +243,10 @@ about this dependency.
 If the user chose to enable this dependency and the required package
 was found, this macro defines the variable <code>VARNAME_FOUND</code> and sets it
 to the string <code>"yes"</code>, in addition to the 4 variables set by
-<code>XDT_CHECK_PACKAGE()</code>.  But <code>VARNAME_FOUND</code> will not be marked
+<code>XDT_CHECK_PACKAGE()</code>. But <code>VARNAME_FOUND</code> will not be marked
 for substition. Furthermore, a C preprocessor define <code>HAVE_VARNAME</code> will be placed in
 <code>config.h</code> (or added to the cc command line, depending on your <code>configure.ac</code>
 content) and set to 1.
-
 
 ## First run
 
@@ -294,5 +289,3 @@ The source code for the sample project is available
 
 For more details on the internal workings and the other available macros, check the M4 files
 in the <code>m4macros/</code> subdirectory of the Xfce Developer Tools distribution.
-
-

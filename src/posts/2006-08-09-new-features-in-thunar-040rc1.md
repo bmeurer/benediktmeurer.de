@@ -4,7 +4,6 @@ title: New features in Thunar 0.4.0rc1
 tags: thunar
 ---
 
-
 About a month ago <a href="http://thunar.xfce.org/news.html#2006-07-09">Thunar 0.3.2beta2</a>
 was released as part of <a href="http://www.xfce.org/">Xfce</a>. Much has happened since that
 time, and we're nearly ready for the first release candidate of Xfce 4.4.0 now, which should
@@ -18,7 +17,6 @@ permits, but most probably not in time for 0.4.0rc1. The most interesting pendin
 is network support for Thunar, which will include atleast browsing Samba shares and connecting
 Samba shares (and probably other network file services as well) via smbfs or FUSE.
 
-
 ## Trash
 
 Probably the most notable change when starting Thunar after upgrading will be the addition (or
@@ -30,7 +28,7 @@ href="http://freedesktop.org/wiki/Standards_2ftrash_2dspec">Desktop Trash Can Sp
 
 So when you delete files now, they will not be lost forever, but instead will be moved to your
 trash can, and can be recovered easily by right-clicking on the file or folder and selecting
-<b><u>R</u>estore</b> from the context menu.  If the location from where the file or folder was
+<b><u>R</u>estore</b> from the context menu. If the location from where the file or folder was
 moved to the trash is no longer present you'll be ask whether to recreate the required folders
 in order to be able to restore the trashed resource.
 
@@ -53,7 +51,6 @@ Thunar and lets Thunar do all the hard work.
 It is expected that <code>xfdesktop</code> will also get a trash can for 4.4.0rc1, using the
 <code>org.xfce.Trash</code> interface as well. But that is still work in progress.
 
-
 ## Rubberband Selection
 
 With the addition of rubberband selection to <code>GtkTreeView</code> in GTK+ 2.10 it is finally
@@ -68,7 +65,6 @@ in the detailed list view by pressing the left mouse button on a not selected ro
 possible to start the rubberband selection in an empty area of the detailed list view and there's
 unfortunately no way to work-around this <code>GtkTreeView</code> bug, but hopefully this will
 be fixed in one of the next GTK+ releases).
-
 
 ## Creating Launchers the Easy Way
 
@@ -85,7 +81,6 @@ possible applications with that name or purpose will appear.
 Select the application you are looking for from the list of matching applications and all the
 required values are filled with the applications settings.
 
-
 ## Bugfixes and Improvements
 
 Of course this release will also include a bunch of bugfixes and improvements. For example when
@@ -101,7 +96,6 @@ File dates - the time of the last access and modification - are now displayed in
 readable format. The overall memory usage was again decreased by using the new slice allocator
 in GLib 2.10 and above where appropriate.
 
-
 ## How to contribute?
 
 Thunar - and other Xfce components as well - is still looking for contributions, may it be
@@ -110,9 +104,7 @@ href="http://thunar.xfce.org/contribute.html">Contribute to Thunar</a> page and 
 subscribe to the <a href="http://foo-projects.org/mailman/listinfo/thunar-dev">thunar-dev</a>
 mailinglist.
 
-
 ## Feedback
 
 Please send your feedback to the <a
 href="http://foo-projects.org/mailman/listinfo/thunar-dev">thunar-dev</a> mailinglist.
-

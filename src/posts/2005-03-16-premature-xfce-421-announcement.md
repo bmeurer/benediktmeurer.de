@@ -14,4 +14,3 @@ of release engineering seems to be preventing news sites from announcing release
 actually happen, in order to get a smooth release. This worked amazingly well with the Xfce
 4.2.0 release, but not before I mailed several news sites that they should not post anything
 until they get an official notice.
-

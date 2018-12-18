@@ -12,7 +12,7 @@ JavaScript, specifically [`Map`](https://developer.mozilla.org/en/docs/Web/JavaS
 [`Set`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Set)s (among others like
 [`WeakMap`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/WeakMap)s and
 [`WeakSet`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/WeakSet)s). These collections are
-iterable via the newly introduced *iteration protocol*, which means you can use them together with language constructs
+iterable via the newly introduced _iteration protocol_, which means you can use them together with language constructs
 like `for-of` and spreads.
 
 For example for `Set`s
@@ -35,8 +35,8 @@ Unfortunately these iterator objects - like the collections themselves - weren't
 V8 so far. In fact it was so bad, that [Brian Terlson](https://twitter.com/bterlson) complained to me about
 it, because he's using `Set`s to implement a custom regular expression engine (for the ECMAScript specification).
 He (rightfully) noted that Chrome and Node don't have any reasonably fast way to iterate `Set`s. So it was about
- time to change that. In order to understand what's slow and why, it's important to understand
-how *iteration* works. This is easiest to understand by looking at a very simple `for-of` loop:
+time to change that. In order to understand what's slow and why, it's important to understand
+how _iteration_ works. This is easiest to understand by looking at a very simple `for-of` loop:
 
 ```js
 function sum(iterable) {
@@ -56,7 +56,11 @@ function sum(iterable) {
   var _iteratorError = undefined;
 
   try {
-    for (var _iterator = iterable[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+    for (
+      var _iterator = iterable[Symbol.iterator](), _step;
+      !(_iteratorNormalCompletion = (_step = _iterator.next()).done);
+      _iteratorNormalCompletion = true
+    ) {
       var y = _step.value;
       x += y;
     }
@@ -99,10 +103,10 @@ function sum(iterable) {
 }
 ```
 
-*Side note: There's a great blog post [Iterables and iterators in ECMAScript 6](http://2ality.com/2015/02/es6-iteration.html)
+_Side note: There's a great blog post [Iterables and iterators in ECMAScript 6](http://2ality.com/2015/02/es6-iteration.html)
 and a whole section [Iterables and iterators](http://exploringjs.com/es6/ch_iteration.html) in the book "Exploring
 ES6" by [Axel Rauschmayer](https://twitter.com/rauschma), which provides a lot of background on the theory and the
-use of iterators. I highly recommend reading those resources.*
+use of iterators. I highly recommend reading those resources._
 
 The key to great performance for iteration is to make sure that the repeated calls to `iterator.next()` in the
 loop are optimized well, and ideally completely avoid the allocation of the `iterResult` using advanced compiler
@@ -211,19 +215,21 @@ Overall we improve the performance of `Map` and `Set` iteration by up to a facto
 I used the following simple micro-benchmark to measure the iteration overhead:
 
 ```js
-const s = new Set;
-const m = new Map;
+const s = new Set();
+const m = new Map();
 for (let i = 0; i < 1e7; ++i) {
   m.set(i, i);
   s.add(i);
 }
 
 function SetForOf() {
-  for (const x of s) {}
+  for (const x of s) {
+  }
 }
 
 function SetForOfEntries() {
-  for (const x of s.entries()) {}
+  for (const x of s.entries()) {
+  }
 }
 
 function SetForEach() {
@@ -231,15 +237,18 @@ function SetForEach() {
 }
 
 function MapForOf() {
-  for (const x of m) {}
+  for (const x of m) {
+  }
 }
 
 function MapForOfKeys() {
-  for (const x of m.keys()) {}
+  for (const x of m.keys()) {
+  }
 }
 
 function MapForOfValues() {
-  for (const x of m.values()) {}
+  for (const x of m.values()) {
+  }
 }
 
 function MapForEach() {
@@ -247,13 +256,13 @@ function MapForEach() {
 }
 
 const TESTS = [
-    SetForOf,
-    SetForOfEntries,
-    SetForEach,
-    MapForOf,
-    MapForOfKeys,
-    MapForOfValues,
-    MapForEach
+  SetForOf,
+  SetForOfEntries,
+  SetForEach,
+  MapForOf,
+  MapForOfKeys,
+  MapForOfValues,
+  MapForEach
 ];
 
 // Warmup.

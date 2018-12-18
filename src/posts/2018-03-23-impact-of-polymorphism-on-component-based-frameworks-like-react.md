@@ -21,7 +21,6 @@ monomorphism?](https://mrale.ph/blog/2015/01/11/whats-up-with-monomorphism.html)
 VMs in JavaScript - Inline Caches](https://mrale.ph/blog/2012/06/03/explaining-js-vms-in-js-inline-caches.html)
 by my colleague [Vyacheslav Egorov](https://twitter.com/mraleph).
 
-
 ## A motivating example
 
 So let's dive right in with a code example. Imagine you have a component-based framework like React and
@@ -31,12 +30,14 @@ simplified example of how this could look like:
 ```js
 // Base class for all components.
 class Component {
-  render() { return ''; }
+  render() {
+    return "";
+  }
 }
 
 class HelloComponent extends Component {
   render() {
-    return '<div>Hello</div>';
+    return "<div>Hello</div>";
   }
 }
 
@@ -47,13 +48,13 @@ class LinkComponent extends Component {
   }
 
   render() {
-    return '<a href="' + this.target + '">' + this.text + '</a>';
+    return '<a href="' + this.target + '">' + this.text + "</a>";
   }
 }
 
 class DOM {
   static renderAll(target, components) {
-    let html = '';
+    let html = "";
     for (const component of components) {
       html += component.render();
     }
@@ -63,9 +64,9 @@ class DOM {
 
 const components = [
   new HelloComponent(),
-  new LinkComponent('http://www.google.com', 'Search')
+  new LinkComponent("http://www.google.com", "Search")
 ];
-DOM.renderAll(document.getElementById('my-app'), components);
+DOM.renderAll(document.getElementById("my-app"), components);
 ```
 
 You call `DOM.renderAll` to render a collection of components to a part of the DOM. This is oversimplified
@@ -73,30 +74,35 @@ of course, but you get the concept. Also note that this code doesn't follow any 
 with HTML/DOM from JavaScript, so please don't take any inspiration here.
 
 The interesting code here is inside of `DOM.renderAll`, where we access the property `component.render` of different
-`component` shapes (in V8 speak we don't say *shape* but we use the term *map* or sometimes *hidden class*).
+`component` shapes (in V8 speak we don't say _shape_ but we use the term _map_ or sometimes _hidden class_).
 In this simple example we only have two different shapes of `component`: Either an instance of
 `HelloComponent` where `render` is found on the `HelloComponent.prototype`, or an instance of `LinkComponent` where
 `render` is found on the `LinkComponent.prototype`. So the property access `component.render` in `DOM.renderAll`
 will be 2-way polymorphic.
-
 
 ## Inline cache states
 
 Let's use a simplified example `components1.js` here to illustrate this:
 
 ```js
-class Base { foo() {} }
-class A extends Base { foo() { } }
-class B extends Base { foo() { } }
+class Base {
+  foo() {}
+}
+class A extends Base {
+  foo() {}
+}
+class B extends Base {
+  foo() {}
+}
 
 function bar(instance) {
   return instance.foo();
 }
 
-bar(new A);
-bar(new B);
-bar(new A);
-bar(new B);
+bar(new A());
+bar(new B());
+bar(new A());
+bar(new B());
 ```
 
 Running this with [`d8`](https://v8.dev/docs/d8) and the `--trace-ic` flag we can see that the
@@ -118,13 +124,13 @@ StoreInArrayLiteral: 0
 
 In V8 we have these five different states for `LoadIC`s right now:
 
-Marker | Name             | Description
--------|------------------|-------------
-`0`    | `UNINITIALIZED`  | The property access was not executed so far.
-`.`    | `PREMONOMORPHIC` | The property access was executed once and we are likely going to go `MONOMORPHIC` on the next hit.
-`1`    | `MONOMORPHIC`    | The property access was always executed with the same shape.
-`P`    | `POLYMORPHIC`    | The property access was always executed with one of four different shapes.
-`N`    | `MEGAMORPHIC`    | The property access has seen too many different shapes.
+| Marker | Name             | Description                                                                                        |
+| ------ | ---------------- | -------------------------------------------------------------------------------------------------- |
+| `0`    | `UNINITIALIZED`  | The property access was not executed so far.                                                       |
+| `.`    | `PREMONOMORPHIC` | The property access was executed once and we are likely going to go `MONOMORPHIC` on the next hit. |
+| `1`    | `MONOMORPHIC`    | The property access was always executed with the same shape.                                       |
+| `P`    | `POLYMORPHIC`    | The property access was always executed with one of four different shapes.                         |
+| `N`    | `MEGAMORPHIC`    | The property access has seen too many different shapes.                                            |
 
 The initial `0->.` transition is not shown with `--trace-ic` currently, because V8 does that internally on the fast
 path where no logging is hooked up right now. In the example above we run through `instance.foo` with two different
@@ -133,27 +139,39 @@ shapes for `instance`, either an instance of `A` with `foo` on `A.prototype`, or
 Let's beef up the example a bit and add more than four different shapes like shown in `components2.js` below:
 
 ```js
-class Base { foo() {} }
-class A extends Base { foo() { } }
-class B extends Base { foo() { } }
-class C extends Base { foo() { } }
-class D extends Base { foo() { } }
-class E extends Base { foo() { } }
+class Base {
+  foo() {}
+}
+class A extends Base {
+  foo() {}
+}
+class B extends Base {
+  foo() {}
+}
+class C extends Base {
+  foo() {}
+}
+class D extends Base {
+  foo() {}
+}
+class E extends Base {
+  foo() {}
+}
 
 function bar(instance) {
   return instance.foo();
 }
 
-bar(new A);
-bar(new B);
-bar(new C);
-bar(new D);
-bar(new E);
-bar(new A);
-bar(new B);
-bar(new C);
-bar(new D);
-bar(new E);
+bar(new A());
+bar(new B());
+bar(new C());
+bar(new D());
+bar(new E());
+bar(new A());
+bar(new B());
+bar(new C());
+bar(new D());
+bar(new E());
 ```
 
 Running this through `d8` again with `--trace-ic` we see that we stay `POLYMORPHIC` for the first four shapes,
@@ -177,17 +195,16 @@ KeyedStore: 0
 StoreInArrayLiteral: 0
 ```
 
-The `MEGAMORPHIC` state is the *I don't know what to do about this* state of V8. Whenever a `LoadIC`
+The `MEGAMORPHIC` state is the _I don't know what to do about this_ state of V8. Whenever a `LoadIC`
 reaches the `MEGAMORPHIC` state, TurboFan will no longer be able to inline any fast-path for it (except for
 some corner cases where TurboFan can find information about the object somewhere else), and will have to go
 through the inline cache logic all the time instead. `MEGAMORPHIC` also indicates that the inline cache will
 no longer try to cache information about how to access the property locally (i.e. on the property access site),
-but instead fall back to a global cache (the so-called *megamorphic stub cache*).
-
+but instead fall back to a global cache (the so-called _megamorphic stub cache_).
 
 ## Scalability issues
 
-This *megamorphic stub cache* is a global cache of fixed size where all `MEGAMORPHIC` sites will try to cache the
+This _megamorphic stub cache_ is a global cache of fixed size where all `MEGAMORPHIC` sites will try to cache the
 lookup information for properties. This is important to understand, as especially for big applications that means
 you'll likely have a lot of contention on this resource. Highly polymorphic sites like `instance.foo` in the
 example above are prime candidates for contenders, and you'll only be affected by this non-local effect once you
@@ -205,12 +222,12 @@ function test(fn) {
 test(x => x);
 
 function makeNaive(klasses) {
-  const instances = klasses.map(klass => new klass);
+  const instances = klasses.map(klass => new klass());
   return function naive() {
     let result;
     for (const instance of instances) result = instance.foo();
     return result;
-  }
+  };
 }
 
 const DEGREES = [100, 300, 500, 700, 900];
@@ -218,10 +235,10 @@ const DEGREES = [100, 300, 500, 700, 900];
 for (const degree of DEGREES) {
   const KLASSES = [];
   for (let i = 0; i < degree; ++i) {
-    KLASSES.push(eval('(class C' + i + ' { foo() { }})'));
+    KLASSES.push(eval("(class C" + i + " { foo() { }})"));
   }
 
-  const TESTS = [ makeNaive(KLASSES) ];
+  const TESTS = [makeNaive(KLASSES)];
 
   for (var j = 0; j < TESTS.length; ++j) {
     test(TESTS[j]);
@@ -230,7 +247,7 @@ for (const degree of DEGREES) {
   for (var j = 0; j < TESTS.length; ++j) {
     var startTime = Date.now();
     test(TESTS[j]);
-    console.log(degree + ':', (Date.now() - startTime), 'ms.');
+    console.log(degree + ":", Date.now() - startTime, "ms.");
   }
 }
 ```
@@ -250,7 +267,6 @@ $ out/Release/d8 components3.js
 
 It actually scales very poorly since the VM spends more and more time missing on the global cache due to
 collisions. Notice especially the cliff when going from 300 different shapes to 500 different shapes.
-
 
 ## A potential solution
 
@@ -279,27 +295,27 @@ function test(fn) {
 test(x => x);
 
 function makeNaive(klasses) {
-  const instances = klasses.map(klass => new klass);
+  const instances = klasses.map(klass => new klass());
   return function naive() {
     let result;
     for (const instance of instances) result = instance.foo();
     return result;
-  }
+  };
 }
 
 function makeCall(klasses) {
   const pairs = klasses.map(klass => {
     const instance = new klass();
     const method = instance.foo;
-    return {instance, method};
+    return { instance, method };
   });
   return function call() {
     let result;
-    for (const {instance, method} of pairs) {
+    for (const { instance, method } of pairs) {
       result = method.call(instance);
     }
     return result;
-  }
+  };
 }
 
 function makeBound(klasses) {
@@ -311,7 +327,7 @@ function makeBound(klasses) {
     let result;
     for (const fn of fns) result = fn();
     return result;
-  }
+  };
 }
 
 const DEGREES = [100, 300, 500, 700, 900];
@@ -319,10 +335,10 @@ const DEGREES = [100, 300, 500, 700, 900];
 for (const degree of DEGREES) {
   const KLASSES = [];
   for (let i = 0; i < degree; ++i) {
-    KLASSES.push(eval('(class C' + i + ' { foo() { }})'));
+    KLASSES.push(eval("(class C" + i + " { foo() { }})"));
   }
 
-  const TESTS = [ makeBound(KLASSES), makeCall(KLASSES), makeNaive(KLASSES) ];
+  const TESTS = [makeBound(KLASSES), makeCall(KLASSES), makeNaive(KLASSES)];
 
   for (var j = 0; j < TESTS.length; ++j) {
     test(TESTS[j]);
@@ -332,7 +348,10 @@ for (const degree of DEGREES) {
     var startTime = Date.now();
     test(TESTS[j]);
     console.log(
-        degree + '|' + TESTS[j].name + ':', (Date.now() - startTime), 'ms.');
+      degree + "|" + TESTS[j].name + ":",
+      Date.now() - startTime,
+      "ms."
+    );
   }
 }
 ```
@@ -344,10 +363,9 @@ property accesses.
 
 So the takeaway here is that a high degree of polymorphism is not bad per se, but if you have a
 lot of `MEGAMORPHIC` property accesses on the critical path, then eventually your application is
-going to spend a lot of time fighting for entries in the *megamorphic stub cache* (at least with
+going to spend a lot of time fighting for entries in the _megamorphic stub cache_ (at least with
 how V8 works currently). For component-based systems there are ways to avoid this situation by
 preloading methods used in hot code later.
-
 
 ## Update
 
@@ -357,7 +375,6 @@ worked on this area of V8 a lot).
 
 ![Results for V8 6.7][2]
 
-
 ## Disclaimer
 
 For the vast majority of JavaScript code that is written today, the heuristics in the JavaScript
@@ -366,6 +383,5 @@ writing a framework like React, you may not need to worry about what's written i
 usual advice still applies, more than ever: Write idiomatic JavaScript, let the engine take care
 of the performance, optimize only when necessary and after careful profiling.
 
-
-  [1]: /images/2018/results66-20180323.svg "Results for V8 6.6"
-  [2]: /images/2018/results67-20180323.svg "Results for V8 6.7"
+[1]: /images/2018/results66-20180323.svg "Results for V8 6.6"
+[2]: /images/2018/results67-20180323.svg "Results for V8 6.7"

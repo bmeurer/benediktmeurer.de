@@ -27,18 +27,18 @@ var obj = {
   x: 1,
   y: 1,
   z: 1
-}
-var total = 0
+};
+var total = 0;
 for (var prop in obj) {
   if (obj.hasOwnProperty(prop)) {
-    total += obj[prop]
+    total += obj[prop];
   }
 }
 ```
 
 Note that in this particular case, the `Object#hasOwnProperty` guard is not used properly, because the lookup happens on the `obj` itself,
 which leads to potential performance issues, i.e. if you pass many different shapes of objects then the `obj.hasOwnProperty` access will
-become *megamorphic*, but might also turn into a correctness issue, i.e.  if `obj` has a `null` prototype because `obj` was created
+become _megamorphic_, but might also turn into a correctness issue, i.e. if `obj` has a `null` prototype because `obj` was created
 via `Object.create(null)`, then the expression `obj.hasOwnProperty` will raise an error. So make sure to always follow the [advice
 to write `Object.prototype.hasOwnProperty.call(obj, prop)`](https://eslint.org/docs/rules/guard-for-in) instead, which is safe and
 avoids the potential negative performance impact:
@@ -48,11 +48,11 @@ var obj = {
   x: 1,
   y: 1,
   z: 1
-}
-var total = 0
+};
+var total = 0;
 for (var prop in obj) {
   if (Object.prototype.hasOwnProperty.call(obj, prop)) {
-    total += obj[prop]
+    total += obj[prop];
   }
 }
 ```
@@ -93,24 +93,24 @@ things like proxies):
   beginning of the loop, and the key passed to the call must be the current enumerated property name. This is correct,
   because fast mode `for..in` loops iterate only enumerable properties on the receiver itself.
 - A property access `object[key]` inside such a loop was turned into an `HLoadFieldByIndex` instruction,
-  using the known index of the value for `key` inside the `object`. This additional *enum cache indices* table
-  is precomputed as part of the [*enum cache* setup](https://v8.dev/blog/fast-for-in).
+  using the known index of the value for `key` inside the `object`. This additional _enum cache indices_ table
+  is precomputed as part of the [_enum cache_ setup](https://v8.dev/blog/fast-for-in).
 
 [![Enum cache structure](/images/2017/enum-cache-20170907.png)](https://v8.dev/blog/fast-for-in)
 
-While the *keys* in the *Enum Cache* contain the (String) names of the properties in enumeration order,
-the *indices* contain the location of the property values in the object (in the same order). But the *indices*
+While the _keys_ in the _Enum Cache_ contain the (String) names of the properties in enumeration order,
+the _indices_ contain the location of the property values in the object (in the same order). But the _indices_
 aren't always available, since not all property values are stored directly on the object (i.e. accessor
-properties don't have a value, but rather specify a getter function). So even if an *Enum Cache* with *keys*
-is available, the *indices* might not be available.
+properties don't have a value, but rather specify a getter function). So even if an _Enum Cache_ with _keys_
+is available, the _indices_ might not be available.
 
 We didn't port this to Ignition and TurboFan initially, because there was a rather serious deoptimization loop hidden
 in this approach, which affected real world applications pretty badly, i.e. in many React applications one of the hottest
 functions would just run into this deoptimization loop, and eventually after some ping pong between optimized and unoptimized
 code wouldn't be optimized at all anymore.
 
-So [some refactoring](https://chromium-review.googlesource.com/c/v8/v8/+/641030) of the *enum cache* was necessary to
-make sure that TurboFan is able to tell whether it's safe to assume that *enum cache indices* are available, and it
+So [some refactoring](https://chromium-review.googlesource.com/c/v8/v8/+/641030) of the _enum cache_ was necessary to
+make sure that TurboFan is able to tell whether it's safe to assume that _enum cache indices_ are available, and it
 wouldn't run into the same deoptimization loop that was hurting Crankshaft. And finally we had to port the [constant-folding
 of `Object.prototype.hasOwnProperty.call(object, key)`](https://chromium-review.googlesource.com/636964) and the [strength
 reduction of `object[key]`](https://chromium-review.googlesource.com/645949) inside `for (var key in object) {...}` loops.
@@ -137,7 +137,7 @@ performance individually. These are split into six individual test cases, includ
 in the [nearForm blog post](https://www.nearform.com/blog/node-js-is-getting-a-new-v8-with-turbofan).
 
 ```js
-if (typeof console === 'undefined') console = {log:print};
+if (typeof console === "undefined") console = { log: print };
 
 function forIn(o) {
   var result = 0;
@@ -186,7 +186,7 @@ function forInSumSafe(o) {
 }
 
 function forInNearForm() {
-  var o = {x:1, y:1, z:1};
+  var o = { x: 1, y: 1, z: 1 };
   var result = 0;
   for (var i in o) {
     if (o.hasOwnProperty(i)) {
@@ -204,7 +204,7 @@ var TESTS = [
   forInSumSafe,
   forInNearForm
 ];
-var o = {w:0, x:1, y:2, z:3};
+var o = { w: 0, x: 1, y: 2, z: 3 };
 var n = 1e8;
 
 function test(fn) {
@@ -220,7 +220,7 @@ for (var j = 0; j < TESTS.length; ++j) {
 for (var j = 0; j < TESTS.length; ++j) {
   var startTime = Date.now();
   test(TESTS[j]);
-  console.log(TESTS[j].name + ':', (Date.now() - startTime), 'ms.');
+  console.log(TESTS[j].name + ":", Date.now() - startTime, "ms.");
 }
 ```
 

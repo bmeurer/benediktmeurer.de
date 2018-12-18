@@ -29,7 +29,7 @@ The instructions for Chrome M58 (currently in the Beta channel) didn't change, I
 
 Turning on the new configuration by default uncovered a couple of issues that weren't known yet, so I was pretty busy helping to address those. But as far as I can tell, things look very promising now.
 
-End of last month I gave a presentation about [TurboFan: A new code generation architecture for V8](https://docs.google.com/presentation/d/1_eLlVzcj94_G4r9j9d_Lj5HRKFnq6jgpuPJtnmIBs88) at the [Munich Node.js User Group](http://www.mnug.de) meetup, talking a bit about things that will change with the new pipeline. Most importantly turning on the new pipeline greatly reduces overall complexity of V8, and makes it easier to port to new architectures, and what's even more important from a user's perspective, it completely eliminates the need to worry about so-called *optimization killers*, since TurboFan is able to handle every language construct. This doesn't mean that all of a sudden using a weird language construct like `with` is blazingly fast; but it means that the presence of one of these *optimization killers* in a function no longer disables the optimizing compiler completely for that particular function.
+End of last month I gave a presentation about [TurboFan: A new code generation architecture for V8](https://docs.google.com/presentation/d/1_eLlVzcj94_G4r9j9d_Lj5HRKFnq6jgpuPJtnmIBs88) at the [Munich Node.js User Group](http://www.mnug.de) meetup, talking a bit about things that will change with the new pipeline. Most importantly turning on the new pipeline greatly reduces overall complexity of V8, and makes it easier to port to new architectures, and what's even more important from a user's perspective, it completely eliminates the need to worry about so-called _optimization killers_, since TurboFan is able to handle every language construct. This doesn't mean that all of a sudden using a weird language construct like `with` is blazingly fast; but it means that the presence of one of these _optimization killers_ in a function no longer disables the optimizing compiler completely for that particular function.
 
 <figure>
   <a href="https://docs.google.com/presentation/d/1_eLlVzcj94_G4r9j9d_Lj5HRKFnq6jgpuPJtnmIBs88/edit#slide=id.g2134da681e_0_672">
@@ -45,7 +45,7 @@ End of last month I gave a presentation about [TurboFan: A new code generation a
 
 Probably the most important changes are fully optimizable `try`-`catch`/`try`-`finally` statements, generators and `async` functions, and of course you can now use `let` and `const` without the risk of hitting the infamous [Unsupported phi use of const or let variable](https://github.com/vhf/v8-bailout-reasons/issues/12) bailout.
 
-One interesting and somewhat surprising follow-up was the discussion triggered by the performance advice I gave on what I called *Declarative JavaScript* in my talk:
+One interesting and somewhat surprising follow-up was the discussion triggered by the performance advice I gave on what I called _Declarative JavaScript_ in my talk:
 
 <figure>
   <a href="https://twitter.com/michaelhaeu/status/845003383153025024">
@@ -59,7 +59,7 @@ Given infinite resources, V8 could generate better code for the right-hand side 
 
 But the reality is: V8 doesn't have infinite resources. In fact with more and more low-end Android devices entering the mobile web, and less and less traffic coming from high-end mobile devices or desktops, it seems that V8 (and Chrome) will have even fewer resources available in the future. Reducing overhead and optimizing less aggressively has helped a lot in the past two years to significantly improve the experience on mobile.
 
-I sometimes hear developers say that these startup issues don't matter to Node.js, and V8 shouldn't penalize what they call *server performance*, but then the next thing I hear is them complaining that TypeScript, UglifyJS, Webpack, Babel, etc. run way too slow. This also runs on V8 and also suffers a lot from overhead during warmup, or too aggressive optimizations leading to frequent deoptimizations. I've seen a lot of evidence that reducing over-optimization has helped server workloads significantly, as for example measured by the Node.js AcmeAir benchmark.
+I sometimes hear developers say that these startup issues don't matter to Node.js, and V8 shouldn't penalize what they call _server performance_, but then the next thing I hear is them complaining that TypeScript, UglifyJS, Webpack, Babel, etc. run way too slow. This also runs on V8 and also suffers a lot from overhead during warmup, or too aggressive optimizations leading to frequent deoptimizations. I've seen a lot of evidence that reducing over-optimization has helped server workloads significantly, as for example measured by the Node.js AcmeAir benchmark.
 
 <figure>
   <a href="https://twitter.com/bmeurer/status/834677090381348865">
@@ -115,7 +115,6 @@ function foo(a = "value", b = 4) {
 }
 ```
 
-This only replaces `undefined` values with defaults, which is sane. There's also an [interesting performance aspect](https://github.com/developit/preact/pull/610) to using `&&` and `||` in JavaScript. I'll see if I can do a series about writing *Explicit JavaScript* with focus on performance aspects from the VMs perspective, which might help to shed some light on this topic.
+This only replaces `undefined` values with defaults, which is sane. There's also an [interesting performance aspect](https://github.com/developit/preact/pull/610) to using `&&` and `||` in JavaScript. I'll see if I can do a series about writing _Explicit JavaScript_ with focus on performance aspects from the VMs perspective, which might help to shed some light on this topic.
 
 My usual disclaimer applies: I'm not a front-end engineer. I have different priorities than you might have, and there might be good reasons for you to ignore any kind of advice that I give here. That's perfectly fine. Also be careful with over-optimizing!
-

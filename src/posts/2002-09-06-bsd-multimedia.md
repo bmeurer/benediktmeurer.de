@@ -12,4 +12,3 @@ enjoying multimedia on its NetBSD machine.
 The [September Issue of Daemon News on-line E-zine](http://ezine.daemonnews.org/200209/) includes
 a small Q&A guide on [how to properly partition a disk for
 NetBSD](http://ezine.daemonnews.org/200209/diskpartnbsd.html) written by Grey Wolf.
-

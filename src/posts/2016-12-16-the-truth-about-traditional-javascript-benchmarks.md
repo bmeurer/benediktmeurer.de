@@ -7,7 +7,7 @@ tags:
   - benchmarks
 ---
 
-It is probably fair to say that [JavaScript](https://en.wikipedia.org/wiki/JavaScript) is *the most important technology* these days when it
+It is probably fair to say that [JavaScript](https://en.wikipedia.org/wiki/JavaScript) is _the most important technology_ these days when it
 comes to software engineering. To many of us who have been into programming languages, compilers and virtual machines for some time, this still
 comes a bit as a surprise, as JavaScript is neither very elegant from the language designers point of view, nor very optimizable from the compiler engineers
 point of view, nor does it have a great standard library.
@@ -23,7 +23,7 @@ Looking back in time, it seems the first JavaScript popularity boosts happened i
 was the time when JavaScript engines accomplished huge speed-ups on various different workloads, which probably changed the way that many
 people looked at JavaScript.
 
-Back in the days, these speed-ups were measured with what is now called *traditional JavaScript benchmarks*, starting with Apple's
+Back in the days, these speed-ups were measured with what is now called _traditional JavaScript benchmarks_, starting with Apple's
 [SunSpider benchmark](https://webkit.org/perf/sunspider/sunspider.html), the mother of all JavaScript micro-benchmarks, followed by
 Mozilla's [Kraken benchmark](http://krakenbenchmark.mozilla.org) and Google's V8 benchmark. Later the V8 benchmark was superseded by the
 [Octane benchmark](https://developers.google.com/octane) and Apple released its new [JetStream benchmark](http://browserbench.org/JetStream).
@@ -165,41 +165,41 @@ Looking closer reveals that this `eval` is executed exactly once, and is passed 
 objects with `tag` and `popularity` fields:
 
 ```js
-([
+[
   {
-    "tag": "titillation",
-    "popularity": 4294967296
+    tag: "titillation",
+    popularity: 4294967296
   },
   {
-    "tag": "foamless",
-    "popularity": 1257718401
+    tag: "foamless",
+    popularity: 1257718401
   },
   {
-    "tag": "snarler",
-    "popularity": 613166183
+    tag: "snarler",
+    popularity: 613166183
   },
   {
-    "tag": "multangularness",
-    "popularity": 368304452
+    tag: "multangularness",
+    popularity: 368304452
   },
   {
-    "tag": "Fesapo unventurous",
-    "popularity": 248026512
+    tag: "Fesapo unventurous",
+    popularity: 248026512
   },
   {
-    "tag": "esthesioblast",
-    "popularity": 179556755
+    tag: "esthesioblast",
+    popularity: 179556755
   },
   {
-    "tag": "echeneidoid",
-    "popularity": 136641578
+    tag: "echeneidoid",
+    popularity: 136641578
   },
   {
-    "tag": "embryoctony",
-    "popularity": 107852576
-  },
+    tag: "embryoctony",
+    popularity: 107852576
+  }
   /* ... */
-])
+];
 ```
 
 Obviously parsing these object literals, generating native code for it and then executing that code, comes at a high cost. It
@@ -271,8 +271,8 @@ and [`Math.cos`](https://tc39.github.io/ecma262/#sec-math.cos), 204 times each. 
 
 obviously. So, one thing you could do here to avoid
 recomputing the same sine and cosine values all the time is to cache the previously computed values, and in fact, that's
-what V8 used to do in the past, and other engines like SpiderMonkey still do. We removed the so-called *transcendental
-cache* from V8 because the overhead of the cache was noticable in actual workloads where you don't always compute the
+what V8 used to do in the past, and other engines like SpiderMonkey still do. We removed the so-called _transcendental
+cache_ from V8 because the overhead of the cache was noticable in actual workloads where you don't always compute the
 same values in a row, which is unsurprisingly very common in the wild.
 We took serious hits on the SunSpider benchmark when we removed this benchmark specific optimizations back in 2013 and 2014,
 but we totally believe that it doesn't make sense to optimize for a benchmark while at the same time penalizing the
@@ -314,7 +314,7 @@ doesn't trigger GC while running SunSpider.
 
 There are different tricks to accomplish this, none of which has any positive impact in real world as far as I can tell.
 V8 uses a rather simple trick: Since every SunSpider test is run in a new `<iframe>`, which corresponds
-to a new *native context* in V8 speak, we just detect rapid `<iframe>` creation and disposal (all SunSpider tests take
+to a new _native context_ in V8 speak, we just detect rapid `<iframe>` creation and disposal (all SunSpider tests take
 less than 50ms each), and in that case perform a garbage collection between the disposal and creation, to ensure that
 we never trigger a GC while actually running a test. This trick works pretty well, and in 99.9% of the cases doesn't
 clash with real uses; except every now and then, it can hit you hard if for whatever reason you do something that
@@ -326,7 +326,7 @@ that optimizing further for SunSpider above the threshold of good performance wi
 world. In fact the world would probably benefit a lot from not having SunSpider any more, as engines could drop
 weird hacks that are only useful for SunSpider and can even hurt real world use cases. Unfortunately SunSpider is
 still being used heavily by the (tech) press to compare what they think is browser performance, or even worse
-compare phones!  So there's a certain natural interest from phone makers and also from Android in general to have
+compare phones! So there's a certain natural interest from phone makers and also from Android in general to have
 Chrome look somewhat decent on SunSpider (and other nowadays meaningless benchmarks FWIW). The phone makers generate
 money by selling phones, so getting good reviews is crucial for the success of the phone division or even the whole
 company, and some of them even went as far as shipping old versions of V8 in their phones that had a higher score
@@ -422,7 +422,7 @@ $ ~/Projects/v8/out/Release/d8 --trace-ic audio-oscillator.js
 shows that the `BinaryOpIC` is picking up the proper constant feedback for the right hand side of the modulus, and properly
 tracks that the left hand side was always a small integer (a `Smi` in V8 speak), and we also always produced a small integer
 result. Looking at the generated code using `--print-opt-code --code-comments` quickly reveals that Crankshaft utilizes the
- feedback to generate an efficient code sequence for the integer modulus in `Oscillator.prototype.generate`:
+feedback to generate an efficient code sequence for the integer modulus in `Oscillator.prototype.generate`:
 
 ```
 [...SNIP...]
@@ -528,7 +528,7 @@ Time (audio-oscillator-once): 69 ms.
 The problem with benchmarks and over-specialization is that the benchmark can give you hints where to look and what to do,
 but it doesn't tell you how far you have to go and doesn't protect the optimization properly. For example, all JavaScript
 engines use benchmarks as a way to guard against performance regressions, but running Kraken for example wouldn't protect
-the general approach that we have in TurboFan, i.e. we could *degrade* the modulus optimization in TurboFan to the over-specialized
+the general approach that we have in TurboFan, i.e. we could _degrade_ the modulus optimization in TurboFan to the over-specialized
 version of Crankshaft and the benchmark wouldn't tell us that we regressed, because from the point of view of the benchmark
 it's fine! Now you could extend the benchmark, maybe in the same way that I did above, and try to cover everything with
 benchmarks, which is what engine implementors do to a certain extent, but that approach doesn't scale arbitrarily. Even
@@ -569,8 +569,8 @@ So, let's look into some concrete examples of benchmark gaming that is happening
 no longer reflected in real world. Note that even though this might sound a bit negative in retrospect, it's definitely not
 meant that way! As I said a couple of times already, Octane is an important chapter in the JavaScript performance story, and
 it played a very important role. All the optimizations that went into JavaScript engines driven by Octane in the past were
-added on good faith that Octane is a good proxy for real world performance! *Every age has its benchmark, and for every
-benchmark there comes a time when you have to let go!*
+added on good faith that Octane is a good proxy for real world performance! _Every age has its benchmark, and for every
+benchmark there comes a time when you have to let go!_
 
 That being said, let's get this show on the road and start by looking at the Box2D test, which is based on
 [Box2DWeb](https://github.com/hecht-software/box2dweb), a popular 2D physics engine originally written by Erin Catto, ported
@@ -581,34 +581,34 @@ bug and added the exploit in this case). There's a function `D.prototype.UpdateP
 
 ```js
 D.prototype.UpdatePairs = function(b) {
-    var e = this;
-    var f = e.m_pairCount = 0,
-        m;
-    for (f = 0; f < e.m_moveBuffer.length; ++f) {
-        m = e.m_moveBuffer[f];
-        var r = e.m_tree.GetFatAABB(m);
-        e.m_tree.Query(function(t) {
-                if (t == m) return true;
-                if (e.m_pairCount == e.m_pairBuffer.length) e.m_pairBuffer[e.m_pairCount] = new O;
-                var x = e.m_pairBuffer[e.m_pairCount];
-                x.proxyA = t < m ? t : m;
-                x.proxyB = t >= m ? t : m;
-                ++e.m_pairCount;
-                return true
-            },
-            r)
+  var e = this;
+  var f = (e.m_pairCount = 0),
+    m;
+  for (f = 0; f < e.m_moveBuffer.length; ++f) {
+    m = e.m_moveBuffer[f];
+    var r = e.m_tree.GetFatAABB(m);
+    e.m_tree.Query(function(t) {
+      if (t == m) return true;
+      if (e.m_pairCount == e.m_pairBuffer.length)
+        e.m_pairBuffer[e.m_pairCount] = new O();
+      var x = e.m_pairBuffer[e.m_pairCount];
+      x.proxyA = t < m ? t : m;
+      x.proxyB = t >= m ? t : m;
+      ++e.m_pairCount;
+      return true;
+    }, r);
+  }
+  for (f = e.m_moveBuffer.length = 0; f < e.m_pairCount; ) {
+    r = e.m_pairBuffer[f];
+    var s = e.m_tree.GetUserData(r.proxyA),
+      v = e.m_tree.GetUserData(r.proxyB);
+    b(s, v);
+    for (++f; f < e.m_pairCount; ) {
+      s = e.m_pairBuffer[f];
+      if (s.proxyA != r.proxyA || s.proxyB != r.proxyB) break;
+      ++f;
     }
-    for (f = e.m_moveBuffer.length = 0; f < e.m_pairCount;) {
-        r = e.m_pairBuffer[f];
-        var s = e.m_tree.GetUserData(r.proxyA),
-            v = e.m_tree.GetUserData(r.proxyB);
-        b(s, v);
-        for (++f; f < e.m_pairCount;) {
-            s = e.m_pairBuffer[f];
-            if (s.proxyA != r.proxyA || s.proxyB != r.proxyB) break;
-            ++f
-        }
-    }
+  }
 };
 ```
 
@@ -697,7 +697,7 @@ Score (Box2D): 55359
 ```
 
 So how did we do that? As it turned out we already had a mechanism for tracking the shape of objects that are being compared in the
-`CompareIC`, the so-called *known receiver* map tracking (where *map* is V8 speak for object shape+prototype), but that was limited
+`CompareIC`, the so-called _known receiver_ map tracking (where _map_ is V8 speak for object shape+prototype), but that was limited
 to abstract and strict equality comparisons. But I could easily extend the tracking to also collect the feedback for abstract
 relational comparison:
 
@@ -714,7 +714,7 @@ function we're looking at, it had only seen `RECEIVER`s so far (which is V8 spea
 same map `0x1d5a860493a1`, which corresponds to the map of `L` instances. So in optimized code, we can constant-fold these operations to
 `false` and `true` respectively as long as we know that both sides of the comparison are instances with the map `0x1d5a860493a1` and noone
 messed with `L`s prototype chain, i.e. the `Symbol.toPrimitive`, `"valueOf"` and `"toString"` methods are the default ones, and noone installed
-a `Symbol.toStringTag` accessor property. The rest of the story is *black voodoo magic* in Crankshaft, with a lot of cursing and initially
+a `Symbol.toStringTag` accessor property. The rest of the story is _black voodoo magic_ in Crankshaft, with a lot of cursing and initially
 forgetting to check `Symbol.toStringTag` properly:
 
 <a href="https://codereview.chromium.org/1355113002">
@@ -757,7 +757,7 @@ Mandreel contains a huge initialization function `global_init` that takes an inc
 generating baseline code for it. Since engines usually parse various functions in scripts multiple times, one so-called pre-parse step
 to discover functions inside the script, and then as the function is invoked for the first time a full parse step to actually generate
 baseline code (or bytecode) for the function. This is called
-[*lazy parsing*](https://docs.google.com/presentation/d/1214p4CFjsF-NY4z9in0GEcJtjbyVQgU0A-UqEvovzCs) in V8 speak. V8 has some
+[_lazy parsing_](https://docs.google.com/presentation/d/1214p4CFjsF-NY4z9in0GEcJtjbyVQgU0A-UqEvovzCs) in V8 speak. V8 has some
 heuristics in place to detect functions that are invoked immediately where pre-parsing is actually a waste of time, but that's not
 clear for the `global_init` function in the Mandreel benchmark, thus we'd would have an incredible long pause for pre-parsing +
 parsing + compiling the big function. So we [added an additional heuristic](https://codereview.chromium.org/1102523003) that would
@@ -879,10 +879,10 @@ $ out/Release/d8 --trace-gc --noallocation_site_pretenuring octane-splay.js
 
 So the key observation here is that allocating the splay tree nodes in old space directly would avoid essentially all the
 overhead of copying objects around and reduce the number of minor GC cycles to the bare minimum (thereby reducing the pauses
-caused by the GC). So we came up with a mechanism called [*Allocation Site Pretenuring*](https://research.google.com/pubs/pub43823.html)
+caused by the GC). So we came up with a mechanism called [_Allocation Site Pretenuring_](https://research.google.com/pubs/pub43823.html)
 that would try to dynamically gather feedback at allocation sites when run in baseline code to decide whether a certain
 percent of the objects allocated here survives, and if so instrument the optimized code to allocate objects in old space
-directly - i.e. *pretenure the objects*.
+directly - i.e. _pretenure the objects_.
 
 ```
 $ out/Release/d8 --trace-gc octane-splay.js
@@ -933,18 +933,18 @@ was big part of the story.
 The fundamental problem with allocation site pretenuring as we learned are factories, which are very common
 in applications today (mostly because of frameworks, but also for other reasons), and assuming that your object factory is initially
 used to create the long living objects that form your object model and the views, which transitions the allocation site in your factory
-method(s) to *tenured* state, and everything allocated from the factory immediately goes to old space. Now after the initial setup is
+method(s) to _tenured_ state, and everything allocated from the factory immediately goes to old space. Now after the initial setup is
 done, your application starts doing stuff, and as part of that, allocates temporary objects from the factory, that now start polluting
 old space, eventually leading to expensive major garbage collection cycles, and other negative side effects like triggering incremental
 marking way too early.
 
 So we started to reconsider the benchmark driven effort and started looking for real world driven solutions
 instead, which resulted in an effort called [Orinoco](http://v8project.blogspot.de/2016/04/jank-busters-part-two-orinoco.html) with the
-goal to incrementally improve the garbage collector; part of that effort is a project called *unified heap*, which will try to avoid
+goal to incrementally improve the garbage collector; part of that effort is a project called _unified heap_, which will try to avoid
 copying objects if almost everything in a page survives. I.e. on a high level: If new space is full of live objects, just mark all new
 space pages as belonging to old space now, and create a fresh new space from empty pages. This might not yield the same score on the
 SplayLatency benchmark, but it's a lot better for real world use cases and it automatically adapts to the concrete use case. We are
-also considering *concurrent marking* to offload the marking work to a separate thread and thus further reducing the negative impact of
+also considering _concurrent marking_ to offload the marking work to a separate thread and thus further reducing the negative impact of
 incremental marking on both latency and throughput.
 
 ### Another cuteness break
@@ -959,7 +959,7 @@ improvements turned out to be a bad idea later, and maybe I'll do that another d
 ## Conclusion
 
 I hope it should be clear by now why benchmarks are generally a good idea, but are only useful to a certain level, and once you
-cross the line of *useful competition*, you'll start wasting the time of your engineers or even start hurting your real world
+cross the line of _useful competition_, you'll start wasting the time of your engineers or even start hurting your real world
 performance! If we are serious about performance for the web, we need to start judging browser by real world performance and not
 their ability to game four year old benchmarks. We need to start educating the (tech) press, or failing that, at least ignore them.
 

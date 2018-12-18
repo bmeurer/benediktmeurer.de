@@ -44,4 +44,3 @@ maybe you should give NetBSD a try, but beware of making the wrong decision: Net
 features, you're better off not choosing NetBSD to run your computer!
 
 And last but not least: <a href="http://srom.zgp.org/">NetBSD rules</a> :-).
-

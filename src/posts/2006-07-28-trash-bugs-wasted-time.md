@@ -11,4 +11,3 @@ In other news, I wasted four hours hunting down <a href="http://bugzilla.gnome.o
 ## Update
 
 According to the responsible GTK+ maintainer that was an intentional break in the expected behavior of a <code>GtkTreeModel</code>. Of course, in a perfect world, toolkit maintainers would let application developers know of such breakage instead of waiting for other applications to crash... Thunar is now switched to the new behavior and will therefore work with GTK+ 2.10 again. Now we'll wait for the next crash. Maybe its worth the time porting Xfce to Qt; not that Qt is perfect, but atleast (if you have commercial support) you get useful comments about breakage in Qt that may cause trouble in applications.
-

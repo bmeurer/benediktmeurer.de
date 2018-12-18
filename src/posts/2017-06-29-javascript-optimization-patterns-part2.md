@@ -9,7 +9,7 @@ tags:
 
 Following up on [part one of this series](/2017/06/20/javascript-optimization-patterns-part1/) last week, here's another
 (hopefully interesting) episode about optimization patterns for JavaScript (based on my background working on the V8 engine
-for more than four years). This week we're going to look into an optimization called *Function Context Specialization*,
+for more than four years). This week we're going to look into an optimization called _Function Context Specialization_,
 that we introduced to V8 with TurboFan (other engines like JavaScriptCore implement similar optimizations).
 The name is a bit misleading. What it essentially does is to allow TurboFan to constant-fold certain values when
 generating optimized code, and it does that by specializing the generated machine code for a function to its surrounding
@@ -20,7 +20,9 @@ Consider the following simple code snippet:
 ```js
 const INCREMENT = 1;
 
-function incr(x) { return x + INCREMENT; }
+function incr(x) {
+  return x + INCREMENT;
+}
 ```
 
 Assume that we run this in on `<script>` level in Chrome (or on top-level in the `d8` shell), then we see the following
@@ -61,7 +63,9 @@ console.log(incr(5));
 
 const INCREMENT = 1;
 
-function incr(x) { return x + INCREMENT; }
+function incr(x) {
+  return x + INCREMENT;
+}
 ```
 
 And run it in the `d8` shell:
@@ -86,7 +90,9 @@ works if you put the call to `incr` last
 ```js
 const INCREMENT = 1;
 
-function incr(x) { return x + INCREMENT; }
+function incr(x) {
+  return x + INCREMENT;
+}
 
 console.log(incr(5));
 ```
@@ -154,7 +160,7 @@ in this case is only valid, because TurboFan knows that no one can change the va
 anymore once it's no longer `the_hole` (i.e. outside the TDZ). Actually it's not TurboFan that
 figures this out, but the Ignition interpreter forwards this information to TurboFan via the
 dedicated bytecode `LdaImmutableCurrentContextSlot` that we saw earlier, specifically it's
-the *immutable* bit in this bytecode that tells TurboFan that the context slot cannot change
+the _immutable_ bit in this bytecode that tells TurboFan that the context slot cannot change
 anymore once it contains a non-holey value. We can see the difference when we try the same
 example with `let`:
 
@@ -224,7 +230,7 @@ to load `INCREMENT` from the script context and check that it's not `the_hole` (
 offset 17 and 2f in the listing above does that).
 
 So in this sense, `const` is a performance feature, but only once it reaches the optimizing compiler
-and if the *Function Context Specialization* kicks in, which depends on a rather simple condition
+and if the _Function Context Specialization_ kicks in, which depends on a rather simple condition
 that might not be obvious: It's only enabled for the first closure of any function in a given native
 context (which is V8 speak for `<iframe>`). So what does that mean? In the examples above, there
 was always only a single closure of `incr`. But let's consider this simple counter-example `ex6.js`:
@@ -321,7 +327,7 @@ Frame size 0
 ```
 
 Ignition sticks an `LdaImmutableCurrentContextSlot` bytecode in there, because it's a `const`
-context slot, but *Function Context Specialization* only kicks in for the first closure. The
+context slot, but _Function Context Specialization_ only kicks in for the first closure. The
 second closure get's new optimized code, which is not specialized. The reason behind this is
 that if you have more than one closure per function we would like to share the code between
 different closure, as it would be a waste of resources - both time and memory - to generate
@@ -335,15 +341,15 @@ let b = a.map(x => x + 1);
 where you don't want to have the optimizing compiler run every time you execute this line
 just to generate a specialized code object for `x => x + 1`. So the rule here is simple:
 
-> You only get *Function Context Specialization* for the first closure of every function
+> You only get _Function Context Specialization_ for the first closure of every function
 > in any given `<iframe>` (native context in V8 speak).
 
 The native context part doesn't apply to Node as there you only have one native context,
 except when you use the `vm` module.
 
 Now considering that `class` is like `let`, i.e. it's a mutable binding (again for reasons
-that I don't want to buy), you don't necessarily benefit from *Function Context
-Specialization* when using classes. Let's consider `ex7.js`:
+that I don't want to buy), you don't necessarily benefit from _Function Context
+Specialization_ when using classes. Let's consider `ex7.js`:
 
 ```js
 class A {};

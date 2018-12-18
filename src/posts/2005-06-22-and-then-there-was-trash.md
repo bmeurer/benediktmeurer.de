@@ -9,4 +9,3 @@ The <code>ThunarFile</code> and <code>ThunarFolder</code> interfaces are now com
 <a href="/images/2005/thunar-trash-20050622.png"><img src="/images/2005/thunar-trash-20050622.png" width="90%" /></a>
 
 Diving into trashed directories isn't supported yet, but shouldn't be a problem with the current interfaces.
-

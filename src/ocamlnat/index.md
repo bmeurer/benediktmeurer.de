@@ -18,12 +18,10 @@ See below for download links and installation instructions.
 - Builtin [Findlib](http://projects.camlcity.org/projects/findlib.html) support, available via
   `#use "topfind";;` similar to the byte code toplevel.
 
-
 ## Download
 
 - 2011/11/11: [ocamlnat-0.1.1.tar.bz2](/files/source/ocamlnat-0.1.1.tar.bz2)
 - 2011/11/10: [ocamlnat-0.1.0.tar.bz2](/files/source/ocamlnat-0.1.0.tar.bz2)
-
 
 ## Installation
 
@@ -62,12 +60,9 @@ $ /usr/local/bin/ocamlnat
 
 You can use it as a drop-in replacement for the byte code toplevel `ocaml` in almost all cases, and enjoy a performance boost of up to **100x** (compared to the byte code toplevel), as detailed [here](/2011/09/14/ocamlnat-benchmark) and [here](http://arxiv.org/pdf/1110.1029).
 
-
 ## Publications
 
 - Marcell Fischbach and Benedikt Meurer. ["Towards a native toplevel for the OCaml language"](http://arxiv.org/abs/1110.1029). Computing Research Repository (CoRR), Programming Languages (cs.PL), Oct 2011.
-
-
 
 ## License
 

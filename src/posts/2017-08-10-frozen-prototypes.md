@@ -11,14 +11,14 @@ With the addition of [`Object.freeze`](https://developer.mozilla.org/en/docs/Web
 and [`Object.seal`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/seal) in
 [ECMAScript 5.1](http://www.ecma-international.org/ecma-262/5.1/), there's a way for developers to prevent
 various kinds of mutations to objects. For example, `Object.freeze` can be used to make an object essentially
-*immutable*.
+_immutable_.
 
 ```javascript
 "use strict";
-const obj = {a:"Hello", b:"World"};
+const obj = { a: "Hello", b: "World" };
 Object.freeze(obj);
-obj.a = "Hallo";  // Throws a TypeError
-obj.c = "!";      // Also throws a TypeError
+obj.a = "Hallo"; // Throws a TypeError
+obj.c = "!"; // Also throws a TypeError
 ```
 
 So from a developer's point of view this looks like a very useful way to guard against changes. And looking at
@@ -61,7 +61,7 @@ for (const test of TESTS) {
 Object.freeze(Array.prototype);
 
 for (const test of TESTS) {
-  const name = test.name + ' (frozen)';
+  const name = test.name + " (frozen)";
   console.time(name);
   a = test(a);
   console.timeEnd(name);

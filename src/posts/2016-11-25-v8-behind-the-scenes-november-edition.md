@@ -25,16 +25,16 @@ current progress on the ES2015 and beyond performance front.
 
 As those of you following the work on V8 somewhat closely have probably already figured out, we're finally starting to ship the new architecture
 for V8, which is based on the [Ignition interpreter](http://v8project.blogspot.de/2016/08/firing-up-ignition-interpreter.html) and the [TurboFan
-compiler](http://v8project.blogspot.de/2015/07/digging-into-turbofan-jit.html). You have probably also already spotted the *Chrome (Ignition)* and
-*Chrome (TurboFan, Ignition)* graphs on [arewefastyet](http://arewefastyet.com). These reflect two possible configurations, which are currently
+compiler](http://v8project.blogspot.de/2015/07/digging-into-turbofan-jit.html). You have probably also already spotted the _Chrome (Ignition)_ and
+_Chrome (TurboFan, Ignition)_ graphs on [arewefastyet](http://arewefastyet.com). These reflect two possible configurations, which are currently
 being evaluated:
 
-1. The *Chrome (Ignition)* aka `--ignition-staging` configuration, which adds the Ignition interpreter as a third tier in front of the existing compiler
+1. The _Chrome (Ignition)_ aka `--ignition-staging` configuration, which adds the Ignition interpreter as a third tier in front of the existing compiler
    architecture (i.e. in front of the fullcodegen baseline compiler, and the optimizating compilers TurboFan and Crankshaft), but with a direct tier up
    strategy from Ignition to TurboFan for features that Crankshaft cannot deal with (i.e. `try`-`catch`/-`finally`, `eval`, `for`-`of`, destructuring,
    `class` literals, etc.). This is a slight modification of the pipeline we had initially when [Ignition was announced earlier this
    year](http://v8project.blogspot.de/2016/08/firing-up-ignition-interpreter.html).
-2. The *Chrome (TurboFan, Ignition)* aka `--ignition-staging --turbo` configuration, where everything goes through Ignition and TurboFan only, and
+2. The _Chrome (TurboFan, Ignition)_ aka `--ignition-staging --turbo` configuration, where everything goes through Ignition and TurboFan only, and
    where both fullcodegen and Crankshaft are completely unused.
 
 In addition to that, [as of yesterday](https://codereview.chromium.org/2505933008) we are finally starting to pull the plug on fullcodegen for (modern)
@@ -87,7 +87,7 @@ generates pretty decent code, but TurboFan can generate even better code. For ex
 <center><img src="/images/2016/octane-navier-stokes-20161125.png" alt="Octane score (Navier Stokes)" /></center>
 
 So stay tuned, and expect to see a lot more Ignition and TurboFan in the wild. We're constantly working to improve TurboFan to catch up with
-Crankshaft even in the *old world* (i.e. on the traditional ES3/ES5 peak performance benchmarks). We already gave a few talks internally at
+Crankshaft even in the _old world_ (i.e. on the traditional ES3/ES5 peak performance benchmarks). We already gave a few talks internally at
 Google on TurboFan and TurboFan-related topics, i.e.
 
 - [An overview of the TurboFan compiler](https://docs.google.com/document/d/1VoYBhpDhJC4VlqMXCKvae-8IGuheBGxy32EOgC2LnT8)
@@ -148,7 +148,7 @@ on the most important line items since we started working on this in summer:
 This shows the improvements from V8 5.4 (which ships in current stable Chrome) to V8 5.6 (which will be in Chrome M56), with the additional constraint
 that I passed the `--turbo-escape` flag to V8, which unfortunately didn't make it into 5.6 because the TurboFan Escape Analysis was not considered
 ready for prime time (it's now on in ToT since [crrev.com/2512733003](https://codereview.chromium.org/2512733003)). The chart shows the percentage of
-improvements on the *ES5 to ES6* factor. There are still a couple of benchmarks left where we are not yet below **2x**, and we are actively working
+improvements on the _ES5 to ES6_ factor. There are still a couple of benchmarks left where we are not yet below **2x**, and we are actively working
 on those, and we hope that we will be able to offer a solid ES2015 experience (performance- and tooling-wise) for the next Node.js LTS release.
 
 ### A closer look at `instanceof`
@@ -160,7 +160,7 @@ other new language features, that might not be so obvious on first sight. One pa
 to fully optimize every feature from the beginning, and we had to make sure that we don't regress existing workloads and benchmarks just because
 of new ES2015 language features (which was still not possible 100% of the time, but nevertheless we managed to ship almost all of ES2015 by the
 end of last year without any major performance regressions). But especially the newly added well-known symbols caused some trouble there, as they
-are not local in the sense of *pay for what you use*, but are sort of global.
+are not local in the sense of _pay for what you use_, but are sort of global.
 
 <center><img src="/images/2016/instanceof-20161125.png" alt="InstanceofOperator EcmaScript specification" /></center>
 
@@ -180,7 +180,7 @@ function isA(o) { return o instanceof A; }
 
 would be slowed down a lot if you implement ES2015 naively, because in addition to the actual prototype chain walk that you need to perform
 for `instanceof`, you know also need to lookup the `@@hasInstance` property on `A`'s prototype first and call that method. To mitigate that
-problem we decided to go with a mechanism called a *protector cell* in the beginning, which allows certain parts of V8 to assume that a certain
+problem we decided to go with a mechanism called a _protector cell_ in the beginning, which allows certain parts of V8 to assume that a certain
 event didn't happen so far, so we don't need to perform certain checks. In this case the protector cell would guard against the addition of
 a property named `Symbol.hasInstance` anywhere in V8. Assuming that no one installed any other `@@hasInstance` function anywhere, we could just
 continue to always implement `instanceof` via OrdinaryHasInstance as long as the protector is intact.
@@ -197,7 +197,11 @@ For TurboFan, I did not only fix the regression, but also made it possible to op
 `Symbol.hasInstance` handlers, which makes it possible to (mis)use `instanceof` for rather crazy things like this
 
 ```js
-var Even = {[Symbol.hasInstance](x) { return x % 2 == 0; } }
+var Even = {
+  [Symbol.hasInstance](x) {
+    return x % 2 == 0;
+  }
+};
 
 function isEven(x) {
   return x instanceof Even;
@@ -248,7 +252,7 @@ of details that could be better about this code, but as mentioned above we're st
 ### The engineers behind all of this
 
 Last but not least, I'd like to highlight that all of this is only possible because we have so many great engineers working on this, and we are
-obviously standing on the [shoulders](https://twitter.com/mraleph) of [giants](https://en.wikipedia.org/wiki/Lars_Bak_(computer_programmer)).
+obviously standing on the [shoulders](https://twitter.com/mraleph) of [giants](<https://en.wikipedia.org/wiki/Lars_Bak_(computer_programmer)>).
 Here are the people currently working on features related to ES2015 and beyond for Node.js and Chrome:
 
 - [Adam Klein](mailto:adamk@chromium.org)

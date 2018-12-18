@@ -24,7 +24,7 @@ Before promises were part of the JavaScript language, callback-based APIs were c
 
 ```js
 function handler(done) {
-  validateParams((error) => {
+  validateParams(error => {
     if (error) return done(error);
     dbQuery((error, dbResults) => {
       if (error) return done(error);
@@ -72,19 +72,21 @@ With async functions, the code becomes more succinct, and the control and data f
 Another asynchronous paradigm that’s especially common in Node.js is that of [`ReadableStream`s](https://nodejs.org/api/stream.html#stream_readable_streams). Here’s an example:
 
 ```js
-const http = require('http');
+const http = require("http");
 
-http.createServer((req, res) => {
-  let body = '';
-  req.setEncoding('utf8');
-  req.on('data', (chunk) => {
-    body += chunk;
-  });
-  req.on('end', () => {
-    res.write(body);
-    res.end();
-  });
-}).listen(1337);
+http
+  .createServer((req, res) => {
+    let body = "";
+    req.setEncoding("utf8");
+    req.on("data", chunk => {
+      body += chunk;
+    });
+    req.on("end", () => {
+      res.write(body);
+      res.end();
+    });
+  })
+  .listen(1337);
 ```
 
 This code can be a little hard to follow: the incoming data is processed in chunks that are only accessible within callbacks, and the end-of-stream signaling happens inside a callback too. It’s easy to introduce bugs here when you don’t realize that the function terminates immediately and that the actual processing has to happen in the callbacks.
@@ -92,22 +94,24 @@ This code can be a little hard to follow: the incoming data is processed in chun
 Fortunately, a cool new ES2018 feature called [async iteration](http://2ality.com/2016/10/asynchronous-iteration.html) can simplify this code:
 
 ```js
-const http = require('http');
+const http = require("http");
 
-http.createServer(async (req, res) => {
-  try {
-    let body = '';
-    req.setEncoding('utf8');
-    for await (const chunk of req) {
-      body += chunk;
+http
+  .createServer(async (req, res) => {
+    try {
+      let body = "";
+      req.setEncoding("utf8");
+      for await (const chunk of req) {
+        body += chunk;
+      }
+      res.write(body);
+      res.end();
+    } catch {
+      res.statusCode = 500;
+      res.end();
     }
-    res.write(body);
-    res.end();
-  } catch {
-    res.statusCode = 500;
-    res.end();
-  }
-}).listen(1337);
+  })
+  .listen(1337);
 ```
 
 Instead of putting the logic that deals with the actual request processing into two different callbacks — the `'data'` and the `'end'` callback — we can now put everything into a single async function instead, and use the new `for await…of` loop to iterate over the chunks asynchronously. We also added a `try-catch` block to avoid the `unhandledRejection` problem[^1].
@@ -134,7 +138,7 @@ However, the above benchmarks are synthetic micro-benchmarks. The V8 team is mor
 
 ![http benchmark results](/images/2018/http-benchmarks-20181112.svg "http benchmark results")
 
-The above chart visualizes the performance of some popular HTTP middleware frameworks that make heavy use of promises and `async` functions. Note that this graph shows the number of  requests/second, so unlike the previous charts, higher is better. The performance of these frameworks improved significantly between Node.js 7 (V8 v5.5) and Node.js 10 (V8 v6.8).
+The above chart visualizes the performance of some popular HTTP middleware frameworks that make heavy use of promises and `async` functions. Note that this graph shows the number of requests/second, so unlike the previous charts, higher is better. The performance of these frameworks improved significantly between Node.js 7 (V8 v5.5) and Node.js 10 (V8 v6.8).
 
 These performance improvements are the result of three key achievements:
 
@@ -152,11 +156,11 @@ And last but not least, there was a handy bug in Node.js 8 that caused `await` t
 const p = Promise.resolve();
 
 (async () => {
-  await p; console.log('after:await');
+  await p;
+  console.log("after:await");
 })();
 
-p.then(() => console.log('tick:a'))
- .then(() => console.log('tick:b'));
+p.then(() => console.log("tick:a")).then(() => console.log("tick:b"));
 ```
 
 The above program creates a fulfilled promise `p`, and `await`s its result, but also chains two handlers onto it. In which order would you expect the `console.log` calls to execute?
@@ -177,7 +181,7 @@ On a high level there are _tasks_ and _microtasks_ in JavaScript. Tasks handle e
 
 ![The difference between microtasks and tasks](/images/2018/microtasks-vs-tasks-20181112.svg "The difference between microtasks and tasks")
 
-For more details, check out  Jake Archibald’s explanation of [tasks, microtasks, queues, and schedules in the browser](https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/). The task model in Node.js is very similar.
+For more details, check out Jake Archibald’s explanation of [tasks, microtasks, queues, and schedules in the browser](https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/). The task model in Node.js is very similar.
 
 ### Async functions
 
@@ -252,8 +256,7 @@ class Sleep {
   }
   then(resolve, reject) {
     const startTime = Date.now();
-    setTimeout(() => resolve(Date.now() - startTime),
-               this.timeout);
+    setTimeout(() => resolve(Date.now() - startTime), this.timeout);
   }
 }
 
@@ -292,7 +295,7 @@ Let’s go through the individual operations step by step. Assume that the thing
 
 ![await step 1](/images/2018/await-step-1-20181112.svg "await step 1")
 
-Then the engine creates another so-called `throwaway` promise. It’s called *throwaway* because nothing is ever chained to it — it’s completely internal to the engine. This `throwaway` promise is then chained onto the `promise`, with appropriate handlers to resume the async function. This `performPromiseThen` operation is essentially what [`Promise.prototype.then()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then) does, behind the scenes. Finally, execution of the async function is suspended, and control returns to the caller.
+Then the engine creates another so-called `throwaway` promise. It’s called _throwaway_ because nothing is ever chained to it — it’s completely internal to the engine. This `throwaway` promise is then chained onto the `promise`, with appropriate handlers to resume the async function. This `performPromiseThen` operation is essentially what [`Promise.prototype.then()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then) does, behind the scenes. Finally, execution of the async function is suspended, and control returns to the caller.
 
 ![await step 2](/images/2018/await-step-2-20181112.svg "await step 2")
 
@@ -314,7 +317,7 @@ Summarizing what we’ve learned, for each `await` the engine has to create **tw
 
 Let’s have a look at where this overhead comes from. The first line is responsible for creating the wrapper promise. The second line immediately resolves that wrapper promise with the `await`ed value `v`. These two lines are responsible for one additional promise plus two out of the three microticks. That’s quite expensive if `v` is already a promise (which is the common case, since applications normally `await` on promises). In the unlikely case that a developer `await`s on e.g. `42`, the engine still needs to wrap it into a promise.
 
-As it turns out, there’s already a  [`promiseResolve`](https://tc39.github.io/ecma262/#sec-promise-resolve) operation in the specification that only performs the wrapping when needed:
+As it turns out, there’s already a [`promiseResolve`](https://tc39.github.io/ecma262/#sec-promise-resolve) operation in the specification that only performs the wrapping when needed:
 
 ![Code improvements for await](/images/2018/await-code-comparison-20181112.svg "Code improvements for await")
 
@@ -354,7 +357,7 @@ Comparing `await` in Node.js 10 to the optimized `await` that’s likely going t
 
 ## Improved developer experience
 
-In addition to performance, JavaScript developers also care about the ability to diagnose and fix problems, which is not always easy when dealing with asynchronous code. [Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools) supports *async stack traces*, i.e. stack traces that not only include the current synchronous part of the stack, but also the asynchronous part:
+In addition to performance, JavaScript developers also care about the ability to diagnose and fix problems, which is not always easy when dealing with asynchronous code. [Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools) supports _async stack traces_, i.e. stack traces that not only include the current synchronous part of the stack, but also the asynchronous part:
 
 <figure>
   <img src="/images/2018/devtools-20181112.png" srcset="/images/2018/devtools-20181112@2x.png 2x" title="Async stack traces in Chrome DevTools" alt="Async Stack Traces in Chome DevTools">
@@ -362,7 +365,7 @@ In addition to performance, JavaScript developers also care about the ability to
 
 This is an incredibly useful feature during local development. However, this approach doesn’t really help you once the application is deployed. During post-mortem debugging, you’ll only see the `Error#stack` output in your log files, and that doesn’t tell you anything about the asynchronous parts.
 
-We’ve recently been working on [*zero-cost async stack traces*](https://bit.ly/v8-zero-cost-async-stack-traces) which enrich the `Error#stack` property with async function calls. “Zero-cost” sounds exciting, doesn’t it? How can it be zero-cost, when the Chrome DevTools feature comes with major overhead? Consider this example where `foo` calls `bar` asynchronously, and `bar` throws an exception after `await`ing a promise:
+We’ve recently been working on [_zero-cost async stack traces_](https://bit.ly/v8-zero-cost-async-stack-traces) which enrich the `Error#stack` property with async function calls. “Zero-cost” sounds exciting, doesn’t it? How can it be zero-cost, when the Chrome DevTools feature comes with major overhead? Consider this example where `foo` calls `bar` asynchronously, and `bar` throws an exception after `await`ing a promise:
 
 ```js
 async function foo() {
@@ -372,7 +375,7 @@ async function foo() {
 
 async function bar() {
   await Promise.resolve();
-  throw new Error('BEEP BEEP');
+  throw new Error("BEEP BEEP");
 }
 
 foo().catch(error => console.log(error.stack));
@@ -399,7 +402,7 @@ We made async functions faster thanks to two significant optimizations:
 - the removal of two extra microticks, and
 - the removal of the `throwaway` promise.
 
-On top of that, we’ve improved the developer experience via [*zero-cost async stack traces*](https://bit.ly/v8-zero-cost-async-stack-traces), which work with `await` in async functions and `Promise.all()`.
+On top of that, we’ve improved the developer experience via [_zero-cost async stack traces_](https://bit.ly/v8-zero-cost-async-stack-traces), which work with `await` in async functions and `Promise.all()`.
 
 And we also have some nice performance advice for JavaScript developers:
 

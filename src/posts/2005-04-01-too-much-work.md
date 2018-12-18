@@ -15,4 +15,3 @@ On the thunar front, there seems to be a lot of discussion concerning a differen
 A quick look at the <a href="http://www.osnews.com/story.php?news_id=10146">OSNews</a> poll tells me, that Thunar wins again with 11% (and 89 comments is quite a lot for an Xfce sub project, that did not release a single line of code). Besides that, when will people realize that it's <b>Xfce</b> not <b>XFce</b>? ;-)
 
 That's all for the day, my bed awaits me...
-

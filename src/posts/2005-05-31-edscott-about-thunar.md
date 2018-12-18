@@ -9,4 +9,3 @@ Edscott <a href="http://foo-projects.org/pipermail/thunar-dev/2005-May/000593.ht
 In the meantime, I worked on some ideas for the backend code (I'm still thinking to use GnomeVFS instead if this turns out to get too complicated, because there's no valid reason to reinvent a tricky wheel):
 
 <a href="/images/2005/ThunarVFS-usage-20050531.png"><img src="/images/2005/ThunarVFS-usage-20050531.png" width="90%" /></a>
-

@@ -4,7 +4,7 @@ title: Volume Manager
 tags: thunar
 ---
 
-After spending some time improving the ThunarVfsURI internals (handling schemes other than <code>file://</code>, performance improvements and the like), I took the time to refine the basic requirements for the volume manager. The volume manager provides core functionality required for the trash system to work (esp. since my current plan for 1.0 excludes trashing to the *"home trash"* as fallback).
+After spending some time improving the ThunarVfsURI internals (handling schemes other than <code>file://</code>, performance improvements and the like), I took the time to refine the basic requirements for the volume manager. The volume manager provides core functionality required for the trash system to work (esp. since my current plan for 1.0 excludes trashing to the _"home trash"_ as fallback).
 
 From the high-level view, the volume manager module looks pretty simple:
 
@@ -15,4 +15,3 @@ The main goal is to provide a small interface, to support many different backend
 The important work for now is to define an interface to the volume manager, that allows the trash system to query the list of active trash cans (and also get notified once a new trash can is online) and the favourites view to display the list of removable devices. The favourites view also requires the ability to mount and umount/eject devices.
 
 By the way, I'm looking for a term to describe the "eject/umount" action in the GUI. While "eject" is fine for CDs, it's simply wrong for other removable media types, such as floppies or usb sticks - imagine an USB slot with the ability to fire off usb sticks. ;-)
-

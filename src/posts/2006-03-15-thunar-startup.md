@@ -25,4 +25,3 @@ For the sake of completeness, here's the time it takes to completely open and di
 <center><a href="http://www.foo-projects.org/~benny/tmp/thunar-profile-startup/thunar-profile-startup3.png"><img src="http://www.foo-projects.org/~benny/tmp/thunar-profile-startup/thunar-profile-startup3.png" width="90%" /></a></center>
 
 1.3 seconds isn't that bad for a first unoptimized release. Still room for improvement, tho.
-

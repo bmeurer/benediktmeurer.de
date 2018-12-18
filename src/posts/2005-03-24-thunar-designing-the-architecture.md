@@ -15,4 +15,3 @@ The idea is to separate the user interface part from the data storage (where sto
 This design offers several advantages (yes, it looks obvious, but it's not; check other file managers and see for yourself): Adding different backends in the future or converting existing backends (e.g. move to D-VFS) will be very easy. Adding new views (like Column View or Tree View) will be very easy (version 1.0 should ship with List View and Icon View). The whole trash related functionality is implemented in one single place (except for the `trash_file()` function, but this function is more or less easy), which is a very good thing, since the trash spec is tricky and scattering the functionality over the source tree would surely become a maintaince problem over time.
 
 More detailed information about this idea can be found on the <a href="http://thunar.xfce.org/wiki/design:overview#the_main_view">Thunar Wiki</a>.
-

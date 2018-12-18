@@ -11,19 +11,16 @@ hide: true
 
 The [{{ page.github }} repository](https://github.com/{{site.github}}/{{page.github}}) serves as a playground for experimenting with new features and changes to the [OCaml](http://caml.inria.fr/ocaml) language and runtime, including a new [native code toplevel](http://arxiv.org/abs/1110.1029) `ocamlnat` and an implementation of the [linear scan register allocator](http://portal.acm.org/citation.cfm?id=330250) for the optimizing native code compiler `ocamlopt`.
 
-
 ## Native code toplevel
 
 We have developed a new [native code OCaml toplevel](/ocamlnat) `ocamlnat`, which is up to **100 times faster** than the byte code toplevel `ocaml`. It is based on the optimizing native code compiler, the native runtime and an earlier prototype by [Alain Frisch](http://alain.frisch.fr). It is build upon Just-In-Time techniques and currently supports Unix-like systems (i.e. Linux, BSD or Mac OS X) running on x86 or x86-64 processors. Support for additional architectures and operating systems is planned, but not yet available.
 
 The native code toplevel was moved to a new project [ocamlnat](/ocamlnat).
 
-
 ## Download
 
 - 2011/10/06: [ocaml-3.12.1+ocamlnatjit2.tar.bz2](/files/source/ocaml-3.12.1+ocamlnatjit2.tar.bz2)
 - 2011/09/18: [ocaml-3.12.1+ocamlnatjit1.tar.bz2](/files/source/ocaml-3.12.1+ocamlnatjit1.tar.bz2)
-
 
 ## Installation
 
@@ -70,12 +67,9 @@ $ /usr/local/bin/ocamlnat
 
 You can use it as a drop-in replacement for the byte code toplevel `ocaml` in almost all cases, and enjoy a performance boost of up to **100x** (compared to the byte code toplevel), as detailed [here](/2011/09/14/ocamlnat-benchmark) and [here](http://arxiv.org/pdf/1110.1029).
 
-
 ## Publications
 
 - Marcell Fischbach and Benedikt Meurer. ["Towards a native toplevel for the OCaml language"](http://arxiv.org/abs/1110.1029). Computing Research Repository (CoRR), Programming Languages (cs.PL), Oct 2011.
-
-
 
 ## License
 

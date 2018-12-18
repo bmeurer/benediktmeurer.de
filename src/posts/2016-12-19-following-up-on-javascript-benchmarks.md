@@ -34,8 +34,8 @@ We should change that. Speedometer is definitely not the ideal benchmark either,
 closer to real world web application patterns than anything we had before. There is an on-going effort to modernize Speedometer
 to also cover recent technologies ES2015, [TypeScript](https://www.typescriptlang.org) and [Webpack](https://webpack.js.org).
 
-I'd like to respond to some criticism that I got for pointing to Speedometer just because V8 cannot win the [*official Google
-benchmark*](https://developers.google.com/octane) any more: Despite what folks might believe I truly believe in benchmarks as
+I'd like to respond to some criticism that I got for pointing to Speedometer just because V8 cannot win the [_official Google
+benchmark_](https://developers.google.com/octane) any more: Despite what folks might believe I truly believe in benchmarks as
 ways to improve the web platform! Competition is key here. But competition has to reflect real improvements, so it's important
 to pick the benchmark based on real world applicability, which is honestly very hard to judge. And let's be completely open and
 honest here: Apple is clearly setting the bar high for everyone wrt. real world web performance! This is and will be a major

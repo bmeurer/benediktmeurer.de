@@ -9,10 +9,9 @@ hide: true
 
 git-hooks provides a simple mechanism to manage hooks for several [Git](http://git-scm.com) repositories in a unified and simple way. It allows you to install hook scripts in a central location and use them for your Git repositories.
 
-
 ## Installation
 
-You need [CMake](http://www.cmake.org) and [GCC](http://gcc.gnu.org) in order to build and install git-hooks. You will also need to have [Git](http://git-scm.com) and [Perl](http://www.perl.org) installed for the hooks to work properly.  To build git-hooks run
+You need [CMake](http://www.cmake.org) and [GCC](http://gcc.gnu.org) in order to build and install git-hooks. You will also need to have [Git](http://git-scm.com) and [Perl](http://www.perl.org) installed for the hooks to work properly. To build git-hooks run
 
 ```
 cmake /path/to/git-hooks
@@ -27,7 +26,6 @@ make install
 
 to install git-hooks. This will install git-hooks to <code>/usr/local</code>. You can use ccmake to change the installation prefix. Below, we will assume that you installed git-hooks to <code>/usr/local</code>.
 
-
 ## Repository setup
 
 To setup a repository using git-hooks, just use the repository template that ships with git-hooks.
@@ -40,11 +38,9 @@ git --bare init --template=/usr/local/share/git-hooks/template ...
 
 This will setup the new repository <code>myrepo.git</code> with git-hooks. Check the sample config file that will be created for <code>myrepo.git</code>.
 
-
 ## Repository migration
 
 To migrate an existing repository to use git-hooks, you should first backup your existing hook scripts. Then replace the hooks with the ones from <code>/usr/local/share/git-hooks/template/hooks</code>. Afterwards, you should migrate your previous hook scripts to global hook scripts used by git-hooks.
-
 
 ## Configuration
 

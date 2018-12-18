@@ -5,7 +5,7 @@ tags: thoughts
 ---
 
 In the past couple of days there's been lots of discussions and ramblings around the so-called
-[*Google Manifesto*](http://gizmodo.com/exclusive-heres-the-full-10-page-anti-diversity-screed-1797564320),
+[_Google Manifesto_](http://gizmodo.com/exclusive-heres-the-full-10-page-anti-diversity-screed-1797564320),
 and what it means for the tech industry, and maybe the world as a whole. I **strongly and wholeheartedly
 disagree** with what's being said in that document, and I realize that not stating this publicly doesn't
 help anyone! I don't believe that inherent psychological or biological differences may explain why we don't

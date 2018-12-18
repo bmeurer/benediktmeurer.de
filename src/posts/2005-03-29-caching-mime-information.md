@@ -5,6 +5,7 @@ tags: thunar
 ---
 
 RedHat's Matthias Clasen came up with the idea of caching the MIME information provided by the Shared MIME database (the list of MIME type aliases, subclass information, the glob patterns, the magic patterns and the XML namespaces) in a mmapable file <a href="http://lists.freedesktop.org/archives/xdg/2005-March/006386.html">today</a>. With his attempt, there'll be one cache file (<code>mime.cache</code>) per <code>mime</code> directory, e.g. on most Linux systems, this will be
+
 <ul>   <li><code>/usr/local/share/mime/mime.cache</code></li>   <li><code>/usr/share/mime/mime.cache</code></li>   <li><code>~/.local/share/mime/mime.cache</code></li> </ul> while on for example FreeBSD, this will be
 <ul>   <li><code>/usr/X11R6/share/mime/mime.cache</code></li>   <li><code>/usr/local/share/mime/mime.cache</code></li>   <li><code>~/.local/share/mime/mime.cache</code></li> </ul> (both with default <code>$XDG_DATA_DIRS</code> settings). He also provides patches for both <code>xdgmime</code> (the MIME implementation used by <code>gtk+</code> and <code>gnome-vfs</code>) and <code>update-mime-database</code>.
 
@@ -13,4 +14,3 @@ The general idea is good, and the implementation looks good too. We should consi
 Anyways, it's nice to see some useful activity on the <code>xdg</code> mailinglist again, after all this <i>discuss it to death</i>-threads about D-VFS and gconf.
 
 <b>Edit:</b> Additional notes can be found in <a href="http://foo-projects.org/pipermail/thunar-dev/2005-March/000468.html">this mail</a>.
-

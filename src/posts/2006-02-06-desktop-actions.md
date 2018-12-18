@@ -9,4 +9,3 @@ I finally came around to fix some long standing issues with the internals of the
 <center><a href="/images/2006/desktop-actions.png"><img src="/images/2006/desktop-actions.png" width="310" /></a></center>
 
 In addition the <i>Open With</i> actions are now also available if more than one file is selected.
-

@@ -25,12 +25,11 @@ calls on the <code>/dev/lkm</code> device, but since all operations are handled 
 have to interact with <code>/dev/lkm</code> directly. Note, that you need to run a kernel compiled
 with the [LKM](http://netbsd.gw.com/cgi-bin/man-cgi?lkm+4+NetBSD-1.6) option in order to make use of LKMs.
 
-
 ## Writing the module
 
 I'd like to show you how to write a simple character device driver that does nothing but the simple job of
 calculating the [Fibonacci numbers](http://en.wikipedia.org/wiki/Fibonacci_number) (I'll therefore name
-the module <code>fibo.o</code> and let all the function's names begin with <code>fibo_</code>). The driver
+the module <code>fibo.o</code> and let all the function's names begin with <code>fibo\_</code>). The driver
 will provide 8 minor devices <code>/dev/fibo0</code> to <code>/dev/fibo7</code>.
 Each minor device offers the following functions:
 
@@ -118,7 +117,7 @@ is beyond the scope of this article.
 Each kernel module needs to have an entry point which is passed to
 [ld(1)](http://netbsd.gw.com/cgi-bin/man-cgi?ld+1+NetBSD-1.6) by modload when the module is linked. The
 default module entry point is named <code>xxxinit</code>. If <code>xxxinit</code> cannot be found, an
-attempt to use <code><i>modulename</i>_lkmentry</code> will be made, where <code><i>modulename</i></code>
+attempt to use <code><i>modulename</i>\_lkmentry</code> will be made, where <code><i>modulename</i></code>
 is the filename of the module being loaded without the <code>.o</code>. In general the entry function will
 consist entirely of a single <code>DISPATCH</code> line, with <code>DISPATCH</code> being a preprocessor
 macro defined in <code>sys/lkm.h</code> to handle loading, unloading and stating for us. So our
@@ -305,7 +304,6 @@ If you're familar with GNU/Linux device driver programming you might have notice
 instead we return <code>0</code> on success and the positive errno value on failure. Everything else is
 handled by the NetBSD kernel itself, so we do not need to care about.
 
-
 ## Loading the module
 
 Now that our device driver module is completed, we need a shell script that will be executed when the module
@@ -346,7 +344,6 @@ should present you output similar to this:
 Type    Id  Off Loadaddr Size Info     Rev Module Name
 DEV      0   29 dca4f000 0004 dca4f260   1 fibo
 ```
-
 
 ## Testing the module
 
@@ -392,5 +389,3 @@ A <code>tar</code> archive with the sources can be found
 <a href="https://github.com/bmeurer/fibo_drv/tarball/master">here</a>.
 I hope you like this small introduction to the NetBSD lkm system. If you have any questions or if you
 would like to give me some feedback, feel free to contact <a href="/about">me</a>.
-
-

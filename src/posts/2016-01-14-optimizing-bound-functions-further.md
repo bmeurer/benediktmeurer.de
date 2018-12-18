@@ -12,10 +12,10 @@ there's more potential for optimizing bound functions in [V8](https://developers
 thing here is to further reduce the overhead for calling into bound functions, which was traditionally very high.
 
 So what usually happens when you call a bound function is you push the receiver and all the arguments onto the machine stack and call into the
-[``Call`` builtin](https://github.com/v8/v8/blob/master/src/x64/builtins-x64.cc#L2241), which dispatches to the
-[``CallBoundFunction`` builtin](https://github.com/v8/v8/blob/master/src/x64/builtins-x64.cc#L2216) since we are attempting to call a bound function.
-The ``CallBoundFunction`` builtin then patches the receiver to the ``boundThis`` parameter of ``Function.prototype.bind``, pushes the additional arguments
-onto the stack (below the arguments that are already present), and transfers control to the ``targetFunction`` by tail calling back into the ``Call`` builtin
+[`Call` builtin](https://github.com/v8/v8/blob/master/src/x64/builtins-x64.cc#L2241), which dispatches to the
+[`CallBoundFunction` builtin](https://github.com/v8/v8/blob/master/src/x64/builtins-x64.cc#L2216) since we are attempting to call a bound function.
+The `CallBoundFunction` builtin then patches the receiver to the `boundThis` parameter of `Function.prototype.bind`, pushes the additional arguments
+onto the stack (below the arguments that are already present), and transfers control to the `targetFunction` by tail calling back into the `Call` builtin
 (these steps match the ECMAScript specification for [[[Call]] on Bound Function Exotic
 Objects](http://tc39.github.io/ecma262/#sec-bound-function-exotic-objects-call-thisargument-argumentslist)).
 
@@ -27,10 +27,13 @@ caller. So I just landed a [change](https://codereview.chromium.org/1581343002) 
 
 ```js
 "use strict";
-function foo(x, y, z) { return this + x + y + z }
+function foo(x, y, z) {
+  return this + x + y + z;
+}
 var foo1 = foo.bind(1, 0);
 var foo2 = foo.bind(2, 1);
-function test() {  // Performance test.
+function test() {
+  // Performance test.
   var sum = 0;
   const limit = 1000;
   for (var y = 0; y < limit; ++y) {
@@ -47,9 +50,9 @@ var endTime = Date.now();
 print("Time: " + (endTime - startTime) + "ms.");
 ```
 
-Looking at my ``Function.prototype.bind`` microbenchmark again, and running it with TurboFan (passing the ``--turbo`` flag to ``d8`` or via
-``--js-flags=--turbo`` to Chrome), the time goes down to 31ms, compared to the 240ms it takes with Crankshaft or 360ms with TurboFan before
+Looking at my `Function.prototype.bind` microbenchmark again, and running it with TurboFan (passing the `--turbo` flag to `d8` or via
+`--js-flags=--turbo` to Chrome), the time goes down to 31ms, compared to the 240ms it takes with Crankshaft or 360ms with TurboFan before
 my change. That's roughly another **12x improvement** compared to baseline TurboFan or **8x improvement** compared to Crankshaft (our current
-shipping configuration). So that'll be an overall **400x-600x improvement** compared to before we started looking into ``Function.prototype.bind``
+shipping configuration). So that'll be an overall **400x-600x improvement** compared to before we started looking into `Function.prototype.bind`
 once we ship TurboFan by default (I was actually looking into also making this available in Crankshaft, but the inlining machinery in Crankshaft
 is extremely brittle and the plan is to replace Crankshaft anyway this year).

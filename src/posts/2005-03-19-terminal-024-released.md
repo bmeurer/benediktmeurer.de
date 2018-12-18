@@ -13,4 +13,3 @@ So I finally released the next version of <a href="http://terminal.os-cillation.
 This was about the most often requested feature. Several other changes have been made to improve Terminal. See the <a href="http://developer.berlios.de/project/shownotes.php?release_id=5079">Release Notes</a> for a complete list of user visible changes.
 
 With this new release we're close to a 1.0 release, I think there'll be 0.2.6 and 0.2.8/0.3.0 before we jump to 1.0 though, as we've still some unresolved issues.
-

@@ -14,4 +14,3 @@ This one was requested quite often lately, so here's a quick&dirty hack to make 
 </ul>
 
 Anybody willing to create a clean patch for VTE (requires quite a lot of changes, but doable)?
-

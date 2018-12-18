@@ -14,7 +14,7 @@ i.e. code like this
 ```js
 import foo from "module";
 
-foo(1, 2);  // <- called without this (undefined/global object)
+foo(1, 2); // <- called without this (undefined/global object)
 ```
 
 is turned into the following bundled code:
@@ -67,15 +67,14 @@ function callViaIdentity(o) {
   return identity(o.foo)(1, 2, 3);
 }
 
-var TESTS = [
-    callDirect,
-    callViaObject,
-    callViaCall,
-    callViaIdentity
-];
+var TESTS = [callDirect, callViaObject, callViaCall, callViaIdentity];
 
-class A { foo(x, y, z) { return x + y + z; } };
-var o = new A;
+class A {
+  foo(x, y, z) {
+    return x + y + z;
+  }
+}
+var o = new A();
 var n = 1e8;
 
 function test(fn) {
@@ -93,7 +92,7 @@ for (var j = 0; j < TESTS.length; ++j) {
 for (var j = 0; j < TESTS.length; ++j) {
   var startTime = Date.now();
   test(TESTS[j]);
-  console.log(TESTS[j].name + ':', (Date.now() - startTime), 'ms.');
+  console.log(TESTS[j].name + ":", Date.now() - startTime, "ms.");
 }
 ```
 
@@ -142,7 +141,7 @@ identity for JavaScript objects (and closures are regular JavaScript objects). S
 needed is to teach TurboFan to fold away calls like
 
 ```js
-Object(value)
+Object(value);
 ```
 
 when it's able to prove that the `value` is definitely a JavaScript object (i.e. definitely

@@ -7,7 +7,7 @@ tags:
 ---
 
 For the last couple of months we - together with some awesome [Ember](https://twitter.com/stefanpenner) [folks](https://twitter.com/krisselden) - have
-been hunting a terrible bug in V8, that I used to call *"the Ember issue"*, because this bug especially affects
+been hunting a terrible bug in V8, that I used to call _"the Ember issue"_, because this bug especially affects
 websites based on the [Ember.js framework](http://emberjs.com). Ember.js was never really great in Chrome - i.e. there have been reports of [serious
 performance problems](https://bugs.chromium.org/p/v8/issues/detail?id=2935) in 2013 already, when I had just joined the V8 team - but it seems like
 it got worse recently, leading to increased load time and pretty serious jank - up to two second pauses - even though we spent a lot of resources
@@ -50,7 +50,7 @@ print("--- After warmup ---");
 print(distanceToOrigin(42, 24));
 ```
 
-Let's execute this simple example ``ex1.js`` in the [d8 shell](https://developers.google.com/v8/build), using a Debug build of V8. Then we observe the
+Let's execute this simple example `ex1.js` in the [d8 shell](https://developers.google.com/v8/build), using a Debug build of V8. Then we observe the
 following output:
 
 ```
@@ -61,7 +61,7 @@ $ out/Debug/d8 ex1.js
 ```
 
 That shouldn't come as a surpise. So let's see what's going on under the hood, and trace the maps (aka hidden classes) that we create. We can do this using
-the ``--trace-maps`` command line flag in ``d8``:
+the `--trace-maps` command line flag in `d8`:
 
 ```
 $ out/Debug/d8 ex1.js --trace-maps
@@ -77,20 +77,20 @@ $ out/Debug/d8 ex1.js --trace-maps
 48.373546489791295
 ```
 
-So what happens here is that create a so called *initial map* for the ``Point`` constructor, which is located at address ``0x26e52588a0d9`` in this case,
-and then while executing the ``Point`` constructor first transition ``this`` from the initial map ``0x26e52588a0d9`` to the map ``0x26e52588a1e1`` adding
-a property ``x``, and then further transition that map to ``0x26e52588a239`` adding the ``y`` property. The transition tree for the final ``Point`` map
-(i.e. for all instances that come out of the ``Point`` constructor) is thus:
+So what happens here is that create a so called _initial map_ for the `Point` constructor, which is located at address `0x26e52588a0d9` in this case,
+and then while executing the `Point` constructor first transition `this` from the initial map `0x26e52588a0d9` to the map `0x26e52588a1e1` adding
+a property `x`, and then further transition that map to `0x26e52588a239` adding the `y` property. The transition tree for the final `Point` map
+(i.e. for all instances that come out of the `Point` constructor) is thus:
 
 <center><a href="/images/2016/ex1-point-20161011.png"><img src="/images/2016/ex1-point-20161011.png" /></a></center>
 
-Now let's see what happens if we call ``distanceToOrigin`` another time, i.e. add another line
+Now let's see what happens if we call `distanceToOrigin` another time, i.e. add another line
 
 ```js
 print(distanceToOrigin(2, 2));
 ```
 
-at the end of ``ex1.js`` and execute that with the tracing flag:
+at the end of `ex1.js` and execute that with the tracing flag:
 
 ```
 $ out/Debug/d8 ex1.js --trace-maps
@@ -108,7 +108,7 @@ $ out/Debug/d8 ex1.js --trace-maps
 ```
 
 As you can see we don't need to create new maps for the second iteration again, but reuse the existing transition tree that was created during
-warmup. So far the garbage collector was not involved at all. We can easily verify that by running the example with the ``--trace-gc`` flag:
+warmup. So far the garbage collector was not involved at all. We can easily verify that by running the example with the `--trace-gc` flag:
 
 ```
 $ out/Debug/d8 ex1.js --trace-gc
@@ -118,8 +118,8 @@ $ out/Debug/d8 ex1.js --trace-gc
 2.8284271247461903
 ```
 
-Let's see what happens if we add the GC to the mix, which can be done explicitly in the ``d8`` shell by passing the ``--expose-gc`` command
-flag, which enables you to manually trigger a full GC by calling the ``gc`` object. Consider the following ``ex2.js``:
+Let's see what happens if we add the GC to the mix, which can be done explicitly in the `d8` shell by passing the `--expose-gc` command
+flag, which enables you to manually trigger a full GC by calling the `gc` object. Consider the following `ex2.js`:
 
 ```js
 // Some simple 2D point class with distance helper function.
@@ -156,7 +156,7 @@ gc();
 print(distanceToOrigin(2, 2));
 ```
 
-Again running this with ``--trace-gc`` (and ``--expose-gc``) to verify that we really trigger a GC here:
+Again running this with `--trace-gc` (and `--expose-gc`) to verify that we really trigger a GC here:
 
 ```
 $ out/Debug/d8 ex2.js --expose-gc --trace-gc
@@ -167,7 +167,7 @@ $ out/Debug/d8 ex2.js --expose-gc --trace-gc
 2.8284271247461903
 ```
 
-So let's run this with ``--trace-maps`` to observe the difference we get when the GC is involved:
+So let's run this with `--trace-maps` to observe the difference we get when the GC is involved:
 
 ```
 $ out/Debug/d8 ex2.js --expose-gc --trace-gc --trace-maps
@@ -186,21 +186,21 @@ $ out/Debug/d8 ex2.js --expose-gc --trace-gc --trace-maps
 2.8284271247461903
 ```
 
-This seems weird on first sight: We re-create the transition tree for the final ``Point`` map after the full GC. Don't get confused
+This seems weird on first sight: We re-create the transition tree for the final `Point` map after the full GC. Don't get confused
 with the addresses here, these are the same because we have a separate space for maps, where we do free list allocation and thus
 reuse reclaimed map slots immediately most of the time. What happens here is that we create the transitions from the initial map
-``0x8e7a5d0a1e1`` of ``Point`` to the final map ``0x8e7a5d0a2e9`` which contains both ``x`` and ``y`` during warmup and then invoke
-the ``distanceToOrigin`` function once. Afterwards we trigger a major GC cycle, and call into ``distanceToOrigin`` again, which now
-creates a new transition tree from the initial map ``0x8e7a5d0a1e1`` to ``0x8e7a5d0a239`` for ``x`` and then to ``0x8e7a5d0a291``
-for ``y`` (as said, after the GC cycle these addresses correspond to new maps, don't confuse them with the maps printed earlier).
+`0x8e7a5d0a1e1` of `Point` to the final map `0x8e7a5d0a2e9` which contains both `x` and `y` during warmup and then invoke
+the `distanceToOrigin` function once. Afterwards we trigger a major GC cycle, and call into `distanceToOrigin` again, which now
+creates a new transition tree from the initial map `0x8e7a5d0a1e1` to `0x8e7a5d0a239` for `x` and then to `0x8e7a5d0a291`
+for `y` (as said, after the GC cycle these addresses correspond to new maps, don't confuse them with the maps printed earlier).
 
 <center><a href="/images/2016/ex2-point-20161011.png"><img src="/images/2016/ex2-point-20161011.png" /></a></center>
 
-This happens because we don't have any live object that points to the final ``Point`` map ``0x8e7a5d0a2e9`` (which includes
- ``x`` and ``y``) when the garbage collector runs, and so the GC nukes the final map ``0x8e7a5d0a2e9`` (and the intermediate map
-``0x8e7a5d0a291`` that contains only ``x``). The initial map ``0x8e7a5d0a1e1`` is strongly referenced from the closure for the
-``Point`` constructor and therefore not nuked by the GC. This is valid because the links in the transition trees are actually
-weak pointers in V8. Assuming we would have a live object with the final ``Point`` map when the GC runs, then we wouldn't nuke
+This happens because we don't have any live object that points to the final `Point` map `0x8e7a5d0a2e9` (which includes
+`x` and `y`) when the garbage collector runs, and so the GC nukes the final map `0x8e7a5d0a2e9` (and the intermediate map
+`0x8e7a5d0a291` that contains only `x`). The initial map `0x8e7a5d0a1e1` is strongly referenced from the closure for the
+`Point` constructor and therefore not nuked by the GC. This is valid because the links in the transition trees are actually
+weak pointers in V8. Assuming we would have a live object with the final `Point` map when the GC runs, then we wouldn't nuke
 the maps and thus wouldn't have to re-create the transition trees, i.e. considering another mutation of the example:
 
 ```js
@@ -232,13 +232,15 @@ print("--- After warmup ---");
 print(distanceToOrigin(42, 24));
 
 // Manually trigger GC, with live Point object.
-(function(o) { gc(); })(new Point(1, 1));
+(function(o) {
+  gc();
+})(new Point(1, 1));
 
 // Let's see again.
 print(distanceToOrigin(2, 2));
 ```
 
-Now running this script ``ex3.js``, we observe the expected behavior (i.e. re-using the maps that were created during the initial
+Now running this script `ex3.js`, we observe the expected behavior (i.e. re-using the maps that were created during the initial
 warmup phase):
 
 ```
@@ -259,7 +261,7 @@ $ out/Debug/d8 ex3.js --expose-gc --trace-gc --trace-maps
 To summarize, the performance issue here is that we constantly need to re-learn all the hidden classes for short-living,
 temporary objects, and that is fairly slow, since we need to re-create all the metadata for tracking, plus all the [inline
 caches](http://mrale.ph/blog/2012/06/03/explaining-js-vms-in-js-inline-caches.html) that already picked up feedback for
-the original maps have to re-learn the new maps. This can be seen by running the ``ex2.js`` with ``--trace-ic`` to visualize
+the original maps have to re-learn the new maps. This can be seen by running the `ex2.js` with `--trace-ic` to visualize
 the ICs:
 
 ```
@@ -312,8 +314,8 @@ $ out/Debug/d8 ex2.js --expose-gc --trace-gc --trace-ic
 2.8284271247461903
 ```
 
-Let's only look at the ``LoadIC``s in ``distance``, i.e. the inline caches for the property accesses
-to the ``p1`` and ``p2`` objects in the first two lines of ``distance``:
+Let's only look at the `LoadIC`s in `distance`, i.e. the inline caches for the property accesses
+to the `p1` and `p2` objects in the first two lines of `distance`:
 
 ```
 $ out/Debug/d8 ex2.js --expose-gc --trace-gc --trace-ic
@@ -345,12 +347,12 @@ $ out/Debug/d8 ex2.js --expose-gc --trace-gc --trace-ic
 2.8284271247461903
 ```
 
-What we observe is that during warmup (which includes two calls to ``distance``) the ``LoadIC``s
-transition from *uninitialized* state (indicated by the ``0``) to *premonomorphic* state (indicated
-by the ``.``) and from that to *monomorphic* state (indicated by the ``1``) for the final ``Point``
-map ``0x1dce36c0a2e9``, which is ideal and exactly what we want. But then after the GC cycles, all
-of these ``LoadIC``s miss again and have to re-learn the new final map ``0x1dce36c0a291``. Fortunately
-they stay *monomorphic* at least, because the old maps died during garbage collection.
+What we observe is that during warmup (which includes two calls to `distance`) the `LoadIC`s
+transition from _uninitialized_ state (indicated by the `0`) to _premonomorphic_ state (indicated
+by the `.`) and from that to _monomorphic_ state (indicated by the `1`) for the final `Point`
+map `0x1dce36c0a2e9`, which is ideal and exactly what we want. But then after the GC cycles, all
+of these `LoadIC`s miss again and have to re-learn the new final map `0x1dce36c0a291`. Fortunately
+they stay _monomorphic_ at least, because the old maps died during garbage collection.
 
 ## Adding weak references in optimized code to the mix
 
@@ -359,7 +361,7 @@ while leading to already noticable jank at the same time, but it only gets reall
 compiler to the mix. More precisely not the optimizing compiler itself, but the fact that references to maps and JavaScript
 objects (and contexts) from optimized code are considered weak. Initially all references embedded in optimized code
 objects were strong references, but that caused terrible memory leaks where a single code object could keep an entire
-``<iframe>`` alive (a *native context* in V8 terminology), so we had to fix that. However in the process of doing so,
+`<iframe>` alive (a _native context_ in V8 terminology), so we had to fix that. However in the process of doing so,
 we [multiplied the impact of the fundamental problem](https://bugs.chromium.org/p/v8/issues/detail?id=3664), for
 example consider what the optimizing compiler does when we add it to the equation:
 
@@ -400,9 +402,9 @@ gc();
 print(distanceToOrigin(2, 2));
 ```
 
-We use the ``%OptimizeFunctionOnNextCall`` intrinsic in the ``d8`` shell to forcibly mark the function ``distance`` for optimization
- when it's called the next time. We need to pass the ``--allow-natives-syntax`` command flag to ``d8`` to enable the use of these
-intrinsics. So let's run this ``ex4.js`` with ``--trace-opt`` and ``--trace-deopt`` to check what the optimized code is
+We use the `%OptimizeFunctionOnNextCall` intrinsic in the `d8` shell to forcibly mark the function `distance` for optimization
+when it's called the next time. We need to pass the `--allow-natives-syntax` command flag to `d8` to enable the use of these
+intrinsics. So let's run this `ex4.js` with `--trace-opt` and `--trace-deopt` to check what the optimized code is
 doing:
 
 ```
@@ -422,13 +424,13 @@ $ out/Debug/d8 ex4.js --allow-natives-syntax --expose-gc --trace-gc --trace-opt 
 2.8284271247461903
 ```
 
-As expected we optimize the function ``distance`` during warmup and can use the optimized code afterwards. However during
+As expected we optimize the function `distance` during warmup and can use the optimized code afterwards. However during
 the garbage collection we mark exactly this optimized code object for deoptimization and eventually unlink the optimized
-code from the ``distance`` function, replacing it with the unoptimized code again. The reason is ``weak-code``, which means
-that this particular code object contains a weak reference to some ``HeapObject`` that just died during this GC cycle. In
-this case we have weak references to the final ``Point`` map embedded into the code object because we inlined the property
-accesses to ``x`` and ``y`` in the beginning of ``distance``, as can be seen by looking at the optimized code that is
-generated for ``distance`` (when running with the ``--print-opt-code --code-comments`` command line flags):
+code from the `distance` function, replacing it with the unoptimized code again. The reason is `weak-code`, which means
+that this particular code object contains a weak reference to some `HeapObject` that just died during this GC cycle. In
+this case we have weak references to the final `Point` map embedded into the code object because we inlined the property
+accesses to `x` and `y` in the beginning of `distance`, as can be seen by looking at the optimized code that is
+generated for `distance` (when running with the `--print-opt-code --code-comments` command line flags):
 
 ```
 ...SNIP...
@@ -456,7 +458,7 @@ generated for ``distance`` (when running with the ``--print-opt-code --code-comm
 ...SNIP...
 ```
 
-These two references to the final ``Point`` map ``0x25206770a2e9`` are treated weakly by the garbage collector, which means
+These two references to the final `Point` map `0x25206770a2e9` are treated weakly by the garbage collector, which means
 that the code object becomes invalid once the target objects die. Thus V8 has to deoptimize in this case, which means we need
 to go back to unoptimized code and eventually re-optimize when the function becomes hot again with the new maps. But there's
 a catch: You can only do this for a certain number of times until V8 gives up on optimizing this function completely, i.e.
@@ -501,7 +503,7 @@ for (let i = 1; i <= 12; ++i) {
 }
 ```
 
-and check the output with ``--trace-opt``:
+and check the output with `--trace-opt`:
 
 ```
 $ out/Debug/d8 ex5.js --allow-natives-syntax --expose-gc --trace-opt
@@ -521,7 +523,7 @@ $ out/Debug/d8 ex5.js --allow-natives-syntax --expose-gc --trace-opt
 --- After optimized 12 ---
 ```
 
-Oops, so after we did this 11 times, there's no way to have the ``distance`` function optimized again, and you will be
+Oops, so after we did this 11 times, there's no way to have the `distance` function optimized again, and you will be
 stuck with unoptimized baseline code. For heavy framework based websites / webapps it usually doesn't take long to
 trigger 11 major GCs, so it's likely that you run in unoptimized code after some time. Ironically this is not even a
 bad thing per-se, as you do at least no longer waste time optimizing and deoptimizing the hot functions all the time
@@ -533,12 +535,12 @@ inside some hot, recursive functions, i.e. when this affects the core rendering 
 that case is you are deep inside the recursive renderering and happen to finish a GC cycles, which nukes a couple of
 maps that your render functions have weak references to. Now you cannot just throw away the optimized code objects,
 since you have activations of those on the stack (and V8 shares the native stack with C++, thus we need to be nice to
-C++ as well), so what we do instead is, we mark the optimized code objects for *lazy deoptimization*, which means
+C++ as well), so what we do instead is, we mark the optimized code objects for _lazy deoptimization_, which means
 that the code object will be deoptimized once you go back to the activation. Now if you have a few hundreds of activations
 of affected code objects, you'll see a chain reaction of lazy deoptimizations, i.e. whenever you go back one step in
-the recursion you first trigger the ``Deoptimizer`` (which is fairly expensive) and then continue execution in unoptimized
-code, until this activation returns as well and triggers the ``Deoptimizer`` in the parent activation, and so on,
-resulting in a [*deoptimization storm*](https://bugs.chromium.org/p/v8/issues/detail?id=5456).
+the recursion you first trigger the `Deoptimizer` (which is fairly expensive) and then continue execution in unoptimized
+code, until this activation returns as well and triggers the `Deoptimizer` in the parent activation, and so on,
+resulting in a [_deoptimization storm_](https://bugs.chromium.org/p/v8/issues/detail?id=5456).
 
 One question that puzzled me for some time is why did this get (sometimes way) worse with the [Idle-Time Garbage
 Collection Scheduling](http://v8project.blogspot.de/2015/08/getting-garbage-collection-for-free.html), which should
@@ -553,10 +555,10 @@ root pointing to one of these temporary objects, which in turn would keep the tr
 With some confidence that this is really the problem people are running into with Chrome, we went on to figure out
 why we do actually run into this problem after all. Obviously we wouldn't have this problem at all if links in the
 transition trees weren't weak, and it turns out that this is really the root cause that we need to address. Currently
-those links have to be weak because ``Map``s in V8 point back to arbitrary JavaScript objects:
+those links have to be weak because `Map`s in V8 point back to arbitrary JavaScript objects:
 
-1. The prototype of an object is stored in it's ``Map``.
-2. Constant functions are tracked in the ``Map`` of objects.
+1. The prototype of an object is stored in it's `Map`.
+2. Constant functions are tracked in the `Map` of objects.
 
 The first problem is not really a problem, because most of the time the prototype is strongly referenced from the
 initial map (which in turn is strongly referenced from the constructor function) already, and thus we don't create
@@ -566,8 +568,8 @@ initial maps.
 
 The second problem is pretty serious, because holding on to closures strongly from maps that aren't used by any
 live objects could easily create very expensive context leaks (i.e. the function context, and in case of cross-context
- leaks, the whole native context). But thanks
+leaks, the whole native context). But thanks
 to some previous work on prototype maps, we are now able to completely avoid tracking the actual constants on the
-``Map``s and instead only track the *constantness* of a field, and utilize prototype information to still be able
+`Map`s and instead only track the _constantness_ of a field, and utilize prototype information to still be able
 to inline calls to methods on the prototype. See the [design document](https://docs.google.com/document/d/1VEeXn6BfKmVkYpfMuxNs3otLLNPIxIVA1cLoSwGMIxI)
 for details.

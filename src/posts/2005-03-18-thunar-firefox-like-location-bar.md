@@ -13,4 +13,3 @@ So I added the firefox-like location bar to Thunar today (<a href="/2005/03/17/t
 </ul>
 
 It's just great, you can navigate using the keyboard, but the location entry widget isn't visible until you need it. This is great for newbies and power users, as it combines the best of both worlds: Newbies will use the path bar and the shortcuts for mostly everything, while power users can easily enter paths if necessary.
-

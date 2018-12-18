@@ -7,7 +7,7 @@ tags:
   - v8
 ---
 
-In this article (originally published on [ponyfoo.com](https://ponyfoo.com/articles/investigating-performance-object-prototype-to-string-es2015)), we'll discuss how `Object.prototype.toString()`  performs in the V8 engine, why it's important, how it changed with the introduction of ES2015 symbols, and how the baseline performance can be improved by **up to 6x** (based on findings from Mozilla engineers).
+In this article (originally published on [ponyfoo.com](https://ponyfoo.com/articles/investigating-performance-object-prototype-to-string-es2015)), we'll discuss how `Object.prototype.toString()` performs in the V8 engine, why it's important, how it changed with the introduction of ES2015 symbols, and how the baseline performance can be improved by **up to 6x** (based on findings from Mozilla engineers).
 
 ## Introduction
 
@@ -30,11 +30,11 @@ Object.prototype.toString.call({});     // "[object Object]"
 Object.prototype.toString.call(new A);  // "[object A]"
 ```
 
-This requires that the implementation of `Object.prototype.toString()` for ES2015 and later now converts its **_this_** *value* into an object first via the abstract operation [ToObject](https://tc39.github.io/ecma262/#sec-toobject) and then looks for `Symbol.toStringTag` on the resulting object and in its prototype chain. The [relevant part](https://tc39.github.io/ecma262/#sec-object.prototype.tostring) of the language specification looks like this:
+This requires that the implementation of `Object.prototype.toString()` for ES2015 and later now converts its **_this_** _value_ into an object first via the abstract operation [ToObject](https://tc39.github.io/ecma262/#sec-toobject) and then looks for `Symbol.toStringTag` on the resulting object and in its prototype chain. The [relevant part](https://tc39.github.io/ecma262/#sec-object.prototype.tostring) of the language specification looks like this:
 
 ![Object.prototype.toString ()](/images/2017/object-prototype-to-string-20170814.png)
 
-Here you can see the [`ToObject`](https://tc39.github.io/ecma262/#sec-toobject) conversion as well as the [`Get`](https://tc39.github.io/ecma262/#sec-get-o-p) for `@@toStringTag` (this is special internal syntax for the language specification for the well-known symbol with the name *toStringTag*). The addition of `Symbol.toStringTag` in ES2015 adds a lot of flexibility for developers, but at the same time comes at a cost.
+Here you can see the [`ToObject`](https://tc39.github.io/ecma262/#sec-toobject) conversion as well as the [`Get`](https://tc39.github.io/ecma262/#sec-get-o-p) for `@@toStringTag` (this is special internal syntax for the language specification for the well-known symbol with the name _toStringTag_). The addition of `Symbol.toStringTag` in ES2015 adds a lot of flexibility for developers, but at the same time comes at a cost.
 
 ## Motivation
 
@@ -54,7 +54,7 @@ The performance of the `Object.prototype.toString()` method in Chrome and Node.j
  * @returns {boolean} True if `value` is a `Date`.
  */
 function isDate(value) {
-  return toString.call(value) === '[object Date]';
+  return toString.call(value) === "[object Date]";
 }
 ```
 
@@ -77,7 +77,7 @@ Also popular libraries like [lodash](https://lodash.com/) and [underscore.js](ht
  * // => false
  */
 function isDate(value) {
-  return isObjectLike(value) && baseGetTag(value) == '[object Date]'
+  return isObjectLike(value) && baseGetTag(value) == "[object Date]";
 }
 ```
 
@@ -89,35 +89,35 @@ The Mozilla engineers working on the [SpiderMonkey JavaScript engine](https://de
 
 ```javascript
 function f() {
-    var res = "";
-    var a = [1, 2, 3];
-    var toString = Object.prototype.toString;
-    var t = new Date;
-    for (var i = 0; i < 5000000; i++) res = toString.call(a);
-    print(new Date - t);
-    return res;
+  var res = "";
+  var a = [1, 2, 3];
+  var toString = Object.prototype.toString;
+  var t = new Date();
+  for (var i = 0; i < 5000000; i++) res = toString.call(a);
+  print(new Date() - t);
+  return res;
 }
 f();
 ```
 
-In fact, running this simple micro-benchmark using the internal profiler built into V8  (enabled in the `d8` shell via the `--prof` command line flag) already demonstrates the underlying problem: It is completely dominated by the `Symbol.toStringTag` lookup on the `[1,2,3]` array instance. Roughly 73% of the overall execution time is consumed by the negative property lookup (in the `GetPropertyStub` that implements the generic property lookup), and another 3% are wasted in the `ToObject` built-in, which is a no-op in case of arrays (since an Array is already an Object in the JavaScript sense).
+In fact, running this simple micro-benchmark using the internal profiler built into V8 (enabled in the `d8` shell via the `--prof` command line flag) already demonstrates the underlying problem: It is completely dominated by the `Symbol.toStringTag` lookup on the `[1,2,3]` array instance. Roughly 73% of the overall execution time is consumed by the negative property lookup (in the `GetPropertyStub` that implements the generic property lookup), and another 3% are wasted in the `ToObject` built-in, which is a no-op in case of arrays (since an Array is already an Object in the JavaScript sense).
 
 ![Mozilla micro-benchmark performance profile (before)](/images/2017/mozilla-before-20170814.png)
 
 ## Interesting symbols
 
-The [proposed solution for SpiderMonkey](https://bugzilla.mozilla.org/show_bug.cgi?id=1369042#c0) was to add the notion of an *interesting symbol*, which is a bit on every [hidden class](https://github.com/v8/v8/wiki/Design%20Elements) that says whether instances with this hidden class may have a property whose name is `@@toStringTag` or `@@toPrimitive`. This way the expensive search for `Symbol.toStringTag` can be avoided in the common case, where the lookup is negative anyways, which resulted in a **2x** improvement on the simple micro-benchmark for SpiderMonkey.
+The [proposed solution for SpiderMonkey](https://bugzilla.mozilla.org/show_bug.cgi?id=1369042#c0) was to add the notion of an _interesting symbol_, which is a bit on every [hidden class](https://github.com/v8/v8/wiki/Design%20Elements) that says whether instances with this hidden class may have a property whose name is `@@toStringTag` or `@@toPrimitive`. This way the expensive search for `Symbol.toStringTag` can be avoided in the common case, where the lookup is negative anyways, which resulted in a **2x** improvement on the simple micro-benchmark for SpiderMonkey.
 
-Since I was looking specifically into some [AngularJS](https://angularjs.org/) use cases, I was happy to find this idea and see that it works out well. So I started thinking about the [design](https://docs.google.com/document/d/1q_Y2YM8S055RF1R6qvDe65kOEVO99tdviI1vaDcbnmc/edit#) and eventually [ported](https://chromium-review.googlesource.com/c/593620) it to V8, although limited to just `Symbol.toStringTag` and `Object.prototype.toString()` for now, as I haven’t found evidence (yet) that `Symbol.toPrimitive` is a major pain point in Chrome or Node.js. The fundamental idea is that by default we assume that instances don’t have *interesting symbols*, and every time we add a new property to an instance, we check whether that property’s name is an *interesting symbol*, and if so we set the bit on the instances hidden classes.
+Since I was looking specifically into some [AngularJS](https://angularjs.org/) use cases, I was happy to find this idea and see that it works out well. So I started thinking about the [design](https://docs.google.com/document/d/1q_Y2YM8S055RF1R6qvDe65kOEVO99tdviI1vaDcbnmc/edit#) and eventually [ported](https://chromium-review.googlesource.com/c/593620) it to V8, although limited to just `Symbol.toStringTag` and `Object.prototype.toString()` for now, as I haven’t found evidence (yet) that `Symbol.toPrimitive` is a major pain point in Chrome or Node.js. The fundamental idea is that by default we assume that instances don’t have _interesting symbols_, and every time we add a new property to an instance, we check whether that property’s name is an _interesting symbol_, and if so we set the bit on the instances hidden classes.
 
 ```javascript
 const obj = {};
-Object.prototype.toString.call(obj);  // fast-path
-obj[Symbol.toStringTag] = 'a';
-Object.prototype.toString.call(obj);  // slow-path
+Object.prototype.toString.call(obj); // fast-path
+obj[Symbol.toStringTag] = "a";
+Object.prototype.toString.call(obj); // slow-path
 ```
 
-Check this simple example: Here `obj` starts life as an instance with definitely no *interesting symbols* on it. So the first call to `Object.prototype.toString()` takes the new fast-path, where the `Symbol.toStringTag` lookup can be skipped (also because the `Object.prototype` doesn’t have any *interesting symbols* on it), whereas the second call takes the generic slow-path because `obj` now has an *interesting symbol*.
+Check this simple example: Here `obj` starts life as an instance with definitely no _interesting symbols_ on it. So the first call to `Object.prototype.toString()` takes the new fast-path, where the `Symbol.toStringTag` lookup can be skipped (also because the `Object.prototype` doesn’t have any _interesting symbols_ on it), whereas the second call takes the generic slow-path because `obj` now has an _interesting symbol_.
 
 ## Performance
 
@@ -135,6 +135,6 @@ Measuring the impact on the [Speedometer](http://browserbench.org/Speedometer) b
 
 ## Conclusion
 
-Even a highly optimized built-in like `Object.prototype.toString()` still provides some potential for further optimization - leading up to **6.5x improvements** in throughput - if you dig deep enough into appropriate performance tests (like the Speedometer AngularJS benchmark in this case). Kudos to [Jan de Mooij](https://twitter.com/jandemooij) and [Tom Schuster](http://twitter.com/evilpies) from Mozilla for doing the investigation in this case, and coming up with the cool idea of *interesting symbols*!
+Even a highly optimized built-in like `Object.prototype.toString()` still provides some potential for further optimization - leading up to **6.5x improvements** in throughput - if you dig deep enough into appropriate performance tests (like the Speedometer AngularJS benchmark in this case). Kudos to [Jan de Mooij](https://twitter.com/jandemooij) and [Tom Schuster](http://twitter.com/evilpies) from Mozilla for doing the investigation in this case, and coming up with the cool idea of _interesting symbols_!
 
 It’s worth noting that JavaScriptCore, the JavaScript engine used by [WebKit](https://webkit.org/), caches the result of subsequent `Object.prototype.toString()` calls on the hidden class of the receiver instance (that cache was [introduced in early 2012](https://bugs.webkit.org/show_bug.cgi?id=84781), so it predates ES2015). It's a very interesting strategy, but it has limited applicability (i.e. it doesn’t help with other well-known symbols like [`Symbol.toPrimitive`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/toPrimitive) or [`Symbol.hasInstance`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/hasInstance)) and requires pretty complex [invalidation logic](https://github.com/WebKit/webkit/blob/29330a72e9d9e8a0fff4ec77c65eb18020695a96/Source/JavaScriptCore/runtime/StructureRareData.cpp#L113-L169) to react to changes in the prototype chain, which is why I decided against a caching based solution in V8 (for now).

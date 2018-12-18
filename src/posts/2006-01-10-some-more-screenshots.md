@@ -17,4 +17,3 @@ Long time no post. So, here's another bunch of random screenshots.
 <a href="/images/2006/thunar-20060110-5.png"><img src="/images/2006/thunar-20060110-5.png" /></a>
 
 <a href="/images/2006/thunar-20060110-6.png"><img src="/images/2006/thunar-20060110-6.png" /></a>
-

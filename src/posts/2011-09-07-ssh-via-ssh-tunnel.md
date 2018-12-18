@@ -18,4 +18,3 @@ Host hostC
 ```
 
 Once done, you can easily connect to `hostB` via `ssh hostB`, or `hostC` via `ssh hostC`. No need to setup the tunnel first, it'll be set up and teared down automagically as needed.
-

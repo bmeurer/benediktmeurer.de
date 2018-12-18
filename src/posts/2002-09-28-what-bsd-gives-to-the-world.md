@@ -11,4 +11,3 @@ this is probably the best article about BSD, Unix and Linux, I ever
 read. Also the changes to <a
 href="http://netbsd.gw.com/cgi-bin/man-cgi?du+1+NetBSD-current">du(1)</a>
 have been commited to NetBSD-current, so we'll get the long awaited feature with 1.7 ;-).
-

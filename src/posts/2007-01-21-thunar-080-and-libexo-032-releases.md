@@ -16,4 +16,4 @@ The source tarballs and the graphical installers can be downloaded from: <http:/
 
 Installation instructions and documentation are available at: <http://thunar.xfce.org/pwiki/>
 
-Please report bugs to the Xfce Bug Tracker (product *Thunar*) at: <http://bugzilla.xfce.org/>
+Please report bugs to the Xfce Bug Tracker (product _Thunar_) at: <http://bugzilla.xfce.org/>

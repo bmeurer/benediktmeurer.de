@@ -24,9 +24,9 @@ already have a `main.js` that runs during page load, so I'd rather do the servic
 the common sequence:
 
 ```js
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    navigator.serviceWorker.register('/sw.js');
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", function() {
+    navigator.serviceWorker.register("/sw.js");
   });
 }
 ```
@@ -66,10 +66,10 @@ Finally you need to create a template `sw.js` file, which looks something like t
 
 // set names for both precache & runtime cache
 workbox.core.setCacheNameDetails({
-    prefix: 'my.site.tld',
-    suffix: 'v1',
-    precache: 'precache',
-    runtime: 'runtime-cache'
+  prefix: "my.site.tld",
+  suffix: "v1",
+  precache: "precache",
+  runtime: "runtime-cache"
 });
 
 // let Workbox handle our precache list

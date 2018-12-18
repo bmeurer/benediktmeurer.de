@@ -23,4 +23,3 @@ It may look like an advantage to Novell to ship something with their distributio
 It's more than ok if the first public version doesn't support all the operating systems out there. But it would be good if released software would run equally well on all supported systems. And in the case of GNOME: While the desktop is in reality just the core of C programs, most people also think of 3rd party stuff like Beagle, etc. as GNOME components, and it doesn't matter if you tell them that it's not part of the core and thereby not officially supported; they'll be disappointed to see that only half of <i>their GNOME</i> works.
 
 To conclude (as usual, just my 2 cents, nothing that's neccesarily true): With the current direction, it is very doubtful that the Unix/Linux desktop can compete with Windows and OSX in the future. That's even independent of Microsoft and Apple. The problem is that people started to cut off their very own roots.
-
