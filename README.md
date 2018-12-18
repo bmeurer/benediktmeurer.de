@@ -19,7 +19,7 @@ License
 
 The following files and directories are Copyright (c) Benedikt Meurer. You may not reuse anything therein without my permission:
 
-* [posts](https://github.com/bmeurer/benediktmeurer.de/tree/master/src/posts)
+* [src/posts](https://github.com/bmeurer/benediktmeurer.de/tree/master/src/posts)
 
 The remaining files are [MIT licensed](http://en.wikipedia.org/wiki/Mit_license) unless stated otherwise.
 Feel free to reuse the HTML and CSS (based on files taken from [Mark Otto](https://twitter.com/mdo)'
