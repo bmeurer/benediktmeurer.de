@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "_site",
+    "public": "dist",
     "trailingSlash": true
   }
 }

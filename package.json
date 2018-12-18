@@ -3,7 +3,7 @@
   "scripts": {
     "build": "gulp build",
     "clean": "gulp clean",
-    "lint": "markdownlint **/*.md",
+    "lint": "markdownlint src/**/*.md",
     "start": "superstatic --port=8000",
     "test": "npm run lint && npm run build"
   },

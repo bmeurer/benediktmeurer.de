@@ -59,7 +59,7 @@ module.exports = eleventyConfig => {
 
   // only content in the `posts/` directory
   eleventyConfig.addCollection("posts", collection => {
-    return collection.getFilteredByGlob("./posts/*").sort((a, b) => b.date - a.date);
+    return collection.getFilteredByGlob("src/posts/*").sort((a, b) => b.date - a.date);
   });
   eleventyConfig.addCollection('tagList', collection => {
     const set = new Set();
@@ -127,10 +127,10 @@ module.exports = eleventyConfig => {
     htmlTemplateEngine: "liquid",
     dataTemplateEngine: false,
     dir: {
-      input: ".",
+      input: "src",
       includes: "_includes",
       data: "_data",
-      output: "_site"
+      output: "dist"
     }
   };
 };

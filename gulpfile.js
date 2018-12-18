@@ -10,8 +10,8 @@ const shell = require("gulp-shell");
 const uglify = require("gulp-uglify");
 const workbox = require("workbox-build");
 
-const destDir = `${__dirname}/_site`;
-const srcDir = `${__dirname}`;
+const destDir = `${__dirname}/dist`;
+const srcDir = `${__dirname}/src`;
 
 /** Builds (and optionally minifies) the HTML files */
 function buildHTML(cb) {
