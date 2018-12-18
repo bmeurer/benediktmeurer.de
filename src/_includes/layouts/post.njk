@@ -15,11 +15,11 @@ layout: default
   {% if tags %}
   <span class="post-tags">
     {% for tag in tags %}
-      {% if forloop.first %}
+      {% if loop.first %}
         <svg class="icon"><use xlink:href="/images/icons.svg#icon-tags" /></svg>
       {% endif %}
       <a href="{{ site.baseurl }}/tags/{{ tag | slug }}/" title="Blog posts tagged “{{ tag }}”" rel="tag">{{ tag }}</a>
-      {% unless forloop.last %} &bull; {% endunless %}
+      {% if not loop.last %} &bull; {% endif %}
     {% endfor %}
   </span>
   {% endif %}
@@ -36,12 +36,12 @@ layout: default
   </span>
   {% endif %}
 
-  {{ content }}
+  {{ content | safe }}
 </div>
 
 <!-- Disqus -->
 {% if site.disqus_shortname %}
 <div class="comments">
-  {% include disqus.html %}
+  {% include "disqus.njk" %}
 </div>
 {% endif %}

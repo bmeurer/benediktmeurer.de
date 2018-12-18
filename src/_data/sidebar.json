@@ -26,6 +26,11 @@
     "url": "/archive/"
   },
   {
+    "title": "Tags",
+    "icon": "tags",
+    "url": "/tags/"
+  },
+  {
     "title": "Twitter",
     "icon": "twitter",
     "url": "https://twitter.com/bmeurer"

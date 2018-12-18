@@ -35,10 +35,10 @@
 <body>
   <div id="page">
     <div id="center">
-      {{ content }}
+      {{ content | safe }}
       <footer>
         <p>
-          Copyright &copy; {{ site.time | date: "%Y" }} {{ site.author }}
+          Copyright &copy; {{ site.copyright }} {{ site.author }}
           &nbsp;|&nbsp;
           <a href="{{ site.url }}">{{ site.url }}</a>
           &nbsp;|&nbsp;
@@ -47,7 +47,7 @@
       </footer>
     </div>
   </div>
-  {% include ga.html %}
+  {% include "ga.njk" %}
 </body>
 
 </html>

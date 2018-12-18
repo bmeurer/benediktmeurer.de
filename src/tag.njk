@@ -9,5 +9,5 @@ pagination:
 permalink: /tags/{{ tag | slug }}/
 ---
 
-{% assign posts = collections[tag] | reverse %}
-{% include archive %}
+{% set posts = collections[tag] | reverse %}
+{% include "posts.njk" %}

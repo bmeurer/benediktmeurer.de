@@ -1,13 +1,19 @@
 ---
-layout: default
+layout: page
 title: Tags
 ---
 
-<div class="page">
-  <h1 class="page-title">{{ title }}</h1>
-  <ul>
-    {% for tag in collections.tagList %}
-      <li><a href="/tags/{{ tag | slug }}">{{ tag }}</a></li>
-    {% endfor %}
-  </ul>
-</div>
+<ul>
+  {%- for tag in collections.tagList %}
+  <li>
+    <a href="/tags/{{ tag | slug }}">{{ tag }}</a>
+    ({{ collections[tag].length }})
+  </li>
+  {%- endfor %}
+</ul>
+
+{%- for tag in collections.tagList %}
+<h2>Blog posts tagged “{{ tag }}”</h2>
+{% set posts = collections[tag] | reverse %}
+{% include "posts.njk" %}
+{%- endfor %}

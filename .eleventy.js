@@ -23,11 +23,11 @@ module.exports = eleventyConfig => {
     },
   });
 
-  eleventyConfig.addLayoutAlias("default", "layouts/default.liquid");
-  eleventyConfig.addLayoutAlias("iphoneapp", "layouts/iphoneapp.liquid");
-  eleventyConfig.addLayoutAlias("githubproject", "layouts/githubproject.liquid");
-  eleventyConfig.addLayoutAlias("page", "layouts/page.liquid");
-  eleventyConfig.addLayoutAlias("post", "layouts/post.liquid");
+  eleventyConfig.addLayoutAlias("default", "layouts/default.njk");
+  eleventyConfig.addLayoutAlias("iphoneapp", "layouts/iphoneapp.njk");
+  eleventyConfig.addLayoutAlias("githubproject", "layouts/githubproject.njk");
+  eleventyConfig.addLayoutAlias("page", "layouts/page.njk");
+  eleventyConfig.addLayoutAlias("post", "layouts/post.njk");
 
   // Get the first `n` elements of a collection.
   eleventyConfig.addFilter("head", (array, n) => {
@@ -59,7 +59,7 @@ module.exports = eleventyConfig => {
 
   // only content in the `posts/` directory
   eleventyConfig.addCollection("posts", collection => {
-    return collection.getFilteredByGlob("src/posts/*").sort((a, b) => b.date - a.date);
+    return collection.getFilteredByGlob("src/posts/*.md").sort((a, b) => b.date - a.date);
   });
   eleventyConfig.addCollection('tagList', collection => {
     const set = new Set();
@@ -111,8 +111,6 @@ module.exports = eleventyConfig => {
 
   return {
     templateFormats: [
-      "html",
-      "liquid",
       "md",
       "njk"
     ],
@@ -124,8 +122,7 @@ module.exports = eleventyConfig => {
     pathPrefix: "/",
 
     markdownTemplateEngine: "liquid",
-    htmlTemplateEngine: "liquid",
-    dataTemplateEngine: false,
+    dataTemplateEngine: "njk",
     dir: {
       input: "src",
       includes: "_includes",

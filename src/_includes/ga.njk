@@ -1,0 +1,12 @@
+<script>
+  // Google Analytics.
+  self.ga=self.ga || function() { (ga.q = ga.q || []).push(arguments) };
+  ga.l = +new Date;
+  ga('create', 'UA-24476004-1', 'auto');
+  ga('set', 'referrer', document.referrer.split('?')[0]);
+  ga('send', 'pageview');
+  var firstScript = document.scripts[0];
+  var scriptElement = document.createElement('script');
+  scriptElement.src = 'https://www.google-analytics.com/analytics.js';
+  firstScript.parentNode.insertBefore(scriptElement, firstScript);
+</script>

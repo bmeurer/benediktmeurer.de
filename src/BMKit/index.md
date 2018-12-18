@@ -12,7 +12,7 @@ BMKit is a collection of [well documented](https://bmeurer.github.io/BMKit) Obje
 
 ## Documentation
 
-Documentation is done using [AppleDoc](http://github.com/tomaz/appledoc).
+Documentation is done using [AppleDoc](https://github.com/tomaz/appledoc).
 
 <a class="button" href="https://bmeurer.github.io/BMKit">Read the Documentation online</a>
 

@@ -1,0 +1,9 @@
+<ul>
+{%- for post in posts %}
+  <li>
+    <a href="{{ post.url | url }}">{{ post.data.title | markdown | safe }}</a>
+    -
+    <time datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDateString }}</time>
+  </li>
+{%- endfor %}
+</ul>
