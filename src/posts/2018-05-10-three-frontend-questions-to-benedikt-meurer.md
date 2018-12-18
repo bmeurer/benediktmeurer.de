@@ -4,7 +4,7 @@ title: "Interview “Three Frontend Questions to Benedikt Meurer” for YGLF Kyi
 canonical: "https://medium.com/@yglf_kyiv/three-frontend-questions-to-benedikt-meurer-52046667ff74"
 tags:
   - interview
-  - presentation
+  - presentations
 ---
 
 Before the conference the [YGLF crew](http://yglf.com.ua) wanted to learn more about the speakers, so they had asked them [#3FrontendQuestions](https://twitter.com/hashtag/3FrontendQuestions) related to their topics at YGLF and engineering experience. This is what I responded during the interview.

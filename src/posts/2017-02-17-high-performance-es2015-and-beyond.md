@@ -5,7 +5,7 @@ canonical: "https://https://v8.dev/blog/high-performance-es2015"
 tags:
   - javascript
   - performance
-  - presentation
+  - presentations
   - v8
 ---
 
