@@ -7,7 +7,7 @@ layout: default
 
   <span class="post-date">
     <svg class="icon"><use xlink:href="/images/icons.svg#icon-calendar" /></svg>
-    <a href="{{ page.url | cleanUrl }}" title="Permanent link to this post">
+    <a href="{{ page.url }}" title="Permanent link to this post">
       <time itemprop="datePublished" datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDateString }}</time>
     </a>
   </span>
@@ -18,7 +18,7 @@ layout: default
       {% if forloop.first %}
         <svg class="icon"><use xlink:href="/images/icons.svg#icon-tags" /></svg>
       {% endif %}
-      <a href="{{ site.baseurl }}/tags/{{ tag | slug }}" title="Blog posts tagged “{{ tag }}”" rel="tag">{{ tag }}</a>
+      <a href="{{ site.baseurl }}/tags/{{ tag | slug }}/" title="Blog posts tagged “{{ tag }}”" rel="tag">{{ tag }}</a>
       {% unless forloop.last %} &bull; {% endunless %}
     {% endfor %}
   </span>

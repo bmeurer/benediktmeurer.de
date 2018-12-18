@@ -9,7 +9,7 @@ pagination:
 <div class="posts">
   {%- for post in pagination.items %}
   <div class="post">
-    <h1 class="post-title"><a href="{{ post.url | cleanUrl }}">{{ post.data.title }}</a></h1>
+    <h1 class="post-title"><a href="{{ post.url }}">{{ post.data.title }}</a></h1>
 
     <span class="post-date">
       <svg class="icon"><use xlink:href="/images/icons.svg#icon-calendar" /></svg>
@@ -18,7 +18,7 @@ pagination:
 
     <p>
       {{ post.templateContent | htmlExcerpt | safe }}
-      <a href="{{ post.url | cleanUrl }}"><strong>Read more...</strong></a>
+      <a href="{{ post.url }}"><strong>Read more...</strong></a>
     </p>
   </div>
   {%- endfor %}
@@ -27,13 +27,13 @@ pagination:
 {%- if pagination.pageLinks.length > 1 %}
 <div class="pagination">
   {%- if pagination.nextPageHref %}
-  <a class="pagination-item older" href="{{ pagination.nextPageHref | cleanUrl }}">Older</a>
+  <a class="pagination-item older" href="{{ pagination.nextPageHref }}">Older</a>
   {%- else %}
   <span class="pagination-item older">Older</span>
   {%- endif %}
 
   {%- if pagination.previousPageHref %}
-  <a class="pagination-item newer" href="{{ pagination.previousPageHref | cleanUrl }}">Newer</a>
+  <a class="pagination-item newer" href="{{ pagination.previousPageHref }}">Newer</a>
   {%- else %}
   <span class="pagination-item newer">Newer</span>
   {%- endif %}

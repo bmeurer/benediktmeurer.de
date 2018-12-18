@@ -37,11 +37,6 @@ module.exports = eleventyConfig => {
     return array.slice(0, n);
   });
 
-  eleventyConfig.addFilter('cleanUrl', path => {
-    if (path === '/') return path;
-    if (path.endsWith('/')) return path.slice(0, -1);
-    return path;
-  });
   // https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
   eleventyConfig.addFilter('htmlDateString', dateObj => {
     return DateTime.fromJSDate(dateObj).toFormat('yyyy-LL-dd');
