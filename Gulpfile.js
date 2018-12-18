@@ -1,5 +1,6 @@
 "use strict";
 
+const autoprefixer = require("autoprefixer");
 const cssnano = require("cssnano");
 const del = require("del");
 const gulp = require("gulp");
@@ -94,12 +95,12 @@ function buildScripts() {
 
 /** Builds (and optionally minifies) the CSS files */
 function buildStyles() {
-  let stream = gulp.src(`${srcDir}/css/*.css`);
-  if (process.env.NODE_ENV === "production") {
-    const plugins = [cssnano()];
-    stream = stream.pipe(postcss(plugins));
-  }
-  return stream.pipe(gulp.dest(`${destDir}/css`));
+  const plugins = [autoprefixer({ browsers: ["last 1 version"] })];
+  if (process.env.NODE_ENV === "production") plugins.push(cssnano());
+  return gulp
+    .src(`${srcDir}/css/*.css`)
+    .pipe(postcss(plugins))
+    .pipe(gulp.dest(`${destDir}/css`));
 }
 
 /** Copy resources */
