@@ -3,11 +3,14 @@ This is the data for my website
 
 The [website](https://benediktmeurer.de) is automatically transformed by [11ty](https://www.11ty.io) into a static site.
 
+[![Build Status](https://travis-ci.org/bmeurer/benediktmeurer.de.svg?branch=master)](https://travis-ci.org/bmeurer/benediktmeurer.de)
+
 
 Dependencies
 ------------
 
 * [Node.js](https://nodejs.org)
+* [gulp.js](https://gulpjs.com)
 * [11ty](https://www.11ty.io)
 
 
