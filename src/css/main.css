@@ -846,7 +846,6 @@ code[class*="language-"],
 pre[class*="language-"] {
   color: #fff;
   text-shadow: 0 1px 1px #000;
-  font-family: Menlo, Monaco, "Courier New", monospace;
   direction: ltr;
   text-align: left;
   word-spacing: normal;
@@ -856,13 +855,8 @@ pre[class*="language-"] {
   background: none;
   border: 0;
 
-  -moz-tab-size: 4;
-  -o-tab-size: 4;
-  tab-size: 4;
+  tab-size: 2;
 
-  -webkit-hyphens: none;
-  -moz-hyphens: none;
-  -ms-hyphens: none;
   hyphens: none;
 }
 
@@ -890,8 +884,6 @@ pre[class*="language-"] {
 :not(pre) > code[class*="language-"] {
   padding: 5px 10px;
   line-height: 1;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
   border-radius: 3px;
 }
 
@@ -987,8 +979,6 @@ pre[data-line] {
   color: #fff;
   font: bold 65%/1.5 sans-serif;
   text-align: center;
-  -moz-border-radius: 8px;
-  -webkit-border-radius: 8px;
   border-radius: 8px;
   text-shadow: none;
 }

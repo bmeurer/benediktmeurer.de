@@ -95,7 +95,9 @@ function buildScripts() {
 
 /** Builds (and optionally minifies) the CSS files */
 function buildStyles() {
-  const plugins = [autoprefixer({ browsers: ["last 1 version"] })];
+  const plugins = [
+    autoprefixer({ browsers: ["> 1%", "last 3 versions", "iOS >=7"] })
+  ];
   if (process.env.NODE_ENV === "production") plugins.push(cssnano());
   return gulp
     .src(`${srcDir}/css/*.css`)
