@@ -1,115 +1,77 @@
-<!DOCTYPE html>
-<html lang="en">
+---
+layout: default
+---
 
-<head>
-  <meta charset="UTF-8" />
-  <title>{{ title }}</title>
+<style>
+a.button {
+  color: #fff !important;
+  background-color: #ac4142;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
+  padding: 0.5em;
+  padding-top: 0.3em;
+  padding-bottom: 0.3em;
+  border: 1px solid #ac4142;
+}
+</style>
 
-  <!-- Site Author -->
-  <meta name="author" content="{{ site.author }}" />
+<div class="page">
+  <h1><a href="https://github.com/{{ site.github }}/{{ github }}">{{ title }}</a></h1>
 
-  <!-- Page Description -->
-  <meta name="description" content="{{ description }}" />
+  {{ content | safe }}
 
-  <!-- Google Site Verification -->
-  <meta name="google-site-verification" content="1gkRIROhZsIi5eq-oNYG1R73thPYUmsb7IIQpDpBiB0" />
+  <h2 id="source-code">Source code <a class="bookmark" href="#license" aria-hidden="true">#</a></h2>
 
-  <!-- Syntax Highlighting CSS -->
-  <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
+  <p>
+    Available on GitHub:
+    <a href="https://github.com/{{ site.github }}/{{ github }}">https://github.com/{{ site.github }}/{{ github }}</a>
+  </p>
 
-  <!-- CSS -->
-  <link href="/css/githubproject.css" rel="stylesheet" type="text/css" media="screen, projection" />
+  <p>
+    Download it in either <a href="https://github.com/{{ site.github }}/{{ github }}/zipball/master">zip</a>
+    or <a href="https://github.com/{{ site.github }}/{{ github }}/tarball/master">tar</a> formats.
+  </p>
 
-  <!-- jQuery -->
-  <script src="/js/jquery.min.js" type="text/javascript"></script>
+  <p>
+    Clone the project with <a href="https://git-scm.com">Git</a> by running:
+  </p>
 
-  <!-- socialshareprivacy jQuery Plugin -->
-  {% include "socialshareprivacy.njk" %}
+  <pre><code>git clone git://github.com/{{ site.github }}/{{ github }}.git</code></pre>
 
-  <!--[if IE]>
-  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
-</head>
+  <h2 id="bug-reports">Bug Reports <a class="bookmark" href="#license" aria-hidden="true">#</a></h2>
 
-<body>
-  <a class="fork" href="https://github.com/{{ site.github }}/{{ github }}"><img src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub" /></a>
+  <p>
+    If you come across any problems, please create a <a
+    href="https://github.com/{{ site.github }}/{{ github }}/issues">ticket</a>
+    and we will try to get it fixed as soon as possible.
+  </p>
 
-  <div id="container">
-    <h1><a href="https://github.com/{{ site.github }}/{{ github }}">{{ title }}</a></h1>
+  <p>
+    <a class="button" href="https://github.com/{{ site.github }}/{{ github }}/issues/new">Report a Bug</a>
+  </p>
 
-    {{ content | safe }}
+  <h2 id="contributing">Contributing <a class="bookmark" href="#license" aria-hidden="true">#</a></h2>
 
-    <h2>Source code</h2>
+  <p>
+    Once you have made your commits:
+  </p>
 
-    <p>
-      Available on GitHub:
-      <a href="https://github.com/{{ site.github }}/{{ github }}">https://github.com/{{ site.github }}/{{ github }}</a>
-    </p>
+  <ol>
+    <li><a href="https://help.github.com/fork-a-repo/">Fork</a> {{ github }}.</li>
+    <li>Create a topic branch - <tt>git checkout -b my_branch</tt></li>
+    <li>Push to your topic branch - <tt>git push origin my_branch</tt></li>
+    <li>Create a <a href="https://help.github.com/pull-requests/">Pull Request</a> from your topic branch.</li>
+    <li>That's it!</li>
+  </ol>
 
-    <p>
-      Download it in either <a href="https://github.com/{{ site.github }}/{{ github }}/zipball/master">zip</a>
-      or <a href="https://github.com/{{ site.github }}/{{ github }}/tarball/master">tar</a> formats.
-    </p>
+  <p>
+    <a class="button" href="https://github.com/{{ site.github }}/{{ github }}/fork">Fork {{ github }}</a>
+  </p>
 
-    <p>
-      Clone the project with <a href="https://git-scm.com">Git</a> by running:
-    </p>
+  <h2 id="copyright">Copyright<a class="bookmark" href="#license" aria-hidden="true">#</a></h2>
 
-    <div class="highlight">
-      <pre><code class="console"><span class="gp">$</span> git clone git://github.com/{{ site.github }}/{{ github }}.git</code></pre>
-    </div>
-
-    <h2>Bug Reports</h2>
-
-    <p>
-      If you come across any problems, please create a <a
-      href="https://github.com/{{ site.github }}/{{ github }}/issues">ticket</a>
-      and we will try to get it fixed as soon as possible.
-    </p>
-
-    <p>
-      <a class="button" href="https://github.com/{{ site.github }}/{{ github }}/issues/new">Report a Bug</a>
-    </p>
-
-    <h2>Contributing</h2>
-
-    <p>
-      Once you have made your commits:
-    </p>
-
-    <ol>
-      <li><a href="https://help.github.com/fork-a-repo/">Fork</a> {{ github }}.</li>
-      <li>Create a topic branch - <tt>git checkout -b my_branch</tt></li>
-      <li>Push to your topic branch - <tt>git push origin my_branch</tt></li>
-      <li>Create a <a href="https://help.github.com/pull-requests/">Pull Request</a> from your topic branch.</li>
-      <li>That's it!</li>
-    </ol>
-
-    <p>
-      <a class="button" href="https://github.com/{{ site.github }}/{{ github }}/fork">Fork {{ github }}</a>
-    </p>
-
-    <h2>Copyright</h2>
-
-    <p>
-      Copyright &copy; {{ copyright }} {{ site.author }}. See the
-      <a href="https://github.com/{{ site.github }}/{{ github }}/raw/master/LICENSE">LICENSE</a>
-      file for details.
-    </p>
-
-    <div class="footer">
-      <p>
-        Copyright &copy; {{site.copyright}} {{ site.author }}
-        &nbsp;|&nbsp;
-        <a href="{{ site.url }}">{{ site.url }}</a>
-        &nbsp;|&nbsp;
-        <a href="https://www.twitter.com/{{ site.twitter }}">@{{ site.twitter }}</a>
-      </p>
-
-      <div id="socialshareprivacy"></div>
-    </div>
-  </div>
-  {% include "ga.njk" %}
-</body>
-
-</html>
+  <p>
+    Copyright &copy; {{ copyright }} {{ site.author }}. See the
+    <a href="https://github.com/{{ site.github }}/{{ github }}/raw/master/LICENSE">LICENSE</a>
+    file for details.
+  </p>
+</div>

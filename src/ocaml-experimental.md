@@ -6,10 +6,9 @@ github: ocaml-experimental
 copyright: 2010-2011
 version: 3.12.1+ocamlnatjit2
 date: 2011-10-06
-hide: true
 ---
 
-The [{{ page.github }} repository](https://github.com/{{site.github}}/{{page.github}}) serves as a playground for experimenting with new features and changes to the [OCaml](http://caml.inria.fr/ocaml) language and runtime, including a new [native code toplevel](http://arxiv.org/abs/1110.1029) `ocamlnat` and an implementation of the [linear scan register allocator](http://portal.acm.org/citation.cfm?id=330250) for the optimizing native code compiler `ocamlopt`.
+The [{{ github }} repository](https://github.com/{{site.github}}/{{github}}) serves as a playground for experimenting with new features and changes to the [OCaml](http://caml.inria.fr/ocaml) language and runtime, including a new [native code toplevel](http://arxiv.org/abs/1110.1029) `ocamlnat` and an implementation of the [linear scan register allocator](http://portal.acm.org/citation.cfm?id=330250) for the optimizing native code compiler `ocamlopt`.
 
 ## Native code toplevel
 
@@ -24,11 +23,11 @@ The native code toplevel was moved to a new project [ocamlnat](/ocamlnat).
 
 ## Installation
 
-Download the latest source code release [ocaml-{{ page.version }}.tar.bz2](/files/source/ocaml-{{ page.version }}.tar.bz2) (or any other release from the list above), and extract the source distribution tarball using the following command:
+Download the latest source code release [ocaml-{{ version }}.tar.bz2](/files/source/ocaml-{{ version }}.tar.bz2) (or any other release from the list above), and extract the source distribution tarball using the following command:
 
 ```
-tar xjf ocaml-{{ page.version }}.tar.bz2
-cd ocaml-{{ page.version }}
+tar xjf ocaml-{{ version }}.tar.bz2
+cd ocaml-{{ version }}
 ```
 
 The installation is similar to the installation of any regular upstream OCaml source distribution, so make sure to consult the [INSTALL](https://raw.github.com/bmeurer/ocaml-experimental/master/INSTALL) and [README](https://raw.github.com/bmeurer/ocaml-experimental/master/README) files if you run into trouble.
@@ -60,7 +59,7 @@ Et voila, now you can use your new OCaml distribution, especially the new `ocaml
 
 ```
 $ /usr/local/bin/ocamlnat
-        Objective Caml version {{ page.version }} ({{ page.date }}) - native toplevel
+        Objective Caml version {{ version }} ({{ date }}) - native toplevel
 
 #
 ```
@@ -73,4 +72,4 @@ You can use it as a drop-in replacement for the byte code toplevel `ocaml` in al
 
 ## License
 
-{{ page.title }} is licensed under the [Q Public License](http://en.wikipedia.org/wiki/Q_Public_License) and the [GNU Lesser General Public License](http://en.wikipedia.org/wiki/GNU_Lesser_General_Public_License) just like the original [OCaml](http://caml.inria.fr/ocaml) distribution. See the [LICENSE](https://github.com/{{site.github}}/{{page.github}}/raw/master/LICENSE) file for details and exceptions.
+{{ title }} is licensed under the [Q Public License](http://en.wikipedia.org/wiki/Q_Public_License) and the [GNU Lesser General Public License](http://en.wikipedia.org/wiki/GNU_Lesser_General_Public_License) just like the original [OCaml](http://caml.inria.fr/ocaml) distribution. See the [LICENSE](https://github.com/{{site.github}}/{{github}}/raw/master/LICENSE) file for details and exceptions.

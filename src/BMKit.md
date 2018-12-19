@@ -4,7 +4,6 @@ title: BMKit
 description: Collection of various useful Objective-C classes and categories
 github: BMKit
 copyright: 2004-2011
-hide: true
 ---
 
 BMKit is a collection of [well documented](https://bmeurer.github.io/BMKit) Objective-C classes and categories for iOS (and Mac) development that make life easier by solving common problems in iOS (and Mac) development. Right now BMKit is a static library for iOS 4.0 and beyond.
