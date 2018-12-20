@@ -15,7 +15,7 @@
     <!-- Enable responsiveness on mobile devices-->
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
-    <title>{{ title }} &middot; {{ site.title }}</title>
+    <title>{{ renderData.title or title }} &middot; {{ site.title }}</title>
 
     {% if canonical %}
     <!-- Canonical URLs -->
