@@ -13,7 +13,7 @@ pagination:
 
     <span class="post-date">
       <svg class="icon"><use xlink:href="/images/icons.svg#icon-calendar" /></svg>
-      <time itemprop="datePublished" content="{{ post.date | htmlDateString }}">{{ post.date | readableDateString }}</time>
+      <time datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDateString }}</time>
     </span>
 
     {{ post.templateContent | htmlExcerpt | safe }}
