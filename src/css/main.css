@@ -442,6 +442,9 @@ a.button:hover {
 .footnotes p {
   margin-bottom: 0;
 }
+.footnote-item:target {
+  background: #fdeeb5;
+}
 
 /* Comments */
 .comments {
