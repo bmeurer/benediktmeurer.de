@@ -293,6 +293,8 @@ a.button::after {
   content: " ≫";
 }
 a.button:hover {
+  color: #fff !important;
+  background-color: #ac4142;
   text-decoration: none !important;
 }
 
