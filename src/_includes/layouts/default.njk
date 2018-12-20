@@ -1,7 +1,44 @@
 <!DOCTYPE html>
 <html lang="en-us">
+  <head>
+    <meta charset="utf-8">
 
-  {% include "head.njk" %}
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Theme color (red08 in Base16) -->
+    <meta name="theme-color" content="#ac4142">
+
+    <!-- Provide description for SEO -->
+    <meta name="description" content="{{ site.description }}">
+
+    <!-- Enable responsiveness on mobile devices-->
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <title>{{ title }} &middot; {{ site.title }}</title>
+
+    {% if canonical %}
+    <!-- Canonical URLs -->
+    <link rel="canonical" href="{{ canonical }}">
+    {% endif %}
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ site.baseurl }}/css/main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ site.baseurl }}/images/apple-touch-icon-precomposed.png">
+
+    <!-- RSS -->
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ site.baseurl}}/feed.xml">
+
+    <!-- JS -->
+    <script defer src="/js/main.js"></script>
+    <script defer src="/js/svgxuse.js" nomodule></script>  <!-- IE workaround for <svg><use xlink:href="..." /></svg> -->
+
+    <!-- Google webmaster tools verification -->
+    <meta name="google-site-verification" content="1gkRIROhZsIi5eq-oNYG1R73thPYUmsb7IIQpDpBiB0">
+  </head>
 
   <body class="theme-base-08">
     <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
