@@ -38,7 +38,7 @@
   ga("send", "pageview");
   var firstScript = document.scripts[0];
   var scriptElement = document.createElement("script");
-  scriptElement.src = "https://www.google-analytics.com/analytics.js";
+  scriptElement.src = "//www.google-analytics.com/analytics.js";
   firstScript.parentNode.insertBefore(scriptElement, firstScript);
 
   // Install the service worker
