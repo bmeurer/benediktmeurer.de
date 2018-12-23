@@ -56,7 +56,7 @@ body {
 
 /* No `:visited` state is required by default (browsers will use `a`) */
 a {
-  color: #268bd2;
+  color: #ac4142;
   text-decoration: none;
 }
 a strong {
@@ -194,28 +194,6 @@ pre code {
   background-color: transparent;
 }
 
-/* Gist via GitHub Pages */
-.gist .gist-file {
-  font-family: Menlo, Monaco, "Courier New", monospace !important;
-}
-.gist .markdown-body {
-  padding: 15px;
-}
-.gist pre {
-  padding: 0;
-  background-color: transparent;
-}
-.gist .gist-file .gist-data {
-  font-size: 0.8rem !important;
-  line-height: 1.4;
-}
-.gist code {
-  padding: 0;
-  color: inherit;
-  background-color: transparent;
-  border-radius: 0;
-}
-
 /* Quotes */
 blockquote {
   padding: 0.5rem 1rem;
@@ -290,34 +268,9 @@ a.button::after {
   content: " ≫";
 }
 a.button:hover {
-  color: #fff !important;
+  color: #fff;
   background-color: #ac4142;
-  text-decoration: none !important;
-}
-
-/*
- * Custom type
- *
- * Extend paragraphs with `.lead` for larger introductory text.
- */
-
-.lead {
-  font-size: 1.25rem;
-  font-weight: 300;
-}
-
-/*
- * Messages
- *
- * Show alert messages to users. You may add it to single elements like a `<p>`,
- * or to a parent if there are multiple elements to show.
- */
-
-.message {
-  margin-bottom: 1rem;
-  padding: 1rem;
-  color: #717171;
-  background-color: #f9f9f9;
+  text-decoration: none;
 }
 
 /*
@@ -346,26 +299,23 @@ a.button:hover {
 }
 
 /*
- * Masthead
+ * Header
  *
  * Super small header above the content for site name and short description.
  */
 
-.masthead {
+header {
   padding-top: 1rem;
   padding-bottom: 1rem;
   margin-bottom: 3rem;
   border-bottom: 1px solid #eee;
 }
-.masthead-title {
+header h3 {
   margin-top: 0;
   margin-bottom: 0;
   color: #505050;
 }
-.masthead-title a {
-  color: #505050;
-}
-.masthead-title small {
+header small {
   font-size: 75%;
   font-weight: 400;
   color: #c0c0c0;
@@ -373,10 +323,10 @@ a.button:hover {
 }
 
 @media (max-width: 48em) {
-  .masthead-title {
+  header h3 {
     text-align: center;
   }
-  .masthead-title small {
+  header small {
     display: none;
   }
 }
@@ -395,8 +345,7 @@ a.button:hover {
 
 /* Blog post or page title */
 .page-title,
-.post-title,
-.post-title a {
+.post-title {
   color: #303030;
 }
 .page-title,
@@ -541,7 +490,7 @@ a.pagination-item:hover {
   font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-size: 0.875rem; /* 15px */
   color: rgba(255, 255, 255, 0.6);
-  background-color: #202020;
+  background-color: #ac4142;
   transition: all 0.3s ease-in-out;
 }
 @media (min-width: 30em) {
@@ -603,7 +552,7 @@ a.sidebar-nav-item:focus {
   left: 1rem;
   display: block;
   padding: 0.25rem 0.75rem;
-  color: #505050;
+  color: #ac4142;
   background-color: #fff;
   border-radius: 0.25rem;
   cursor: pointer;
@@ -633,7 +582,7 @@ a.sidebar-nav-item:focus {
 #sidebar-checkbox:focus ~ .sidebar-toggle,
 #sidebar-checkbox:checked ~ .sidebar-toggle {
   color: #fff;
-  background-color: #555;
+  background-color: #ac4142;
 }
 
 .sidebar-toggle:active:before,
@@ -719,25 +668,6 @@ a.sidebar-nav-item:focus {
 .layout-reverse #sidebar-checkbox:checked ~ .wrap,
 .layout-reverse #sidebar-checkbox:checked ~ .sidebar-toggle {
   transform: translateX(-14rem);
-}
-
-/*
- * Themes
- *
- * Apply custom color schemes by adding the appropriate class to the `body`.
- * Based on colors from Base16: http://chriskempson.github.io/base16/#default.
- */
-
-/* Red */
-.theme-base-08 .sidebar,
-.theme-base-08 .sidebar-toggle:active,
-.theme-base-08 #sidebar-checkbox:checked ~ .sidebar-toggle {
-  background-color: #ac4142;
-}
-.theme-base-08 .container a,
-.theme-base-08 .sidebar-toggle,
-.theme-base-08 .related-posts li a:hover {
-  color: #ac4142;
 }
 
 /*
