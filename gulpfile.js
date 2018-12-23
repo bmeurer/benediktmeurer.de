@@ -5,7 +5,9 @@ const cssnano = require("cssnano");
 const del = require("del");
 const gulp = require("gulp");
 const jsonminify = require("gulp-jsonminify");
+const merge = require("merge-stream");
 const postcss = require("gulp-postcss");
+const sass = require("gulp-sass");
 const shell = require("gulp-shell");
 const uglify = require("gulp-uglify");
 const workbox = require("workbox-build");
@@ -97,8 +99,10 @@ function buildScripts() {
 function buildStyles() {
   const plugins = [autoprefixer({ browsers: ["> 0.2%", "last 3 versions"] })];
   if (process.env.NODE_ENV === "production") plugins.push(cssnano());
-  return gulp
-    .src(`${srcDir}/css/*.css`)
+  return merge(
+    gulp.src(`${srcDir}/css/*.css`),
+    gulp.src(`${srcDir}/css/*.scss`).pipe(sass().on("error", sass.logError))
+  )
     .pipe(postcss(plugins))
     .pipe(gulp.dest(`${destDir}/css`));
 }

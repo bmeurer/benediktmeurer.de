@@ -31,6 +31,7 @@
     "gulp": "^4.0.0",
     "gulp-jsonminify": "^1.1.0",
     "gulp-postcss": "^8.0.0",
+    "gulp-sass": "^4.0.2",
     "gulp-shell": "^0.6.5",
     "gulp-uglify": "^3.0.1",
     "html-minifier": "^3.5.21",
@@ -39,6 +40,8 @@
     "markdown-it-anchor": "^5.0.2",
     "markdown-it-footnote": "^3.0.1",
     "markdownlint-cli": "^0.13.0",
+    "merge-stream": "^1.0.1",
+    "node-sass": "^4.11.0",
     "postcss-cli": "^6.0.1",
     "superstatic": "^6.0.4",
     "workbox-build": "^3.6.3"

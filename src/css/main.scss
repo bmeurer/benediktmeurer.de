@@ -9,6 +9,7 @@
 /*
  * Contents
  *
+ * Global settings
  * Body resets
  * Custom type
  * Messages
@@ -19,6 +20,15 @@
  * Reverse layout
  * Themes
  */
+
+/*
+ * Global settings
+ */
+
+$primary-color: #ac4142;
+$sans-font: "PT Sans", Helvetica, Arial, sans-serif;
+$serif-font: "PT Serif", Georgia, "Times New Roman", serif;
+
 
 /*
  * Body resets
@@ -38,7 +48,7 @@ body {
 }
 
 html {
-  font-family: "PT Serif", Georgia, "Times New Roman", serif;
+  font-family: $serif-font;
   font-size: 16px;
   line-height: 1.5;
 }
@@ -56,11 +66,11 @@ body {
 
 /* No `:visited` state is required by default (browsers will use `a`) */
 a {
-  color: #ac4142;
+  color: $primary-color;
   text-decoration: none;
-}
-a strong {
-  color: inherit;
+  strong {
+    color: inherit;
+  }
 }
 /* `:focus` is linked to `:hover` for basic accessibility */
 a:hover,
@@ -76,7 +86,7 @@ h4,
 h5,
 h6 {
   margin-bottom: 0.5rem;
-  font-family: "PT Sans", Helvetica, Arial, sans-serif;
+  font-family: $sans-font;
   font-weight: 400;
   letter-spacing: -0.025rem;
   line-height: 1.25;
@@ -186,12 +196,12 @@ pre {
   line-height: 1.4;
   white-space: pre;
   background-color: #f9f9f9;
-}
-pre code {
-  padding: 0;
-  font-size: 100%;
-  color: inherit;
-  background-color: transparent;
+  code {
+    padding: 0;
+    font-size: 100%;
+    color: inherit;
+    background-color: transparent;
+  }
 }
 
 /* Quotes */
@@ -200,9 +210,9 @@ blockquote {
   margin: 0.8rem 0;
   color: #7a7a7a;
   border-left: 0.25rem solid #e5e5e5;
-}
-blockquote p:last-child {
-  margin-bottom: 0;
+  p:last-child {
+    margin-bottom: 0;
+  }
 }
 @media (min-width: 30em) {
   blockquote {
@@ -222,9 +232,9 @@ img {
 figure {
   margin-left: 0;
   margin-right: 0;
-}
-figure img {
-  margin: 0 auto;
+  img {
+    margin: 0 auto;
+  }
 }
 figcaption {
   font-size: smaller;
@@ -256,7 +266,7 @@ tbody tr:nth-child(odd) th {
 a.button {
   display: inline-block;
   background-color: #f7f7f7;
-  font-family: "PT Sans", Helvetica, Arial, sans-serif;
+  font-family: $sans-font;
   padding: 1em;
   padding-top: 0.3em;
   padding-bottom: 0.3em;
@@ -269,7 +279,7 @@ a.button::after {
 }
 a.button:hover {
   color: #fff;
-  background-color: #ac4142;
+  background-color: $primary-color;
   text-decoration: none;
 }
 
@@ -309,17 +319,17 @@ header {
   padding-bottom: 1rem;
   margin-bottom: 3rem;
   border-bottom: 1px solid #eee;
-}
-header h3 {
-  margin-top: 0;
-  margin-bottom: 0;
-  color: #505050;
-}
-header small {
-  font-size: 75%;
-  font-weight: 400;
-  color: #c0c0c0;
-  letter-spacing: 0;
+  h3 {
+    margin-top: 0;
+    margin-bottom: 0;
+    color: #505050;
+  }
+  small {
+    font-size: 75%;
+    font-weight: 400;
+    color: #c0c0c0;
+    letter-spacing: 0;
+  }
 }
 
 @media (max-width: 48em) {
@@ -360,11 +370,10 @@ header small {
   margin-top: -0.5rem;
   margin-bottom: 1rem;
   color: #9a9a9a;
-}
-.post-date svg.icon,
-.post-tags svg.icon {
-  width: 1.1em;
-  height: 1.1em;
+  svg.icon {
+    width: 1.1em;
+    height: 1.1em;
+  }
 }
 .post-canonical {
   display: block;
@@ -386,9 +395,9 @@ header small {
 /* Footnotes */
 .footnotes {
   font-size: 75%;
-}
-.footnotes p {
-  margin-bottom: 0;
+  p {
+    margin-bottom: 0;
+  }
 }
 .footnote-item:target {
   background: #fdeeb5;
@@ -410,7 +419,7 @@ header small {
   overflow: hidden; /* clearfix */
   margin-left: -1rem;
   margin-right: -1rem;
-  font-family: "PT Sans", Helvetica, Arial, sans-serif;
+  font-family: $sans-font;
   color: #ccc;
   text-align: center;
 }
@@ -487,10 +496,10 @@ a.pagination-item:hover {
   width: 14rem;
   visibility: hidden;
   overflow-y: auto;
-  font-family: "PT Sans", Helvetica, Arial, sans-serif;
+  font-family: $sans-font;
   font-size: 0.875rem; /* 15px */
   color: rgba(255, 255, 255, 0.6);
-  background-color: #ac4142;
+  background-color: $primary-color;
   transition: all 0.3s ease-in-out;
 }
 @media (min-width: 30em) {
@@ -506,9 +515,9 @@ a.pagination-item:hover {
 }
 .sidebar-item {
   padding: 1rem;
-}
-.sidebar-item p:last-child {
-  margin-bottom: 0;
+  p:last-child {
+    margin-bottom: 0;
+  }
 }
 
 /* Sidebar nav */
@@ -552,7 +561,7 @@ a.sidebar-nav-item:focus {
   left: 1rem;
   display: block;
   padding: 0.25rem 0.75rem;
-  color: #ac4142;
+  color: $primary-color;
   background-color: #fff;
   border-radius: 0.25rem;
   cursor: pointer;
@@ -582,7 +591,7 @@ a.sidebar-nav-item:focus {
 #sidebar-checkbox:focus ~ .sidebar-toggle,
 #sidebar-checkbox:checked ~ .sidebar-toggle {
   color: #fff;
-  background-color: #ac4142;
+  background-color: $primary-color;
 }
 
 .sidebar-toggle:active:before,
