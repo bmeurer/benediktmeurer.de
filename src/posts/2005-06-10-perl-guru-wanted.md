@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Perl guru wanted
 tags: os-cillation
 ---

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Disabling the local snapshots feature of Time Machine in Lion
 ---
 

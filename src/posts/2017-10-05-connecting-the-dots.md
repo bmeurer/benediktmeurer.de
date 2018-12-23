@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Connecting the dots
 tags:
   - turbofan

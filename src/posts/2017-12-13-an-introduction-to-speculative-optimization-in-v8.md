@@ -1,5 +1,4 @@
 ---
-layout: post
 title: An Introduction to Speculative Optimization in V8
 canonical: "https://ponyfoo.com/articles/an-introduction-to-speculative-optimization-in-v8"
 tags:

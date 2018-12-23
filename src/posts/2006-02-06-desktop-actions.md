@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Desktop actions
 tags: thunar
 ---

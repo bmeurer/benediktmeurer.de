@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "V8: Behind the Scenes (March Edition feat. I+TF launch and Declarative JavaScript)"
 tags:
   - javascript

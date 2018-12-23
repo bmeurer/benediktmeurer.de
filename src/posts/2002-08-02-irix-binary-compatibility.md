@@ -1,5 +1,4 @@
 ---
-layout: post
 title: IRIX Binary Compatibility
 tags: netbsd
 ---

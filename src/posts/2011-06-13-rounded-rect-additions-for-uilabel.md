@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Rounded rect additions for UILabel
 ---
 

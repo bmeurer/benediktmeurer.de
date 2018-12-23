@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Orage is better than Xfcalendar
 tags: xfce
 ---

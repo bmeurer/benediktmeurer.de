@@ -1,5 +1,4 @@
 ---
-layout: post
 title: And the laugh of the day goes to...
 tags: debian
 ---

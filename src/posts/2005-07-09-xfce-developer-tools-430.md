@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Xfce Developer Tools 4.3.0
 tags: xfce
 ---

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: BSD multimedia
 tags: netbsd
 ---

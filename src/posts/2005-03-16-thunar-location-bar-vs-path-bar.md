@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Thunar Location Bar vs. Path Bar
 tags:
   - thunar

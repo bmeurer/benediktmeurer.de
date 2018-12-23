@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Faster Collection Iterators
 tags:
   - javascript

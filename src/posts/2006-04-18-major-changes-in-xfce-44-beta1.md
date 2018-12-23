@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Major changes in Xfce 4.4 BETA1
 tags: xfce
 ---

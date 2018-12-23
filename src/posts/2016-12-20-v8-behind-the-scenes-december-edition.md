@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "V8: Behind the Scenes (December Edition feat. WebAssembly and Real World Performance)"
 tags:
   - turbofan

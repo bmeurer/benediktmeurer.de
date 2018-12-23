@@ -1,5 +1,4 @@
 ---
-layout: post
 title: CocoaHeads Siegen September Meeting
 ---
 

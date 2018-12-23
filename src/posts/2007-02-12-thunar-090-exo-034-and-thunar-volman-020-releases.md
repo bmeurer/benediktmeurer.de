@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Thunar 0.9.0, exo 0.3.4 and thunar-volman 0.2.0 releases
 tags: thunar
 ---

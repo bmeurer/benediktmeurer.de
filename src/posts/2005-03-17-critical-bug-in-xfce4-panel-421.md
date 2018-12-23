@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Critical bug in xfce4-panel 4.2.1
 tags: xfce
 ---

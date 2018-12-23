@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Cross-compiling V8 for the Raspberry Pi
 tags: v8
 ---

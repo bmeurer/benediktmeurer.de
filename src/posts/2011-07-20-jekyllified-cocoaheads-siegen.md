@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Jekyllified CocoaHeads Siegen website
 ---
 

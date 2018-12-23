@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Trash, Bugs, Wasted Time
 tags: thunar
 ---

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: thunar-archive-plugin 0.1.2
 tags: thunar
 ---

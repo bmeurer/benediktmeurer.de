@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Trash is back
 tags: thunar
 ---

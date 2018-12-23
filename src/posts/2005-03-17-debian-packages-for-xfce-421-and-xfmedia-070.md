@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Debian packages for Xfce 4.2.1 and Xfmedia 0.7.0
 tags:
   - debian

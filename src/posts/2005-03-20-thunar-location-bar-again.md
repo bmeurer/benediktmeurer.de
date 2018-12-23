@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Thunar location bar again
 tags: thunar
 ---

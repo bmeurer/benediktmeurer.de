@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Linear Scan Register Allocator for the OCaml Native Code Compiler
 tags:
   - ocaml

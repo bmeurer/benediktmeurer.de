@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Thunar - Name of the Beast?
 tags: thunar
 ---

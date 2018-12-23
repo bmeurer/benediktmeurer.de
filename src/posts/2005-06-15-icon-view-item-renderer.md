@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Icon view item renderer
 tags: thunar
 ---

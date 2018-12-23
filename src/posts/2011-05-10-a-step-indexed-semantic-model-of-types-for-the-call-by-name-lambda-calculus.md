@@ -1,5 +1,4 @@
 ---
-layout: post
 title: A Step-indexed Semantic Model of Types for the Call-by-Name Lambda Calculus
 tags: research
 ---

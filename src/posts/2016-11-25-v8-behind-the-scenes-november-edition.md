@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "V8: Behind the Scenes (November Edition feat. Ignition+TurboFan and ES2015)"
 tags:
   - turbofan

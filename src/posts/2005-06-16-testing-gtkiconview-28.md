@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Testing GtkIconView 2.8
 tags: thunar
 ---

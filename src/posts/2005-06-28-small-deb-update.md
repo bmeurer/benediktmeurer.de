@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Thunar Firefox-like location bar
 tags: thunar
 ---

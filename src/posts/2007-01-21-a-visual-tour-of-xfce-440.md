@@ -1,5 +1,4 @@
 ---
-layout: post
 title: A visual tour of Xfce 4.4.0
 tags: xfce
 ---

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Gitweb and HTTP transport for public repositories
 tags: git
 ---

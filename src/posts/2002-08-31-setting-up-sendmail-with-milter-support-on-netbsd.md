@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Setting up sendmail with Milter support on NetBSD
 ---
 

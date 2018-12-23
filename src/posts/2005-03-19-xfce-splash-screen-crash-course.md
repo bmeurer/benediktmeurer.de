@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Xfce splash screen crash course
 tags: xfce
 ---

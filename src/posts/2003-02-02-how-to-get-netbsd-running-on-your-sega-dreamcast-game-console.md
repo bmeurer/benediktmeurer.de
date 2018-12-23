@@ -1,5 +1,4 @@
 ---
-layout: post
 title: How to get NetBSD running on your Sega Dreamcast game console
 ---
 

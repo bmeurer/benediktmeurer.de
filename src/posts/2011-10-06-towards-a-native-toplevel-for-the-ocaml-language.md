@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Towards a native toplevel for the OCaml language
 tags:
   - ocaml

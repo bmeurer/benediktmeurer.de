@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Improving DataView performance in V8"
 canonical: "https://v8.dev/blog/dataview"
 coauthor: theotime

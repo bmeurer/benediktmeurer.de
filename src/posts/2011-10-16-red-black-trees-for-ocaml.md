@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Red-Black Trees for OCaml
 tags: ocaml
 ---

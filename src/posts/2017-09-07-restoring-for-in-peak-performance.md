@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Restoring for..in peak performance
 tags:
   - performance

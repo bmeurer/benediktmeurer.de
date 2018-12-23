@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Slow media
 tags: thunar
 ---

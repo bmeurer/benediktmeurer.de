@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Development continues
 tags:
   - thunar

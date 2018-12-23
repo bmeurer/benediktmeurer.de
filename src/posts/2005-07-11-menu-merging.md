@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Menu merging
 tags: thunar
 ---

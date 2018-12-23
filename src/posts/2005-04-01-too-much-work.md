@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Too much work...
 tags:
   - thunar

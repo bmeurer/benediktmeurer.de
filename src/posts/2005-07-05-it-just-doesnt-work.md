@@ -1,5 +1,4 @@
 ---
-layout: post
 title: It just doesn't work(TM)
 tags: linux
 ---

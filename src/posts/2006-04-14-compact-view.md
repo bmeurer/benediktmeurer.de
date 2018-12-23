@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Compact View
 tags: thunar
 ---

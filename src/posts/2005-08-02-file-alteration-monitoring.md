@@ -1,5 +1,4 @@
 ---
-layout: post
 title: File alteration monitoring
 tags: thunar
 ---

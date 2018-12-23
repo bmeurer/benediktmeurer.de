@@ -1,5 +1,4 @@
 ---
-layout: post
 title: The truth about traditional JavaScript benchmarks
 tags:
   - javascript

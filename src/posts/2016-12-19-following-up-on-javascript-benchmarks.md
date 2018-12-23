@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Following up on JavaScript benchmarks
 tags:
   - javascript

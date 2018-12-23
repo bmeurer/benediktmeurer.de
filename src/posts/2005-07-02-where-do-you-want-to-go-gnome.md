@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Where do you want to go, Gnome?
 ---
 

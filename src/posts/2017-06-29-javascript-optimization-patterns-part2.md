@@ -1,5 +1,4 @@
 ---
-layout: post
 title: JavaScript Optimization Patterns (Part 2)
 tags:
   - javascript

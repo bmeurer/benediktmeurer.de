@@ -1,5 +1,4 @@
 ---
-layout: post
 title: How to use hardware monitors with NetBSD
 ---
 

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: New Xfce Installer
 tags: xfce
 ---

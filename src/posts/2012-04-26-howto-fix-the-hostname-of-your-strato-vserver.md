@@ -1,5 +1,4 @@
 ---
-layout: post
 title: How to fix the hostname of your Strato V-Server
 ---
 

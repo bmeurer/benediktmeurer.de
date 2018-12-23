@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Thunar Open Location Ideas
 tags:
   - thunar

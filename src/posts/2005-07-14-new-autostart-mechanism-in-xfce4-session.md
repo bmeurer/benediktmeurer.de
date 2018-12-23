@@ -1,5 +1,4 @@
 ---
-layout: post
 title: New autostart mechanism in xfce4-session
 tags: xfce
 ---

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Interview “Three Frontend Questions to Benedikt Meurer” for YGLF Kyiv 2018"
 canonical: "https://medium.com/@yglf_kyiv/three-frontend-questions-to-benedikt-meurer-52046667ff74"
 tags:

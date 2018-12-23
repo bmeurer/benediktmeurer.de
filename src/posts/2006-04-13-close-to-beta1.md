@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Close to BETA1
 tags: thunar
 ---

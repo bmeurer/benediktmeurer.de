@@ -1,5 +1,4 @@
 ---
-layout: post
 title: What BSD gives to the world
 tags: netbsd
 ---

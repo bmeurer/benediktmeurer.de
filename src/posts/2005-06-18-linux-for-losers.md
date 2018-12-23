@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Linux for losers
 tags: linux
 ---

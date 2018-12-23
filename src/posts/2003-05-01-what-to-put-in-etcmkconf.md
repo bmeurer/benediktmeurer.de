@@ -1,5 +1,4 @@
 ---
-layout: post
 title: What to put in /etc/mk.conf
 tags: netbsd
 ---

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Edscott about Thunar
 tags: thunar
 ---

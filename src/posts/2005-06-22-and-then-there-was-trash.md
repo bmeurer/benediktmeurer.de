@@ -1,5 +1,4 @@
 ---
-layout: post
 title: And then there was trash...
 tags: thunar
 ---

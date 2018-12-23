@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Trash me, baby
 tags: thunar
 ---

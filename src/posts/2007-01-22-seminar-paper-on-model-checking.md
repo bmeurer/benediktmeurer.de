@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Seminar Paper on Model Checking
 tags: research
 ---

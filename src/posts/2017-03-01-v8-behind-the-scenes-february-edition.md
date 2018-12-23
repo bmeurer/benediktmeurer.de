@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "V8: Behind the Scenes (February Edition feat. A tale of TurboFan)"
 tags:
   - turbofan

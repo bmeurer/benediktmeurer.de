@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Just another screenshot
 tags: thunar
 ---

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Future of xfce4-toys
 tags: xfce
 ---

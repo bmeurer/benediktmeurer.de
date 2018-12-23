@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Random crashes with iOS 4.2.1
 tags: ios
 ---

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: (Mis)Use of icons in Gtk+/GNOME
 ---
 

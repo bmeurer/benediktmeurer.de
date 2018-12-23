@@ -1,5 +1,4 @@
 ---
-layout: post
 title: A new approach to Function.prototype.bind
 tags:
   - javascript

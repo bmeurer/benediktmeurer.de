@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Native toplevel test release 3.12.1+ocamlnatjit2
 tags: ocaml
 ---

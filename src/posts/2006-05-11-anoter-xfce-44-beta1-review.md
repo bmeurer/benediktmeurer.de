@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Another Xfce 4.4 BETA1 review
 tags: xfce
 ---

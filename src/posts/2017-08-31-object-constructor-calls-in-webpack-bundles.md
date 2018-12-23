@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Object constructor calls in webpack bundles
 tags:
   - performance

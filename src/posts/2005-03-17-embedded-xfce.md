@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Embedded Xfce
 tags:
   - os-cillation

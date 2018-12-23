@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Thunar application chooser
 tags: thunar
 ---

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Xfcalendar improvements
 tags: xfce
 ---

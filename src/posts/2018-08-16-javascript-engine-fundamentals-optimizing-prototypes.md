@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "JavaScript engine fundamentals: optimizing prototypes"
 canonical: "https://mathiasbynens.be/notes/prototypes"
 coauthor: mathias

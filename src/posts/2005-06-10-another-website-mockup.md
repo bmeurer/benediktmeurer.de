@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Another website mockup
 tags: thunar
 ---

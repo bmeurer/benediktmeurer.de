@@ -1,5 +1,4 @@
 ---
-layout: post
 title: SSH via SSH Tunnel
 ---
 

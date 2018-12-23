@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Autostart editor
 tags: xfce
 ---

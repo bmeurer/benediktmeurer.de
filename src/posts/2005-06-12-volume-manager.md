@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Volume Manager
 tags: thunar
 ---

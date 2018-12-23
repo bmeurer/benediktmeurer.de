@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Just another Xfce 4.4 review
 tags: xfce
 ---

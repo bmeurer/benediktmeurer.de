@@ -1,5 +1,4 @@
 ---
-layout: post
 title: New features in Thunar 0.4.0rc1
 tags: thunar
 ---

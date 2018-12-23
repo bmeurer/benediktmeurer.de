@@ -1,5 +1,4 @@
 ---
-layout: post
 title: The case of temporary objects in Chrome
 tags:
   - javascript

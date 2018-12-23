@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Xfld 0.3 release
 tags: xfce
 ---

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Blocks and Grand Central Dispatch
 tags: ios
 ---

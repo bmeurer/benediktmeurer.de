@@ -1,5 +1,4 @@
 ---
-layout: post
 title: XCasts color theme for Xcode 4
 tags: xcode
 ---

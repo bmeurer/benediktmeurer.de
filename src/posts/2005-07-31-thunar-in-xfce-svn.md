@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Thunar in Xfce SVN
 tags:
   - thunar

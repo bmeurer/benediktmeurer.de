@@ -1,5 +1,4 @@
 ---
-layout: post
 title: No software patents in Europe
 ---
 

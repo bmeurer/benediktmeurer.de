@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Impact of polymorphism on component-based frameworks like React
 tags:
   - performance

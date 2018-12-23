@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Terminal 0.2.4 released
 tags:
   - terminal

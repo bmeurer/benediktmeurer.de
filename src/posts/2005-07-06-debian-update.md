@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Debian update
 tags:
   - debian

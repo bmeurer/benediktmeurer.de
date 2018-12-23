@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Optimizing bound functions further
 tags:
   - javascript

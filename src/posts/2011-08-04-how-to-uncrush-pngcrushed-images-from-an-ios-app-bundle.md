@@ -1,5 +1,4 @@
 ---
-layout: post
 title: How to uncrush pngcrushed images from an iOS App Bundle
 tags: ios
 ---

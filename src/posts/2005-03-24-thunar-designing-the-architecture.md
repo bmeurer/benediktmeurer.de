@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Thunar Designing the architecture
 tags: thunar
 ---

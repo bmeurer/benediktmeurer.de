@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Xfce 4.2.1.1 available
 tags: xfce
 ---

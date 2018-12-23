@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "JavaScript engine fundamentals: Shapes and Inline Caches"
 canonical: "https://mathiasbynens.be/notes/shapes-ics"
 coauthor: mathias

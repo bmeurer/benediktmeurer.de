@@ -1,5 +1,4 @@
 ---
-layout: post
 title: OCamlJIT2 vs. OCamlJIT
 tags: ocaml
 ---

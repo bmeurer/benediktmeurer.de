@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Transparent Terminal Hack
 tags: terminal
 ---

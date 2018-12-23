@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Content Manager Ideas
 tags: kde
 ---

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Hierarchical Spatial
 tags: thunar
 ---

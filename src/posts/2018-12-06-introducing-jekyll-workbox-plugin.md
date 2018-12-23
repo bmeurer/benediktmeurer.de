@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Introducing jekyll-workbox-plugin
 tags:
   - jekyll

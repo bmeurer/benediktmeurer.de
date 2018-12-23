@@ -1,5 +1,4 @@
 ---
-layout: post
 title: KDE Viewer
 tags: kde
 ---

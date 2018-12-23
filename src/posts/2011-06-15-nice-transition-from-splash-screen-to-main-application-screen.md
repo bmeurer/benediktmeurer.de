@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Nice transition from splash screen to main application screen using fade out and zoom in animation
 ---
 

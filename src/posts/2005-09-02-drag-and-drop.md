@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Drag and Drop
 tags: thunar
 ---

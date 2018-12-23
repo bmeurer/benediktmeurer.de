@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Investigating Performance of Object#toString in ES2015
 tags:
   - javascript

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: All quiet on the western front...
 tags:
   - debian

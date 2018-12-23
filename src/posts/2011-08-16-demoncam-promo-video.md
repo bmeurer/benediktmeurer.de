@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Demon Cam Promo Video
 tags: ios
 ---

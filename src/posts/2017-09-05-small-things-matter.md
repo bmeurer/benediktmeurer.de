@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Small things matter
 tags: thoughts
 ---

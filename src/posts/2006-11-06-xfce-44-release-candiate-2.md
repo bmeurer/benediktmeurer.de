@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Xfce 4.4 release candidate 2
 tags: xfce
 ---

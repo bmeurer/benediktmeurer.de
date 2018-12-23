@@ -1,5 +1,4 @@
 ---
-layout: post
 title: My take on the "Google Manifesto"
 tags: thoughts
 ---

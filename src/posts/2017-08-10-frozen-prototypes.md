@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Frozen Prototypes
 tags:
   - javascript

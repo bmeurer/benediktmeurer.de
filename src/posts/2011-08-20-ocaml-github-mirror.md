@@ -1,5 +1,4 @@
 ---
-layout: post
 title: OCaml GitHub Mirror
 tags: ocaml
 ---

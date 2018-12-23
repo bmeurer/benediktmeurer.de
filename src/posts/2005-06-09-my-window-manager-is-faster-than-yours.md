@@ -1,5 +1,4 @@
 ---
-layout: post
 title: My window manager is faster than yours
 tags: xfce
 ---

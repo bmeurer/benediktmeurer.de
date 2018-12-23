@@ -1,5 +1,4 @@
 ---
-layout: post
 title: thunar-volman 0.1.0
 tags: thunar
 ---

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: New Thunar Wiki
 tags: thunar
 ---

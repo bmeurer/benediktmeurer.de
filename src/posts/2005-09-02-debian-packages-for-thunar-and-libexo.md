@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Debian packages for Thunar and libexo
 tags:
   - debian

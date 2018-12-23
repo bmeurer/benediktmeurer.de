@@ -1,5 +1,4 @@
 ---
-layout: post
 title: JetStream performance results
 ---
 

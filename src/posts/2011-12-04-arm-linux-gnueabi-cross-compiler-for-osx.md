@@ -1,5 +1,4 @@
 ---
-layout: post
 title: arm-linux-gnueabi cross compiler for OS X
 ---
 

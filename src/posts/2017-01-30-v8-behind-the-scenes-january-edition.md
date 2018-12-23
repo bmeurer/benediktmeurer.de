@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "V8: Behind the Scenes (January Edition feat. Ignition+TurboFan and Community Engagement)"
 tags:
   - presentations

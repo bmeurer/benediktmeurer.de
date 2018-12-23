@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Thunar 0.2.2 and libexo 0.3.1.4 alpha2 releases
 tags: thunar
 ---

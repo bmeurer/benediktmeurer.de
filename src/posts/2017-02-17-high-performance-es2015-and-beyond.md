@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "High-performance ES2015 and beyond"
 canonical: "https://https://v8.dev/blog/high-performance-es2015"
 tags:
