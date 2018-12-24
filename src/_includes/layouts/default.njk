@@ -80,6 +80,21 @@
       <article class="container">
         {{ content | safe }}
       </article>
+
+      <footer>
+        <div class="container">
+          <a href="/">Home</a>
+          <a href="/about/">About</a>
+          <a href="/archive/">Archive</a>
+        </div>
+
+        <div class="container">
+          <a aria-label="GitHub" title="GitHub" href="https://github.com/{{site.github}}"><svg><use xlink:href="/images/icons.svg#icon-github" /></svg></a>
+          <a aria-label="Twitter" title="Twitter" href="https://twitter.com/{{site.twitter}}"><svg><use xlink:href="/images/icons.svg#icon-twitter" /></svg></a>
+          <a aria-label="LinkedIn" title="LinkedIn" href="https://linkedin.com/in/{{site.linkedin}}"><svg><use xlink:href="/images/icons.svg#icon-linkedin" /></svg></a>
+          <a aria-label="RSS feed" title="RSS feed" href="/feed.xml"><svg><use xlink:href="/images/icons.svg#icon-feed" /></svg></a>
+        </div>
+      </footer>
     </main>
 
     <label for="sidebar-checkbox" class="sidebar-toggle"></label>

@@ -29,7 +29,6 @@ $primary-color: #ac4142;
 $sans-font: "PT Sans", Helvetica, Arial, sans-serif;
 $serif-font: "PT Serif", Georgia, "Times New Roman", serif;
 
-
 /*
  * Body resets
  *
@@ -62,6 +61,7 @@ body {
   color: #515151;
   background-color: #fff;
   text-size-adjust: 100%;
+  min-height: 100vh;
 }
 
 /* No `:visited` state is required by default (browsers will use `a`) */
@@ -290,6 +290,7 @@ a.button:hover {
  */
 
 .container {
+  width: 100%;
   max-width: 28rem;
   padding-left: 1rem;
   padding-right: 1rem;
@@ -470,6 +471,43 @@ a.pagination-item:hover {
 main {
   position: relative;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/*
+ * Footer
+ */
+
+footer {
+  margin-top: auto;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+  background-color: #eee;
+  border-top: 1px solid #ddd;
+  font-family: $sans-font;
+
+  div {
+    margin-bottom: 1rem;
+
+    a {
+      color: #111;
+      margin-right: 0.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    a:hover {
+      color: $primary-color;
+      text-decoration: none;
+    }
+
+    svg {
+      fill: currentColor;
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
 }
 
 /*
