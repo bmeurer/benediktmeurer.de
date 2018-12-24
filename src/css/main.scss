@@ -28,6 +28,7 @@
 $primary-color: #ac4142;
 $sans-font: "PT Sans", Helvetica, Arial, sans-serif;
 $serif-font: "PT Serif", Georgia, "Times New Roman", serif;
+$code-font: Menlo, Monaco, "Courier New", monospace;
 
 /*
  * Body resets
@@ -177,7 +178,7 @@ svg.icon {
 /* Code */
 code,
 pre {
-  font-family: Menlo, Monaco, "Courier New", monospace;
+  font-family: $code-font;
 }
 code {
   padding: 0.12em 0.25em;
