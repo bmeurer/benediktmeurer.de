@@ -467,7 +467,7 @@ a.pagination-item:hover {
  * regular page content.
  */
 
-.wrap {
+main {
   position: relative;
   width: 100%;
 }
@@ -637,12 +637,12 @@ a.sidebar-nav-item:focus {
  * Read more about it at http://meyerweb.com/eric/thoughts/2011/09/12/.
  */
 
-.wrap,
+main,
 .sidebar,
 .sidebar-toggle {
   backface-visibility: hidden;
 }
-.wrap,
+main,
 .sidebar-toggle {
   transition: transform 0.3s ease-in-out;
 }
@@ -652,7 +652,7 @@ a.sidebar-nav-item:focus {
   visibility: visible;
 }
 #sidebar-checkbox:checked ~ .sidebar,
-#sidebar-checkbox:checked ~ .wrap,
+#sidebar-checkbox:checked ~ main,
 #sidebar-checkbox:checked ~ .sidebar-toggle {
   transform: translateX(14rem);
 }
@@ -674,7 +674,7 @@ a.sidebar-nav-item:focus {
 }
 
 .layout-reverse #sidebar-checkbox:checked ~ .sidebar,
-.layout-reverse #sidebar-checkbox:checked ~ .wrap,
+.layout-reverse #sidebar-checkbox:checked ~ main,
 .layout-reverse #sidebar-checkbox:checked ~ .sidebar-toggle {
   transform: translateX(-14rem);
 }
@@ -686,7 +686,7 @@ a.sidebar-nav-item:focus {
  * aside when toggled.
  */
 
-.sidebar-overlay #sidebar-checkbox:checked ~ .wrap {
+.sidebar-overlay #sidebar-checkbox:checked ~ main {
   transform: translateX(0);
 }
 .sidebar-overlay #sidebar-checkbox:checked ~ .sidebar-toggle {
