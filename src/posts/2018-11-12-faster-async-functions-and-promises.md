@@ -382,13 +382,30 @@ foo().catch(error => console.log(error.stack));
 
 Running this code in Node.js 8 or Node.js 10 results in the following output:
 
-![Stack trace in Node.js 8 and 10](/images/2018/stack-trace-before-20181112.svg "Stack trace in Node.js 8 and 10")
+```text/2
+$ node index.js
+Error: BEEP BEEP
+    at bar (index.js:8:9)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+    at Function.Module.runMain (internal/modules/cjs/loader.js:745:11)
+    at startup (internal/bootstrap/node.js:266:19)
+    at bootstrapNodeJSCore (internal/bootstrap/node.js:595:3)
+```
 
 Note that although the call to `foo()` causes the error, `foo` is not part of the stack trace at all. This makes it tricky for JavaScript developers to perform post-mortem debugging, independent of whether your code is deployed in a web application or inside of some cloud container.
 
 The interesting bit here is that the engine knows where it has to continue when `bar` is done: right after the `await` in function `foo`. Coincidentally, that’s also the place where the function `foo` was suspended. The engine can use this information to reconstruct parts of the asynchronous stack trace, namely the `await` sites. With this change, the output becomes:
 
-![Zero cost async stack trace](/images/2018/stack-trace-after-20181112.svg "Zero cost async stack trace")
+```text/2,7
+$ node --async-stack-traces index.js
+Error: BEEP BEEP
+    at bar (index.js:8:9)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+    at Function.Module.runMain (internal/modules/cjs/loader.js:745:11)
+    at startup (internal/bootstrap/node.js:266:19)
+    at bootstrapNodeJSCore (internal/bootstrap/node.js:595:3)
+    at async foo (index.js:2:3)
+```
 
 In the stack trace, the topmost function comes first, followed by the rest of the synchronous stack trace, followed by the asynchronous call to `bar` in function `foo`. This change is implemented in V8 behind the new `--async-stack-traces` flag.
 
