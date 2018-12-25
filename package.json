@@ -39,6 +39,7 @@
     "markdown-it": "^8.4.2",
     "markdown-it-anchor": "^5.0.2",
     "markdown-it-footnote": "^3.0.1",
+    "markdown-it-video": "^0.6.3",
     "markdownlint-cli": "^0.13.0",
     "merge-stream": "^1.0.1",
     "node-sass": "^4.11.0",

@@ -6,6 +6,7 @@ const installPrismLanguages = require("./prism-languages.js");
 const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
 const markdownItFootnote = require("markdown-it-footnote");
+const markdownItVideo = require("markdown-it-video");
 
 const markdown = markdownIt({ html: true, linkify: true })
   .use(markdownItAnchor, {
@@ -13,7 +14,10 @@ const markdown = markdownIt({ html: true, linkify: true })
     permalinkClass: "bookmark",
     permalinkSymbol: "#"
   })
-  .use(markdownItFootnote);
+  .use(markdownItFootnote)
+  .use(markdownItVideo, {
+    youtube: { width: 720, height: 410 }
+  });
 
 module.exports = eleventyConfig => {
   eleventyConfig.addPlugin(pluginRss);
@@ -78,7 +82,7 @@ module.exports = eleventyConfig => {
     return [...set].sort();
   });
 
-  /* Markdown Plugins */
+  // Markdown Plugins
   eleventyConfig.setLibrary("md", markdown);
 
   // Minification

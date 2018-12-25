@@ -12,7 +12,7 @@ This article describes some key fundamentals that are common to all JavaScript e
 
 _Note:_ If you prefer watching a presentation over reading articles, then enjoy the video below! If not, skip the video and read on.
 
-<iframe src="https://www.youtube.com/embed/5nmpokoRaZI" width="100%" height="360" frameborder="0" allowfullscreen></iframe>
+@[youtube](5nmpokoRaZI)
 
 ## The JavaScript engine pipeline
 
