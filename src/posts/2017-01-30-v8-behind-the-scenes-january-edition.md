@@ -6,7 +6,7 @@ tags:
   - v8
 ---
 
-Not a lot happened behind the scenes of V8 since [the December Edition](/2017/12/20/v8-behind-the-scenes-december-edition) due to holidays
+Not a lot happened behind the scenes of V8 since [the December Edition](/2016/12/20/v8-behind-the-scenes-december-edition/) due to holidays
 and planning for 2017, so this is going to be a brief article. The most exciting V8 event for the web world was probably [turning on the
 flag for WebAssembly by default](https://twitter.com/bmeurer/status/818534650993934336) in Chrome M57 and Node 8.
 
