@@ -34,33 +34,13 @@ function buildServiceWorker() {
   return workbox
     .generateSW({
       skipWaiting: true,
-      runtimeCaching: [
-        {
-          // Cache the Google Fonts stylesheets with a stale-while-revalidate strategy.
-          urlPattern: /^https:\/\/fonts\.googleapis\.com/,
-          handler: "staleWhileRevalidate",
-          options: { cacheName: "google-fonts-stylesheets" }
-        },
-        {
-          // Cache the underlying font files with a cache-first strategy for 1 year.
-          urlPattern: /^https:\/\/fonts\.gstatic\.com/,
-          handler: "cacheFirst",
-          options: {
-            cacheName: "google-fonts-webfonts",
-            cacheableResponse: { statuses: [0, 200] },
-            expiration: {
-              maxAgeSeconds: 60 * 60 * 24 * 365,
-              maxEntries: 30
-            }
-          }
-        }
-      ],
       cacheId: "benediktmeurer.de",
       offlineGoogleAnalytics: true,
       globDirectory: destDir,
       globPatterns: [
         "css/main.css",
         "favicon.ico",
+        "fonts/*.woff2",
         "images/icons.svg",
         "index.html",
         "js/main.js"
@@ -110,7 +90,7 @@ function buildStyles() {
 /** Copy resources */
 function copyResources() {
   return gulp
-    .src(`${srcDir}/{{files,images}/**/*.*,favicon.ico}`)
+    .src(`${srcDir}/{{files,fonts,images}/**/*.*,favicon.ico}`)
     .pipe(gulp.dest(destDir));
 }
 
