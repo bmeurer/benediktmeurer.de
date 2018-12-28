@@ -1,7 +1,11 @@
 {
   "private": true,
+  "browserslist": [
+    "last 3 versions",
+    "> 0.2%"
+  ],
   "scripts": {
-    "build": "gulp build",
+    "build": "gulp build --production",
     "clean": "gulp clean",
     "lint": "markdownlint src/**/*.md",
     "start": "superstatic --port=8000",
@@ -21,7 +25,7 @@
       "markdownlint"
     ]
   },
-  "dependencies": {
+  "devDependencies": {
     "@11ty/eleventy": "^0.6.0",
     "@11ty/eleventy-plugin-rss": "^1.0.3",
     "@11ty/eleventy-plugin-syntaxhighlight": "^2.0.0",
@@ -29,12 +33,15 @@
     "cssnano": "^4.1.7",
     "del": "^3.0.0",
     "gulp": "^4.0.0",
+    "gulp-htmlmin": "^5.0.1",
     "gulp-jsonminify": "^1.1.0",
+    "gulp-noop": "^1.0.0",
     "gulp-postcss": "^8.0.0",
     "gulp-sass": "^4.0.2",
     "gulp-shell": "^0.6.5",
     "gulp-uglify": "^3.0.1",
-    "html-minifier": "^3.5.21",
+    "husky": "^1.2.1",
+    "lint-staged": "^8.1.0",
     "luxon": "^1.8.2",
     "markdown-it": "^8.4.2",
     "markdown-it-anchor": "^5.0.2",
@@ -42,13 +49,10 @@
     "markdown-it-video": "^0.6.3",
     "markdownlint-cli": "^0.13.0",
     "merge-stream": "^1.0.1",
+    "minimist": "^1.2.0",
     "node-sass": "^4.11.0",
     "postcss-cli": "^6.0.1",
     "superstatic": "^6.0.4",
     "workbox-build": "^3.6.3"
-  },
-  "devDependencies": {
-    "husky": "^1.2.1",
-    "lint-staged": "^8.1.0"
   }
 }
