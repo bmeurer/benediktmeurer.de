@@ -15,13 +15,13 @@ npm install
 to fetch dependencies for the website, and then
 
 ```
-npm run build
+gulp
 ```
 
 to build it in development mode, or
 
 ```
-env NODE_ENV=production npm run build
+gulp --production
 ```
 
 to build it in production mode (including all the minifications and optimizations). This currently uses [gulp.js](https://gulpjs.com)
