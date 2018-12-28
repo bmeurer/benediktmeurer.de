@@ -10,6 +10,7 @@
  * Contents
  *
  * Global settings
+ * Fonts
  * Body resets
  * Custom type
  * Messages
@@ -29,6 +30,66 @@ $primary-color: #ac4142;
 $sans-font: "PT Sans", Helvetica, Arial, sans-serif;
 $serif-font: "PT Serif", Georgia, "Times New Roman", serif;
 $code-font: Menlo, Monaco, "Courier New", monospace;
+
+/*
+ * Fonts
+ */
+
+/* pt-sans-regular - latin */
+@font-face {
+  font-family: "PT Sans";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/pt-sans-v9-latin-regular.eot");
+  src: local("PT Sans"), local("PTSans-Regular"),
+    url("../fonts/pt-sans-v9-latin-regular.woff2") format("woff2"),
+    url("../fonts/pt-sans-v9-latin-regular.woff") format("woff"),
+    url("../fonts/pt-sans-v9-latin-regular.ttf") format("truetype");
+}
+/* pt-serif-regular - latin */
+@font-face {
+  font-family: "PT Serif";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/pt-serif-v9-latin-regular.eot");
+  src: local("PT Serif"), local("PTSerif-Regular"),
+    url("../fonts/pt-serif-v9-latin-regular.woff2") format("woff2"),
+    url("../fonts/pt-serif-v9-latin-regular.woff") format("woff"),
+    url("../fonts/pt-serif-v9-latin-regular.ttf") format("truetype");
+}
+/* pt-serif-italic - latin */
+@font-face {
+  font-family: "PT Serif";
+  font-style: italic;
+  font-weight: 400;
+  src: url("../fonts/pt-serif-v9-latin-italic.eot");
+  src: local("PT Serif Italic"), local("PTSerif-Italic"),
+    url("../fonts/pt-serif-v9-latin-italic.woff2") format("woff2"),
+    url("../fonts/pt-serif-v9-latin-italic.woff") format("woff"),
+    url("../fonts/pt-serif-v9-latin-italic.ttf") format("truetype");
+}
+/* pt-serif-700 - latin */
+@font-face {
+  font-family: "PT Serif";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/pt-serif-v9-latin-700.eot");
+  src: local("PT Serif Bold"), local("PTSerif-Bold"),
+    url("../fonts/pt-serif-v9-latin-700.woff2") format("woff2"),
+    url("../fonts/pt-serif-v9-latin-700.woff") format("woff"),
+    url("../fonts/pt-serif-v9-latin-700.ttf") format("truetype");
+}
+/* pt-serif-700italic - latin */
+@font-face {
+  font-family: "PT Serif";
+  font-style: italic;
+  font-weight: 700;
+  src: url("../fonts/pt-serif-v9-latin-700italic.eot");
+  src: local("PT Serif Bold Italic"), local("PTSerif-BoldItalic"),
+    url("../fonts/pt-serif-v9-latin-700italic.woff2") format("woff2"),
+    url("../fonts/pt-serif-v9-latin-700italic.woff") format("woff"),
+    url("../fonts/pt-serif-v9-latin-700italic.ttf") format("truetype");
+}
 
 /*
  * Body resets
