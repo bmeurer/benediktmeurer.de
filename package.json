@@ -13,6 +13,7 @@
   },
   "husky": {
     "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-commit": "lint-staged"
     }
   },
@@ -29,6 +30,8 @@
     "@11ty/eleventy": "^0.6.0",
     "@11ty/eleventy-plugin-rss": "^1.0.3",
     "@11ty/eleventy-plugin-syntaxhighlight": "^2.0.0",
+    "@commitlint/cli": "^7.2.1",
+    "@commitlint/config-conventional": "^7.1.2",
     "autoprefixer": "^9.4.3",
     "cssnano": "^4.1.7",
     "del": "^3.0.0",
