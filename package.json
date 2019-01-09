@@ -17,6 +17,11 @@
       "pre-commit": "lint-staged"
     }
   },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
   "lint-staged": {
     "*.{js,json,css,md,scss}": [
       "prettier --write",
