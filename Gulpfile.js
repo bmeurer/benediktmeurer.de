@@ -19,7 +19,7 @@ const noop = require("gulp-noop");
 const postcss = require("gulp-postcss");
 const sass = require("gulp-sass");
 const shell = require("gulp-shell");
-const uglify = require("gulp-uglify");
+const terser = require("gulp-terser");
 const util = require("util");
 const workbox = require("workbox-build");
 
@@ -102,7 +102,7 @@ function buildServiceWorker() {
       if (args.production) {
         return gulp
           .src(`${destDir}/sw.js`)
-          .pipe(uglify())
+          .pipe(terser())
           .pipe(gulp.dest(`${destDir}`));
       }
     });
@@ -112,7 +112,7 @@ function buildServiceWorker() {
 function buildScripts() {
   return gulp
     .src(`${srcDir}/js/*.js`)
-    .pipe(args.production ? uglify() : noop())
+    .pipe(args.production ? terser() : noop())
     .pipe(gulp.dest(`${destDir}/js`));
 }
 
