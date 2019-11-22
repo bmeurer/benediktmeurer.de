@@ -5,6 +5,8 @@
 [[headers]]
   for = "/*"
   [headers.values]
+    Referrer-Policy = "no-referrer-when-downgrade"
+    Feature-Policy = "autoplay 'none';camera 'none';fullscreen 'none';geolocation 'none';microphone 'none';payment 'none'"
     X-Content-Type-Options = "nosniff"
     X-Frame-Options = "DENY"
     X-UA-Compatible = "IE=edge"
