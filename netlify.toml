@@ -5,6 +5,7 @@
 [[headers]]
   for = "/*"
   [headers.values]
+    Content-Security-Policy = "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'"
     Referrer-Policy = "no-referrer-when-downgrade"
     Feature-Policy = "autoplay 'none';camera 'none';fullscreen 'none';geolocation 'none';microphone 'none';payment 'none'"
     X-Content-Type-Options = "nosniff"
