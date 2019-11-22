@@ -5,6 +5,7 @@
 [[headers]]
   for = "/*"
   [headers.values]
+    X-Frame-Options = "DENY"
     X-UA-Compatible = "IE=edge"
 
 [[headers]]
