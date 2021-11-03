@@ -27,6 +27,7 @@
   }
 
   // Google Analytics.
+  /*
   self.ga =
     self.ga ||
     function() {
@@ -40,6 +41,7 @@
   var scriptElement = document.createElement("script");
   scriptElement.src = "//www.google-analytics.com/analytics.js";
   firstScript.parentNode.insertBefore(scriptElement, firstScript);
+  */
 
   // Install the service worker
   if ("serviceWorker" in navigator) {
